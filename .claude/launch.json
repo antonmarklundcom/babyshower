@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "babyshower-preview",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["preview-server.mjs", "8095"],
+      "port": 8095
+    }
+  ]
+}

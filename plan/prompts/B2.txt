@@ -1,0 +1,29 @@
+Read plan/02-BUILD-SPEC.md section 0 first, then plan/10-REVISION-V2.md (revision authority), before the other listed reading. Precedence: section 0 > 04 copy > design export (composition) > BUILD-SPEC section 6 section list. Once chosen, docs/design-canvas-export.html governs home composition in modes A/B/C; inner pages reuse its components. Until chosen, B1 uses section 6 patterns.
+
+You may regenerate every output HTML file the generator produces. Authored source edits are limited to the files listed. Counts, sitemap and SHIP list derive from docs/routes.json: route, output, phase (B1..B4), indexable, built. Snapshot: 32 routes, 31 non-root route directories inside 11 top-level route directories, 34 HTML files including 404.html and gracias.html. Cumulative built routes B1/B2/B3/B4 = 6/9/26/32; never hardcode totals in implementations. verify.mjs --phase B1..B5 reads built flags; links to built:false are allowed only when the target exists in the manifest. --final rejects any built:false.
+
+Each phase appends its own docs/log/build.md entry; manager or Anton adds session id/model/effort from dispatch output, never invented. PHP lint is not available locally: record php -l lead-forward.php as not available locally, not as a pass. Anton owns the Gate A hosted PHP test: submit one real form on the addon domain, check email + log. Deployment uses powershell -NoProfile -File deploy/make-zip.ps1 (.NET System.IO.Compression.ZipFile); the shell script is optional.
+
+Task: Phase B2 of the babyshower.com.py static site. B1 is done: the generator, tokens, shared JS and six routes exist. Read AGENTS.md, plan/02-BUILD-SPEC.md sections 4, 5, 6, 7 and plan/04-CONTENT-AND-COPY.md sections 3, 4, 5, 6. Build the package pages and the calculator.
+
+Files to touch: docs/log/build.md (append this phase entry), content.mjs (add PACKAGES, ADDONS, ZONES, PRICES (mode, effectiveDate, label), reveal and anito data if missing), build-site.mjs (new page renderers), assets/js/calc.js (new), assets/css/site.css (calculator and comparison table styles), verify.mjs (add the --calc fixtures check), docs/routes.json (mark built true), generated index.html for /combos-y-precios/, /revelacion-de-genero/, /primer-anito/, and the updated / with the live calculator.
+
+Do not touch: plan/, codex-input/, BRIEF.md, AGENTS.md, authored source outside the list above; generated output may all regenerate.
+
+Definition of done:
+- Calculator follows BUILD-SPEC section 5 exactly: frozen matrix, inputs, formula, retain guests above max with hidden total, zona otra custom quote, no clamping on package change, bundled torta/souvenirs disabled with incluido for Sueño, PRICES.label in output and in the WhatsApp message, no pregnancy or medical questions, works without JS by degrading to a link.
+- Package prices appear as text in the HTML on every page that shows a package, and equal the values in content.mjs.
+- Linked Service graph per BUILD-SPEC section 7 on offer pages; no Product/Offer, InStock or priceRange while estimated; LocalBusiness only on /.
+- Comparison table on /combos-y-precios/ scrolls horizontally under 640px with a sticky first column.
+- Each package card has its own wa.me link with the package name and price prefilled per BUILD-SPEC section 4.
+- node verify.mjs --phase B2 --calc checks all six fixtures in BUILD-SPEC section 5: Nube 15 = 1150000; Estrella 30 = 1850000; Estrella 40 + torta = 2620000; Estrella 45 = custom; Sueño 40 + torta = 2750000 with torta disabled; Nube 15 Luque = 1190000. Default Asunción otherwise. Test package switching, bundled add-ons and zona otra.
+
+Commands to run before reporting (working directory C:\Claude 1\babyshower):
+node build-site.mjs
+node verify.mjs --phase B2
+node verify.mjs --phase B2 --calc
+
+Report format:
+  Files changed: each path with a one-line summary
+  Commands run: each command with PASS or FAIL and a one-line result
+  Flagged or not done: anything skipped, blocked, or ambiguous, plus every paragraph you wrote yourself that was not in plan/04, or None

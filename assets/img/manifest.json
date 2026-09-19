@@ -1,0 +1,579 @@
+{
+  "generated_at": "2026-09-19T22:25:23.774Z",
+  "images": [
+    {
+      "filename_base": "hero-baby-shower-quincho",
+      "source": "https://d8j0ntlcm91z4.cloudfront.net/user_349VrHjTFIpx9q71lpfpAXcLXvR/hf_20260919_213145_1a1feded-4724-46f3-a5d3-c00733a98cbe.png",
+      "prompt": "higgsfield hero-baby-shower-quincho",
+      "alt_text": "Arco de globos orgánicos en verde salvia, crema y rosa sobre una mesa dulce de madera con cupcakes, en un quincho con pared de ladrillo",
+      "naming_source": "fallback",
+      "aspect_ratio": "16:9",
+      "files": [
+        {
+          "file": "hero-baby-shower-quincho-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 360,
+          "kb": 28.4
+        },
+        {
+          "file": "hero-baby-shower-quincho-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 360,
+          "kb": 36.4
+        },
+        {
+          "file": "hero-baby-shower-quincho-1280.avif",
+          "format": "avif",
+          "width": 1280,
+          "height": 720,
+          "kb": 72.2
+        },
+        {
+          "file": "hero-baby-shower-quincho-1280.webp",
+          "format": "webp",
+          "width": 1280,
+          "height": 720,
+          "kb": 98.5
+        },
+        {
+          "file": "hero-baby-shower-quincho-1920.avif",
+          "format": "avif",
+          "width": 1920,
+          "height": 1080,
+          "kb": 117.8
+        },
+        {
+          "file": "hero-baby-shower-quincho-1920.webp",
+          "format": "webp",
+          "width": 1920,
+          "height": 1080,
+          "kb": 172.7
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"assets/img/hero-baby-shower-quincho-640.avif 640w, assets/img/hero-baby-shower-quincho-1280.avif 1280w, assets/img/hero-baby-shower-quincho-1920.avif 1920w\">\n  <source type=\"image/webp\" srcset=\"assets/img/hero-baby-shower-quincho-640.webp 640w, assets/img/hero-baby-shower-quincho-1280.webp 1280w, assets/img/hero-baby-shower-quincho-1920.webp 1920w\">\n  <img src=\"assets/img/hero-baby-shower-quincho-1280.webp\" alt=\"Arco de globos orgánicos en verde salvia, crema y rosa sobre una mesa dulce de madera con cupcakes, en un quincho con pared de ladrillo\" width=\"1280\" height=\"720\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "band-montaje",
+      "source": "https://d8j0ntlcm91z4.cloudfront.net/user_349VrHjTFIpx9q71lpfpAXcLXvR/hf_20260919_213252_08a35cee-1a82-45cc-87cc-46627e7d2a01.png",
+      "prompt": "higgsfield band-montaje",
+      "alt_text": "Manos de una decoradora colocando un racimo de globos sobre un fondo de montaje, con herramientas e inflador a la vista dentro de un quincho",
+      "naming_source": "fallback",
+      "aspect_ratio": "21:9",
+      "files": [
+        {
+          "file": "band-montaje-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 274,
+          "kb": 19.3
+        },
+        {
+          "file": "band-montaje-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 274,
+          "kb": 24.6
+        },
+        {
+          "file": "band-montaje-1280.avif",
+          "format": "avif",
+          "width": 1280,
+          "height": 549,
+          "kb": 47.8
+        },
+        {
+          "file": "band-montaje-1280.webp",
+          "format": "webp",
+          "width": 1280,
+          "height": 549,
+          "kb": 65.2
+        },
+        {
+          "file": "band-montaje-1920.avif",
+          "format": "avif",
+          "width": 1920,
+          "height": 823,
+          "kb": 77.7
+        },
+        {
+          "file": "band-montaje-1920.webp",
+          "format": "webp",
+          "width": 1920,
+          "height": 823,
+          "kb": 113.9
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"assets/img/band-montaje-640.avif 640w, assets/img/band-montaje-1280.avif 1280w, assets/img/band-montaje-1920.avif 1920w\">\n  <source type=\"image/webp\" srcset=\"assets/img/band-montaje-640.webp 640w, assets/img/band-montaje-1280.webp 1280w, assets/img/band-montaje-1920.webp 1920w\">\n  <img src=\"assets/img/band-montaje-1280.webp\" alt=\"Manos de una decoradora colocando un racimo de globos sobre un fondo de montaje, con herramientas e inflador a la vista dentro de un quincho\" width=\"1280\" height=\"549\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "combo-nube",
+      "source": "https://d8j0ntlcm91z4.cloudfront.net/user_349VrHjTFIpx9q71lpfpAXcLXvR/hf_20260919_213252_3e13f60f-2b4e-43f8-bda1-5a361b8e7716.png",
+      "prompt": "higgsfield combo-nube",
+      "alt_text": "Arco de globos orgánicos crema y verde salvia de dos metros sobre fondo blanco, con una pequeña mesa lateral",
+      "naming_source": "fallback",
+      "aspect_ratio": "4:3",
+      "files": [
+        {
+          "file": "combo-nube-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 480,
+          "kb": 19.1
+        },
+        {
+          "file": "combo-nube-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 480,
+          "kb": 25.6
+        },
+        {
+          "file": "combo-nube-1168.avif",
+          "format": "avif",
+          "width": 1168,
+          "height": 876,
+          "kb": 42.4
+        },
+        {
+          "file": "combo-nube-1168.webp",
+          "format": "webp",
+          "width": 1168,
+          "height": 876,
+          "kb": 60.4
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"assets/img/combo-nube-640.avif 640w, assets/img/combo-nube-1168.avif 1168w\">\n  <source type=\"image/webp\" srcset=\"assets/img/combo-nube-640.webp 640w, assets/img/combo-nube-1168.webp 1168w\">\n  <img src=\"assets/img/combo-nube-640.webp\" alt=\"Arco de globos orgánicos crema y verde salvia de dos metros sobre fondo blanco, con una pequeña mesa lateral\" width=\"640\" height=\"480\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "combo-estrella",
+      "source": "https://d8j0ntlcm91z4.cloudfront.net/user_349VrHjTFIpx9q71lpfpAXcLXvR/hf_20260919_213252_d756e231-c0d4-42ea-9e04-9af351adfd5f.png",
+      "prompt": "higgsfield combo-estrella",
+      "alt_text": "Arco de tres metros en rosa, crema y salvia con fondo y una mesa dulce completa con dulces y bocadillos salados sobre tablas de madera",
+      "naming_source": "fallback",
+      "aspect_ratio": "4:3",
+      "files": [
+        {
+          "file": "combo-estrella-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 480,
+          "kb": 35.5
+        },
+        {
+          "file": "combo-estrella-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 480,
+          "kb": 43.8
+        },
+        {
+          "file": "combo-estrella-1168.avif",
+          "format": "avif",
+          "width": 1168,
+          "height": 876,
+          "kb": 78.8
+        },
+        {
+          "file": "combo-estrella-1168.webp",
+          "format": "webp",
+          "width": 1168,
+          "height": 876,
+          "kb": 105.6
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"assets/img/combo-estrella-640.avif 640w, assets/img/combo-estrella-1168.avif 1168w\">\n  <source type=\"image/webp\" srcset=\"assets/img/combo-estrella-640.webp 640w, assets/img/combo-estrella-1168.webp 1168w\">\n  <img src=\"assets/img/combo-estrella-640.webp\" alt=\"Arco de tres metros en rosa, crema y salvia con fondo y una mesa dulce completa con dulces y bocadillos salados sobre tablas de madera\" width=\"640\" height=\"480\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "combo-sueno",
+      "source": "https://d8j0ntlcm91z4.cloudfront.net/user_349VrHjTFIpx9q71lpfpAXcLXvR/hf_20260919_213252_ce5b47f4-14dd-41aa-a044-fa2575cff090.png",
+      "prompt": "higgsfield combo-sueno",
+      "alt_text": "Doble arco de cuatro metros con cartel acrílico en blanco, mesa de postres en niveles con torta de un piso, estación de bebidas con dispensadores de vidrio y cajas de souvenirs",
+      "naming_source": "fallback",
+      "aspect_ratio": "4:3",
+      "files": [
+        {
+          "file": "combo-sueno-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 480,
+          "kb": 38.2
+        },
+        {
+          "file": "combo-sueno-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 480,
+          "kb": 46
+        },
+        {
+          "file": "combo-sueno-1168.avif",
+          "format": "avif",
+          "width": 1168,
+          "height": 876,
+          "kb": 86.2
+        },
+        {
+          "file": "combo-sueno-1168.webp",
+          "format": "webp",
+          "width": 1168,
+          "height": 876,
+          "kb": 113.4
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"assets/img/combo-sueno-640.avif 640w, assets/img/combo-sueno-1168.avif 1168w\">\n  <source type=\"image/webp\" srcset=\"assets/img/combo-sueno-640.webp 640w, assets/img/combo-sueno-1168.webp 1168w\">\n  <img src=\"assets/img/combo-sueno-640.webp\" alt=\"Doble arco de cuatro metros con cartel acrílico en blanco, mesa de postres en niveles con torta de un piso, estación de bebidas con dispensadores de vidrio y cajas de souvenirs\" width=\"640\" height=\"480\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "tema-jefe-en-panales",
+      "source": "https://d8j0ntlcm91z4.cloudfront.net/user_349VrHjTFIpx9q71lpfpAXcLXvR/hf_20260919_213411_c5c2ea34-2953-4488-a5c0-e918f7d5f71e.png",
+      "prompt": "higgsfield tema-jefe-en-panales",
+      "alt_text": "Ambientación en azul marino y dorado con corbata y chupete decorativos de gran tamaño y globos con lunares",
+      "naming_source": "fallback",
+      "aspect_ratio": "4:3",
+      "files": [
+        {
+          "file": "tema-jefe-en-panales-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 480,
+          "kb": 31.6
+        },
+        {
+          "file": "tema-jefe-en-panales-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 480,
+          "kb": 38.9
+        },
+        {
+          "file": "tema-jefe-en-panales-1168.avif",
+          "format": "avif",
+          "width": 1168,
+          "height": 876,
+          "kb": 65.8
+        },
+        {
+          "file": "tema-jefe-en-panales-1168.webp",
+          "format": "webp",
+          "width": 1168,
+          "height": 876,
+          "kb": 88.7
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"assets/img/tema-jefe-en-panales-640.avif 640w, assets/img/tema-jefe-en-panales-1168.avif 1168w\">\n  <source type=\"image/webp\" srcset=\"assets/img/tema-jefe-en-panales-640.webp 640w, assets/img/tema-jefe-en-panales-1168.webp 1168w\">\n  <img src=\"assets/img/tema-jefe-en-panales-640.webp\" alt=\"Ambientación en azul marino y dorado con corbata y chupete decorativos de gran tamaño y globos con lunares\" width=\"640\" height=\"480\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "tema-dino-bebe",
+      "source": "https://d8j0ntlcm91z4.cloudfront.net/user_349VrHjTFIpx9q71lpfpAXcLXvR/hf_20260919_213411_1690cf06-148f-48b8-9166-f6eb2cf937db.png",
+      "prompt": "higgsfield tema-dino-bebe",
+      "alt_text": "Rincón decorativo con huevos de dinosaurio y hojas tropicales en verde salvia y terracota",
+      "naming_source": "fallback",
+      "aspect_ratio": "4:3",
+      "files": [
+        {
+          "file": "tema-dino-bebe-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 480,
+          "kb": 35.3
+        },
+        {
+          "file": "tema-dino-bebe-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 480,
+          "kb": 44.6
+        },
+        {
+          "file": "tema-dino-bebe-1168.avif",
+          "format": "avif",
+          "width": 1168,
+          "height": 876,
+          "kb": 74.3
+        },
+        {
+          "file": "tema-dino-bebe-1168.webp",
+          "format": "webp",
+          "width": 1168,
+          "height": 876,
+          "kb": 103.4
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"assets/img/tema-dino-bebe-640.avif 640w, assets/img/tema-dino-bebe-1168.avif 1168w\">\n  <source type=\"image/webp\" srcset=\"assets/img/tema-dino-bebe-640.webp 640w, assets/img/tema-dino-bebe-1168.webp 1168w\">\n  <img src=\"assets/img/tema-dino-bebe-640.webp\" alt=\"Rincón decorativo con huevos de dinosaurio y hojas tropicales en verde salvia y terracota\" width=\"640\" height=\"480\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "tema-moana-bebe",
+      "source": "https://d8j0ntlcm91z4.cloudfront.net/user_349VrHjTFIpx9q71lpfpAXcLXvR/hf_20260919_213411_5594f9c6-015d-49ef-bee9-a67ff8a974ee.png",
+      "prompt": "higgsfield tema-moana-bebe",
+      "alt_text": "Ambientación en turquesa y coral con flores tropicales, olas de cartón y un remo de madera",
+      "naming_source": "fallback",
+      "aspect_ratio": "4:3",
+      "files": [
+        {
+          "file": "tema-moana-bebe-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 480,
+          "kb": 29.3
+        },
+        {
+          "file": "tema-moana-bebe-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 480,
+          "kb": 37.4
+        },
+        {
+          "file": "tema-moana-bebe-1168.avif",
+          "format": "avif",
+          "width": 1168,
+          "height": 876,
+          "kb": 63.6
+        },
+        {
+          "file": "tema-moana-bebe-1168.webp",
+          "format": "webp",
+          "width": 1168,
+          "height": 876,
+          "kb": 88.5
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"assets/img/tema-moana-bebe-640.avif 640w, assets/img/tema-moana-bebe-1168.avif 1168w\">\n  <source type=\"image/webp\" srcset=\"assets/img/tema-moana-bebe-640.webp 640w, assets/img/tema-moana-bebe-1168.webp 1168w\">\n  <img src=\"assets/img/tema-moana-bebe-640.webp\" alt=\"Ambientación en turquesa y coral con flores tropicales, olas de cartón y un remo de madera\" width=\"640\" height=\"480\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "tema-minnie-bebe",
+      "source": "https://d8j0ntlcm91z4.cloudfront.net/user_349VrHjTFIpx9q71lpfpAXcLXvR/hf_20260919_213411_539514bb-4d0d-406b-87b3-c89303b406fb.png",
+      "prompt": "higgsfield tema-minnie-bebe",
+      "alt_text": "Ambientación rosa con lunares blancos y moños decorativos",
+      "naming_source": "fallback",
+      "aspect_ratio": "4:3",
+      "files": [
+        {
+          "file": "tema-minnie-bebe-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 480,
+          "kb": 25.2
+        },
+        {
+          "file": "tema-minnie-bebe-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 480,
+          "kb": 32.6
+        },
+        {
+          "file": "tema-minnie-bebe-1168.avif",
+          "format": "avif",
+          "width": 1168,
+          "height": 876,
+          "kb": 50.1
+        },
+        {
+          "file": "tema-minnie-bebe-1168.webp",
+          "format": "webp",
+          "width": 1168,
+          "height": 876,
+          "kb": 71.4
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"assets/img/tema-minnie-bebe-640.avif 640w, assets/img/tema-minnie-bebe-1168.avif 1168w\">\n  <source type=\"image/webp\" srcset=\"assets/img/tema-minnie-bebe-640.webp 640w, assets/img/tema-minnie-bebe-1168.webp 1168w\">\n  <img src=\"assets/img/tema-minnie-bebe-640.webp\" alt=\"Ambientación rosa con lunares blancos y moños decorativos\" width=\"640\" height=\"480\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "tema-blanca-nieves-bebe",
+      "source": "https://d8j0ntlcm91z4.cloudfront.net/user_349VrHjTFIpx9q71lpfpAXcLXvR/hf_20260919_213411_6c6b5e7e-df26-4994-9983-9328d2445f40.png",
+      "prompt": "higgsfield tema-blanca-nieves-bebe",
+      "alt_text": "Manzanas rojas, telas azul real y amarillo y follaje de bosque sobre una mesa decorada",
+      "naming_source": "fallback",
+      "aspect_ratio": "4:3",
+      "files": [
+        {
+          "file": "tema-blanca-nieves-bebe-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 480,
+          "kb": 35.2
+        },
+        {
+          "file": "tema-blanca-nieves-bebe-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 480,
+          "kb": 43.8
+        },
+        {
+          "file": "tema-blanca-nieves-bebe-1168.avif",
+          "format": "avif",
+          "width": 1168,
+          "height": 876,
+          "kb": 72.1
+        },
+        {
+          "file": "tema-blanca-nieves-bebe-1168.webp",
+          "format": "webp",
+          "width": 1168,
+          "height": 876,
+          "kb": 98.1
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"assets/img/tema-blanca-nieves-bebe-640.avif 640w, assets/img/tema-blanca-nieves-bebe-1168.avif 1168w\">\n  <source type=\"image/webp\" srcset=\"assets/img/tema-blanca-nieves-bebe-640.webp 640w, assets/img/tema-blanca-nieves-bebe-1168.webp 1168w\">\n  <img src=\"assets/img/tema-blanca-nieves-bebe-640.webp\" alt=\"Manzanas rojas, telas azul real y amarillo y follaje de bosque sobre una mesa decorada\" width=\"640\" height=\"480\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "tema-frutillita-bebe",
+      "source": "https://d8j0ntlcm91z4.cloudfront.net/user_349VrHjTFIpx9q71lpfpAXcLXvR/hf_20260919_213411_10cd41fc-4bec-4fa7-845a-b4b3f9fead79.png",
+      "prompt": "higgsfield tema-frutillita-bebe",
+      "alt_text": "Frutillas decorativas y lunares en rojo, verde y rosa sobre una mesa decorada",
+      "naming_source": "fallback",
+      "aspect_ratio": "4:3",
+      "files": [
+        {
+          "file": "tema-frutillita-bebe-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 480,
+          "kb": 26.3
+        },
+        {
+          "file": "tema-frutillita-bebe-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 480,
+          "kb": 34.3
+        },
+        {
+          "file": "tema-frutillita-bebe-1168.avif",
+          "format": "avif",
+          "width": 1168,
+          "height": 876,
+          "kb": 51.2
+        },
+        {
+          "file": "tema-frutillita-bebe-1168.webp",
+          "format": "webp",
+          "width": 1168,
+          "height": 876,
+          "kb": 73.3
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"assets/img/tema-frutillita-bebe-640.avif 640w, assets/img/tema-frutillita-bebe-1168.avif 1168w\">\n  <source type=\"image/webp\" srcset=\"assets/img/tema-frutillita-bebe-640.webp 640w, assets/img/tema-frutillita-bebe-1168.webp 1168w\">\n  <img src=\"assets/img/tema-frutillita-bebe-640.webp\" alt=\"Frutillas decorativas y lunares en rojo, verde y rosa sobre una mesa decorada\" width=\"640\" height=\"480\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "tema-mariposas",
+      "source": "https://d8j0ntlcm91z4.cloudfront.net/user_349VrHjTFIpx9q71lpfpAXcLXvR/hf_20260919_213411_8026ae92-0cc3-4e86-9cbf-083202b0e74e.png",
+      "prompt": "higgsfield tema-mariposas",
+      "alt_text": "Mariposas de papel en lila y rosa sobre un fondo de mesa decorada",
+      "naming_source": "fallback",
+      "aspect_ratio": "4:3",
+      "files": [
+        {
+          "file": "tema-mariposas-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 480,
+          "kb": 27.4
+        },
+        {
+          "file": "tema-mariposas-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 480,
+          "kb": 32.8
+        },
+        {
+          "file": "tema-mariposas-1168.avif",
+          "format": "avif",
+          "width": 1168,
+          "height": 876,
+          "kb": 54.3
+        },
+        {
+          "file": "tema-mariposas-1168.webp",
+          "format": "webp",
+          "width": 1168,
+          "height": 876,
+          "kb": 72.9
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"assets/img/tema-mariposas-640.avif 640w, assets/img/tema-mariposas-1168.avif 1168w\">\n  <source type=\"image/webp\" srcset=\"assets/img/tema-mariposas-640.webp 640w, assets/img/tema-mariposas-1168.webp 1168w\">\n  <img src=\"assets/img/tema-mariposas-640.webp\" alt=\"Mariposas de papel en lila y rosa sobre un fondo de mesa decorada\" width=\"640\" height=\"480\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "tema-safari",
+      "source": "https://d8j0ntlcm91z4.cloudfront.net/user_349VrHjTFIpx9q71lpfpAXcLXvR/hf_20260919_213411_96160864-1a24-4509-ae1a-c47a267f1a2b.png",
+      "prompt": "higgsfield tema-safari",
+      "alt_text": "Animales de peluche en tonos mostaza y verde sobre una mesa decorada con temática safari",
+      "naming_source": "fallback",
+      "aspect_ratio": "4:3",
+      "files": [
+        {
+          "file": "tema-safari-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 480,
+          "kb": 37.4
+        },
+        {
+          "file": "tema-safari-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 480,
+          "kb": 46.3
+        },
+        {
+          "file": "tema-safari-1168.avif",
+          "format": "avif",
+          "width": 1168,
+          "height": 876,
+          "kb": 80.3
+        },
+        {
+          "file": "tema-safari-1168.webp",
+          "format": "webp",
+          "width": 1168,
+          "height": 876,
+          "kb": 107.8
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"assets/img/tema-safari-640.avif 640w, assets/img/tema-safari-1168.avif 1168w\">\n  <source type=\"image/webp\" srcset=\"assets/img/tema-safari-640.webp 640w, assets/img/tema-safari-1168.webp 1168w\">\n  <img src=\"assets/img/tema-safari-640.webp\" alt=\"Animales de peluche en tonos mostaza y verde sobre una mesa decorada con temática safari\" width=\"640\" height=\"480\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "tema-nubes-y-ositos",
+      "source": "https://d8j0ntlcm91z4.cloudfront.net/user_349VrHjTFIpx9q71lpfpAXcLXvR/hf_20260919_213411_3a464a5b-9feb-4d63-bf25-399306fafb9c.png",
+      "prompt": "higgsfield tema-nubes-y-ositos",
+      "alt_text": "Nubes de espuma, un osito de peluche beige y una luna decorativa sobre una mesa de montaje",
+      "naming_source": "fallback",
+      "aspect_ratio": "4:3",
+      "files": [
+        {
+          "file": "tema-nubes-y-ositos-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 480,
+          "kb": 28
+        },
+        {
+          "file": "tema-nubes-y-ositos-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 480,
+          "kb": 36.6
+        },
+        {
+          "file": "tema-nubes-y-ositos-1168.avif",
+          "format": "avif",
+          "width": 1168,
+          "height": 876,
+          "kb": 58.7
+        },
+        {
+          "file": "tema-nubes-y-ositos-1168.webp",
+          "format": "webp",
+          "width": 1168,
+          "height": 876,
+          "kb": 84.8
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"assets/img/tema-nubes-y-ositos-640.avif 640w, assets/img/tema-nubes-y-ositos-1168.avif 1168w\">\n  <source type=\"image/webp\" srcset=\"assets/img/tema-nubes-y-ositos-640.webp 640w, assets/img/tema-nubes-y-ositos-1168.webp 1168w\">\n  <img src=\"assets/img/tema-nubes-y-ositos-640.webp\" alt=\"Nubes de espuma, un osito de peluche beige y una luna decorativa sobre una mesa de montaje\" width=\"640\" height=\"480\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    }
+  ]
+}

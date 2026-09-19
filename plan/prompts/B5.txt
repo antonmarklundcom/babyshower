@@ -1,0 +1,30 @@
+Read plan/02-BUILD-SPEC.md section 0 first, then plan/10-REVISION-V2.md (revision authority), before the other listed reading. Precedence: section 0 > 04 copy > design export (composition) > BUILD-SPEC section 6 section list. Once chosen, docs/design-canvas-export.html governs home composition in modes A/B/C; inner pages reuse its components. Until chosen, B1 uses section 6 patterns.
+
+You may regenerate every output HTML file the generator produces. Authored source edits are limited to the files listed. Counts, sitemap and SHIP list derive from docs/routes.json: route, output, phase (B1..B4), indexable, built. Snapshot: 32 routes, 31 non-root route directories inside 11 top-level route directories, 34 HTML files including 404.html and gracias.html. Cumulative built routes B1/B2/B3/B4 = 6/9/26/32; never hardcode totals in implementations. verify.mjs --phase B1..B5 reads built flags; links to built:false are allowed only when the target exists in the manifest. --final rejects any built:false.
+
+Each phase appends its own docs/log/build.md entry; manager or Anton adds session id/model/effort from dispatch output, never invented. PHP lint is not available locally: record php -l lead-forward.php as not available locally, not as a pass. Anton owns the Gate A hosted PHP test: submit one real form on the addon domain, check email + log. Deployment uses powershell -NoProfile -File deploy/make-zip.ps1 (.NET System.IO.Compression.ZipFile); the shell script is optional.
+
+Task: Phase B5 of the babyshower.com.py static site. B1 to B4 are done and all 32 routes render. Read AGENTS.md, plan/02-BUILD-SPEC.md sections 1, 8, 9, 10 and the vendercrm-lead-capture pattern in C:\Claude 1\tasacion-com-py\lead-forward.php and deploy\vendercrm-config.example.php. Build the lead endpoint, sitemap generation, deploy zip and docs.
+
+Files to touch: docs/log/build.md (append this phase entry), lead-forward.php (new, adapted from tasacion with the fields in BUILD-SPEC section 8), deploy/vendercrm-config.example.php (new), deploy/make-zip.ps1 (new, .NET System.IO.Compression.ZipFile, SHIP from manifest plus fixed files), assets/js/site.js (error display), build-site.mjs (contact renderer for error display; generate sitemap.xml from routes.json, excluding gracias and 404), sitemap.xml, docs/DEPLOY.md, preview-server.mjs (copy from C:\Claude 1\embarazo-com-py), .gitignore (dist, leads.log, vendercrm-config.babyshower.php).
+
+Do not touch: plan/, codex-input/, BRIEF.md, AGENTS.md, unrelated page content; contact renderer/error display is explicitly in scope. Never create or commit real vendercrm-config.babyshower.php values. Never print or write any API key.
+
+Definition of done:
+- lead-forward.php validates per BUILD-SPEC section 8, uses the honeypot field empresa, normalises Paraguayan numbers, rate-limits 5/min/IP, dedupes sid, writes one durable JSON line to leads.log, sends PHP mail to SITE.leadEmail, and posts to VenderCRM when configured. Success requires durable write AND (email OR CRM succeeded); redirect to /gracias.html only then; return the form with an error message plus the WhatsApp fallback on failure.
+- sitemap.xml lists exactly the built indexable manifest routes with absolute https URLs and trailing slashes; robots.txt references it.
+- powershell -NoProfile -File deploy/make-zip.ps1 regenerates the site and produces dist/babyshower-YYYY-MM-DD.zip, flat, containing index.html, 404.html, gracias.html, lead-forward.php, .htaccess, robots.txt, sitemap.xml, assets, and all manifest route outputs, including dotfiles, and nothing from plan, docs, deploy, codex-input, logs, real config or source mjs files. Print entry count and fail if any manifest route is missing.
+- docs/DEPLOY.md explains generate, upload, extract, config file, and the Antes de publicar list (WA number, PRICES.label, SITE.leadEmail, public SITE.email, analytics id, fonts, hosted PHP email + log test).
+- docs/log/build.md retains prior entries and appends B5 only; never invent other phase records or session metadata. Config path is one level above public_html, filename vendercrm-config.babyshower.php.
+
+Commands to run before reporting (working directory C:\Claude 1\babyshower):
+node build-site.mjs
+node verify.mjs --phase B5
+node verify.mjs --final
+powershell -NoProfile -File deploy/make-zip.ps1
+PHP lint record: php -l lead-forward.php — not available locally; hosted form test assigned to Anton at Gate A.
+
+Report format:
+  Files changed: each path with a one-line summary
+  Commands run: each command with PASS or FAIL and a one-line result
+  Flagged or not done: anything skipped, blocked, or ambiguous, or None

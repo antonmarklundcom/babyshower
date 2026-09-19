@@ -1,0 +1,21 @@
+Read plan/02-BUILD-SPEC.md section 0 first, then plan/10-REVISION-V2.md (revision authority), before the other listed reading. Precedence: section 0 > 04 copy > design export (composition) > BUILD-SPEC section 6 section list. Once chosen, docs/design-canvas-export.html governs home composition in modes A/B/C; inner pages reuse its components. Until chosen, B1 uses section 6 patterns.
+
+You may regenerate every output HTML file the generator produces. Authored source edits are limited to the files listed. Counts, sitemap and SHIP list derive from docs/routes.json: route, output, phase (B1..B4), indexable, built. Snapshot: 32 routes, 31 non-root route directories inside 11 top-level route directories, 34 HTML files including 404.html and gracias.html. Cumulative built routes B1/B2/B3/B4 = 6/9/26/32; never hardcode totals in implementations. verify.mjs --phase B1..B5 reads built flags; links to built:false are allowed only when the target exists in the manifest. --final rejects any built:false.
+
+Each phase appends its own docs/log/build.md entry; manager or Anton adds session id/model/effort from dispatch output, never invented. PHP lint is not available locally: record php -l lead-forward.php as not available locally, not as a pass. Anton owns the Gate A hosted PHP test: submit one real form on the addon domain, check email + log. Deployment uses powershell -NoProfile -File deploy/make-zip.ps1 (.NET System.IO.Compression.ZipFile); the shell script is optional.
+
+You are building the babyshower.com.py static site in C:\Claude 1\babyshower yourself (Mode C in plan/03-EXECUTION.md). Codex is unavailable, so you write the code. Never spawn Fable or a Fable subagent (fable-cost-guardrail). Load the web-design-system skill before writing markup and the vendercrm-lead-capture skill before the PHP endpoint.
+
+Read first, fully: AGENTS.md, plan/00-README.md, plan/02-BUILD-SPEC.md (section 0 is read first and overrides all other build material), plan/04-CONTENT-AND-COPY.md, plan/03-EXECUTION.md.
+
+Do the phases in order using the phase prompts as your own task list: plan/prompts/B1.txt, then B2.txt, then B3.txt, B4.txt, B5.txt. Treat each prompt's Files to touch, Definition of done and Commands to run as binding on you. Run every listed command after each phase and do not start the next phase with a failing verify. Use private GitHub repo anton/babyshower-com-py (Q18 if different). Initialise git at the start of B1 and commit after each passing phase with a message naming the phase.
+
+Reuse patterns from C:\Claude 1\tasacion-com-py (build-site.mjs, content.mjs shape, site.js header and WhatsApp panel, lead-forward.php; author make-zip.ps1 and .htaccess fresh per BUILD-SPEC) and C:\Claude 1\claude-skills\web-design-system\references (tokens.css, motion.js, layout-patterns.md). Do not copy tasacion's copy text, prices or credentials.
+
+Hard rules: WA_NUMBER 595992279599. All prices are estimates in copy (section 0). No fabricated reviews, counts, years, RUC or licensed character claims. Voseo, lang es-PY, no English in rendered HTML. Never print or write secrets. Never touch plan/, codex-input/, BRIEF.md or AGENTS.md. If a phase item is impossible, do everything else and list it under Flagged.
+
+After B5, run phase B6 yourself with the browser tools per plan/03-EXECUTION.md (serve with node preview-server.mjs, QA gate once, Lighthouse once, 360px screenshots of the five listed pages, test the calculator and three WhatsApp links) and fix what fails.
+
+Final report to Anton: files created, commands run with PASS or FAIL, screenshots, Flagged items, and the Antes de publicar list from docs/DEPLOY.md.
+
+B6 is the checklist in plan/03, not a prompt file: HTTP-check every canonical manifest route plus /404.html and /gracias.html on the preview server, including after extracting the zip. Final local verification: node verify.mjs --final and powershell -NoProfile -File deploy/make-zip.ps1.

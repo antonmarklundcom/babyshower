@@ -1,0 +1,20 @@
+Read plan/02-BUILD-SPEC.md section 0 first, then plan/10-REVISION-V2.md (revision authority), before the other listed reading. Precedence: section 0 > 04 copy > design export (composition) > BUILD-SPEC section 6 section list. Once chosen, docs/design-canvas-export.html governs home composition in modes A/B/C; inner pages reuse its components. Until chosen, B1 uses section 6 patterns.
+
+You may regenerate every output HTML file the generator produces. Authored source edits are limited to the files listed. Counts, sitemap and SHIP list derive from docs/routes.json: route, output, phase (B1..B4), indexable, built. Snapshot: 32 routes, 31 non-root route directories inside 11 top-level route directories, 34 HTML files including 404.html and gracias.html. Cumulative built routes B1/B2/B3/B4 = 6/9/26/32; never hardcode totals in implementations. verify.mjs --phase B1..B5 reads built flags; links to built:false are allowed only when the target exists in the manifest. --final rejects any built:false.
+
+Each phase appends its own docs/log/build.md entry; manager or Anton adds session id/model/effort from dispatch output, never invented. PHP lint is not available locally: record php -l lead-forward.php as not available locally, not as a pass. Anton owns the Gate A hosted PHP test: submit one real form on the addon domain, check email + log. Deployment uses powershell -NoProfile -File deploy/make-zip.ps1 (.NET System.IO.Compression.ZipFile); the shell script is optional.
+
+You are the manager for the babyshower.com.py build in C:\Claude 1\babyshower. Load the manager-worker-codex skill and follow it. You do not write site code yourself beyond trivial one-line fixes. The worker is Codex CLI at tier normal (gpt-6-astra, reasoning effort low). Never use tier hard unless Anton says so in this conversation. Never spawn Fable or any Fable subagent (fable-cost-guardrail).
+
+Read first: plan/00-README.md, plan/01-MASTER-PLAN.md section 9, plan/02-BUILD-SPEC.md, plan/03-EXECUTION.md.
+
+Procedure:
+1. For each phase B1 to B5 in order: dispatch plan/prompts/B<n>.txt with the codex-run.ps1 script (Repo C:\Claude 1\babyshower, Tier normal). Capture the session id from the script output.
+2. Audit by running the phase's verification commands yourself, not by reading the diff. Check git status shows only the Files to touch. Grep new Spanish text for mojibake (a question mark between letters). Read the worker's Flagged list; accept each item explicitly or send it back.
+3. On failure: resume the same session id with the exact error text in a file, same Tier normal. After two failures at normal on one phase, stop and report to Anton with the error and the session id. Do not escalate on your own.
+4. After B5: run phase B6 yourself with the browser tools: serve with node preview-server.mjs, run the QA gate from C:\Claude 1\claude-skills\web-design-system\references\qa-runner.md once (Lighthouse once only), take 360px mobile screenshots of /, /combos-y-precios/, /revelacion-de-genero/, /tematicas/dino-bebe/, /zonas/luque/, test the calculator and three WhatsApp links. Send fixes to Codex by resuming the B-phase session that owns the file, or a fresh normal dispatch with a precise prompt.
+5. Keep each phase’s appended docs/log/build.md entry. Add session id, model and effort from dispatch output; never invent them. Use private GitHub repo anton/babyshower-com-py (Q18 if different).
+
+Report to Anton at the end in the skill's format: task and repo, session ids with model and effort from the log, what was verified and how, findings rejected, anything still open, and the Antes de publicar list.
+
+B6 is the checklist in plan/03, not a prompt file: HTTP-check every canonical manifest route plus /404.html and /gracias.html on the preview server, including after extracting the zip. Final local verification: node verify.mjs --final and powershell -NoProfile -File deploy/make-zip.ps1.

@@ -1,0 +1,30 @@
+Read plan/02-BUILD-SPEC.md section 0 first, then plan/10-REVISION-V2.md (revision authority), before the other listed reading. Precedence: section 0 > 04 copy > design export (composition) > BUILD-SPEC section 6 section list. Once chosen, docs/design-canvas-export.html governs home composition in modes A/B/C; inner pages reuse its components. Until chosen, B1 uses section 6 patterns.
+
+You may regenerate every output HTML file the generator produces. Authored source edits are limited to the files listed. Counts, sitemap and SHIP list derive from docs/routes.json: route, output, phase (B1..B4), indexable, built. Snapshot: 32 routes, 31 non-root route directories inside 11 top-level route directories, 34 HTML files including 404.html and gracias.html. Cumulative built routes B1/B2/B3/B4 = 6/9/26/32; never hardcode totals in implementations. verify.mjs --phase B1..B5 reads built flags; links to built:false are allowed only when the target exists in the manifest. --final rejects any built:false.
+
+Each phase appends its own docs/log/build.md entry; manager or Anton adds session id/model/effort from dispatch output, never invented. PHP lint is not available locally: record php -l lead-forward.php as not available locally, not as a pass. Anton owns the Gate A hosted PHP test: submit one real form on the addon domain, check email + log. Deployment uses powershell -NoProfile -File deploy/make-zip.ps1 (.NET System.IO.Compression.ZipFile); the shell script is optional.
+
+Task: Phase B1 of the babyshower.com.py static site. Read AGENTS.md, plan/02-BUILD-SPEC.md (all sections) and plan/04-CONTENT-AND-COPY.md sections 1, 2, 3, 10, 11, 12, 13, 14, 15 before writing anything. Build the generator skeleton and the first pages. Copy patterns from C:\Claude 1\tasacion-com-py (build-site.mjs, content.mjs shape, assets/js/site.js header and WhatsApp panel; write .htaccess fresh per BUILD-SPEC) and from C:\Claude 1\claude-skills\web-design-system\references (tokens.css resolved with the SOFT CRAFT values in BUILD-SPEC section 2, motion.js copied verbatim, layout-patterns.md for section patterns). Do not copy tasacion copy text, prices, or credentials.
+
+Files to touch: docs/log/build.md (append this phase entry), content.mjs, build-site.mjs, verify.mjs, assets/css/site.css, assets/js/site.js, assets/js/motion.js, assets/img/favicon.svg, docs/routes.json, .gitignore, robots.txt, .htaccess, 404.html, gracias.html, and the generated index.html for these routes: /, /como-funciona/, /contacto/, /preguntas-frecuentes/, /privacidad/, /terminos/. The landing may render the calculator section as static package prices plus a placeholder container with id calculadora; the JS calculator comes in B2.
+
+Do not touch: plan/, codex-input/, BRIEF.md, AGENTS.md, anything under C:\Claude 1\tasacion-com-py.
+
+Definition of done:
+- node build-site.mjs exits 0 and writes the six routes plus 404.html and gracias.html.
+- docs/routes.json lists the complete BUILD-SPEC section 6 manifest with route, output, phase, indexable and built; future-phase routes have built false. Counts derive from that manifest.
+- node verify.mjs --phase B1 exits 0 and implements every check in BUILD-SPEC section 9, using the phase-mode rules for built false routes and links.
+- Every rendered page has the header, footer, WhatsApp FAB with the 5-option panel, sticky mobile bar, consent banner, canonical, unique title and description, JSON-LD per BUILD-SPEC section 7, lang es-PY, voseo CTAs.
+- All prices, texts, policies and WA_NUMBER live in content.mjs. WA_NUMBER is 595992279599, shown as +595 992 279 599. Apply BUILD-SPEC section 0 (pre-supplier launch mode: estimated prices, no supplier guarantees).
+- No English strings in rendered HTML. No placeholder markers in HTML.
+- Inline SVG data URI favicon; assets/img/favicon.svg allowed. No og:image before B7 supplies assets/img/og.jpg. Fresh .htaccess: HTTPS/non-www canonical, deny leads.log and *.mjs, custom 404, no legacy redirects. /gracias.html noindex, outside sitemap. Consent accept/reject/revoke; no tags before consent and no unconditional vc-attribution.js.
+- Fonts per BUILD-SPEC section 1 (self-hosted if files exist in assets/fonts, otherwise the Google Fonts fallback, flagged).
+
+Commands to run before reporting (working directory C:\Claude 1\babyshower):
+node build-site.mjs
+node verify.mjs --phase B1
+
+Report format:
+  Files changed: each path with a one-line summary
+  Commands run: each command with PASS or FAIL and a one-line result
+  Flagged or not done: anything skipped, blocked, or ambiguous, plus every paragraph you wrote yourself that was not in plan/04, or None

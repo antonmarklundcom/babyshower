@@ -1,0 +1,29 @@
+Read plan/02-BUILD-SPEC.md section 0 first, then plan/10-REVISION-V2.md (revision authority), before the other listed reading. Precedence: section 0 > 04 copy > design export (composition) > BUILD-SPEC section 6 section list. Once chosen, docs/design-canvas-export.html governs home composition in modes A/B/C; inner pages reuse its components. Until chosen, B1 uses section 6 patterns.
+
+You may regenerate every output HTML file the generator produces. Authored source edits are limited to the files listed. Counts, sitemap and SHIP list derive from docs/routes.json: route, output, phase (B1..B4), indexable, built. Snapshot: 32 routes, 31 non-root route directories inside 11 top-level route directories, 34 HTML files including 404.html and gracias.html. Cumulative built routes B1/B2/B3/B4 = 6/9/26/32; never hardcode totals in implementations. verify.mjs --phase B1..B5 reads built flags; links to built:false are allowed only when the target exists in the manifest. --final rejects any built:false.
+
+Each phase appends its own docs/log/build.md entry; manager or Anton adds session id/model/effort from dispatch output, never invented. PHP lint is not available locally: record php -l lead-forward.php as not available locally, not as a pass. Anton owns the Gate A hosted PHP test: submit one real form on the addon domain, check email + log. Deployment uses powershell -NoProfile -File deploy/make-zip.ps1 (.NET System.IO.Compression.ZipFile); the shell script is optional.
+
+Task: Phase B3 of the babyshower.com.py static site. B1 and B2 are done. Read AGENTS.md, plan/02-BUILD-SPEC.md sections 6, 7, 11 and plan/04-CONTENT-AND-COPY.md sections 7 and 8. Build the theme and zone pages and their hubs.
+
+Files to touch: docs/log/build.md (append this phase entry), themes.mjs (new, 10 themes), zones.mjs (new, 5 zones plus Capiata and Mariano Roque Alonso as hub-only text entries), build-site.mjs (theme and zone renderers, hubs), assets/css/site.css (theme tint backgrounds, bento grid), verify.mjs (add --uniqueness check), docs/routes.json (mark built true), generated index.html for /tematicas/, the 10 theme routes, /zonas/, the 5 zone routes.
+
+Do not touch: plan/, codex-input/, BRIEF.md, AGENTS.md, authored source outside the list above; generated output may all regenerate. Do not add zone pages beyond the 5 listed.
+
+Definition of done:
+- Every theme page has a unique paragraph of at least 120 words in Paraguayan Spanish expanding the seed in plan/04 section 7, the elements list, two applicable combos with prices, three related theme links, two FAQs with FAQPage JSON-LD, BreadcrumbList, and a theme-specific wa.me CTA.
+- Character themes (moana, minnie, mickey, blanca-nieves, frutillita, jefe-en-panales) use the wording inspirada en and never claim licensed products.
+- Every zone page has a unique paragraph of at least 120 words naming the barrios and venue types from plan/04 section 8, the delivery surcharge, packages with the zone delivery already added to the displayed price, two zone FAQs with FAQPage JSON-LD, Service JSON-LD with provider pointing to Organization#org and areaServed set to that city; LocalBusiness only on /.
+- node verify.mjs --phase B3 --uniqueness compares the main paragraphs of all zone pages pairwise and of all theme pages pairwise, and normalises lowercase, strips accents and punctuation, forms 5-gram sets and fails at Jaccard similarity >= 0.60.
+- zones.mjs stores only slug, name, barrios, venue types, FAQ and paragraph; delivery is joined by slug from content.mjs ZONES, with recargo estimado wording and no travel minutes.
+- Hubs link every child. Header nav Tematicas and Zonas links resolve.
+
+Commands to run before reporting (working directory C:\Claude 1\babyshower):
+node build-site.mjs
+node verify.mjs --phase B3
+node verify.mjs --phase B3 --uniqueness
+
+Report format:
+  Files changed: each path with a one-line summary
+  Commands run: each command with PASS or FAIL and a one-line result
+  Flagged or not done: anything skipped, blocked, or ambiguous, plus a list of every page whose paragraph you wrote beyond the seed, or None

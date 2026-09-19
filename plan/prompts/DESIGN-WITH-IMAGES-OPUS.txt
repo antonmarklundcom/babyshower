@@ -1,0 +1,38 @@
+You are Opus 5 at high effort, working in C:\Claude 1\babyshower with the Higgsfield MCP connected. Do the work yourself in this window. Do not use Codex, Fable or any subagent.
+
+Goal: (1) generate the 15 home-page images for babyshower.com.py with the Higgsfield MCP, then (2) design the home page (desktop 1440 above mobile 390, same content) using those real images instead of tinted placeholder blocks, exported as one HTML file at docs/design-canvas-export.html.
+
+STEP 0. Read plan/07-IMAGERY.md, docs/imagery-manifest.json and plan/prompts/DESIGN-FINAL-1.txt (this is the design brief; if I name a different DESIGN-FINAL file at the end of this message, use that one instead). Confirm the 15 entries below have status planned, job_id null and no file in assets/img. Never regenerate an entry that already has a job_id or url.
+
+The 15 entries (by id in docs/imagery-manifest.json): hero-baby-shower-quincho, band-montaje, combo-nube, combo-estrella, combo-sueno, tema-jefe-en-panales, tema-dino-bebe, tema-moana-bebe, tema-minnie-bebe, tema-mickey-bebe, tema-blanca-nieves-bebe, tema-frutillita-bebe, tema-mariposas, tema-safari, tema-nubes-y-ositos.
+
+STEP 1. Generate the images with the Higgsfield MCP only.
+- Every call passes model gpt_image_2_5, variant sunburst, quality medium and the resolution from the manifest (2k for hero-baby-shower-quincho and band-montaje, 1k for the other 13), explicitly. Use each entry's prompt and ratio verbatim as prompt and aspect_ratio. Never pass use_unlim. Never switch model or quality on your own.
+- Approved spend: at most 16 credits in total (2 x 1.5 + 13 x 1). Anything beyond that needs my yes in chat.
+- First run generate_image with get_cost true for one 1k and one 2k example. Expected 1 and 1.5 credits. If the numbers differ, stop and tell me.
+- Generate hero-baby-shower-quincho alone first. jobs_wait, then show_generation_by_ids. Look at it: no faces, no text, no children. Record its real pixel size. Then curl -I its result URL and confirm HTTP 200.
+- Then use generate_image_batch: batch 1 = band-montaje plus the 3 combos, batch 2 = the 10 tema-* entries. jobs_wait after each batch, then exactly one show_generation_by_ids per batch.
+- After each batch call transactions. Every new ledger line must be named GPT Image 2.5 Sunburst with credits equal to the preflight. Any other name means stop and report the job ids to me.
+- If an image is bad (a face, garbled text, a recognisable character, the wrong subject), do not regenerate it silently. Tell me which one and why, and wait for my yes, because each retry costs credits.
+- Write job_id, url (the rawUrl), width, height, ledger_display_name, ledger_credits and status generated into docs/imagery-manifest.json for each entry. Update _notes.generated, _notes.actual_spend_credits and _notes.ledger_checked. Do not download or convert anything now; the webimg conversion is a later step.
+
+STEP 2. Design the home page.
+Follow the design brief exactly: locked tokens, section order, all copy, all constraints. Change one thing only: wherever the brief shows an image area as a tinted block, use the real generated image.
+- Hero image: hero-baby-shower-quincho.
+- Dark full-bleed band: band-montaje as the background, with the grain overlay and a scrim so the text keeps at least 4.5:1 contrast.
+- Three package cards: combo-nube, combo-estrella, combo-sueno.
+- Ten theme bento tiles: the matching tema-* image, matched by theme name.
+- Every image is an img element with src set to the rawUrl, alt set to the manifest alt_es, width and height attributes, loading lazy (eager for the hero only), and a visible caption Imagen ilustrativa.
+- Hard rules: no faces, no children, no text inside images, no recognisable characters, nothing presented as a real event. Do not change any copy from the brief.
+- Hot-linked Higgsfield URLs are for this design export only. The built site uses local converted files later.
+- Write the result as one self-contained HTML/CSS file at docs/design-canvas-export.html, desktop 1440 on top and mobile 390 directly below it.
+
+STEP 3. Verify.
+Open the exported file in the built-in browser. Take one desktop screenshot and one 390px mobile screenshot. Confirm every img has naturalWidth greater than 0, no text collides with an image, and no horizontal scroll at 390 except the calculator breakdown table and the mobile theme strip. Fix anything broken.
+
+STEP 4. Report.
+Give me: expected credits (16) versus actual, a table of id, job_id, width and height, any image you would reject and why, the paths of the manifest and the design file, and the two screenshots. There is no git repository in this folder, so do not commit. Never print or write API keys or tokens.
+
+If this window cannot write or render the design file, stop after Step 1 and print an IMAGE BLOCK instead: a plain list of slot name, rawUrl and alt text for the 15 images, so I can paste it under the design brief into Claude Design.
+
+Design brief file to use (default DESIGN-FINAL-1.txt): DESIGN-FINAL-1.txt

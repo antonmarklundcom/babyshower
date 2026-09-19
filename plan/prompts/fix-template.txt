@@ -1,0 +1,6 @@
+The verification for phase B<n> failed. Fix it in place, rerun every command listed in the phase prompt, and report in the same format.
+
+Exact output:
+<paste the exact error text here, unedited>
+
+One line of direction (optional): <what to look at, or leave blank>

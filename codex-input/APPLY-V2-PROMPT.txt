@@ -1,0 +1,38 @@
+Task: Apply the v2 revision to the babyshower.com.py planning documents and build prompts. Repo: C:\Claude 1\babyshower. Read plan\10-REVISION-V2.md fully first; it is the authority. Then read every file you must edit. Your job is a consistent edit pass, not a rewrite: change what 10-REVISION-V2.md says to change, keep everything else, and make all files agree with each other. Do not write any site code.
+
+Files to touch (all under plan\):
+- 00-README.md (page counts, mode C mention, revision pointer, prompts list)
+- 01-MASTER-PLAN.md (sections 1, 3, 4, 5, 6, 7, 8 per A1 to A10 and B1; add a short section 10 Revision v2 summary pointing to 10-REVISION-V2.md)
+- 02-BUILD-SPEC.md (section 0 flags and derived wording, section 1 deploy script, section 3 consent and favicon, section 4 CTA wording, section 5 matrix and edge behaviour and WhatsApp text, section 6 counts and route rows, section 7 schema graph, section 8 lead contract table, section 9 verification definitions, section 10 file tree, section 11 og deferral)
+- 03-EXECUTION.md (phase scoping sentence, verify phase modes, counts, PowerShell zip, B6 as checklist with HTTP check, git repo name, build log rule)
+- 04-CONTENT-AND-COPY.md (A1 wording everywhere, trust ribbon array, A2 inclusions and exclusions, A3 reveal, A4 repeat offer, A5 delivery wording, A7 policy text, A10 quienes somos, FAQ replacements to keep 6 and 14, new section 13 form error and thanks strings, new section 14 privacy outline, new section 15 terms outline, WhatsApp scripts updated to inquiry mode)
+- 05-ADS-AND-SEO.md (A6, B8, GBP conditional, FAQPage optional, verification list additions)
+- 06-OPS-PLAYBOOK.md (gates A B C, A8 task, A9 booking-mode rules, A7 timeline, chosen-month reminders)
+- 07-IMAGERY.md (kit flat lay without cannons, og note)
+- 08-OPEN-QUESTIONS.md (append Q16 to Q21, update Q14 with gates)
+- 09-DESIGN-PROMPTS.md and prompts\DESIGN-1.txt to DESIGN-5.txt (CTA wording Consultá por WhatsApp, price caption, trust ribbon array, remove Más elegido, contrast wording to WCAG ratios, green rule)
+- prompts\B1.txt to B5.txt, BUILD-ALL.txt, SONNET-BUILDER.txt, SONNET-BUILDER-WITH-DESIGN.txt, SONNET-DIRECTOR.txt (B1 and B2 scoping sentences, section 0 first, precedence line, counts from manifest, verify phase flags, PowerShell zip, php lint recorded as unavailable, B5 may edit site.js and contact renderer, favicon file allowed in B1, gracias.html)
+
+Do not touch: BRIEF.md, AGENTS.md, codex-input\ (except nothing), any file outside plan\. Do not create site code. Do not modify 10-REVISION-V2.md.
+
+Rules:
+- No double quote characters inside any prompts\*.txt file (they are passed through cmd.exe). Use single quotes or rephrase.
+- Spanish copy in Paraguayan register with voseo. Keep existing copy where 10-REVISION-V2.md does not change it.
+- Never introduce supplier certainty, popularity claims, firm prices, payment rail lists, discounts, or placeholder markers.
+- Page count is 32 routes, 31 non-root route directories, 11 top-level route directories, 34 HTML files. Replace every other number.
+- Keep files internally consistent: after editing, grep the whole plan folder for the strings Reservar por WhatsApp, Más elegido, 2 horas antes, coordinadora presente, 10%, cañones de humo, 36 routes, 38 files, 35 route, 62 percent, delivery en Gran Asunción, precio final por WhatsApp en 24 h, confirmamos tu fecha, and make sure each remaining occurrence is intentional per 10-REVISION-V2.md (for example inside the historical Gemini verdict table it may stay if labelled as the old wording).
+
+Definition of done:
+- Every item A1 to A10, B1 to B13, C and D of plan\10-REVISION-V2.md is reflected in the listed files.
+- The grep list above returns only intentional occurrences, which you list in the report.
+- No prompts\*.txt contains a double quote character.
+- All counts agree across 00, 01, 02, 03, 05, prompts.
+
+Commands to run before reporting (working directory C:\Claude 1\babyshower):
+- A grep over plan\ for each string in the rules list, reporting the count per string.
+- A grep over plan\prompts\ for the double quote character, expecting zero.
+
+Report format:
+  Files changed: each path with a one-line summary
+  Commands run: each grep with its count and PASS or FAIL
+  Flagged or not done: any item of 10-REVISION-V2.md you could not apply or found contradictory, with the reason, or None
