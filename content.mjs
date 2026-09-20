@@ -4,6 +4,7 @@ export const BOOKING_ENABLED = false;
 export const ANALYTICS_ID = '';
 export const WA_NUMBER = '595992279599';
 export const SITE = { name: 'Baby Shower Paraguay', brand: 'Baby Shower', suffix: '.com.py', domain: 'babyshower.com.py', url: 'https://babyshower.com.py', phone: '+595 992 279 599', email: '', leadEmail: '', ruc: '', instagram: '', area: 'Asunción y Gran Asunción', serviceArea: 'Atendemos en Asunción y Gran Asunción', hours: 'Lun a Sáb 8:00 a 20:00', operator: 'Baby Shower Paraguay, sitio operado desde Asunción', retentionMonths: 12 };
+// Actualizá PRICES.effectiveDate y PRICES.label juntos en Gate A y en cada cambio de precios; después reconstruí dist.
 export const PRICES = { mode: 'estimated', effectiveDate: '2026-09-19', label: 'Estimación vigente al 19/09/2026' };
 export const fmtGs = n => 'Gs. ' + new Intl.NumberFormat('es-PY').format(n);
 export const CONFIRMATION = 'El precio final y la disponibilidad se confirman por WhatsApp.';

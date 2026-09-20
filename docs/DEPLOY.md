@@ -17,6 +17,7 @@ Aplicá la retención de 12 meses a log y recibos privados, con mantenimiento co
 
 ## Antes de publicar
 
+- Actualizá `PRICES.effectiveDate` y `PRICES.label` juntos en Gate A y en cada cambio de precios; después reconstruí `dist`.
 - Confirmar número de WhatsApp y atención por Anton.
 - Revisar `PRICES.label` y las estimaciones vigentes, sin habilitar reservas.
 - Configurar el destinatario de notificación privado. Q21 sigue pendiente; no inventar `SITE.leadEmail` ni el correo público `SITE.email`. Este último requiere confirmación antes de publicarse.
