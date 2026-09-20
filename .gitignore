@@ -6,3 +6,4 @@ vendercrm-config*.php
 
 # Per-domain deployment config stays above public_html.
 vendercrm-config.babyshower.php
+docs/qa-tools/out/
