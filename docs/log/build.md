@@ -168,3 +168,23 @@ Implementación autorizada tras aclaración: Kit Sorpresa lee nombre y precio de
 - NO DISPONIBLE LOCALMENTE — php -l lead-forward.php. Anton realiza prueba real de formulario alojado y comprueba email + log en Gate A.
 
 [REVISAR] Redacción expandida de las cinco guías en ideas.mjs, resúmenes del hub, metadatos y etiquetas nuevas. Marcadores solo en este log, nunca en HTML. Pendientes heredados: fuentes locales y fallback Google Fonts, correo público/Q21, endpoint B5 y QA/ZIP B6. Session id/model/effort los agrega manager o Anton desde dispatch; no se inventan.
+
+## 2026-09-19 — B5 — endpoint, empaquetado y documentación
+
+Resolución autorizada: SITE.email y SITE.leadEmail siguen vacíos, sin editar content.mjs. Destinatario privado en vendercrm-config.babyshower.php un nivel encima del document root: constante BABYSHOWER_LEAD_EMAIL, luego array lead_email, luego SITE.leadEmail de un build futuro. Sin destinatario no se intenta mail; CRM opcional puede satisfacer notificación. No se creó configuración real ni se escribió ninguna credencial.
+
+Endpoint implementado con validación, normalización de celular paraguayo, honeypot empresa, cinco intentos/minuto/IP y exclusión mutua. Una línea JSON durable por SID antes de notificar; recibos privados evitan repetir notificaciones exitosas. Fallos devuelven el formulario con valores, resumen accesible, mensajes inline y WhatsApp, sin depender de JS. Éxito exige log y mail o CRM; solo entonces cookie de conversión y redirect a gracias. Campos no mapeados en nota; pipeline Baby Shower/etapa Nuevo se configuran en CRM para el origen, siguiendo payload de tasacion. Corte entre notificación externa y recibo requiere revisión manual (mail no es transaccional).
+
+Generador incorpora defaults públicos en PHP, mantiene sitemap derivado del manifiesto y excluye gracias/404. HTML regenerado con hash JS. robots.txt ya referencia sitemap. Preview copiado/adaptado de embarazo para HTML y bloqueo de archivos privados. Script ZIP usa .NET ZipFile y SHIP derivado del manifiesto más archivos fijos; documentación cubre publicación, config privada, retención y Gate A.
+
+- PASS — node build-site.mjs: 32 rutas, 34 HTML y 32 entradas sitemap, derivados del manifiesto.
+- PASS — node verify.mjs --phase B5: controles aplicables, incluyendo JS/calculadora/consentimiento. El verificador solo comprueba existencia del endpoint PHP; no ejecuta PHP.
+- PASS — node verify.mjs --final: controles finales, unicidad y palabras de guías.
+- FAIL — powershell -NoProfile -File deploy/make-zip.ps1: "cannot be loaded because running scripts is disabled on this system", UnauthorizedAccess. Repetido tras revisión con el mismo resultado. No se cambió la política ni se generó ZIP; empaquetado y validación del archivo ZIP pendientes.
+- PASS — System.Management.Automation.Language.Parser::ParseFile: sintaxis del script PowerShell, sin ejecutarlo.
+- PASS — node --check preview-server.mjs; node --check assets/js/site.js; git diff --check.
+- PASS — Node por stdin: preview HTTP de todas las rutas built del manifiesto, gracias/404, ruta inexistente y bloqueo de PHP/log/.htaccess; servidor detenido al terminar.
+- FAIL auxiliar — rg no instalado; se usó Select-String. Lectura inicial de plan/04-COPY.md falló por ruta inexistente; corregida a plan/04-CONTENT-AND-COPY.md. Python no instalado; edición realizada mediante Node y apply_patch.
+- NOT AVAILABLE LOCALLY — php -l lead-forward.php. Anton debe validar PHP alojado y realizar envío real, verificando email + log en Gate A; probar CRM y dedupe cuando configure el hosting.
+
+B5 no se declara completo: ZIP bloqueado por política local y PHP no ejecutado. Q21/configuración de destinatario, correo público, fuentes locales y QA visual/Lighthouse siguen pendientes. Peso máximo HTML+CSS+JS+calc: 72.525 bytes; fuentes locales 0 bytes; imágenes 3.662.259 bytes por separado. No se agrega session id/model/effort: corresponde al manager o Anton desde dispatch.

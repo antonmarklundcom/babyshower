@@ -3,3 +3,6 @@ node_modules/
 leads.log
 vendercrm-config*.php
 !deploy/vendercrm-config.example.php
+
+# Per-domain deployment config stays above public_html.
+vendercrm-config.babyshower.php

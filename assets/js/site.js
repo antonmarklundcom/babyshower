@@ -159,7 +159,12 @@
     today = ['year', 'month', 'day'].map(function (type) { return parts.find(function (p) { return p.type === type; }).value; }).join('-');
     fields.fecha.min = today;
     var bytes = new Uint8Array(2); crypto.getRandomValues(bytes);
-    fields.sid.value = 'BS-' + today.replaceAll('-', '') + '-' + Array.from(bytes, function (b) { return b.toString(16).padStart(2, '0'); }).join('');
+    if (!fields.sid.value) fields.sid.value = 'BS-' + today.replaceAll('-', '') + '-' + Array.from(bytes, function (b) { return b.toString(16).padStart(2, '0'); }).join('');
+    if (form.hasAttribute('data-server-error')) {
+      var serverSummary = form.querySelector('[data-form-errors]');
+      if (serverSummary) serverSummary.focus();
+    }
+    fields.fecha.disabled = form.querySelector('[data-date-unknown]').checked;
     form.querySelector('[data-date-unknown]').addEventListener('change', function (e) { fields.fecha.disabled = e.target.checked; if (e.target.checked) fields.fecha.value = ''; });
     function showError(field) {
       var message = cfg.errors[field.name] || cfg.errors.invalid;
