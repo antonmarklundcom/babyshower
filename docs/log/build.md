@@ -214,3 +214,36 @@ Decision de Anton en el chat: confiar en Codex en todo lo mencionado y continuar
 
 - PASS - node verify.mjs --final (Codex y manager; salida 0).
 - PASS - git status: Codex no modifico archivos.
+
+## 2026-09-20 — Batch 1 — composición de inicio
+
+Aplicado el resumen de Batch 0 registrado arriba y el alcance del dispatch. build-site.mjs incorpora portada en tres párrafos, tarjeta de estimación con datos de Estrella, filas comparables, tabla semántica y enlaces de temáticas, preguntas y zonas. content.mjs cambia únicamente las etiquetas autorizadas; nombre, invitados y cantidad de temáticas derivados de los datos. assets/css/site.css conserva íntegro el prefijo de referencia y añade estilos limitados al inicio, puntos de corte 640/960, orden móvil, hoja de calculadora, cinta sin estrellas, pasos y contacto. Los 34 HTML se regeneran; páginas interiores idénticas salvo el hash CSS. Este archivo registra la ejecución.
+
+- PASS — node build-site.mjs: 32 rutas, 34 HTML y 32 entradas de sitemap.
+- PASS — node verify.mjs --final: prefijo CSS, seis fixtures y comportamiento del calculador; peso máximo HTML + CSS + JS de 92.092 bytes.
+- PASS — auditoría Node por stdin: tres data-package, tres párrafos, tres enlaces, anidamiento HTML, codificación de líneas añadidas, UTF-8 sin BOM, LF y comparación de páginas interiores.
+- PASS — git status --short y git diff --stat: cambios del batch limitados a fuentes autorizadas, este log y HTML regenerado.
+- FAIL — rg: CommandNotFoundException; lecturas continuadas con Node. FAIL inicial de auditoría Node -e: SyntaxError, Invalid regular expression por comillas en PowerShell; repetida por stdin con PASS.
+
+Sin cambios en verify.mjs ni en contratos JS, precios, FAQ, imágenes o esquema JSON-LD. Dos archivos sin seguimiento ya existían al iniciar: plan/prompts/DESIGN-FINAL-4.txt y plan/prompts/DESIGN-FINAL-5.txt; no se tocaron. Navegador, Lighthouse, overflow real a 375 px y medidas de interacción quedan para la auditoría del manager indicada en el dispatch; no se declaran comprobados visualmente. Persisten avisos heredados sobre fuentes locales, correos y PHP alojado.
+
+Revisión 1 del mismo batch: build-site.mjs agrupa el resumen de las tarjetas, alinea la cinta mediante un contenedor wrap separado, elimina el traslado duplicado bajo la tabla y carga Google Fonts con preload/onload y respaldo noscript, conservando preconnect, display=swap y la rama de fuentes locales. assets/css/site.css añade ocultación accesible de la etiqueta del rango, distribución flexible entre botones de 44 px, bordes de cinta dentro de la columna, filas de 44 px en escritorio y ocultas bajo 960 px, separación del montaje, resultado sticky y total t-6 en escritorio, y regla explícita de 44 px para los tres enlaces. HTML regenerado; content.mjs, verify.mjs y los JS no se editaron en esta revisión.
+
+- PASS — node build-site.mjs: 32 rutas, 34 HTML.
+- PASS — node verify.mjs --final: seis fixtures y controles existentes; peso máximo de 94.548 bytes, prefijo CSS preservado.
+- PASS — auditoría Node por stdin: tres paquetes y enlaces, etiqueta accesible, preload/noscript, anidamiento y UTF-8 sin BOM/LF, sin mojibake en líneas añadidas.
+- PASS — git status --short: alcance autorizado y HTML; prompts sin seguimiento preexistentes intactos.
+- FAIL auxiliares — consulta inicial de métricas: ERR_AMBIGUOUS_MODULE_SYNTAX, corregido; descarga de fuentes: fetch failed/EACCES. Edición inicial por stdin: SyntaxError de comillas, sin escritura; corregida. Auditoría inicial: AssertionError por expresión que cruzaba secciones; acotada y repetida con PASS.
+
+Por instrucción del dispatch no se ejecutaron Lighthouse ni capturas. Rendimiento ≥90 y CLS 0,00–0,02 pendientes de la medición del manager; no se afirman alcanzados. No se añadieron ajustes métricos de fuentes sin datos verificables ni observación del intercambio: si la nueva medición detecta desplazamiento, queda pendiente afinar el fallback. Sin cambios de texto visible ni en las aserciones del verificador.
+
+Revisión 2: preview-server.mjs comprime solo extensiones de texto con node:zlib (prioridad Brotli, luego gzip), Vary y longitud correcta; .htaccess agrega DEFLATE/Brotli al final sin alterar las reglas existentes.
+- PASS — node --check preview-server.mjs; node build-site.mjs; node verify.mjs --final (seis fixtures); curl.exe en 4187: / 47.374 bytes sin comprimir, 9.882 gzip, 8.050 br; site.css 32.713 sin comprimir, 7.853 gzip, 6.866 br. Descompresión idéntica; imagen sin compresión; PHP, archivos privados y recorrido de rutas bloqueados; servidor detenido.
+- PASS — git status --short: solo los dos archivos autorizados y este log se modificaron en esta revisión; cambios previos intactos. Sin ediciones de verify.mjs. Lighthouse no ejecutado por instrucción; verificación de compresión Apache en el host pendiente del manager.
+
+Auditoría del manager, Batch 1 (Claude, sesión de Anton): worker Codex gpt-6-astra, esfuerzo low, sesión 01a0bce1-fba7-7592-9420-377668130d19, tres turnos (dispatch, revisión 1, revisión 2), modelo y esfuerzo leídos del turn_context. Decisión del manager, no dictada por Anton: las cinco etiquetas de portada (subtítulo en tres líneas y tres enlaces) se adelantaron de Batch 2 a Batch 1 y se usaron los puntos de corte 640/960 px; en Batch 2 esos puntos ya están hechos.
+- PASS — node build-site.mjs y node verify.mjs --final ejecutados por el manager tras cada revisión (salida 0, seis fixtures de la calculadora, peso máximo 94.548 bytes).
+- PASS — navegador real (Chrome con Playwright) a 375 y 1280 px: sin desbordamiento horizontal, orden móvil texto/CTA/tarjeta/imagen, etiqueta de invitados oculta, cinta alineada a la columna (x 88–1192), enlaces de 44 px, tres data-package.
+- HALLAZGO — Lighthouse móvil 89 (87–89) con el servidor de vista previa sin compresión, y también 89 en el commit anterior (Batch 0): la caída no la causa la nueva portada. En Chrome real el primer pintado tarda 110–220 ms con fuentes, scripts o CSS bloqueados; Lighthouse simula 4G y penaliza 31 KB sin comprimir. Con compresión Brotli activa en el servidor de vista previa: rendimiento 99, accesibilidad 100, buenas prácticas 100, SEO 100, CLS 0,007 (tres corridas idénticas). Lo registrado antes (97–99) coincide con un servidor que comprime, como el hosting real.
+- NOTA — preview-server.mjs lee el puerto de la variable PORT, no del argumento; .claude/launch.json pasa 8095 como argumento y se ignora (el servidor queda en 4173). Ejecutar con PORT=<puerto> node preview-server.mjs.
+- PENDIENTE — confirmar en el hosting real que Content-Encoding br o gzip llega (Gate A, Anton).
