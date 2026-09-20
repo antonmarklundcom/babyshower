@@ -1,0 +1,50 @@
+{
+  "v": 3,
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-09-19T22:05:32Z"
+  },
+  "title": "Babyshower Home Design",
+  "launch": {
+    "view": "canvas"
+  },
+  "pages": [],
+  "boards": {
+    "Main.dc.html": {
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 3272,
+      "title": "Inicio · Desktop 1440 (1/2: encabezado a calculadora)"
+    },
+    "Desktop-2.dc.html": {
+      "x": 1520,
+      "y": 0,
+      "w": 1440,
+      "h": 4351,
+      "title": "Inicio · Desktop 1440 (2/2: franja oscura a pie)"
+    },
+    "Mobile-1.dc.html": {
+      "x": 0,
+      "y": 4471,
+      "w": 390,
+      "h": 5518,
+      "title": "Inicio · Mobile 390 (1/2: encabezado a calculadora)"
+    },
+    "Mobile-2.dc.html": {
+      "x": 470,
+      "y": 4471,
+      "w": 390,
+      "h": 6443,
+      "title": "Inicio · Mobile 390 (2/2: franja oscura a pie)"
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "Desktop-2.dc.html",
+    "Mobile-1.dc.html",
+    "Mobile-2.dc.html"
+  ],
+  "notes": {},
+  "designSystems": []
+}

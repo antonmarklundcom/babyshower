@@ -6,7 +6,7 @@ import { brotliCompress, gzip } from 'node:zlib';
 import { promisify } from 'node:util';
 
 const root = dirname(fileURLToPath(import.meta.url));
-const port = Number(process.env.PORT || 4173);
+const port = Number(process.env.PORT || process.argv[2] || 4173);
 const mime = { '.css':'text/css; charset=utf-8', '.js':'text/javascript; charset=utf-8', '.svg':'image/svg+xml', '.webp':'image/webp', '.avif':'image/avif', '.png':'image/png', '.jpg':'image/jpeg', '.jpeg':'image/jpeg', '.woff2':'font/woff2', '.xml':'application/xml; charset=utf-8', '.txt':'text/plain; charset=utf-8', '.webmanifest':'application/manifest+json' };
 const textExtensions = new Set(['.html', '.css', '.js', '.json', '.svg', '.xml', '.txt', '.webmanifest']);
 const compress = { br: promisify(brotliCompress), gzip: promisify(gzip) };

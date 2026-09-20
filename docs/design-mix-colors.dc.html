@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#F6E1DC"/><circle cx="50" cy="50" r="22" fill="#D97B6C"/><text x="50" y="58" text-anchor="middle" font-family="Georgia, serif" font-size="20" fill="#2B2430">BS</text></svg></template>
+
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#EDEAE7; -webkit-font-smoothing:antialiased; }
+  * { box-sizing:border-box; }
+  a { color:#2B2430; text-decoration:none; }
+  a:hover { color:#D97B6C; }
+  input, select, textarea, button { font-family:'Satoshi','DM Sans',system-ui,sans-serif; }
+  select { appearance:none; -webkit-appearance:none; }
+  ul { margin:0; padding:0; list-style:none; }
+</style>
+</helmet>
+
+<sc-if value="{{ showDesktop }}" hint-placeholder-val="{{ true }}">
+<section style="display:flex;flex-direction:column;gap:14px;align-items:flex-start;padding:56px 56px 0 56px;font-family:'Satoshi','DM Sans',system-ui,sans-serif">
+  <div style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(43,36,48,0.55)">Desktop — 1440</div>
+
+  <div style="position:relative;width:1440px;background:#FBF6F2;color:#2B2430;overflow:hidden;border-radius:4px;box-shadow:0 1px 2px rgba(43,36,48,0.08),0 24px 60px rgba(43,36,48,0.12)">
+
+    <header style="position:sticky;top:0;z-index:30;background:rgba(251,246,242,0.94);backdrop-filter:blur(10px);border-bottom:1px solid rgba(43,36,48,0.10)">
+      <div style="max-width:1280px;margin:0 auto;padding:0 80px;height:78px;display:flex;align-items:center;justify-content:space-between;gap:28px">
+        <span style="font-family:'Instrument Serif',Georgia,serif;font-size:25px;line-height:1;letter-spacing:-0.01em;white-space:nowrap">Baby Shower.com.py</span>
+        <nav style="display:flex;align-items:center;gap:20px;font-size:15px;color:rgba(43,36,48,0.82)">
+          <a href="#combos">Combos y precios</a>
+          <a href="#revelacion">Revelación de género</a>
+          <a href="#tematicas">Temáticas</a>
+          <a href="#primer-anito">Primer añito</a>
+          <a href="#zonas">Zonas</a>
+          <a href="#ideas">Ideas</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+        <div style="display:flex;align-items:center;gap:18px">
+          <span style="font-size:15px;color:rgba(43,36,48,0.82);white-space:nowrap">+595 992 279 599</span>
+          <a href="#contacto" style="display:inline-flex;align-items:center;gap:9px;height:44px;padding:0 18px;border-radius:6px;border:1px solid rgba(43,36,48,0.22);background:#FFFFFF;font-size:15px;font-weight:600;white-space:nowrap">
+            <span style="width:20px;height:20px;border-radius:50%;background:#25D366;display:inline-flex;align-items:center;justify-content:center;flex:none">
+              <span style="width:9px;height:8px;background:#FFFFFF;border-radius:50% 50% 50% 2px"></span>
+            </span>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <section style="padding:96px 0 0 0">
+      <div style="max-width:1280px;margin:0 auto;padding:0 80px;display:grid;grid-template-columns:repeat(12,1fr);gap:24px">
+        <div style="grid-column:2 / span 8">
+          <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70)">Baby shower en Asunción y Gran Asunción</div>
+          <h1 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:76px;line-height:1.02;letter-spacing:-0.015em;margin:20px 0 0 0;max-width:15ch;text-wrap:pretty">Baby shower en Asunción con precio claro</h1>
+          <div style="display:flex;align-items:baseline;gap:18px;margin-top:28px">
+            <span style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:96px;line-height:1;letter-spacing:-0.02em">Gs. 1.850.000</span>
+            <span style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70)">estimado</span>
+          </div>
+        </div>
+        <div style="grid-column:2 / span 6;margin-top:32px;display:flex;flex-direction:column;gap:10px;max-width:52ch">
+          <p style="margin:0;font-size:17px;line-height:1.55;color:rgba(43,36,48,0.86)">Combo Estrella: decoración, mesa dulce y bocaditos para 30 invitados</p>
+          <p style="margin:0;font-size:17px;line-height:1.55;color:rgba(43,36,48,0.86)">Precio estimado desde Gs. 1.850.000. El precio final y la disponibilidad se confirman por WhatsApp.</p>
+          <p style="margin:0;font-size:17px;line-height:1.55;color:rgba(43,36,48,0.86)">Te respondemos dentro de 24 horas hábiles. Precios estimados a la vista, sin preguntar al privado.</p>
+        </div>
+        <div style="grid-column:2 / span 7;margin-top:36px;display:flex;align-items:center;gap:14px">
+          <a href="#contacto" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;height:56px;padding:0 28px;border-radius:6px;background:#D97B6C;color:#2B2430;font-size:17px;font-weight:600">
+            <span style="width:22px;height:22px;border-radius:50%;background:#25D366;display:inline-flex;align-items:center;justify-content:center;flex:none">
+              <span style="width:10px;height:9px;background:#FFFFFF;border-radius:50% 50% 50% 2px"></span>
+            </span>
+            Consultá por WhatsApp
+          </a>
+          <a href="#calculadora" style="display:inline-flex;align-items:center;justify-content:center;height:56px;padding:0 26px;border-radius:6px;border:1px solid rgba(43,36,48,0.30);background:transparent;font-size:17px;font-weight:600">Calculá tu estimación</a>
+        </div>
+        <div style="grid-column:2 / span 10;position:relative;z-index:2;margin-top:64px;margin-bottom:-56px;aspect-ratio:3 / 2;border-radius:28px;background:linear-gradient(140deg,#F6E1DC 0%,#DDE8E0 52%,#DCE6F2 100%);display:flex;align-items:flex-end;padding:28px">
+          <span style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70)">Imagen ilustrativa</span>
+        </div>
+      </div>
+    </section>
+
+    <section style="background:#DCE6F2;padding:104px 0 40px 0">
+      <div style="max-width:1280px;margin:0 auto;padding:0 80px;display:flex;align-items:center;justify-content:center;gap:22px;flex-wrap:wrap">
+        <span style="font-size:16px;color:#2B2430">Precios estimados a la vista</span>
+        <span style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;line-height:0.6;color:rgba(43,36,48,0.45)">*</span>
+        <span style="font-size:16px;color:#2B2430">Respuesta en 24 h hábiles</span>
+        <span style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;line-height:0.6;color:rgba(43,36,48,0.45)">*</span>
+        <span style="font-size:16px;color:#2B2430">Montaje y desmontaje en la estimación</span>
+        <span style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;line-height:0.6;color:rgba(43,36,48,0.45)">*</span>
+        <span style="font-size:16px;color:#2B2430">Asunción y Gran Asunción</span>
+        <span style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;line-height:0.6;color:rgba(43,36,48,0.45)">*</span>
+        <span style="font-size:16px;color:#2B2430">Consulta sin compromiso</span>
+      </div>
+    </section>
+
+    <section id="combos" style="padding:120px 0">
+      <div style="max-width:1280px;margin:0 auto;padding:0 80px">
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-bottom:56px">
+          <div>
+            <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70)">Combos y precios estimados</div>
+            <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:49px;line-height:1.08;margin:14px 0 0 0">Tres combos, tres presupuestos</h2>
+          </div>
+          <p style="margin:0;max-width:38ch;font-size:17px;line-height:1.55;color:rgba(43,36,48,0.80)">Cada combo se arma sobre la temática que elijas. Los montos son estimados para 2026.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px;align-items:start">
+
+          <article style="background:#FFFFFF;border:1px solid rgba(43,36,48,0.10);border-radius:14px;overflow:hidden;box-shadow:0 1px 2px rgba(43,36,48,0.06),0 14px 30px rgba(43,36,48,0.06)">
+            <div style="background:#DDE8E0;padding:22px 26px;display:flex;align-items:center;justify-content:space-between">
+              <span style="font-family:'Instrument Serif',Georgia,serif;font-size:29px;line-height:1">Combo Nube</span>
+              <span style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70)">Solo decoración</span>
+            </div>
+            <div style="padding:26px">
+              <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70)">Precio estimado desde</div>
+              <div style="font-family:'Instrument Serif',Georgia,serif;font-size:44px;line-height:1.05;margin-top:8px">Gs. 1.150.000</div>
+              <ul style="margin:22px 0 0 0;display:flex;flex-direction:column;gap:9px;font-size:16px;line-height:1.45;color:rgba(43,36,48,0.86)">
+                <li>Arco de globos orgánico</li>
+                <li>Backdrop con la temática elegida</li>
+                <li>Ambientación de la mesa principal</li>
+                <li>Montaje y desmontaje el mismo día</li>
+              </ul>
+              <p style="margin:20px 0 0 0;font-size:14px;line-height:1.45;color:rgba(43,36,48,0.72)">Qué no incluye: mesa dulce, bocaditos ni torta.</p>
+              <p style="margin:14px 0 0 0;font-size:13px;line-height:1.45;color:rgba(43,36,48,0.72)">El precio final y la disponibilidad se confirman por WhatsApp</p>
+              <a href="#contacto" style="margin-top:22px;display:flex;align-items:center;justify-content:center;gap:10px;height:52px;border-radius:6px;border:1px solid rgba(43,36,48,0.30);font-size:16px;font-weight:600">
+                <span style="width:20px;height:20px;border-radius:50%;background:#25D366;display:inline-flex;align-items:center;justify-content:center;flex:none"><span style="width:9px;height:8px;background:#FFFFFF;border-radius:50% 50% 50% 2px"></span></span>
+                Consultá por WhatsApp
+              </a>
+            </div>
+          </article>
+
+          <article style="position:relative;margin-top:-24px;background:#FFFFFF;border:1px solid rgba(43,36,48,0.10);border-radius:14px;overflow:hidden;box-shadow:0 2px 4px rgba(43,36,48,0.07),0 26px 52px rgba(43,36,48,0.13)">
+            <div style="background:#F6E1DC;padding:22px 26px;display:flex;align-items:center;justify-content:space-between">
+              <span style="font-family:'Instrument Serif',Georgia,serif;font-size:29px;line-height:1">Combo Estrella</span>
+              <span style="background:#D97B6C;color:#2B2430;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:700;padding:7px 11px;border-radius:6px">Combo completo</span>
+            </div>
+            <div style="padding:26px">
+              <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70)">Precio estimado desde</div>
+              <div style="font-family:'Instrument Serif',Georgia,serif;font-size:44px;line-height:1.05;margin-top:8px">Gs. 1.850.000</div>
+              <ul style="margin:22px 0 0 0;display:flex;flex-direction:column;gap:9px;font-size:16px;line-height:1.45;color:rgba(43,36,48,0.86)">
+                <li>Decoración completa con arco y backdrop</li>
+                <li>Mesa dulce con cinco variedades</li>
+                <li>Bocaditos salados para 30 invitados</li>
+                <li>Mantelería y ambientación de mesa</li>
+                <li>Montaje y desmontaje el mismo día</li>
+              </ul>
+              <p style="margin:20px 0 0 0;font-size:14px;line-height:1.45;color:rgba(43,36,48,0.72)">Qué no incluye: salón, sillas ni torta principal.</p>
+              <p style="margin:14px 0 0 0;font-size:13px;line-height:1.45;color:rgba(43,36,48,0.72)">El precio final y la disponibilidad se confirman por WhatsApp</p>
+              <a href="#contacto" style="margin-top:22px;display:flex;align-items:center;justify-content:center;gap:10px;height:52px;border-radius:6px;background:#D97B6C;color:#2B2430;font-size:16px;font-weight:600">
+                <span style="width:20px;height:20px;border-radius:50%;background:#25D366;display:inline-flex;align-items:center;justify-content:center;flex:none"><span style="width:9px;height:8px;background:#FFFFFF;border-radius:50% 50% 50% 2px"></span></span>
+                Consultá por WhatsApp
+              </a>
+            </div>
+          </article>
+
+          <article style="background:#FFFFFF;border:1px solid rgba(43,36,48,0.10);border-radius:14px;overflow:hidden;box-shadow:0 1px 2px rgba(43,36,48,0.06),0 14px 30px rgba(43,36,48,0.06)">
+            <div style="background:#DCE6F2;padding:22px 26px;display:flex;align-items:center;justify-content:space-between">
+              <span style="font-family:'Instrument Serif',Georgia,serif;font-size:29px;line-height:1">Combo Sueño</span>
+              <span style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70)">40 invitados</span>
+            </div>
+            <div style="padding:26px">
+              <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70)">Precio estimado desde</div>
+              <div style="font-family:'Instrument Serif',Georgia,serif;font-size:44px;line-height:1.05;margin-top:8px">Gs. 2.750.000</div>
+              <ul style="margin:22px 0 0 0;display:flex;flex-direction:column;gap:9px;font-size:16px;line-height:1.45;color:rgba(43,36,48,0.86)">
+                <li>Todo lo del Combo Estrella para 40 invitados</li>
+                <li>Torta temática de dos pisos</li>
+                <li>Souvenirs para cada invitada</li>
+                <li>Coordinación del evento de principio a fin</li>
+              </ul>
+              <p style="margin:20px 0 0 0;font-size:14px;line-height:1.45;color:rgba(43,36,48,0.72)">Qué no incluye: salón, sonido ni animación.</p>
+              <p style="margin:14px 0 0 0;font-size:13px;line-height:1.45;color:rgba(43,36,48,0.72)">El precio final y la disponibilidad se confirman por WhatsApp</p>
+              <a href="#contacto" style="margin-top:22px;display:flex;align-items:center;justify-content:center;gap:10px;height:52px;border-radius:6px;border:1px solid rgba(43,36,48,0.30);font-size:16px;font-weight:600">
+                <span style="width:20px;height:20px;border-radius:50%;background:#25D366;display:inline-flex;align-items:center;justify-content:center;flex:none"><span style="width:9px;height:8px;background:#FFFFFF;border-radius:50% 50% 50% 2px"></span></span>
+                Consultá por WhatsApp
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="calculadora" style="padding:0 0 120px 0">
+      <div style="max-width:1280px;margin:0 auto;padding:0 80px">
+        <div style="background:#F6E1DC;border-radius:28px;padding:56px;display:grid;grid-template-columns:1fr 1fr;gap:56px">
+          <div>
+            <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70)">Calculá tu estimación</div>
+            <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:44px;line-height:1.08;margin:14px 0 32px 0">Armá tu número antes de escribir</h2>
+
+            <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70);margin-bottom:12px">Combo</div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div onClick="{{ cd.pickNube }}" style="display:flex;align-items:center;gap:12px;height:52px;padding:0 16px;border-radius:6px;background:#FFFFFF;border:1px solid {{ cd.bNube }};cursor:pointer">
+                <span style="width:18px;height:18px;border-radius:50%;border:1px solid rgba(43,36,48,0.35);display:inline-flex;align-items:center;justify-content:center;flex:none"><span style="width:9px;height:9px;border-radius:50%;background:{{ cd.dNube }}"></span></span>
+                <span style="font-size:16px;font-weight:600">Combo Nube</span>
+                <span style="margin-left:auto;font-size:15px;color:rgba(43,36,48,0.75)">Gs. 1.150.000</span>
+              </div>
+              <div onClick="{{ cd.pickEstrella }}" style="display:flex;align-items:center;gap:12px;height:52px;padding:0 16px;border-radius:6px;background:#FFFFFF;border:1px solid {{ cd.bEstrella }};cursor:pointer">
+                <span style="width:18px;height:18px;border-radius:50%;border:1px solid rgba(43,36,48,0.35);display:inline-flex;align-items:center;justify-content:center;flex:none"><span style="width:9px;height:9px;border-radius:50%;background:{{ cd.dEstrella }}"></span></span>
+                <span style="font-size:16px;font-weight:600">Combo Estrella</span>
+                <span style="margin-left:auto;font-size:15px;color:rgba(43,36,48,0.75)">Gs. 1.850.000</span>
+              </div>
+              <div onClick="{{ cd.pickSueno }}" style="display:flex;align-items:center;gap:12px;height:52px;padding:0 16px;border-radius:6px;background:#FFFFFF;border:1px solid {{ cd.bSueno }};cursor:pointer">
+                <span style="width:18px;height:18px;border-radius:50%;border:1px solid rgba(43,36,48,0.35);display:inline-flex;align-items:center;justify-content:center;flex:none"><span style="width:9px;height:9px;border-radius:50%;background:{{ cd.dSueno }}"></span></span>
+                <span style="font-size:16px;font-weight:600">Combo Sueño</span>
+                <span style="margin-left:auto;font-size:15px;color:rgba(43,36,48,0.75)">Gs. 2.750.000</span>
+              </div>
+            </div>
+
+            <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70);margin:28px 0 12px 0">Invitados</div>
+            <div style="display:flex;align-items:center;gap:14px">
+              <button onClick="{{ cd.less }}" style="width:52px;height:52px;border-radius:6px;border:1px solid rgba(43,36,48,0.22);background:#FFFFFF;font-size:22px;line-height:1;cursor:pointer;color:#2B2430">−</button>
+              <div style="min-width:96px;text-align:center;font-family:'Instrument Serif',Georgia,serif;font-size:36px;line-height:1">{{ cd.guests }}</div>
+              <button onClick="{{ cd.more }}" style="width:52px;height:52px;border-radius:6px;border:1px solid rgba(43,36,48,0.22);background:#FFFFFF;font-size:22px;line-height:1;cursor:pointer;color:#2B2430">+</button>
+              <span style="font-size:15px;color:rgba(43,36,48,0.75)">de 15 a 60 invitados</span>
+            </div>
+
+            <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70);margin:28px 0 12px 0">Adicionales</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+              <div onClick="{{ cd.tgTorta }}" style="display:flex;align-items:center;gap:11px;min-height:52px;padding:8px 14px;border-radius:6px;background:#FFFFFF;border:1px solid {{ cd.bTorta }};cursor:pointer">
+                <span style="width:18px;height:18px;border-radius:4px;border:1px solid rgba(43,36,48,0.35);background:{{ cd.fTorta }};flex:none"></span>
+                <span style="font-size:15px;line-height:1.3">Torta temática<br><span style="color:rgba(43,36,48,0.72)">+ Gs. 420.000</span></span>
+              </div>
+              <div onClick="{{ cd.tgSouvenirs }}" style="display:flex;align-items:center;gap:11px;min-height:52px;padding:8px 14px;border-radius:6px;background:#FFFFFF;border:1px solid {{ cd.bSouvenirs }};cursor:pointer">
+                <span style="width:18px;height:18px;border-radius:4px;border:1px solid rgba(43,36,48,0.35);background:{{ cd.fSouvenirs }};flex:none"></span>
+                <span style="font-size:15px;line-height:1.3">Souvenirs para 30<br><span style="color:rgba(43,36,48,0.72)">+ Gs. 310.000</span></span>
+              </div>
+              <div onClick="{{ cd.tgLetrero }}" style="display:flex;align-items:center;gap:11px;min-height:52px;padding:8px 14px;border-radius:6px;background:#FFFFFF;border:1px solid {{ cd.bLetrero }};cursor:pointer">
+                <span style="width:18px;height:18px;border-radius:4px;border:1px solid rgba(43,36,48,0.35);background:{{ cd.fLetrero }};flex:none"></span>
+                <span style="font-size:15px;line-height:1.3">Letrero con el nombre<br><span style="color:rgba(43,36,48,0.72)">+ Gs. 180.000</span></span>
+              </div>
+              <div onClick="{{ cd.tgFotos }}" style="display:flex;align-items:center;gap:11px;min-height:52px;padding:8px 14px;border-radius:6px;background:#FFFFFF;border:1px solid {{ cd.bFotos }};cursor:pointer">
+                <span style="width:18px;height:18px;border-radius:4px;border:1px solid rgba(43,36,48,0.35);background:{{ cd.fFotos }};flex:none"></span>
+                <span style="font-size:15px;line-height:1.3">Cobertura de fotos 1 h<br><span style="color:rgba(43,36,48,0.72)">+ Gs. 490.000</span></span>
+              </div>
+            </div>
+
+            <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70);margin:28px 0 12px 0">Zona</div>
+            <select onChange="{{ cd.setZone }}" defaultValue="asuncion" style="width:100%;height:52px;padding:0 16px;border-radius:6px;border:1px solid rgba(43,36,48,0.22);background:#FFFFFF;font-size:16px;color:#2B2430">
+              <option value="asuncion">Asunción — sin recargo</option>
+              <option value="fernando">Fernando de la Mora — sin recargo</option>
+              <option value="lambare">Lambaré — sin recargo</option>
+              <option value="sanlorenzo">San Lorenzo — recargo estimado</option>
+              <option value="luque">Luque — recargo estimado</option>
+              <option value="mra">Mariano Roque Alonso — recargo estimado</option>
+              <option value="capiata">Capiatá — recargo estimado</option>
+            </select>
+          </div>
+
+          <div style="background:#FFFFFF;border-radius:14px;border:1px solid rgba(43,36,48,0.10);padding:36px;display:flex;flex-direction:column">
+            <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70)">Total estimado</div>
+            <div style="font-family:'Instrument Serif',Georgia,serif;font-size:64px;line-height:1.05;margin-top:10px">{{ cd.total }}</div>
+            <div style="margin-top:24px;border-top:1px solid rgba(43,36,48,0.10)">
+              <sc-for list="{{ cd.rows }}" as="r" hint-placeholder-count="4">
+                <div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:13px 0;border-bottom:1px solid rgba(43,36,48,0.10)">
+                  <span style="font-size:15px;line-height:1.4;color:rgba(43,36,48,0.82)">{{ r.label }}</span>
+                  <span style="font-size:15px;font-weight:600;white-space:nowrap">{{ r.val }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <p style="margin:22px 0 0 0;font-size:14px;line-height:1.5;color:rgba(43,36,48,0.75)">Estimación vigente al 19/09/2026. El precio final y la disponibilidad se confirman por WhatsApp.</p>
+            <a href="#contacto" style="margin-top:auto;padding-top:24px;display:flex"><span style="display:inline-flex;align-items:center;justify-content:center;gap:10px;height:56px;width:100%;border-radius:6px;background:#D97B6C;color:#2B2430;font-size:17px;font-weight:600">
+              <span style="width:22px;height:22px;border-radius:50%;background:#25D366;display:inline-flex;align-items:center;justify-content:center;flex:none"><span style="width:10px;height:9px;background:#FFFFFF;border-radius:50% 50% 50% 2px"></span></span>
+              Consultá por WhatsApp
+            </span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:0 0 120px 0">
+      <div style="background:#2B2430;border-radius:28px 28px 0 0;padding:104px 0;position:relative;overflow:hidden">
+        <div style="position:absolute;inset:0;opacity:0.22;background-image:url(data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27160%27%20height%3D%27160%27%3E%3Cfilter%20id%3D%27n%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%270.85%27%20numOctaves%3D%273%27%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%27160%27%20height%3D%27160%27%20filter%3D%27url%28%23n%29%27%2F%3E%3C%2Fsvg%3E);background-size:160px 160px"></div>
+        <div style="position:relative;max-width:1280px;margin:0 auto;padding:0 80px;display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:end">
+          <p style="grid-column:2 / span 7;margin:0;font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:48px;line-height:1.1;color:#FBF6F2">Vos elegís la temática. Coordinamos horario de montaje con vos.</p>
+          <div style="grid-column:10 / span 3;display:flex;justify-content:flex-end">
+            <a href="#tematicas" style="display:inline-flex;align-items:center;justify-content:center;height:56px;padding:0 28px;border-radius:6px;border:1px solid rgba(251,246,242,0.45);color:#FBF6F2;font-size:17px;font-weight:600">Ver temáticas</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:0 0 120px 0">
+      <div style="max-width:1280px;margin:0 auto;padding:0 80px">
+        <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70)">Cómo funciona</div>
+        <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:49px;line-height:1.08;margin:14px 0 48px 0">Cuatro pasos y listo</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+          <div style="position:relative;background:#FFFFFF;border:1px solid rgba(43,36,48,0.10);border-radius:14px;padding:40px;overflow:hidden;box-shadow:0 1px 2px rgba(43,36,48,0.05),0 12px 26px rgba(43,36,48,0.05)">
+            <span style="position:absolute;top:8px;right:28px;font-family:'Instrument Serif',Georgia,serif;font-size:64px;line-height:1;color:rgba(43,36,48,0.20)">1</span>
+            <h3 style="position:relative;margin:0;font-size:23px;font-weight:600;line-height:1.25">Elegís tu combo y temática</h3>
+            <p style="margin:12px 0 0 0;font-size:17px;line-height:1.55;color:rgba(43,36,48,0.80);max-width:40ch">Mirá los tres combos y la lista de temáticas. Si querés otra idea, contanos y la adaptamos.</p>
+          </div>
+          <div style="position:relative;background:#FFFFFF;border:1px solid rgba(43,36,48,0.10);border-radius:14px;padding:40px;overflow:hidden;box-shadow:0 1px 2px rgba(43,36,48,0.05),0 12px 26px rgba(43,36,48,0.05)">
+            <span style="position:absolute;top:8px;right:28px;font-family:'Instrument Serif',Georgia,serif;font-size:64px;line-height:1;color:rgba(43,36,48,0.20)">2</span>
+            <h3 style="position:relative;margin:0;font-size:23px;font-weight:600;line-height:1.25">Nos contás fecha y zona</h3>
+            <p style="margin:12px 0 0 0;font-size:17px;line-height:1.55;color:rgba(43,36,48,0.80);max-width:40ch">Con la fecha, la zona y la cantidad de invitados ajustamos la estimación a tu evento.</p>
+          </div>
+          <div style="position:relative;background:#FFFFFF;border:1px solid rgba(43,36,48,0.10);border-radius:14px;padding:40px;overflow:hidden;box-shadow:0 1px 2px rgba(43,36,48,0.05),0 12px 26px rgba(43,36,48,0.05)">
+            <span style="position:absolute;top:8px;right:28px;font-family:'Instrument Serif',Georgia,serif;font-size:64px;line-height:1;color:rgba(43,36,48,0.20)">3</span>
+            <h3 style="position:relative;margin:0;font-size:23px;font-weight:600;line-height:1.25">Te respondemos dentro de 24 horas hábiles</h3>
+            <p style="margin:12px 0 0 0;font-size:17px;line-height:1.55;color:rgba(43,36,48,0.80);max-width:40ch">Te llega el detalle por WhatsApp, con lo que incluye y lo que no.</p>
+          </div>
+          <div style="position:relative;background:#FFFFFF;border:1px solid rgba(43,36,48,0.10);border-radius:14px;padding:40px;overflow:hidden;box-shadow:0 1px 2px rgba(43,36,48,0.05),0 12px 26px rgba(43,36,48,0.05)">
+            <span style="position:absolute;top:8px;right:28px;font-family:'Instrument Serif',Georgia,serif;font-size:64px;line-height:1;color:rgba(43,36,48,0.20)">4</span>
+            <h3 style="position:relative;margin:0;font-size:23px;font-weight:600;line-height:1.25">Coordinamos los detalles con vos</h3>
+            <p style="margin:12px 0 0 0;font-size:17px;line-height:1.55;color:rgba(43,36,48,0.80);max-width:40ch">Definimos horario de montaje, paleta y últimos ajustes antes del día del evento.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tematicas" style="padding:0 0 120px 0">
+      <div style="max-width:1280px;margin:0 auto;padding:0 80px">
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-bottom:40px">
+          <div>
+            <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70)">Temáticas</div>
+            <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:49px;line-height:1.08;margin:14px 0 0 0">Diez temáticas listas para adaptar</h2>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:170px;gap:16px">
+          <div style="grid-column:span 3;grid-row:span 2;background:#DCE6F2;border-radius:14px;padding:28px;display:flex;flex-direction:column;justify-content:flex-end">
+            <span style="font-family:'Instrument Serif',Georgia,serif;font-size:38px;line-height:1.05">Jefe en pañales</span>
+            <span style="margin-top:8px;font-size:15px;color:rgba(43,36,48,0.78)">Azul noche, dorado y blanco</span>
+          </div>
+          <div style="grid-column:span 3;background:#DDE8E0;border-radius:14px;padding:24px;display:flex;flex-direction:column;justify-content:flex-end">
+            <span style="font-family:'Instrument Serif',Georgia,serif;font-size:29px;line-height:1.05">Dino bebé</span>
+            <span style="margin-top:6px;font-size:15px;color:rgba(43,36,48,0.78)">Verde salvia, crema y terracota</span>
+          </div>
+          <div style="grid-column:span 3;background:#DCE6F2;border-radius:14px;padding:24px;display:flex;flex-direction:column;justify-content:flex-end">
+            <span style="font-family:'Instrument Serif',Georgia,serif;font-size:29px;line-height:1.05">Moana bebé</span>
+            <span style="margin-top:6px;font-size:15px;color:rgba(43,36,48,0.78)">Turquesa, arena y hojas</span>
+          </div>
+          <div style="grid-column:span 2;background:#F6E1DC;border-radius:14px;padding:22px;display:flex;flex-direction:column;justify-content:flex-end">
+            <span style="font-family:'Instrument Serif',Georgia,serif;font-size:26px;line-height:1.05">Minnie bebé</span>
+            <span style="margin-top:6px;font-size:14px;color:rgba(43,36,48,0.78)">Rosa empolvado y blanco</span>
+          </div>
+          <div style="grid-column:span 2;background:#DCE6F2;border-radius:14px;padding:22px;display:flex;flex-direction:column;justify-content:flex-end">
+            <span style="font-family:'Instrument Serif',Georgia,serif;font-size:26px;line-height:1.05">Mickey bebé</span>
+            <span style="margin-top:6px;font-size:14px;color:rgba(43,36,48,0.78)">Rojo suave, crema y negro</span>
+          </div>
+          <div style="grid-column:span 2;background:#F6E1DC;border-radius:14px;padding:22px;display:flex;flex-direction:column;justify-content:flex-end">
+            <span style="font-family:'Instrument Serif',Georgia,serif;font-size:26px;line-height:1.05">Blanca Nieves bebé</span>
+            <span style="margin-top:6px;font-size:14px;color:rgba(43,36,48,0.78)">Amarillo pálido y rojo suave</span>
+          </div>
+          <div style="grid-column:span 2;background:#F6E1DC;border-radius:14px;padding:22px;display:flex;flex-direction:column;justify-content:flex-end">
+            <span style="font-family:'Instrument Serif',Georgia,serif;font-size:26px;line-height:1.05">Frutillita bebé</span>
+            <span style="margin-top:6px;font-size:14px;color:rgba(43,36,48,0.78)">Fresa, verde hoja y crema</span>
+          </div>
+          <div style="grid-column:span 2;background:#DDE8E0;border-radius:14px;padding:22px;display:flex;flex-direction:column;justify-content:flex-end">
+            <span style="font-family:'Instrument Serif',Georgia,serif;font-size:26px;line-height:1.05">Mariposas</span>
+            <span style="margin-top:6px;font-size:14px;color:rgba(43,36,48,0.78)">Lila, salvia y perla</span>
+          </div>
+          <div style="grid-column:span 2;background:#DDE8E0;border-radius:14px;padding:22px;display:flex;flex-direction:column;justify-content:flex-end">
+            <span style="font-family:'Instrument Serif',Georgia,serif;font-size:26px;line-height:1.05">Safari</span>
+            <span style="margin-top:6px;font-size:14px;color:rgba(43,36,48,0.78)">Beige, verde oliva y madera</span>
+          </div>
+          <div style="grid-column:span 3;background:#DCE6F2;border-radius:14px;padding:24px;display:flex;flex-direction:column;justify-content:flex-end">
+            <span style="font-family:'Instrument Serif',Georgia,serif;font-size:29px;line-height:1.05">Nubes y ositos</span>
+            <span style="margin-top:6px;font-size:15px;color:rgba(43,36,48,0.78)">Celeste, crema y beige</span>
+          </div>
+          <div style="grid-column:span 3;border:1px solid rgba(43,36,48,0.10);border-radius:14px;padding:24px;display:flex;align-items:center;justify-content:center">
+            <a href="#tematicas" style="font-size:17px;font-weight:600;border-bottom:1px solid rgba(43,36,48,0.30);padding-bottom:3px">Ver las 10 temáticas</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:0 0 120px 0">
+      <div style="max-width:1280px;margin:0 auto;padding:0 80px">
+        <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70)">Qué incluye y qué no incluye</div>
+        <div style="margin-top:36px;display:grid;grid-template-columns:1fr 1px 1fr;gap:56px">
+          <div>
+            <h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:37px;line-height:1.1;margin:0 0 22px 0">Incluye</h3>
+            <ul style="display:flex;flex-direction:column;gap:12px;font-size:17px;line-height:1.5;color:rgba(43,36,48,0.86)">
+              <li>Arco de globos y backdrop de la temática</li>
+              <li>Mesa dulce con cinco variedades</li>
+              <li>Bocaditos salados para la cantidad acordada</li>
+              <li>Mantelería y ambientación de mesa</li>
+              <li>Montaje y desmontaje el mismo día</li>
+            </ul>
+          </div>
+          <div style="background:rgba(43,36,48,0.10)"></div>
+          <div>
+            <h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:37px;line-height:1.1;margin:0 0 22px 0">No incluye</h3>
+            <ul style="display:flex;flex-direction:column;gap:12px;font-size:17px;line-height:1.5;color:rgba(43,36,48,0.86)">
+              <li>Salón ni alquiler del espacio</li>
+              <li>Sillas y mesas para invitados</li>
+              <li>Catering de almuerzo o cena</li>
+              <li>Animación ni sonido</li>
+              <li>Torta principal, se suma como adicional</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="zonas" style="padding:0 0 120px 0">
+      <div style="max-width:1280px;margin:0 auto;padding:0 80px">
+        <div style="border-top:1px solid rgba(43,36,48,0.10);border-bottom:1px solid rgba(43,36,48,0.10);padding:40px 0;display:flex;align-items:center;justify-content:space-between;gap:48px">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <p style="margin:0;font-size:20px;line-height:1.45">Asunción, Fernando de la Mora y Lambaré: sin recargo.</p>
+            <p style="margin:0;font-size:20px;line-height:1.45;color:rgba(43,36,48,0.82)">San Lorenzo, Luque, Mariano Roque Alonso y Capiatá: con recargo estimado.</p>
+          </div>
+          <a href="#zonas" style="font-size:17px;font-weight:600;white-space:nowrap;border-bottom:1px solid rgba(43,36,48,0.30);padding-bottom:3px">Ver zonas y recargos estimados</a>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:0 0 120px 0">
+      <div style="max-width:1280px;margin:0 auto;padding:0 80px;display:grid;grid-template-columns:repeat(12,1fr);gap:24px">
+        <div style="grid-column:1 / span 4">
+          <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70)">Preguntas frecuentes</div>
+          <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:49px;line-height:1.08;margin:14px 0 20px 0">Lo que más nos preguntan</h2>
+          <a href="#faq" style="font-size:17px;font-weight:600;border-bottom:1px solid rgba(43,36,48,0.30);padding-bottom:3px">Ver todas las preguntas</a>
+        </div>
+        <div id="faq" style="grid-column:6 / span 7">
+          <div onClick="{{ fd.t0 }}" style="border-top:1px solid rgba(43,36,48,0.10);padding:24px 0;cursor:pointer">
+            <div style="display:flex;justify-content:space-between;gap:24px;align-items:baseline"><span style="font-size:21px;line-height:1.3;font-weight:600">¿Los precios que muestran son finales?</span><span style="font-size:20px;color:rgba(43,36,48,0.55)">{{ fd.i0 }}</span></div>
+            <sc-if value="{{ fd.o0 }}" hint-placeholder-val="{{ true }}"><p style="margin:12px 0 0 0;font-size:17px;line-height:1.6;color:rgba(43,36,48,0.82);max-width:62ch">Son estimados. El precio final y la disponibilidad se confirman por WhatsApp según fecha, zona y cantidad de invitados.</p></sc-if>
+          </div>
+          <div onClick="{{ fd.t1 }}" style="border-top:1px solid rgba(43,36,48,0.10);padding:24px 0;cursor:pointer">
+            <div style="display:flex;justify-content:space-between;gap:24px;align-items:baseline"><span style="font-size:21px;line-height:1.3;font-weight:600">¿Con cuánta anticipación aviso la fecha?</span><span style="font-size:20px;color:rgba(43,36,48,0.55)">{{ fd.i1 }}</span></div>
+            <sc-if value="{{ fd.o1 }}"><p style="margin:12px 0 0 0;font-size:17px;line-height:1.6;color:rgba(43,36,48,0.82);max-width:62ch">Lo ideal es escribirnos entre 3 y 6 semanas antes. En fechas muy pedidas la agenda se llena antes.</p></sc-if>
+          </div>
+          <div onClick="{{ fd.t2 }}" style="border-top:1px solid rgba(43,36,48,0.10);padding:24px 0;cursor:pointer">
+            <div style="display:flex;justify-content:space-between;gap:24px;align-items:baseline"><span style="font-size:21px;line-height:1.3;font-weight:600">¿Trabajan en todo Gran Asunción?</span><span style="font-size:20px;color:rgba(43,36,48,0.55)">{{ fd.i2 }}</span></div>
+            <sc-if value="{{ fd.o2 }}"><p style="margin:12px 0 0 0;font-size:17px;line-height:1.6;color:rgba(43,36,48,0.82);max-width:62ch">Sí. Asunción, Fernando de la Mora y Lambaré sin recargo; San Lorenzo, Luque, Mariano Roque Alonso y Capiatá con recargo estimado.</p></sc-if>
+          </div>
+          <div onClick="{{ fd.t3 }}" style="border-top:1px solid rgba(43,36,48,0.10);padding:24px 0;cursor:pointer">
+            <div style="display:flex;justify-content:space-between;gap:24px;align-items:baseline"><span style="font-size:21px;line-height:1.3;font-weight:600">¿El montaje y el desmontaje están incluidos?</span><span style="font-size:20px;color:rgba(43,36,48,0.55)">{{ fd.i3 }}</span></div>
+            <sc-if value="{{ fd.o3 }}"><p style="margin:12px 0 0 0;font-size:17px;line-height:1.6;color:rgba(43,36,48,0.82);max-width:62ch">Sí, los dos están dentro de la estimación. Coordinamos el horario de montaje con vos.</p></sc-if>
+          </div>
+          <div onClick="{{ fd.t4 }}" style="border-top:1px solid rgba(43,36,48,0.10);padding:24px 0;cursor:pointer">
+            <div style="display:flex;justify-content:space-between;gap:24px;align-items:baseline"><span style="font-size:21px;line-height:1.3;font-weight:600">¿Puedo cambiar la temática o los colores?</span><span style="font-size:20px;color:rgba(43,36,48,0.55)">{{ fd.i4 }}</span></div>
+            <sc-if value="{{ fd.o4 }}"><p style="margin:12px 0 0 0;font-size:17px;line-height:1.6;color:rgba(43,36,48,0.82);max-width:62ch">Sí. Elegí cualquiera de las temáticas o contanos tu idea y la adaptamos a la paleta que quieras.</p></sc-if>
+          </div>
+          <div onClick="{{ fd.t5 }}" style="border-top:1px solid rgba(43,36,48,0.10);border-bottom:1px solid rgba(43,36,48,0.10);padding:24px 0;cursor:pointer">
+            <div style="display:flex;justify-content:space-between;gap:24px;align-items:baseline"><span style="font-size:21px;line-height:1.3;font-weight:600">¿Qué pasa si cambia la cantidad de invitados?</span><span style="font-size:20px;color:rgba(43,36,48,0.55)">{{ fd.i5 }}</span></div>
+            <sc-if value="{{ fd.o5 }}"><p style="margin:12px 0 0 0;font-size:17px;line-height:1.6;color:rgba(43,36,48,0.82);max-width:62ch">Ajustamos la estimación hasta 5 días antes del evento. Escribinos y actualizamos el detalle.</p></sc-if>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" style="padding:0 0 120px 0">
+      <div style="max-width:1280px;margin:0 auto;padding:0 80px;display:grid;grid-template-columns:5fr 7fr;gap:28px;align-items:start">
+        <div style="background:#DDE8E0;border-radius:28px;padding:44px;display:flex;flex-direction:column;gap:18px">
+          <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70)">Escribinos por WhatsApp</div>
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:32px;line-height:1.1">+595 992 279 599</div>
+          <p style="margin:0;font-size:17px;line-height:1.55;color:rgba(43,36,48,0.84);max-width:34ch">Contanos la fecha, la zona y la cantidad de invitados y te devolvemos la estimación detallada.</p>
+          <div style="margin-top:6px;font-size:16px;line-height:1.6;color:rgba(43,36,48,0.84)">Lun a Sáb 8:00 a 20:00<br>Respuesta dentro de 24 horas hábiles</div>
+          <a href="#contacto" style="margin-top:8px;display:inline-flex;align-items:center;justify-content:center;gap:10px;height:56px;padding:0 26px;border-radius:6px;background:#FFFFFF;border:1px solid rgba(43,36,48,0.18);font-size:17px;font-weight:600;align-self:flex-start">
+            <span style="width:22px;height:22px;border-radius:50%;background:#25D366;display:inline-flex;align-items:center;justify-content:center;flex:none"><span style="width:10px;height:9px;background:#FFFFFF;border-radius:50% 50% 50% 2px"></span></span>
+            Abrir WhatsApp
+          </a>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid rgba(43,36,48,0.10);border-radius:14px;padding:44px;box-shadow:0 1px 2px rgba(43,36,48,0.05),0 14px 30px rgba(43,36,48,0.06)">
+          <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:37px;line-height:1.1;margin:0 0 28px 0">Dejanos tu consulta</h2>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+            <label style="display:flex;flex-direction:column;gap:7px;font-size:14px;font-weight:600;color:rgba(43,36,48,0.82)">Tu nombre
+              <input type="text" style="height:52px;padding:0 14px;border-radius:6px;border:1px solid rgba(43,36,48,0.22);background:#FBF6F2;font-size:16px;color:#2B2430">
+            </label>
+            <label style="display:flex;flex-direction:column;gap:7px;font-size:14px;font-weight:600;color:rgba(43,36,48,0.82)">Tu WhatsApp
+              <input type="tel" style="height:52px;padding:0 14px;border-radius:6px;border:1px solid rgba(43,36,48,0.22);background:#FBF6F2;font-size:16px;color:#2B2430">
+            </label>
+            <label style="display:flex;flex-direction:column;gap:7px;font-size:14px;font-weight:600;color:rgba(43,36,48,0.82)">Fecha tentativa
+              <input type="date" style="height:52px;padding:0 14px;border-radius:6px;border:1px solid rgba(43,36,48,0.22);background:#FBF6F2;font-size:16px;color:#2B2430">
+            </label>
+            <label style="display:flex;align-items:center;gap:10px;font-size:16px;color:#2B2430;align-self:end;height:52px">
+              <input type="checkbox" style="width:20px;height:20px;accent-color:#D97B6C">
+              No sé todavía
+            </label>
+            <label style="display:flex;flex-direction:column;gap:7px;font-size:14px;font-weight:600;color:rgba(43,36,48,0.82)">Cantidad de invitados
+              <input type="number" style="height:52px;padding:0 14px;border-radius:6px;border:1px solid rgba(43,36,48,0.22);background:#FBF6F2;font-size:16px;color:#2B2430">
+            </label>
+            <label style="display:flex;flex-direction:column;gap:7px;font-size:14px;font-weight:600;color:rgba(43,36,48,0.82)">Tipo de evento
+              <select style="height:52px;padding:0 14px;border-radius:6px;border:1px solid rgba(43,36,48,0.22);background:#FBF6F2;font-size:16px;color:#2B2430">
+                <option>Baby shower</option>
+                <option>Revelación de género</option>
+                <option>Primer añito</option>
+              </select>
+            </label>
+            <label style="grid-column:span 2;display:flex;flex-direction:column;gap:7px;font-size:14px;font-weight:600;color:rgba(43,36,48,0.82)">Zona
+              <select style="height:52px;padding:0 14px;border-radius:6px;border:1px solid rgba(43,36,48,0.22);background:#FBF6F2;font-size:16px;color:#2B2430">
+                <option>Asunción</option>
+                <option>Fernando de la Mora</option>
+                <option>Lambaré</option>
+                <option>San Lorenzo</option>
+                <option>Luque</option>
+                <option>Mariano Roque Alonso</option>
+                <option>Capiatá</option>
+              </select>
+            </label>
+            <label style="grid-column:span 2;display:flex;flex-direction:column;gap:7px;font-size:14px;font-weight:600;color:rgba(43,36,48,0.82)">Mensaje (opcional)
+              <textarea rows="4" style="padding:12px 14px;border-radius:6px;border:1px solid rgba(43,36,48,0.22);background:#FBF6F2;font-size:16px;color:#2B2430;resize:vertical"></textarea>
+            </label>
+          </div>
+          <button style="margin-top:24px;width:100%;height:56px;border-radius:6px;border:none;background:#D97B6C;color:#2B2430;font-size:17px;font-weight:600;cursor:pointer">Enviar consulta</button>
+          <p style="margin:14px 0 0 0;font-size:14px;line-height:1.5;color:rgba(43,36,48,0.75)">Te respondemos por WhatsApp al número que nos dejás</p>
+        </div>
+      </div>
+    </section>
+
+    <footer style="border-top:1px solid rgba(43,36,48,0.10);padding:64px 0 72px 0">
+      <div style="max-width:1280px;margin:0 auto;padding:0 80px;display:grid;grid-template-columns:5fr 7fr;gap:28px;align-items:start">
+        <div>
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:25px;line-height:1">Baby Shower.com.py</div>
+          <p style="margin:14px 0 0 0;font-size:16px;line-height:1.6;color:rgba(43,36,48,0.80)">Baby Shower Paraguay, sitio operado desde Asunción<br>Atendemos en Asunción y Gran Asunción<br>Lun a Sáb 8:00 a 20:00<br>+595 992 279 599</p>
+        </div>
+        <div style="display:flex;gap:28px;flex-wrap:wrap;justify-content:flex-end;font-size:16px;color:rgba(43,36,48,0.82)">
+          <a href="#como-funciona">Cómo funciona</a>
+          <a href="#faq">Preguntas frecuentes</a>
+          <a href="#privacidad">Privacidad</a>
+          <a href="#terminos">Términos</a>
+          <a href="#cookies">Preferencias de cookies</a>
+        </div>
+      </div>
+    </footer>
+
+    <sc-if value="{{ floatingWa }}" hint-placeholder-val="{{ true }}">
+      <a href="#contacto" aria-label="Consultá por WhatsApp" style="position:absolute;right:32px;bottom:32px;z-index:40;width:60px;height:60px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(43,36,48,0.18),0 14px 30px rgba(43,36,48,0.22)">
+        <span style="width:26px;height:23px;background:#FFFFFF;border-radius:50% 50% 50% 4px"></span>
+      </a>
+    </sc-if>
+
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ showMobile }}" hint-placeholder-val="{{ true }}">
+<section style="display:flex;flex-direction:column;gap:14px;align-items:flex-start;padding:56px 56px 72px 56px;font-family:'Satoshi','DM Sans',system-ui,sans-serif">
+  <div style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(43,36,48,0.55)">Mobile — 390</div>
+
+  <div style="position:relative;width:390px;background:#FBF6F2;color:#2B2430;overflow:hidden;border-radius:4px;box-shadow:0 1px 2px rgba(43,36,48,0.08),0 24px 60px rgba(43,36,48,0.12)">
+
+    <header style="position:sticky;top:0;z-index:30;background:rgba(251,246,242,0.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(43,36,48,0.10)">
+      <div style="height:60px;padding:0 16px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <span style="font-family:'Instrument Serif',Georgia,serif;font-size:21px;line-height:1">Baby Shower.com.py</span>
+        <div style="display:flex;align-items:center;gap:8px">
+          <a href="#contacto-m" aria-label="WhatsApp" style="width:48px;height:48px;border-radius:6px;border:1px solid rgba(43,36,48,0.22);background:#FFFFFF;display:flex;align-items:center;justify-content:center">
+            <span style="width:22px;height:22px;border-radius:50%;background:#25D366;display:inline-flex;align-items:center;justify-content:center"><span style="width:10px;height:9px;background:#FFFFFF;border-radius:50% 50% 50% 2px"></span></span>
+          </a>
+          <button onClick="{{ toggleNav }}" aria-label="Menú" style="width:48px;height:48px;border-radius:6px;border:1px solid rgba(43,36,48,0.22);background:#FFFFFF;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer">
+            <span style="width:18px;height:1.5px;background:#2B2430"></span>
+            <span style="width:18px;height:1.5px;background:#2B2430"></span>
+            <span style="width:18px;height:1.5px;background:#2B2430"></span>
+          </button>
+        </div>
+      </div>
+      <sc-if value="{{ navOpen }}" hint-placeholder-val="{{ true }}">
+        <nav style="padding:8px 16px 16px 16px;display:flex;flex-direction:column;border-top:1px solid rgba(43,36,48,0.10)">
+          <a href="#combos-m" style="display:flex;align-items:center;height:48px;font-size:17px;border-bottom:1px solid rgba(43,36,48,0.10)">Combos y precios</a>
+          <a href="#revelacion-m" style="display:flex;align-items:center;height:48px;font-size:17px;border-bottom:1px solid rgba(43,36,48,0.10)">Revelación de género</a>
+          <a href="#tematicas-m" style="display:flex;align-items:center;height:48px;font-size:17px;border-bottom:1px solid rgba(43,36,48,0.10)">Temáticas</a>
+          <a href="#primer-anito-m" style="display:flex;align-items:center;height:48px;font-size:17px;border-bottom:1px solid rgba(43,36,48,0.10)">Primer añito</a>
+          <a href="#zonas-m" style="display:flex;align-items:center;height:48px;font-size:17px;border-bottom:1px solid rgba(43,36,48,0.10)">Zonas</a>
+          <a href="#ideas-m" style="display:flex;align-items:center;height:48px;font-size:17px;border-bottom:1px solid rgba(43,36,48,0.10)">Ideas</a>
+          <a href="#contacto-m" style="display:flex;align-items:center;height:48px;font-size:17px;border-bottom:1px solid rgba(43,36,48,0.10)">Contacto</a>
+          <span style="display:flex;align-items:center;height:48px;font-size:17px;color:rgba(43,36,48,0.82)">+595 992 279 599</span>
+        </nav>
+      </sc-if>
+    </header>
+
+    <section style="padding:28px 16px 0 16px">
+      <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70)">Baby shower en Asunción y Gran Asunción</div>
+      <h1 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:44px;line-height:1.02;letter-spacing:-0.01em;margin:14px 0 0 0;text-wrap:pretty">Baby shower en Asunción con precio claro</h1>
+      <div style="display:flex;align-items:baseline;gap:12px;margin-top:18px;flex-wrap:wrap">
+        <span style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:56px;line-height:1;letter-spacing:-0.02em">Gs. 1.850.000</span>
+        <span style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70)">estimado</span>
+      </div>
+      <div style="margin-top:18px;display:flex;flex-direction:column;gap:9px">
+        <p style="margin:0;font-size:16px;line-height:1.5;color:rgba(43,36,48,0.86)">Combo Estrella: decoración, mesa dulce y bocaditos para 30 invitados</p>
+        <p style="margin:0;font-size:16px;line-height:1.5;color:rgba(43,36,48,0.86)">Precio estimado desde Gs. 1.850.000. El precio final y la disponibilidad se confirman por WhatsApp.</p>
+        <p style="margin:0;font-size:16px;line-height:1.5;color:rgba(43,36,48,0.86)">Te respondemos dentro de 24 horas hábiles. Precios estimados a la vista, sin preguntar al privado.</p>
+      </div>
+      <div style="margin-top:22px;display:flex;flex-direction:column;gap:10px">
+        <a href="#contacto-m" style="display:flex;align-items:center;justify-content:center;gap:10px;height:52px;border-radius:6px;background:#D97B6C;color:#2B2430;font-size:17px;font-weight:600">
+          <span style="width:22px;height:22px;border-radius:50%;background:#25D366;display:inline-flex;align-items:center;justify-content:center;flex:none"><span style="width:10px;height:9px;background:#FFFFFF;border-radius:50% 50% 50% 2px"></span></span>
+          Consultá por WhatsApp
+        </a>
+        <a href="#calculadora-m" style="display:flex;align-items:center;justify-content:center;height:52px;border-radius:6px;border:1px solid rgba(43,36,48,0.30);font-size:17px;font-weight:600">Calculá tu estimación</a>
+      </div>
+      <div style="position:relative;z-index:2;margin-top:36px;margin-bottom:-32px;aspect-ratio:3 / 2;border-radius:28px;background:linear-gradient(140deg,#F6E1DC 0%,#DDE8E0 52%,#DCE6F2 100%);display:flex;align-items:flex-end;padding:18px">
+        <span style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70)">Imagen ilustrativa</span>
+      </div>
+    </section>
+
+    <section style="background:#DCE6F2;padding:60px 16px 28px 16px">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px">
+        <span style="font-size:15px">Precios estimados a la vista</span>
+        <span style="font-family:'Instrument Serif',Georgia,serif;font-size:20px;line-height:0.6;color:rgba(43,36,48,0.45)">*</span>
+        <span style="font-size:15px">Respuesta en 24 h hábiles</span>
+        <span style="font-family:'Instrument Serif',Georgia,serif;font-size:20px;line-height:0.6;color:rgba(43,36,48,0.45)">*</span>
+        <span style="font-size:15px">Montaje y desmontaje en la estimación</span>
+        <span style="font-family:'Instrument Serif',Georgia,serif;font-size:20px;line-height:0.6;color:rgba(43,36,48,0.45)">*</span>
+        <span style="font-size:15px">Asunción y Gran Asunción</span>
+        <span style="font-family:'Instrument Serif',Georgia,serif;font-size:20px;line-height:0.6;color:rgba(43,36,48,0.45)">*</span>
+        <span style="font-size:15px">Consulta sin compromiso</span>
+      </div>
+    </section>
+
+    <section id="combos-m" style="padding:64px 16px">
+      <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70)">Combos y precios estimados</div>
+      <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:36px;line-height:1.08;margin:12px 0 28px 0">Tres combos, tres presupuestos</h2>
+      <div style="display:flex;flex-direction:column;gap:20px">
+
+        <article style="background:#FFFFFF;border:1px solid rgba(43,36,48,0.10);border-radius:14px;overflow:hidden;box-shadow:0 1px 2px rgba(43,36,48,0.06),0 12px 26px rgba(43,36,48,0.06)">
+          <div style="background:#DDE8E0;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:10px">
+            <span style="font-family:'Instrument Serif',Georgia,serif;font-size:26px;line-height:1">Combo Nube</span>
+            <span style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70);text-align:right">Solo decoración</span>
+          </div>
+          <div style="padding:20px">
+            <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70)">Precio estimado desde</div>
+            <div style="font-family:'Instrument Serif',Georgia,serif;font-size:38px;line-height:1.05;margin-top:6px">Gs. 1.150.000</div>
+            <ul style="margin:18px 0 0 0;display:flex;flex-direction:column;gap:8px;font-size:16px;line-height:1.45;color:rgba(43,36,48,0.86)">
+              <li>Arco de globos orgánico</li>
+              <li>Backdrop con la temática elegida</li>
+              <li>Ambientación de la mesa principal</li>
+              <li>Montaje y desmontaje el mismo día</li>
+            </ul>
+            <p style="margin:16px 0 0 0;font-size:14px;line-height:1.45;color:rgba(43,36,48,0.72)">Qué no incluye: mesa dulce, bocaditos ni torta.</p>
+            <p style="margin:12px 0 0 0;font-size:13px;line-height:1.45;color:rgba(43,36,48,0.72)">El precio final y la disponibilidad se confirman por WhatsApp</p>
+            <a href="#contacto-m" style="margin-top:18px;display:flex;align-items:center;justify-content:center;gap:10px;height:52px;border-radius:6px;border:1px solid rgba(43,36,48,0.30);font-size:16px;font-weight:600">
+              <span style="width:20px;height:20px;border-radius:50%;background:#25D366;display:inline-flex;align-items:center;justify-content:center;flex:none"><span style="width:9px;height:8px;background:#FFFFFF;border-radius:50% 50% 50% 2px"></span></span>
+              Consultá por WhatsApp
+            </a>
+          </div>
+        </article>
+
+        <article style="background:#FFFFFF;border:1px solid rgba(43,36,48,0.10);border-radius:14px;overflow:hidden;box-shadow:0 2px 4px rgba(43,36,48,0.07),0 22px 44px rgba(43,36,48,0.13)">
+          <div style="background:#F6E1DC;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:10px">
+            <span style="font-family:'Instrument Serif',Georgia,serif;font-size:26px;line-height:1">Combo Estrella</span>
+            <span style="background:#D97B6C;color:#2B2430;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:700;padding:7px 10px;border-radius:6px;white-space:nowrap">Combo completo</span>
+          </div>
+          <div style="padding:20px">
+            <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70)">Precio estimado desde</div>
+            <div style="font-family:'Instrument Serif',Georgia,serif;font-size:38px;line-height:1.05;margin-top:6px">Gs. 1.850.000</div>
+            <ul style="margin:18px 0 0 0;display:flex;flex-direction:column;gap:8px;font-size:16px;line-height:1.45;color:rgba(43,36,48,0.86)">
+              <li>Decoración completa con arco y backdrop</li>
+              <li>Mesa dulce con cinco variedades</li>
+              <li>Bocaditos salados para 30 invitados</li>
+              <li>Mantelería y ambientación de mesa</li>
+              <li>Montaje y desmontaje el mismo día</li>
+            </ul>
+            <p style="margin:16px 0 0 0;font-size:14px;line-height:1.45;color:rgba(43,36,48,0.72)">Qué no incluye: salón, sillas ni torta principal.</p>
+            <p style="margin:12px 0 0 0;font-size:13px;line-height:1.45;color:rgba(43,36,48,0.72)">El precio final y la disponibilidad se confirman por WhatsApp</p>
+            <a href="#contacto-m" style="margin-top:18px;display:flex;align-items:center;justify-content:center;gap:10px;height:52px;border-radius:6px;background:#D97B6C;color:#2B2430;font-size:16px;font-weight:600">
+              <span style="width:20px;height:20px;border-radius:50%;background:#25D366;display:inline-flex;align-items:center;justify-content:center;flex:none"><span style="width:9px;height:8px;background:#FFFFFF;border-radius:50% 50% 50% 2px"></span></span>
+              Consultá por WhatsApp
+            </a>
+          </div>
+        </article>
+
+        <article style="background:#FFFFFF;border:1px solid rgba(43,36,48,0.10);border-radius:14px;overflow:hidden;box-shadow:0 1px 2px rgba(43,36,48,0.06),0 12px 26px rgba(43,36,48,0.06)">
+          <div style="background:#DCE6F2;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:10px">
+            <span style="font-family:'Instrument Serif',Georgia,serif;font-size:26px;line-height:1">Combo Sueño</span>
+            <span style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70)">40 invitados</span>
+          </div>
+          <div style="padding:20px">
+            <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70)">Precio estimado desde</div>
+            <div style="font-family:'Instrument Serif',Georgia,serif;font-size:38px;line-height:1.05;margin-top:6px">Gs. 2.750.000</div>
+            <ul style="margin:18px 0 0 0;display:flex;flex-direction:column;gap:8px;font-size:16px;line-height:1.45;color:rgba(43,36,48,0.86)">
+              <li>Todo lo del Combo Estrella para 40 invitados</li>
+              <li>Torta temática de dos pisos</li>
+              <li>Souvenirs para cada invitada</li>
+              <li>Coordinación del evento de principio a fin</li>
+            </ul>
+            <p style="margin:16px 0 0 0;font-size:14px;line-height:1.45;color:rgba(43,36,48,0.72)">Qué no incluye: salón, sonido ni animación.</p>
+            <p style="margin:12px 0 0 0;font-size:13px;line-height:1.45;color:rgba(43,36,48,0.72)">El precio final y la disponibilidad se confirman por WhatsApp</p>
+            <a href="#contacto-m" style="margin-top:18px;display:flex;align-items:center;justify-content:center;gap:10px;height:52px;border-radius:6px;border:1px solid rgba(43,36,48,0.30);font-size:16px;font-weight:600">
+              <span style="width:20px;height:20px;border-radius:50%;background:#25D366;display:inline-flex;align-items:center;justify-content:center;flex:none"><span style="width:9px;height:8px;background:#FFFFFF;border-radius:50% 50% 50% 2px"></span></span>
+              Consultá por WhatsApp
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="calculadora-m" style="padding:0 16px 64px 16px">
+      <div style="background:#F6E1DC;border-radius:28px;padding:24px 20px">
+        <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70)">Calculá tu estimación</div>
+        <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:32px;line-height:1.08;margin:12px 0 24px 0">Armá tu número antes de escribir</h2>
+
+        <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70);margin-bottom:10px">Combo</div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div onClick="{{ cm.pickNube }}" style="display:flex;align-items:center;gap:11px;height:52px;padding:0 14px;border-radius:6px;background:#FFFFFF;border:1px solid {{ cm.bNube }};cursor:pointer">
+            <span style="width:18px;height:18px;border-radius:50%;border:1px solid rgba(43,36,48,0.35);display:inline-flex;align-items:center;justify-content:center;flex:none"><span style="width:9px;height:9px;border-radius:50%;background:{{ cm.dNube }}"></span></span>
+            <span style="font-size:15px;font-weight:600">Combo Nube</span>
+            <span style="margin-left:auto;font-size:14px;color:rgba(43,36,48,0.75)">Gs. 1.150.000</span>
+          </div>
+          <div onClick="{{ cm.pickEstrella }}" style="display:flex;align-items:center;gap:11px;height:52px;padding:0 14px;border-radius:6px;background:#FFFFFF;border:1px solid {{ cm.bEstrella }};cursor:pointer">
+            <span style="width:18px;height:18px;border-radius:50%;border:1px solid rgba(43,36,48,0.35);display:inline-flex;align-items:center;justify-content:center;flex:none"><span style="width:9px;height:9px;border-radius:50%;background:{{ cm.dEstrella }}"></span></span>
+            <span style="font-size:15px;font-weight:600">Combo Estrella</span>
+            <span style="margin-left:auto;font-size:14px;color:rgba(43,36,48,0.75)">Gs. 1.850.000</span>
+          </div>
+          <div onClick="{{ cm.pickSueno }}" style="display:flex;align-items:center;gap:11px;height:52px;padding:0 14px;border-radius:6px;background:#FFFFFF;border:1px solid {{ cm.bSueno }};cursor:pointer">
+            <span style="width:18px;height:18px;border-radius:50%;border:1px solid rgba(43,36,48,0.35);display:inline-flex;align-items:center;justify-content:center;flex:none"><span style="width:9px;height:9px;border-radius:50%;background:{{ cm.dSueno }}"></span></span>
+            <span style="font-size:15px;font-weight:600">Combo Sueño</span>
+            <span style="margin-left:auto;font-size:14px;color:rgba(43,36,48,0.75)">Gs. 2.750.000</span>
+          </div>
+        </div>
+
+        <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70);margin:22px 0 10px 0">Invitados</div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <button onClick="{{ cm.less }}" style="width:52px;height:52px;border-radius:6px;border:1px solid rgba(43,36,48,0.22);background:#FFFFFF;font-size:22px;line-height:1;cursor:pointer;color:#2B2430">−</button>
+          <div style="flex:1;text-align:center;font-family:'Instrument Serif',Georgia,serif;font-size:32px;line-height:1">{{ cm.guests }}</div>
+          <button onClick="{{ cm.more }}" style="width:52px;height:52px;border-radius:6px;border:1px solid rgba(43,36,48,0.22);background:#FFFFFF;font-size:22px;line-height:1;cursor:pointer;color:#2B2430">+</button>
+        </div>
+        <div style="margin-top:8px;font-size:14px;color:rgba(43,36,48,0.75)">de 15 a 60 invitados</div>
+
+        <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70);margin:22px 0 10px 0">Adicionales</div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div onClick="{{ cm.tgTorta }}" style="display:flex;align-items:center;gap:11px;min-height:52px;padding:8px 14px;border-radius:6px;background:#FFFFFF;border:1px solid {{ cm.bTorta }};cursor:pointer">
+            <span style="width:18px;height:18px;border-radius:4px;border:1px solid rgba(43,36,48,0.35);background:{{ cm.fTorta }};flex:none"></span>
+            <span style="font-size:15px">Torta temática</span>
+            <span style="margin-left:auto;font-size:14px;color:rgba(43,36,48,0.75)">+ Gs. 420.000</span>
+          </div>
+          <div onClick="{{ cm.tgSouvenirs }}" style="display:flex;align-items:center;gap:11px;min-height:52px;padding:8px 14px;border-radius:6px;background:#FFFFFF;border:1px solid {{ cm.bSouvenirs }};cursor:pointer">
+            <span style="width:18px;height:18px;border-radius:4px;border:1px solid rgba(43,36,48,0.35);background:{{ cm.fSouvenirs }};flex:none"></span>
+            <span style="font-size:15px">Souvenirs para 30</span>
+            <span style="margin-left:auto;font-size:14px;color:rgba(43,36,48,0.75)">+ Gs. 310.000</span>
+          </div>
+          <div onClick="{{ cm.tgLetrero }}" style="display:flex;align-items:center;gap:11px;min-height:52px;padding:8px 14px;border-radius:6px;background:#FFFFFF;border:1px solid {{ cm.bLetrero }};cursor:pointer">
+            <span style="width:18px;height:18px;border-radius:4px;border:1px solid rgba(43,36,48,0.35);background:{{ cm.fLetrero }};flex:none"></span>
+            <span style="font-size:15px">Letrero con el nombre</span>
+            <span style="margin-left:auto;font-size:14px;color:rgba(43,36,48,0.75)">+ Gs. 180.000</span>
+          </div>
+          <div onClick="{{ cm.tgFotos }}" style="display:flex;align-items:center;gap:11px;min-height:52px;padding:8px 14px;border-radius:6px;background:#FFFFFF;border:1px solid {{ cm.bFotos }};cursor:pointer">
+            <span style="width:18px;height:18px;border-radius:4px;border:1px solid rgba(43,36,48,0.35);background:{{ cm.fFotos }};flex:none"></span>
+            <span style="font-size:15px">Cobertura de fotos 1 h</span>
+            <span style="margin-left:auto;font-size:14px;color:rgba(43,36,48,0.75)">+ Gs. 490.000</span>
+          </div>
+        </div>
+
+        <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70);margin:22px 0 10px 0">Zona</div>
+        <select onChange="{{ cm.setZone }}" defaultValue="asuncion" style="width:100%;height:52px;padding:0 14px;border-radius:6px;border:1px solid rgba(43,36,48,0.22);background:#FFFFFF;font-size:16px;color:#2B2430">
+          <option value="asuncion">Asunción — sin recargo</option>
+          <option value="fernando">Fernando de la Mora — sin recargo</option>
+          <option value="lambare">Lambaré — sin recargo</option>
+          <option value="sanlorenzo">San Lorenzo — recargo estimado</option>
+          <option value="luque">Luque — recargo estimado</option>
+          <option value="mra">Mariano Roque Alonso — recargo estimado</option>
+          <option value="capiata">Capiatá — recargo estimado</option>
+        </select>
+
+        <div style="margin-top:20px;background:#FFFFFF;border:1px solid rgba(43,36,48,0.10);border-radius:14px;padding:20px">
+          <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70)">Total estimado</div>
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:44px;line-height:1.05;margin-top:6px">{{ cm.total }}</div>
+          <div style="margin-top:16px;overflow-x:auto;border-top:1px solid rgba(43,36,48,0.10)">
+            <div style="min-width:320px">
+              <sc-for list="{{ cm.rows }}" as="r" hint-placeholder-count="4">
+                <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px solid rgba(43,36,48,0.10)">
+                  <span style="font-size:14px;line-height:1.4;color:rgba(43,36,48,0.82)">{{ r.label }}</span>
+                  <span style="font-size:14px;font-weight:600;white-space:nowrap">{{ r.val }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <p style="margin:16px 0 0 0;font-size:13px;line-height:1.5;color:rgba(43,36,48,0.75)">Estimación vigente al 19/09/2026. El precio final y la disponibilidad se confirman por WhatsApp.</p>
+          <a href="#contacto-m" style="margin-top:16px;display:flex;align-items:center;justify-content:center;gap:10px;height:52px;border-radius:6px;background:#D97B6C;color:#2B2430;font-size:17px;font-weight:600">
+            <span style="width:22px;height:22px;border-radius:50%;background:#25D366;display:inline-flex;align-items:center;justify-content:center;flex:none"><span style="width:10px;height:9px;background:#FFFFFF;border-radius:50% 50% 50% 2px"></span></span>
+            Consultá por WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:0 0 64px 0">
+      <div style="background:#2B2430;border-radius:28px 28px 0 0;padding:56px 16px;position:relative;overflow:hidden">
+        <div style="position:absolute;inset:0;opacity:0.22;background-image:url(data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27160%27%20height%3D%27160%27%3E%3Cfilter%20id%3D%27n2%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%270.85%27%20numOctaves%3D%273%27%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%27160%27%20height%3D%27160%27%20filter%3D%27url%28%23n2%29%27%2F%3E%3C%2Fsvg%3E);background-size:160px 160px"></div>
+        <div style="position:relative">
+          <p style="margin:0;font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:34px;line-height:1.1;color:#FBF6F2">Vos elegís la temática. Coordinamos horario de montaje con vos.</p>
+          <a href="#tematicas-m" style="margin-top:24px;display:flex;align-items:center;justify-content:center;height:52px;border-radius:6px;border:1px solid rgba(251,246,242,0.45);color:#FBF6F2;font-size:17px;font-weight:600">Ver temáticas</a>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:0 16px 64px 16px">
+      <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70)">Cómo funciona</div>
+      <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:36px;line-height:1.08;margin:12px 0 24px 0">Cuatro pasos y listo</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div style="position:relative;background:#FFFFFF;border:1px solid rgba(43,36,48,0.10);border-radius:14px;padding:20px;overflow:hidden">
+          <span style="position:absolute;top:2px;right:12px;font-family:'Instrument Serif',Georgia,serif;font-size:56px;line-height:1;color:rgba(43,36,48,0.20)">1</span>
+          <h3 style="position:relative;margin:0;font-size:17px;font-weight:600;line-height:1.3">Elegís tu combo y temática</h3>
+        </div>
+        <div style="position:relative;background:#FFFFFF;border:1px solid rgba(43,36,48,0.10);border-radius:14px;padding:20px;overflow:hidden">
+          <span style="position:absolute;top:2px;right:12px;font-family:'Instrument Serif',Georgia,serif;font-size:56px;line-height:1;color:rgba(43,36,48,0.20)">2</span>
+          <h3 style="position:relative;margin:0;font-size:17px;font-weight:600;line-height:1.3">Nos contás fecha y zona</h3>
+        </div>
+        <div style="position:relative;background:#FFFFFF;border:1px solid rgba(43,36,48,0.10);border-radius:14px;padding:20px;overflow:hidden">
+          <span style="position:absolute;top:2px;right:12px;font-family:'Instrument Serif',Georgia,serif;font-size:56px;line-height:1;color:rgba(43,36,48,0.20)">3</span>
+          <h3 style="position:relative;margin:0;font-size:17px;font-weight:600;line-height:1.3">Te respondemos dentro de 24 horas hábiles</h3>
+        </div>
+        <div style="position:relative;background:#FFFFFF;border:1px solid rgba(43,36,48,0.10);border-radius:14px;padding:20px;overflow:hidden">
+          <span style="position:absolute;top:2px;right:12px;font-family:'Instrument Serif',Georgia,serif;font-size:56px;line-height:1;color:rgba(43,36,48,0.20)">4</span>
+          <h3 style="position:relative;margin:0;font-size:17px;font-weight:600;line-height:1.3">Coordinamos los detalles con vos</h3>
+        </div>
+      </div>
+    </section>
+
+    <section id="tematicas-m" style="padding:0 16px 64px 16px">
+      <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70)">Temáticas</div>
+      <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:36px;line-height:1.08;margin:12px 0 24px 0">Diez temáticas listas para adaptar</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div style="background:#DCE6F2;border-radius:14px;padding:16px;min-height:118px;display:flex;flex-direction:column;justify-content:flex-end">
+          <span style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;line-height:1.05">Jefe en pañales</span>
+          <span style="margin-top:5px;font-size:13px;color:rgba(43,36,48,0.78)">Azul noche, dorado y blanco</span>
+        </div>
+        <div style="background:#DDE8E0;border-radius:14px;padding:16px;min-height:118px;display:flex;flex-direction:column;justify-content:flex-end">
+          <span style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;line-height:1.05">Dino bebé</span>
+          <span style="margin-top:5px;font-size:13px;color:rgba(43,36,48,0.78)">Verde salvia, crema y terracota</span>
+        </div>
+        <div style="background:#DCE6F2;border-radius:14px;padding:16px;min-height:118px;display:flex;flex-direction:column;justify-content:flex-end">
+          <span style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;line-height:1.05">Moana bebé</span>
+          <span style="margin-top:5px;font-size:13px;color:rgba(43,36,48,0.78)">Turquesa, arena y hojas</span>
+        </div>
+        <div style="background:#F6E1DC;border-radius:14px;padding:16px;min-height:118px;display:flex;flex-direction:column;justify-content:flex-end">
+          <span style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;line-height:1.05">Minnie bebé</span>
+          <span style="margin-top:5px;font-size:13px;color:rgba(43,36,48,0.78)">Rosa empolvado y blanco</span>
+        </div>
+        <div style="background:#DCE6F2;border-radius:14px;padding:16px;min-height:118px;display:flex;flex-direction:column;justify-content:flex-end">
+          <span style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;line-height:1.05">Mickey bebé</span>
+          <span style="margin-top:5px;font-size:13px;color:rgba(43,36,48,0.78)">Rojo suave, crema y negro</span>
+        </div>
+        <div style="background:#F6E1DC;border-radius:14px;padding:16px;min-height:118px;display:flex;flex-direction:column;justify-content:flex-end">
+          <span style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;line-height:1.05">Blanca Nieves bebé</span>
+          <span style="margin-top:5px;font-size:13px;color:rgba(43,36,48,0.78)">Amarillo pálido y rojo suave</span>
+        </div>
+        <div style="background:#F6E1DC;border-radius:14px;padding:16px;min-height:118px;display:flex;flex-direction:column;justify-content:flex-end">
+          <span style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;line-height:1.05">Frutillita bebé</span>
+          <span style="margin-top:5px;font-size:13px;color:rgba(43,36,48,0.78)">Fresa, verde hoja y crema</span>
+        </div>
+        <div style="background:#DDE8E0;border-radius:14px;padding:16px;min-height:118px;display:flex;flex-direction:column;justify-content:flex-end">
+          <span style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;line-height:1.05">Mariposas</span>
+          <span style="margin-top:5px;font-size:13px;color:rgba(43,36,48,0.78)">Lila, salvia y perla</span>
+        </div>
+        <div style="background:#DDE8E0;border-radius:14px;padding:16px;min-height:118px;display:flex;flex-direction:column;justify-content:flex-end">
+          <span style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;line-height:1.05">Safari</span>
+          <span style="margin-top:5px;font-size:13px;color:rgba(43,36,48,0.78)">Beige, verde oliva y madera</span>
+        </div>
+        <div style="background:#DCE6F2;border-radius:14px;padding:16px;min-height:118px;display:flex;flex-direction:column;justify-content:flex-end">
+          <span style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;line-height:1.05">Nubes y ositos</span>
+          <span style="margin-top:5px;font-size:13px;color:rgba(43,36,48,0.78)">Celeste, crema y beige</span>
+        </div>
+      </div>
+      <a href="#tematicas-m" style="margin-top:16px;display:flex;align-items:center;justify-content:center;height:48px;font-size:17px;font-weight:600;border-bottom:1px solid rgba(43,36,48,0.30)">Ver las 10 temáticas</a>
+    </section>
+
+    <section style="padding:0 16px 64px 16px">
+      <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70)">Qué incluye y qué no incluye</div>
+      <div style="margin-top:24px">
+        <h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:30px;line-height:1.1;margin:0 0 16px 0">Incluye</h3>
+        <ul style="display:flex;flex-direction:column;gap:10px;font-size:16px;line-height:1.5;color:rgba(43,36,48,0.86)">
+          <li>Arco de globos y backdrop de la temática</li>
+          <li>Mesa dulce con cinco variedades</li>
+          <li>Bocaditos salados para la cantidad acordada</li>
+          <li>Mantelería y ambientación de mesa</li>
+          <li>Montaje y desmontaje el mismo día</li>
+        </ul>
+      </div>
+      <div style="margin-top:32px;padding-top:32px;border-top:1px solid rgba(43,36,48,0.10)">
+        <h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:30px;line-height:1.1;margin:0 0 16px 0">No incluye</h3>
+        <ul style="display:flex;flex-direction:column;gap:10px;font-size:16px;line-height:1.5;color:rgba(43,36,48,0.86)">
+          <li>Salón ni alquiler del espacio</li>
+          <li>Sillas y mesas para invitados</li>
+          <li>Catering de almuerzo o cena</li>
+          <li>Animación ni sonido</li>
+          <li>Torta principal, se suma como adicional</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="zonas-m" style="padding:0 16px 64px 16px">
+      <div style="border-top:1px solid rgba(43,36,48,0.10);border-bottom:1px solid rgba(43,36,48,0.10);padding:28px 0;display:flex;flex-direction:column;gap:10px">
+        <p style="margin:0;font-size:18px;line-height:1.45">Asunción, Fernando de la Mora y Lambaré: sin recargo.</p>
+        <p style="margin:0;font-size:18px;line-height:1.45;color:rgba(43,36,48,0.82)">San Lorenzo, Luque, Mariano Roque Alonso y Capiatá: con recargo estimado.</p>
+        <a href="#zonas-m" style="margin-top:6px;display:inline-flex;align-items:center;height:48px;font-size:17px;font-weight:600">Ver zonas y recargos estimados</a>
+      </div>
+    </section>
+
+    <section id="faq-m" style="padding:0 16px 64px 16px">
+      <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70)">Preguntas frecuentes</div>
+      <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:36px;line-height:1.08;margin:12px 0 20px 0">Lo que más nos preguntan</h2>
+      <div onClick="{{ fm.t0 }}" style="border-top:1px solid rgba(43,36,48,0.10);padding:18px 0;cursor:pointer">
+        <div style="display:flex;justify-content:space-between;gap:16px;align-items:baseline"><span style="font-size:17px;line-height:1.35;font-weight:600">¿Los precios que muestran son finales?</span><span style="font-size:19px;color:rgba(43,36,48,0.55)">{{ fm.i0 }}</span></div>
+        <sc-if value="{{ fm.o0 }}" hint-placeholder-val="{{ true }}"><p style="margin:10px 0 0 0;font-size:16px;line-height:1.55;color:rgba(43,36,48,0.82)">Son estimados. El precio final y la disponibilidad se confirman por WhatsApp según fecha, zona y cantidad de invitados.</p></sc-if>
+      </div>
+      <div onClick="{{ fm.t1 }}" style="border-top:1px solid rgba(43,36,48,0.10);padding:18px 0;cursor:pointer">
+        <div style="display:flex;justify-content:space-between;gap:16px;align-items:baseline"><span style="font-size:17px;line-height:1.35;font-weight:600">¿Con cuánta anticipación aviso la fecha?</span><span style="font-size:19px;color:rgba(43,36,48,0.55)">{{ fm.i1 }}</span></div>
+        <sc-if value="{{ fm.o1 }}"><p style="margin:10px 0 0 0;font-size:16px;line-height:1.55;color:rgba(43,36,48,0.82)">Lo ideal es escribirnos entre 3 y 6 semanas antes. En fechas muy pedidas la agenda se llena antes.</p></sc-if>
+      </div>
+      <div onClick="{{ fm.t2 }}" style="border-top:1px solid rgba(43,36,48,0.10);padding:18px 0;cursor:pointer">
+        <div style="display:flex;justify-content:space-between;gap:16px;align-items:baseline"><span style="font-size:17px;line-height:1.35;font-weight:600">¿Trabajan en todo Gran Asunción?</span><span style="font-size:19px;color:rgba(43,36,48,0.55)">{{ fm.i2 }}</span></div>
+        <sc-if value="{{ fm.o2 }}"><p style="margin:10px 0 0 0;font-size:16px;line-height:1.55;color:rgba(43,36,48,0.82)">Sí. Asunción, Fernando de la Mora y Lambaré sin recargo; San Lorenzo, Luque, Mariano Roque Alonso y Capiatá con recargo estimado.</p></sc-if>
+      </div>
+      <div onClick="{{ fm.t3 }}" style="border-top:1px solid rgba(43,36,48,0.10);padding:18px 0;cursor:pointer">
+        <div style="display:flex;justify-content:space-between;gap:16px;align-items:baseline"><span style="font-size:17px;line-height:1.35;font-weight:600">¿El montaje y el desmontaje están incluidos?</span><span style="font-size:19px;color:rgba(43,36,48,0.55)">{{ fm.i3 }}</span></div>
+        <sc-if value="{{ fm.o3 }}"><p style="margin:10px 0 0 0;font-size:16px;line-height:1.55;color:rgba(43,36,48,0.82)">Sí, los dos están dentro de la estimación. Coordinamos el horario de montaje con vos.</p></sc-if>
+      </div>
+      <div onClick="{{ fm.t4 }}" style="border-top:1px solid rgba(43,36,48,0.10);padding:18px 0;cursor:pointer">
+        <div style="display:flex;justify-content:space-between;gap:16px;align-items:baseline"><span style="font-size:17px;line-height:1.35;font-weight:600">¿Puedo cambiar la temática o los colores?</span><span style="font-size:19px;color:rgba(43,36,48,0.55)">{{ fm.i4 }}</span></div>
+        <sc-if value="{{ fm.o4 }}"><p style="margin:10px 0 0 0;font-size:16px;line-height:1.55;color:rgba(43,36,48,0.82)">Sí. Elegí cualquiera de las temáticas o contanos tu idea y la adaptamos a la paleta que quieras.</p></sc-if>
+      </div>
+      <div onClick="{{ fm.t5 }}" style="border-top:1px solid rgba(43,36,48,0.10);border-bottom:1px solid rgba(43,36,48,0.10);padding:18px 0;cursor:pointer">
+        <div style="display:flex;justify-content:space-between;gap:16px;align-items:baseline"><span style="font-size:17px;line-height:1.35;font-weight:600">¿Qué pasa si cambia la cantidad de invitados?</span><span style="font-size:19px;color:rgba(43,36,48,0.55)">{{ fm.i5 }}</span></div>
+        <sc-if value="{{ fm.o5 }}"><p style="margin:10px 0 0 0;font-size:16px;line-height:1.55;color:rgba(43,36,48,0.82)">Ajustamos la estimación hasta 5 días antes del evento. Escribinos y actualizamos el detalle.</p></sc-if>
+      </div>
+      <a href="#faq-m" style="margin-top:16px;display:inline-flex;align-items:center;height:48px;font-size:17px;font-weight:600">Ver todas las preguntas</a>
+    </section>
+
+    <section id="contacto-m" style="padding:0 16px 64px 16px;display:flex;flex-direction:column;gap:16px">
+      <div style="background:#DDE8E0;border-radius:28px;padding:24px 20px;display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(43,36,48,0.70)">Escribinos por WhatsApp</div>
+        <div style="font-family:'Instrument Serif',Georgia,serif;font-size:32px;line-height:1.1">+595 992 279 599</div>
+        <p style="margin:0;font-size:16px;line-height:1.5;color:rgba(43,36,48,0.84)">Contanos la fecha, la zona y la cantidad de invitados y te devolvemos la estimación detallada.</p>
+        <div style="font-size:15px;line-height:1.6;color:rgba(43,36,48,0.84)">Lun a Sáb 8:00 a 20:00<br>Respuesta dentro de 24 horas hábiles</div>
+        <a href="#contacto-m" style="display:flex;align-items:center;justify-content:center;gap:10px;height:52px;border-radius:6px;background:#FFFFFF;border:1px solid rgba(43,36,48,0.18);font-size:17px;font-weight:600">
+          <span style="width:22px;height:22px;border-radius:50%;background:#25D366;display:inline-flex;align-items:center;justify-content:center;flex:none"><span style="width:10px;height:9px;background:#FFFFFF;border-radius:50% 50% 50% 2px"></span></span>
+          Abrir WhatsApp
+        </a>
+      </div>
+      <div style="background:#FFFFFF;border:1px solid rgba(43,36,48,0.10);border-radius:14px;padding:24px 20px">
+        <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:30px;line-height:1.1;margin:0 0 20px 0">Dejanos tu consulta</h2>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600;color:rgba(43,36,48,0.82)">Tu nombre
+            <input type="text" style="height:52px;padding:0 14px;border-radius:6px;border:1px solid rgba(43,36,48,0.22);background:#FBF6F2;font-size:16px;color:#2B2430">
+          </label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600;color:rgba(43,36,48,0.82)">Tu WhatsApp
+            <input type="tel" style="height:52px;padding:0 14px;border-radius:6px;border:1px solid rgba(43,36,48,0.22);background:#FBF6F2;font-size:16px;color:#2B2430">
+          </label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600;color:rgba(43,36,48,0.82)">Fecha tentativa
+            <input type="date" style="height:52px;padding:0 14px;border-radius:6px;border:1px solid rgba(43,36,48,0.22);background:#FBF6F2;font-size:16px;color:#2B2430">
+          </label>
+          <label style="display:flex;align-items:center;gap:10px;font-size:16px;min-height:48px">
+            <input type="checkbox" style="width:22px;height:22px;accent-color:#D97B6C">
+            No sé todavía
+          </label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600;color:rgba(43,36,48,0.82)">Cantidad de invitados
+            <input type="number" style="height:52px;padding:0 14px;border-radius:6px;border:1px solid rgba(43,36,48,0.22);background:#FBF6F2;font-size:16px;color:#2B2430">
+          </label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600;color:rgba(43,36,48,0.82)">Tipo de evento
+            <select style="height:52px;padding:0 14px;border-radius:6px;border:1px solid rgba(43,36,48,0.22);background:#FBF6F2;font-size:16px;color:#2B2430">
+              <option>Baby shower</option>
+              <option>Revelación de género</option>
+              <option>Primer añito</option>
+            </select>
+          </label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600;color:rgba(43,36,48,0.82)">Zona
+            <select style="height:52px;padding:0 14px;border-radius:6px;border:1px solid rgba(43,36,48,0.22);background:#FBF6F2;font-size:16px;color:#2B2430">
+              <option>Asunción</option>
+              <option>Fernando de la Mora</option>
+              <option>Lambaré</option>
+              <option>San Lorenzo</option>
+              <option>Luque</option>
+              <option>Mariano Roque Alonso</option>
+              <option>Capiatá</option>
+            </select>
+          </label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600;color:rgba(43,36,48,0.82)">Mensaje (opcional)
+            <textarea rows="4" style="padding:12px 14px;border-radius:6px;border:1px solid rgba(43,36,48,0.22);background:#FBF6F2;font-size:16px;color:#2B2430;resize:vertical"></textarea>
+          </label>
+        </div>
+        <button style="margin-top:18px;width:100%;height:52px;border-radius:6px;border:none;background:#D97B6C;color:#2B2430;font-size:17px;font-weight:600;cursor:pointer">Enviar consulta</button>
+        <p style="margin:12px 0 0 0;font-size:14px;line-height:1.5;color:rgba(43,36,48,0.75)">Te respondemos por WhatsApp al número que nos dejás</p>
+      </div>
+    </section>
+
+    <footer style="border-top:1px solid rgba(43,36,48,0.10);padding:40px 16px 132px 16px">
+      <div style="font-family:'Instrument Serif',Georgia,serif;font-size:23px;line-height:1">Baby Shower.com.py</div>
+      <p style="margin:12px 0 0 0;font-size:15px;line-height:1.6;color:rgba(43,36,48,0.80)">Baby Shower Paraguay, sitio operado desde Asunción<br>Atendemos en Asunción y Gran Asunción<br>Lun a Sáb 8:00 a 20:00<br>+595 992 279 599</p>
+      <div style="margin-top:20px;display:flex;flex-direction:column">
+        <a href="#como-funciona-m" style="display:flex;align-items:center;height:48px;font-size:16px;border-top:1px solid rgba(43,36,48,0.10)">Cómo funciona</a>
+        <a href="#faq-m" style="display:flex;align-items:center;height:48px;font-size:16px;border-top:1px solid rgba(43,36,48,0.10)">Preguntas frecuentes</a>
+        <a href="#privacidad-m" style="display:flex;align-items:center;height:48px;font-size:16px;border-top:1px solid rgba(43,36,48,0.10)">Privacidad</a>
+        <a href="#terminos-m" style="display:flex;align-items:center;height:48px;font-size:16px;border-top:1px solid rgba(43,36,48,0.10)">Términos</a>
+        <a href="#cookies-m" style="display:flex;align-items:center;height:48px;font-size:16px;border-top:1px solid rgba(43,36,48,0.10)">Preferencias de cookies</a>
+      </div>
+    </footer>
+
+    <sc-if value="{{ floatingWa }}" hint-placeholder-val="{{ true }}">
+      <a href="#contacto-m" aria-label="Consultá por WhatsApp" style="position:absolute;right:16px;bottom:104px;z-index:40;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(43,36,48,0.18),0 14px 30px rgba(43,36,48,0.22)">
+        <span style="width:24px;height:21px;background:#FFFFFF;border-radius:50% 50% 50% 4px"></span>
+      </a>
+    </sc-if>
+
+    <div style="position:absolute;left:0;right:0;bottom:0;z-index:45;background:rgba(251,246,242,0.96);backdrop-filter:blur(10px);border-top:1px solid rgba(43,36,48,0.10);padding:12px 16px;display:flex;gap:10px">
+      <a href="#contacto-m" style="flex:1.2;display:flex;align-items:center;justify-content:center;gap:8px;height:52px;border-radius:6px;background:#D97B6C;color:#2B2430;font-size:16px;font-weight:600">
+        <span style="width:20px;height:20px;border-radius:50%;background:#25D366;display:inline-flex;align-items:center;justify-content:center;flex:none"><span style="width:9px;height:8px;background:#FFFFFF;border-radius:50% 50% 50% 2px"></span></span>
+        Consultá por WhatsApp
+      </a>
+      <a href="#calculadora-m" style="flex:1;display:flex;align-items:center;justify-content:center;height:52px;border-radius:6px;border:1px solid rgba(43,36,48,0.30);font-size:16px;font-weight:600;text-align:center">Calculá tu estimación</a>
+    </div>
+
+  </div>
+</section>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;frames&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Ambos&quot;,&quot;Solo desktop&quot;,&quot;Solo mobile&quot;],&quot;default&quot;:&quot;Ambos&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Canvas&quot;},&quot;floatingWa&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Canvas&quot;},&quot;perGuest&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:32000,&quot;min&quot;:0,&quot;max&quot;:80000,&quot;step&quot;:1000,&quot;unit&quot;:&quot;Gs.&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Calculadora&quot;}}">
+class Component extends DCLogic {
+  state = {
+    d: { pkg: 'estrella', guests: 30, addons: {}, zone: 'asuncion' },
+    m: { pkg: 'estrella', guests: 30, addons: {}, zone: 'asuncion' },
+    faqD: 0,
+    faqM: 0,
+    navOpen: false
+  };
+
+  PKGS = {
+    nube: { n: 'Combo Nube', p: 1150000, g: 30 },
+    estrella: { n: 'Combo Estrella', p: 1850000, g: 30 },
+    sueno: { n: 'Combo Sueño', p: 2750000, g: 40 }
+  };
+  ADDONS = [
+    { k: 'torta', key: 'Torta', n: 'Torta temática', p: 420000 },
+    { k: 'souvenirs', key: 'Souvenirs', n: 'Souvenirs para 30', p: 310000 },
+    { k: 'letrero', key: 'Letrero', n: 'Letrero con el nombre', p: 180000 },
+    { k: 'fotos', key: 'Fotos', n: 'Cobertura de fotos 1 h', p: 490000 }
+  ];
+  ZONES = {
+    asuncion: { n: 'Asunción', p: 0 },
+    fernando: { n: 'Fernando de la Mora', p: 0 },
+    lambare: { n: 'Lambaré', p: 0 },
+    sanlorenzo: { n: 'San Lorenzo', p: 120000 },
+    luque: { n: 'Luque', p: 140000 },
+    mra: { n: 'Mariano Roque Alonso', p: 160000 },
+    capiata: { n: 'Capiatá', p: 180000 }
+  };
+
+  fmt(n) {
+    const s = String(Math.round(Math.abs(n))).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    return (n < 0 ? '− Gs. ' : 'Gs. ') + s;
+  }
+
+  patch(f, obj) {
+    this.setState(st => ({ [f]: Object.assign({}, st[f], obj) }));
+  }
+
+  calc(f) {
+    const s = this.state[f];
+    const pkg = this.PKGS[s.pkg];
+    const per = Number(this.props.perGuest ?? 32000);
+    const zone = this.ZONES[s.zone] || this.ZONES.asuncion;
+    const delta = s.guests - pkg.g;
+    const rows = [{ label: pkg.n + ', base ' + pkg.g + ' invitados', val: this.fmt(pkg.p) }];
+    let total = pkg.p;
+    if (delta !== 0) {
+      const adj = delta * per;
+      total += adj;
+      rows.push({ label: 'Invitados: ' + s.guests + ' (' + (delta > 0 ? '+' : '−') + Math.abs(delta) + ')', val: (adj > 0 ? '+ ' : '') + this.fmt(adj) });
+    }
+    this.ADDONS.forEach(a => {
+      if (s.addons[a.k]) { total += a.p; rows.push({ label: a.n, val: '+ ' + this.fmt(a.p) }); }
+    });
+    rows.push({ label: 'Traslado — ' + zone.n, val: zone.p ? '+ ' + this.fmt(zone.p) : 'Sin recargo' });
+    total += zone.p;
+
+    const on = '#D97B6C';
+    const off = 'rgba(43,36,48,0.14)';
+    const out = {
+      guests: s.guests,
+      total: this.fmt(total),
+      rows,
+      less: () => this.patch(f, { guests: Math.max(15, s.guests - 1) }),
+      more: () => this.patch(f, { guests: Math.min(60, s.guests + 1) }),
+      setZone: e => this.patch(f, { zone: e.target.value })
+    };
+    ['nube', 'estrella', 'sueno'].forEach(k => {
+      const cap = k === 'nube' ? 'Nube' : k === 'estrella' ? 'Estrella' : 'Sueno';
+      out['pick' + cap] = () => this.patch(f, { pkg: k });
+      out['b' + cap] = s.pkg === k ? on : off;
+      out['d' + cap] = s.pkg === k ? on : 'transparent';
+    });
+    this.ADDONS.forEach(a => {
+      out['tg' + a.key] = () => this.patch(f, { addons: Object.assign({}, s.addons, { [a.k]: !s.addons[a.k] }) });
+      out['b' + a.key] = s.addons[a.k] ? on : off;
+      out['f' + a.key] = s.addons[a.k] ? on : 'transparent';
+    });
+    return out;
+  }
+
+  faq(f, key) {
+    const open = this.state[key];
+    const o = {};
+    for (let i = 0; i < 6; i++) {
+      o['o' + i] = open === i;
+      o['i' + i] = open === i ? '–' : '+';
+      o['t' + i] = () => this.setState(st => ({ [key]: st[key] === i ? -1 : i }));
+    }
+    return o;
+  }
+
+  renderVals() {
+    const frames = this.props.frames ?? 'Ambos';
+    return {
+      showDesktop: frames !== 'Solo mobile',
+      showMobile: frames !== 'Solo desktop',
+      floatingWa: this.props.floatingWa ?? true,
+      navOpen: this.state.navOpen,
+      toggleNav: () => this.setState(st => ({ navOpen: !st.navOpen })),
+      cd: this.calc('d'),
+      cm: this.calc('m'),
+      fd: this.faq('d', 'faqD'),
+      fm: this.faq('m', 'faqM')
+    };
+  }
+}
+</script>
+</body>
+</html>
