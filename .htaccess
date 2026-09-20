@@ -1,0 +1,12 @@
+Options -Indexes
+RewriteEngine On
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} !^babyshower\.com\.py$ [NC]
+RewriteRule ^ https://babyshower.com.py%{REQUEST_URI} [R=301,L,NE]
+
+<FilesMatch "(?i)(^leads\.log$|\.mjs$|^vendercrm-config.*\.php$)">
+  Require all denied
+</FilesMatch>
+
+ErrorDocument 404 /404.html
+AddDefaultCharset UTF-8

@@ -1,0 +1,226 @@
+[
+  {
+    "route": "/",
+    "output": "index.html",
+    "phase": "B1",
+    "indexable": true,
+    "built": true
+  },
+  {
+    "route": "/como-funciona/",
+    "output": "como-funciona/index.html",
+    "phase": "B1",
+    "indexable": true,
+    "built": true
+  },
+  {
+    "route": "/contacto/",
+    "output": "contacto/index.html",
+    "phase": "B1",
+    "indexable": true,
+    "built": true
+  },
+  {
+    "route": "/preguntas-frecuentes/",
+    "output": "preguntas-frecuentes/index.html",
+    "phase": "B1",
+    "indexable": true,
+    "built": true
+  },
+  {
+    "route": "/privacidad/",
+    "output": "privacidad/index.html",
+    "phase": "B1",
+    "indexable": true,
+    "built": true
+  },
+  {
+    "route": "/terminos/",
+    "output": "terminos/index.html",
+    "phase": "B1",
+    "indexable": true,
+    "built": true
+  },
+  {
+    "route": "/combos-y-precios/",
+    "output": "combos-y-precios/index.html",
+    "phase": "B2",
+    "indexable": true,
+    "built": false
+  },
+  {
+    "route": "/revelacion-de-genero/",
+    "output": "revelacion-de-genero/index.html",
+    "phase": "B2",
+    "indexable": true,
+    "built": false
+  },
+  {
+    "route": "/primer-anito/",
+    "output": "primer-anito/index.html",
+    "phase": "B2",
+    "indexable": true,
+    "built": false
+  },
+  {
+    "route": "/tematicas/",
+    "output": "tematicas/index.html",
+    "phase": "B3",
+    "indexable": true,
+    "built": false
+  },
+  {
+    "route": "/tematicas/jefe-en-panales/",
+    "output": "tematicas/jefe-en-panales/index.html",
+    "phase": "B3",
+    "indexable": true,
+    "built": false
+  },
+  {
+    "route": "/tematicas/dino-bebe/",
+    "output": "tematicas/dino-bebe/index.html",
+    "phase": "B3",
+    "indexable": true,
+    "built": false
+  },
+  {
+    "route": "/tematicas/moana-bebe/",
+    "output": "tematicas/moana-bebe/index.html",
+    "phase": "B3",
+    "indexable": true,
+    "built": false
+  },
+  {
+    "route": "/tematicas/minnie-bebe/",
+    "output": "tematicas/minnie-bebe/index.html",
+    "phase": "B3",
+    "indexable": true,
+    "built": false
+  },
+  {
+    "route": "/tematicas/mickey-bebe/",
+    "output": "tematicas/mickey-bebe/index.html",
+    "phase": "B3",
+    "indexable": true,
+    "built": false
+  },
+  {
+    "route": "/tematicas/blanca-nieves-bebe/",
+    "output": "tematicas/blanca-nieves-bebe/index.html",
+    "phase": "B3",
+    "indexable": true,
+    "built": false
+  },
+  {
+    "route": "/tematicas/frutillita-bebe/",
+    "output": "tematicas/frutillita-bebe/index.html",
+    "phase": "B3",
+    "indexable": true,
+    "built": false
+  },
+  {
+    "route": "/tematicas/mariposas/",
+    "output": "tematicas/mariposas/index.html",
+    "phase": "B3",
+    "indexable": true,
+    "built": false
+  },
+  {
+    "route": "/tematicas/safari/",
+    "output": "tematicas/safari/index.html",
+    "phase": "B3",
+    "indexable": true,
+    "built": false
+  },
+  {
+    "route": "/tematicas/nubes-y-ositos/",
+    "output": "tematicas/nubes-y-ositos/index.html",
+    "phase": "B3",
+    "indexable": true,
+    "built": false
+  },
+  {
+    "route": "/zonas/",
+    "output": "zonas/index.html",
+    "phase": "B3",
+    "indexable": true,
+    "built": false
+  },
+  {
+    "route": "/zonas/asuncion/",
+    "output": "zonas/asuncion/index.html",
+    "phase": "B3",
+    "indexable": true,
+    "built": false
+  },
+  {
+    "route": "/zonas/luque/",
+    "output": "zonas/luque/index.html",
+    "phase": "B3",
+    "indexable": true,
+    "built": false
+  },
+  {
+    "route": "/zonas/san-lorenzo/",
+    "output": "zonas/san-lorenzo/index.html",
+    "phase": "B3",
+    "indexable": true,
+    "built": false
+  },
+  {
+    "route": "/zonas/fernando-de-la-mora/",
+    "output": "zonas/fernando-de-la-mora/index.html",
+    "phase": "B3",
+    "indexable": true,
+    "built": false
+  },
+  {
+    "route": "/zonas/lambare/",
+    "output": "zonas/lambare/index.html",
+    "phase": "B3",
+    "indexable": true,
+    "built": false
+  },
+  {
+    "route": "/ideas/",
+    "output": "ideas/index.html",
+    "phase": "B4",
+    "indexable": true,
+    "built": false
+  },
+  {
+    "route": "/ideas/ideas-para-baby-shower/",
+    "output": "ideas/ideas-para-baby-shower/index.html",
+    "phase": "B4",
+    "indexable": true,
+    "built": false
+  },
+  {
+    "route": "/ideas/juegos-para-baby-shower/",
+    "output": "ideas/juegos-para-baby-shower/index.html",
+    "phase": "B4",
+    "indexable": true,
+    "built": false
+  },
+  {
+    "route": "/ideas/baby-shower-sencillo-en-casa/",
+    "output": "ideas/baby-shower-sencillo-en-casa/index.html",
+    "phase": "B4",
+    "indexable": true,
+    "built": false
+  },
+  {
+    "route": "/ideas/revelacion-de-genero-sencilla/",
+    "output": "ideas/revelacion-de-genero-sencilla/index.html",
+    "phase": "B4",
+    "indexable": true,
+    "built": false
+  },
+  {
+    "route": "/ideas/que-se-necesita-para-un-baby-shower/",
+    "output": "ideas/que-se-necesita-para-un-baby-shower/index.html",
+    "phase": "B4",
+    "indexable": true,
+    "built": false
+  }
+]

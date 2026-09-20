@@ -1,0 +1,5 @@
+dist/
+node_modules/
+leads.log
+vendercrm-config*.php
+!deploy/vendercrm-config.example.php
