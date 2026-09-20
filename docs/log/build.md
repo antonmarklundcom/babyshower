@@ -188,3 +188,18 @@ Generador incorpora defaults públicos en PHP, mantiene sitemap derivado del man
 - NOT AVAILABLE LOCALLY — php -l lead-forward.php. Anton debe validar PHP alojado y realizar envío real, verificando email + log en Gate A; probar CRM y dedupe cuando configure el hosting.
 
 B5 no se declara completo: ZIP bloqueado por política local y PHP no ejecutado. Q21/configuración de destinatario, correo público, fuentes locales y QA visual/Lighthouse siguen pendientes. Peso máximo HTML+CSS+JS+calc: 72.525 bytes; fuentes locales 0 bytes; imágenes 3.662.259 bytes por separado. No se agrega session id/model/effort: corresponde al manager o Anton desde dispatch.
+
+## 2026-09-19 - B7 - existing imagery placement
+
+Placed 13 approved assets in 24 picture elements: home hero/band, package cards on home and combos, eight theme hub tiles and matching theme heroes. Editorial manifest controls placement and alt_es; webimg manifest supplies filenames, available AVIF/WebP widths and converted dimensions. Home hero alone is eager/high priority; all others lazy/async. Visible Imagen ilustrativa captions, responsive sizes and intrinsic dimensions included. Band retains grain and uses a dark scrim with conservative 5.39:1 contrast even over white imagery/grain. No image generation, downloads, conversions or asset edits. Other image slots and copy unchanged; all HTML regenerated for CSS hash.
+
+Mickey remains blocked and unplaced. Blanca Nieves marked rejected/unplaced for recognisable character silhouette. No references to either image in generated pages; no og:image.
+
+- PASS: node build-site.mjs - 32 routes, 34 HTML outputs, 32 sitemap entries.
+- PASS: node verify.mjs --final - all applicable final checks; max page/CSS/JS weight 79,573 bytes.
+- PASS: powershell -NoProfile -ExecutionPolicy Bypass -File deploy/make-zip.ps1 - 104 entries, all 32 routes, dist/babyshower-2026-09-19.zip.
+- PASS: Node stdin imagery audit - 24 pictures; route scope, formats, existing variants, manifest alt, dimensions, sizes, loading priority, captions and exclusions.
+- FAIL then fixed: initial imagery audit AssertionError on home picture count (actual 4, expected 5); original hero replacement missed a Unicode motif. Corrected renderer and reran all required commands plus audit successfully.
+- FAIL: rg unavailable (CommandNotFoundException); used Select-String/Get-Content.
+- PASS: git diff --check and scope review; changes confined to allowed source/manifest/log and generated HTML (ZIP produced by required deploy command).
+- Existing flags: local fonts absent (Google Fonts fallback); public/notification email Q21 and hosted PHP checks remain manager-owned. No browser visual QA performed in B7.

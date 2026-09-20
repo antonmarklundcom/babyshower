@@ -10,3 +10,17 @@ RewriteRule ^ https://babyshower.com.py%{REQUEST_URI} [R=301,L,NE]
 
 ErrorDocument 404 /404.html
 AddDefaultCharset UTF-8
+
+<IfModule mod_mime.c>
+  AddType image/avif .avif
+  AddType image/webp .webp
+  AddType font/woff2 .woff2
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Asset URLs are versioned; HTML must re-fetch current prices.
+  Header set Cache-Control "public, max-age=31536000, immutable" "expr=%{REQUEST_URI} =~ m#^/assets/#"
+  <FilesMatch "(?i)\.html$">
+    Header set Cache-Control "no-store"
+  </FilesMatch>
+</IfModule>

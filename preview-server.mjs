@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = dirname(fileURLToPath(import.meta.url));
 const port = Number(process.env.PORT || 4173);
-const mime = { '.css':'text/css; charset=utf-8', '.js':'text/javascript; charset=utf-8', '.svg':'image/svg+xml', '.xml':'application/xml; charset=utf-8', '.txt':'text/plain; charset=utf-8', '.webmanifest':'application/manifest+json' };
+const mime = { '.css':'text/css; charset=utf-8', '.js':'text/javascript; charset=utf-8', '.svg':'image/svg+xml', '.webp':'image/webp', '.avif':'image/avif', '.png':'image/png', '.jpg':'image/jpeg', '.jpeg':'image/jpeg', '.woff2':'font/woff2', '.xml':'application/xml; charset=utf-8', '.txt':'text/plain; charset=utf-8', '.webmanifest':'application/manifest+json' };
 
 http.createServer(async (request, response) => {
   try {
@@ -14,7 +14,7 @@ http.createServer(async (request, response) => {
     const safe = normalize(urlPath).replace(/^(\.\.[/\\])+/, '');
     let filePath = join(root, safe);
     const rel = relative(root, filePath);
-    if (rel.startsWith('..') || isAbsolute(rel) || /(?:^|[\\/])\.|\.(?:php|mjs|log)$|vendercrm-config/i.test(rel)) throw new Error('Private path');
+    if (rel.startsWith('..') || isAbsolute(rel) || /(?:^|[\\/])\.|\.(?:php|mjs|log)$|vendercrm-config/i.test(rel) || /^(?:plan|docs|codex-input|dist|deploy)(?:[\\/]|$)/i.test(rel)) throw new Error('Private path');
     try { if ((await stat(filePath)).isDirectory()) filePath = join(filePath, 'index.html'); } catch {}
     if (!extname(filePath)) filePath += '.html';
     const data = await readFile(filePath);

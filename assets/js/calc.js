@@ -15,12 +15,12 @@
   const included = data.ADDONS.filter(a => pkg.bundled.includes(a.id));
   const list = [...selected.map(a => a.name), ...included.map(a => a.name + ' (incluido)')].join(', ') || 'ninguno';
   const whatsapp = `Hola, usé la calculadora de babyshower.com.py (${input.route || '/'}): ${pkg.name}, ${guests} invitados, adicionales: ${list}, zona ${zone.name}. ` + (custom ? `Te cotizamos por WhatsApp. (${data.PRICES.label}). Fecha tentativa: ____` : `Estimación ${money(total)} (${data.PRICES.label}). Fecha tentativa: ____ ${caption}`);
-  return { guests, custom, total, disabledAddons: pkg.bundled.slice(), whatsapp, caption, label: data.PRICES.label, cta: custom ? 'Pedir cotización' : data.primaryCta,
-   breakdown: custom ? [] : [[pkg.name, pkg.price], ['Invitados extra', extra], ...selected.map(a => [a.name, a.price]), ...included.map(a => [a.name + ' (incluido)', 0]), ['Traslado (recargo estimado)', zone.delivery]], food: data.EXTRA_FOOD?.[pkg.id] || '' };
+  return { guests, custom, total, disabledAddons: pkg.bundled.slice(), whatsapp, caption, label: data.PRICES.label, zeroPriceLabel: data.zeroPriceLabel, cta: custom ? 'Pedir cotización' : data.primaryCta,
+   breakdown: custom ? [] : [[pkg.name, pkg.price], ['Invitados extra', extra, pkg.extra === 0 ? data.zeroGuestCaptions?.[pkg.id] : null], ...selected.map(a => [a.name, a.price]), ...included.map(a => [a.name + ' (incluido)', 0]), ['Traslado (recargo estimado)', zone.delivery]], food: data.EXTRA_FOOD?.[pkg.id] || '' };
  }
  function render(state) {
   if (state.custom) return `<p>Para ${state.guests} invitados te cotizamos por WhatsApp</p><p>${escape(state.label)}</p>`;
-  return `<dl class="calc-breakdown">${state.breakdown.map(([label, amount]) => `<div><dt>${escape(label)}</dt><dd>${money(amount)}</dd></div>`).join('')}</dl><p class="calc-total">${money(state.total)}</p><p>${escape(state.caption)}</p><p>${escape(state.label)}</p>${state.food ? `<p>${escape(state.food)}</p>` : ''}`;
+  return `<dl class="calc-breakdown">${state.breakdown.map(([label, amount, note]) => `<div><dt>${escape(label)}</dt><dd>${note ? escape(note) : amount === 0 ? escape(state.zeroPriceLabel || '') : money(amount)}</dd></div>`).join('')}</dl><p class="calc-total">${money(state.total)}</p><p>${escape(state.caption)}</p><p>${escape(state.label)}</p>${state.food ? `<p>${escape(state.food)}</p>` : ''}`;
  }
  function mount(root, data) {
   const q = s => root.querySelector(s), qa = s => Array.from(root.querySelectorAll(s));

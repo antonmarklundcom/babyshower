@@ -17,7 +17,8 @@
     "ledger_checked": "2026-09-19 21:34Z: this session = 15 spend lines (2 x 1.5 + 13 x 1 = 16) + 1 refund of 1 for the blocked Mickey job = 15 net, all named GPT Image 2.5 Sunburst. Ledger also shows 12 lines at 21:33:45Z (11 x 1 + 1 x 1.5 = 12.5) from a parallel session generating comida.com.py catering images; not babyshower.",
     "download_status": "done: 2026-09-19, all 14 generated images converted into assets/img with local webimg (AVIF+WebP; hero/band at 640/1280/1920, cards at 640/1168 to avoid upscaling from the 1168px source). Per-image alt text in assets/img/manifest.json. tema-mickey-bebe has no image. Not committed: babyshower is not a git repository (Anton chose to skip).",
     "rule0_check": "2026-09-19: no babyshower generations exist. Ledger entries from 2026-09-16 (GPT Image 2.5 Sunburst, 2k 16:9, 2688x1520) belong to an unrelated building-materials site.",
-    "observed_2k_16x9_size": "2688x1520 (from the 2026-09-16 jobs on this account); 1k 4:3 size still to be measured on the first pilot image"
+    "observed_2k_16x9_size": "2688x1520 (from the 2026-09-16 jobs on this account); 1k 4:3 size still to be measured on the first pilot image",
+    "placement": "B7 2026-09-19: 13 approved images placed using assets/img/manifest.json variants: home hero/band, three package cards on / and /combos-y-precios/, eight theme tiles on /tematicas/ and matching theme heroes. Other slots unchanged. Mickey blocked; Blanca Nieves rejected for recognisable character silhouette, never rendered. No og:image."
   },
   "images": [
     {
@@ -40,7 +41,8 @@
       "width": 2688,
       "height": 1520,
       "ledger_display_name": "GPT Image 2.5 Sunburst",
-      "ledger_credits": 1.5
+      "ledger_credits": 1.5,
+      "placed": true
     },
     {
       "id": "hero-revelacion-genero",
@@ -62,7 +64,8 @@
       "width": null,
       "height": null,
       "ledger_display_name": null,
-      "ledger_credits": null
+      "ledger_credits": null,
+      "placed": false
     },
     {
       "id": "hero-primer-anito",
@@ -84,7 +87,8 @@
       "width": null,
       "height": null,
       "ledger_display_name": null,
-      "ledger_credits": null
+      "ledger_credits": null,
+      "placed": false
     },
     {
       "id": "band-montaje",
@@ -106,7 +110,8 @@
       "width": 2688,
       "height": 1152,
       "ledger_display_name": "GPT Image 2.5 Sunburst",
-      "ledger_credits": 1.5
+      "ledger_credits": 1.5,
+      "placed": true
     },
     {
       "id": "combo-nube",
@@ -128,7 +133,8 @@
       "width": 1168,
       "height": 880,
       "ledger_display_name": "GPT Image 2.5 Sunburst",
-      "ledger_credits": 1
+      "ledger_credits": 1,
+      "placed": true
     },
     {
       "id": "combo-estrella",
@@ -150,7 +156,8 @@
       "width": 1168,
       "height": 880,
       "ledger_display_name": "GPT Image 2.5 Sunburst",
-      "ledger_credits": 1
+      "ledger_credits": 1,
+      "placed": true
     },
     {
       "id": "combo-sueno",
@@ -172,7 +179,8 @@
       "width": 1168,
       "height": 880,
       "ledger_display_name": "GPT Image 2.5 Sunburst",
-      "ledger_credits": 1
+      "ledger_credits": 1,
+      "placed": true
     },
     {
       "id": "kit-sorpresa",
@@ -194,7 +202,8 @@
       "width": null,
       "height": null,
       "ledger_display_name": null,
-      "ledger_credits": null
+      "ledger_credits": null,
+      "placed": false
     },
     {
       "id": "revelacion-completa",
@@ -216,7 +225,8 @@
       "width": null,
       "height": null,
       "ledger_display_name": null,
-      "ledger_credits": null
+      "ledger_credits": null,
+      "placed": false
     },
     {
       "id": "tema-jefe-en-panales",
@@ -238,7 +248,8 @@
       "width": 1168,
       "height": 880,
       "ledger_display_name": "GPT Image 2.5 Sunburst",
-      "ledger_credits": 1
+      "ledger_credits": 1,
+      "placed": true
     },
     {
       "id": "tema-dino-bebe",
@@ -260,7 +271,8 @@
       "width": 1168,
       "height": 880,
       "ledger_display_name": "GPT Image 2.5 Sunburst",
-      "ledger_credits": 1
+      "ledger_credits": 1,
+      "placed": true
     },
     {
       "id": "tema-moana-bebe",
@@ -282,7 +294,8 @@
       "width": 1168,
       "height": 880,
       "ledger_display_name": "GPT Image 2.5 Sunburst",
-      "ledger_credits": 1
+      "ledger_credits": 1,
+      "placed": true
     },
     {
       "id": "tema-minnie-bebe",
@@ -305,7 +318,8 @@
       "height": 880,
       "ledger_display_name": "GPT Image 2.5 Sunburst",
       "ledger_credits": 1,
-      "review": "Flag: cake has a number 1 candle (reads as first birthday, numeral in image). Used in design export pending Anton decision."
+      "review": "Flag: cake has a number 1 candle (reads as first birthday, numeral in image). Used in design export pending Anton decision.",
+      "placed": true
     },
     {
       "id": "tema-mickey-bebe",
@@ -329,7 +343,8 @@
       "ledger_display_name": "GPT Image 2.5 Sunburst",
       "ledger_credits": 0,
       "failed_job_id": "e18af0b4-3a8a-4166-9452-7b1c271be861",
-      "review": "Job returned status nsfw (provider filter, likely the Mickey palette); no image; 1 credit charged then refunded. job_id left null so a retry is possible after Anton yes."
+      "review": "Job returned status nsfw (provider filter, likely the Mickey palette); no image; 1 credit charged then refunded. job_id left null so a retry is possible after Anton yes.",
+      "placed": false
     },
     {
       "id": "tema-blanca-nieves-bebe",
@@ -345,14 +360,15 @@
       "quality": "medium",
       "resolution": "1k",
       "prompt": "Editorial event photography, photorealistic, 35mm lens, f/2.8, natural late-afternoon light through a Paraguayan quincho, warm cream palette, soft pastel accents, neatly styled, no people faces, no text, no logos, no watermark, high detail on fabric and balloon texture, slight film grain. Red apples, royal blue and yellow fabric, forest greenery, small tabletop vignette, theme palette, 4:3, quincho light. Avoid: cartoon, illustration, 3D render, neon, oversaturated, plastic look, garbled text, letters, logos, faces, children, crowd, cluttered, cheap party store look, fluorescent lighting, motion blur, low resolution.",
-      "status": "generated",
+      "status": "rejected",
       "job_id": "6c6b5e7e-df26-4994-9983-9328d2445f40",
       "url": "https://d8j0ntlcm91z4.cloudfront.net/user_349VrHjTFIpx9q71lpfpAXcLXvR/hf_20260919_213411_6c6b5e7e-df26-4994-9983-9328d2445f40.png",
       "width": 1168,
       "height": 880,
       "ledger_display_name": "GPT Image 2.5 Sunburst",
       "ledger_credits": 1,
-      "review": "REJECT pending Anton: backdrop shows a framed Snow White silhouette holding an apple (recognisable character + human figure). Not used in design export; retry needs Anton yes."
+      "review": "REJECT pending Anton: backdrop shows a framed Snow White silhouette holding an apple (recognisable character + human figure). Not used in design export; retry needs Anton yes.",
+      "placed": false
     },
     {
       "id": "tema-frutillita-bebe",
@@ -374,7 +390,8 @@
       "width": 1168,
       "height": 880,
       "ledger_display_name": "GPT Image 2.5 Sunburst",
-      "ledger_credits": 1
+      "ledger_credits": 1,
+      "placed": true
     },
     {
       "id": "tema-mariposas",
@@ -396,7 +413,8 @@
       "width": 1168,
       "height": 880,
       "ledger_display_name": "GPT Image 2.5 Sunburst",
-      "ledger_credits": 1
+      "ledger_credits": 1,
+      "placed": true
     },
     {
       "id": "tema-safari",
@@ -418,7 +436,8 @@
       "width": 1168,
       "height": 880,
       "ledger_display_name": "GPT Image 2.5 Sunburst",
-      "ledger_credits": 1
+      "ledger_credits": 1,
+      "placed": true
     },
     {
       "id": "tema-nubes-y-ositos",
@@ -440,7 +459,8 @@
       "width": 1168,
       "height": 880,
       "ledger_display_name": "GPT Image 2.5 Sunburst",
-      "ledger_credits": 1
+      "ledger_credits": 1,
+      "placed": true
     },
     {
       "id": "zona-asuncion",
@@ -462,7 +482,8 @@
       "width": null,
       "height": null,
       "ledger_display_name": null,
-      "ledger_credits": null
+      "ledger_credits": null,
+      "placed": false
     },
     {
       "id": "zona-luque",
@@ -484,7 +505,8 @@
       "width": null,
       "height": null,
       "ledger_display_name": null,
-      "ledger_credits": null
+      "ledger_credits": null,
+      "placed": false
     },
     {
       "id": "zona-san-lorenzo",
@@ -506,7 +528,8 @@
       "width": null,
       "height": null,
       "ledger_display_name": null,
-      "ledger_credits": null
+      "ledger_credits": null,
+      "placed": false
     },
     {
       "id": "zona-fernando-de-la-mora",
@@ -528,7 +551,8 @@
       "width": null,
       "height": null,
       "ledger_display_name": null,
-      "ledger_credits": null
+      "ledger_credits": null,
+      "placed": false
     },
     {
       "id": "zona-lambare",
@@ -550,7 +574,8 @@
       "width": null,
       "height": null,
       "ledger_display_name": null,
-      "ledger_credits": null
+      "ledger_credits": null,
+      "placed": false
     },
     {
       "id": "idea-juegos-para-baby-shower",
@@ -572,7 +597,8 @@
       "width": null,
       "height": null,
       "ledger_display_name": null,
-      "ledger_credits": null
+      "ledger_credits": null,
+      "placed": false
     },
     {
       "id": "idea-baby-shower-sencillo-en-casa",
@@ -594,7 +620,8 @@
       "width": null,
       "height": null,
       "ledger_display_name": null,
-      "ledger_credits": null
+      "ledger_credits": null,
+      "placed": false
     },
     {
       "id": "idea-revelacion-de-genero-sencilla",
@@ -616,7 +643,8 @@
       "width": null,
       "height": null,
       "ledger_display_name": null,
-      "ledger_credits": null
+      "ledger_credits": null,
+      "placed": false
     },
     {
       "id": "idea-que-se-necesita-para-un-baby-shower",
@@ -638,7 +666,8 @@
       "width": null,
       "height": null,
       "ledger_display_name": null,
-      "ledger_credits": null
+      "ledger_credits": null,
+      "placed": false
     },
     {
       "id": "idea-ideas-para-baby-shower",
@@ -660,7 +689,8 @@
       "width": null,
       "height": null,
       "ledger_display_name": null,
-      "ledger_credits": null
+      "ledger_credits": null,
+      "placed": false
     },
     {
       "id": "og",
@@ -672,7 +702,8 @@
       "target_px": "1200x630",
       "source": "crop-of-hero-baby-shower-quincho",
       "note": "07-IMAGERY.md defines og as a crop of hero-baby-shower-quincho, so no generation and no credits. Room on the left for the title overlay is added in CSS.",
-      "status": "planned"
+      "status": "planned",
+      "placed": false
     }
   ]
 }
