@@ -1,190 +1,202 @@
-# Triage of docs/codex-review-ideas.md against the built site (Fable 5.1, 2026-09-19)
+# Triage of docs/codex-review-ideas.md against the built site (Fable 5.1)
 
-Verdicts: DONE (built site already does it) · NOW (before the next commit) · GATE-A (before organic publication) · LATER · REJECT.
-"obsolete" = the idea targeted docs/opus-home-preview.html or the DESIGN-FINAL prompt and the generator never had the defect.
+Revision 2, 2026-09-20, after Batch 1 (home composition) and Batch 2 (labels, form, consent). Supersedes the 2026-09-19 revision. Verified against the preview at http://localhost:4173/ (home, combos, mickey-bebe, luque, revelación, añito, temáticas, cómo funciona, privacidad, zonas, juegos guide) at 375 px and desktop.
+
+Verdicts: DONE (built site already does it) · NOW (before the next commit) · GATE-A (before organic publication) · LATER · REJECT · PART-3 / PART-5 (argued in the manager review of 2026-09-20).
+"obsolete" = the idea targeted docs/opus-home-preview.html or a DESIGN-FINAL prompt and the generator never had the defect.
+"Batch 1" / "Batch 2" = closed by that batch since revision 1.
 
 ## Part A (1–100)
 
 | # | Verdict | Reason |
 |---|---|---|
 | 1 | DONE (obsolete) | Home renders STEPS from content.mjs, the four inquiry steps. |
-| 2 | NOW | Hero sub quotes Gs. 1.850.000 without naming Combo Estrella. Add the name in UI.hero. |
-| 3 | NOW | Hero sub is one 5-sentence paragraph on a 375px phone; split into offer line + caption + promise. Not a §0 reversal, §0 fixes wording not layout. |
-| 4 | LATER | FAQ 2 already says "sin pedir seña"; placing it under the hero is optional. |
-| 5 | LATER | Descriptors help but the cards already open with deliverables. |
-| 6 | See part 3 | §0 decision; I argue to change it. |
-| 7 | See part 3 | Same. |
+| 2 | DONE (Batch 1) | UI.hero line 1 names Combo Estrella before the amount. |
+| 3 | DONE (Batch 1) | Hero sub is three paragraphs: offer, caption, promise. |
+| 4 | LATER | FAQ 2 already says "sin pedir seña". |
+| 5 | LATER | Cards open with deliverables; descriptors optional. |
+| 6 | PART-3 | §0 badge; argued to change. |
+| 7 | PART-3 | §0 "Todo listo"; argued to change. |
 | 8 | DONE (obsolete) | UI.band is the approved sentence. |
 | 9 | DONE (obsolete) | Heading is "Preguntas frecuentes". |
-| 10 | LATER | Step 3 body already says "Conversamos sobre el alcance y la disponibilidad". |
-| 11 | LATER | Nice, not needed for launch. |
-| 12 | LATER | Same. |
-| 13 | DONE | "fondo decorativo" replaced backdrop everywhere. |
-| 14 | LATER | Nube card is adjacent; low value. |
-| 15 | GATE-A | Mobile bar and hero say "Calculá tu precio" while the result is an estimate; UI.calc → "Calculá tu estimación". §0 does not fix this label. |
-| 16 | NOW | Generator hardcodes "Calculá tu precio en 30 segundos" (build-site.mjs calculator()) while content.mjs already defines UI.calcTitle = "Consultá tu estimación" and never uses it. Bug, not taste. |
-| 17 | DONE | Verified in browser: 45 guests hides total, shows custom-quote copy and CTA. |
-| 18 | DONE | Verified: zona otra → custom quote, WA text carries no number. |
-| 19 | DONE | calc.js disables bundled add-ons per package; verify --calc fixtures cover switching. |
-| 20 | LATER | One line under the total; low cost, low urgency. |
-| 21 | DONE (partial) | Table says "30 (solo decoración)"; card chip still "Hasta 30 invitados en el lugar". Acceptable. |
-| 22 | LATER | Breakdown shows "Invitados extra: Sin costo adicional" for 15 guests; a one-line note would help. |
-| 23 | DONE | EXTRA_FOOD rendered in table and calculator. |
-| 24 | LATER | Nice to have. |
-| 25 | DONE (partial) | Units are shown; "complete meal" is never claimed. |
+| 10 | LATER | Step 3 body already covers it. |
+| 11 | LATER | |
+| 12 | LATER | |
+| 13 | DONE | "fondo decorativo" everywhere. |
+| 14 | LATER | |
+| 15 | DONE (Batch 2) | UI.calc = "Calculá tu estimación" in hero and mobile bar. |
+| 16 | DONE (Batch 1) | Calculator heading is UI.calcTitle. |
+| 17 | DONE | 45 guests hides the total, custom-quote copy and CTA. |
+| 18 | DONE | Zona otra → custom quote, WA text carries no number. |
+| 19 | DONE | Bundled add-ons disabled per package; fixtures cover switching. |
+| 20 | NOW | Calculator result shows a bare "Gs. 1.850.000" with no scope line. One sentence in calc.js render(): estimate covers combo + selected add-ons + traslado, not venue or furniture. |
+| 21 | DONE (partial) | Table says "30 (solo decoración)". |
+| 22 | NOW | At 15 guests on Estrella the breakdown reads "Invitados extra: Sin costo adicional.", which implies guests are free. Add "El combo cubre hasta N invitados; con menos, la estimación no baja." in calc.js. |
+| 23 | DONE | EXTRA_FOOD in table and calculator. |
+| 24 | LATER | |
+| 25 | DONE (partial) | Units shown, no "meal" claim. |
 | 26 | LATER | |
 | 27 | LATER | |
-| 28 | DONE (partial) | Zone pages show the surcharge line and "ya incluyen este recargo"; base is not split out. Fine. |
-| 29 | LATER | Souvenirs stay 40 above 40 guests; not stated. |
-| 30 | DONE | Add-on is named "Souvenirs personalizados x30". |
+| 28 | NOW | Estrella reads Gs. 1.890.000 on /zonas/luque/ and Gs. 1.850.000 on every other page; the card itself does not reconcile them. In cards() when delivery > 0 add "Gs. 1.850.000 + Gs. 40.000 de traslado estimado" under the caption. |
+| 29 | LATER | |
+| 30 | DONE | "Souvenirs personalizados x30". |
 | 31 | LATER | |
-| 32 | GATE-A | "Hora extra de coordinadora" is sold as an add-on for Nube and Estrella, which have no coordinator. Either restrict to Sueño or relabel "Coordinadora por hora". Copy-only, no §0 conflict. |
+| 32 | DONE (Batch 2) | "Coordinadora por hora". |
 | 33 | LATER | |
-| 34 | DONE | COMPARISON rows cover bebidas, souvenirs, coordinación, torta. |
-| 35 | REJECT | Step 5 is a frozen contract and the per-guest price is disclosed. |
-| 36 | See part 3 | §0 caption rule; I agree with Codex for the calculator result. |
-| 37 | LATER | "Imagen ilustrativa" caption plus terms is adequate for inquiry mode. |
-| 38 | GATE-A | One FAQ answer: "Los precios son estimados porque el alcance se confirma con vos antes de cualquier acuerdo." |
+| 34 | DONE | COMPARISON rows. |
+| 35 | REJECT | Step 5 is the frozen contract; per-guest price is disclosed. |
+| 36 | PART-3 | Calculator result caption; argued to change. |
+| 37 | GATE-A | Fold into the /tematicas/ intro line (A46). |
+| 38 | GATE-A | One FAQ sentence explaining why prices are estimates. |
 | 39 | DONE | "Quiénes somos" on /como-funciona/. |
 | 40 | LATER | |
-| 41 | LATER | Real ambiguity (mesa dulce vs mesas y sillas), needs Anton's answer, not copy. |
-| 42 | DONE (obsolete) | Sentence never made it into the generator. |
+| 41 | LATER | Needs Anton's answer on display tables, not copy. |
+| 42 | DONE (obsolete) | |
 | 43 | LATER | |
-| 44 | DONE | FAQ 8 is on /combos-y-precios/. |
+| 44 | DONE | FAQ 8 on /combos-y-precios/. |
 | 45 | LATER | |
-| 46 | GATE-A | Gallery answer only in the full FAQ; add one line on /tematicas/. |
-| 47 | REJECT | A worked "hypothetical proposal" invites misreading as a real quote. |
+| 46 | GATE-A | /tematicas/ has no intro at all; add one line with the gallery answer and "imágenes ilustrativas generadas". |
+| 47 | REJECT | A worked "hypothetical proposal" reads as a quote. |
 | 48 | LATER | |
-| 49 | DONE | Añito FAQ answer is already conditional. |
-| 50 | DONE (obsolete) | Eyebrow is "Qué incluye y qué no incluye". |
-| 51 | NOW | ideas.mjs H1 still "10 juegos … que funcionan de verdad"; the title tag already says "Guía práctica". Align H1. |
+| 49 | DONE | |
+| 50 | DONE (obsolete) | |
+| 51 | DONE (Batch 2) | H1 "10 juegos para baby shower". |
 | 52 | LATER | Plan text. |
-| 53 | REJECT | Abstract; the built families already differ. |
-| 54 | DONE | /zonas/asuncion/ is venue/access content, not a second home. |
-| 55 | DONE | Hub is cards, guide is prose. |
-| 56 | DONE (obsolete) | Nav points to /combos-y-precios/. |
-| 57 | NOW | Home zones section links to /zonas/ but the link text is "Asunción y Gran Asunción" (same as the H2). Relabel "Ver zonas y recargos estimados". |
-| 58 | DONE | Reveal page and guide differ. |
-| 59 | LATER | H1 template ok; revisit with query data. |
+| 53 | REJECT | |
+| 54 | DONE | |
+| 55 | DONE | |
+| 56 | DONE (obsolete) | |
+| 57 | DONE (Batch 1) | "Ver zonas y recargos estimados". |
+| 58 | DONE | |
+| 59 | LATER | Revisit with query data. |
 | 60 | LATER | |
 | 61 | LATER | |
 | 62 | LATER | |
-| 63 | DONE | Five guides have distinct scopes (verified games guide). |
+| 63 | DONE | |
 | 64 | LATER | |
-| 65 | GATE-A | Mobile bar "Calculá tu precio" on /revelacion-de-genero/ and /primer-anito/ sends users to a baby-shower-only calculator. Relabel or hide the bar's secondary link on those two page types. |
-| 66 | NOW | Home FAQ (6) has no link to /preguntas-frecuentes/. Add "Ver todas las preguntas". |
-| 67 | DONE | Hub has both cities with surcharge. |
-| 68 | DONE (obsolete) | Home bento lists all 10 on mobile, no strip. |
-| 69 | DONE | Zone titles lead with the city. |
+| 65 | DONE (Batch 2) | Mobile bar has only WhatsApp on /revelacion-de-genero/ and /primer-anito/. |
+| 66 | DONE (Batch 1) | "Ver todas las preguntas". |
+| 67 | DONE | |
+| 68 | DONE (obsolete) | |
+| 69 | DONE | |
 | 70 | DONE | |
-| 71 | DONE | Zone paragraphs are access checklists, not doorway filler; Jaccard 0.000. |
+| 71 | DONE | Jaccard 0.000, access checklists. |
 | 72 | LATER | Plan text. |
-| 73 | DONE | Guide heading says "rangos de los combos". |
-| 74 | DONE | Games guide gives materials and rules. |
-| 75 | REJECT | Guides landed at 787–836 words without padding. |
+| 73 | DONE | |
+| 74 | DONE | |
+| 75 | REJECT | 787–836 words without padding. |
 | 76 | LATER | |
 | 77 | LATER | |
 | 78 | DONE | |
 | 79 | LATER | |
-| 80 | GATE-A | Anton eyeballs the barrio lists once; Laurelty appears on three zone pages, which is geographically plausible but should be his call. |
+| 80 | GATE-A | Anton eyeballs barrio lists; Laurelty on three pages. |
 | 81 | DONE | |
 | 82 | LATER | |
 | 83 | LATER | Ops. |
 | 84 | LATER | Ops. |
 | 85 | LATER | Imagery round 2. |
 | 86 | LATER | |
-| 87 | DONE | Hero shows arch + sweet table, Estrella scope. |
-| 88 | DONE (obsolete) | No price chip on the image in the build. |
-| 89 | REJECT | Order change buys little; Jefe en Pañales is the highest-volume keyword. |
-| 90 | GATE-A | Manifest flags a number-one candle in tema-minnie-bebe; it sits on a "baby shower y primer añito" page, acceptable, but Anton should confirm. |
-| 91 | DONE | Mickey and Blanca Nieves hub tiles render palette swatches. |
+| 87 | DONE | |
+| 88 | DONE (obsolete) | |
+| 89 | REJECT | |
+| 90 | GATE-A | Minnie number-one candle; Anton confirms. |
+| 91 | DONE (hub) / NOW (page) | Hub tiles show swatches; the theme page hero for Mickey and Blanca Nieves shows nothing. See review item 4. |
 | 92 | LATER | |
-| 93 | LATER | Kit image not generated yet. |
+| 93 | PART-5 | Kit image not generated. |
 | 94 | LATER | |
-| 95 | LATER | Zone images not generated; when they are, caption as venue types. |
+| 95 | PART-5 | Zone images: recommend not generating them. |
 | 96 | LATER | |
 | 97 | LATER | |
-| 98 | DONE (obsolete) | No oversized "24 h" in the build. |
+| 98 | DONE (obsolete) | |
 | 99 | LATER | |
-| 100 | See part 5 | og decision. |
+| 100 | PART-5 | og decision. |
 
 ## Part B (63–140)
 
 | # | Verdict | Reason |
 |---|---|---|
-| 63 | GATE-A | Nobody has looked at 768–1280px; one pass in the browser. |
+| 63 | GATE-A | 768–1280 px pass still not done (Batch 1 audit covered 375 and 1280 only). |
 | 64 | LATER | |
-| 65 | DONE (obsolete) | Same as A68. |
-| 66 | See part 5 | og.jpg decision. |
-| 67 | LATER | Lighthouse mobile 97–99 already covers the practical concern. |
-| 68 | DONE | picture/srcset from assets/img/manifest.json. |
-| 69 | DONE | 640px variant served first. |
-| 70 | DONE | Two families only (DM Sans + Instrument Serif). |
+| 65 | DONE (obsolete) | |
+| 66 | PART-5 | og.jpg must carry its own text; agree. |
+| 67 | LATER | |
+| 68 | DONE | |
+| 69 | DONE | |
+| 70 | DONE | |
 | 71 | LATER | |
-| 72 | DONE | Only the hero is eager. |
-| 73 | DONE | calc.js only on / and /combos-y-precios/ (checked a theme page). |
+| 72 | DONE | |
+| 73 | DONE | |
 | 74 | LATER | |
-| 75 | GATE-A | Anton opens the live site on his Android on mobile data once. |
+| 75 | GATE-A | Anton opens the live site on Android on mobile data. |
 | 76 | LATER | |
-| 77 | GATE-A | Mobile bar + FAB + consent banner + keyboard on the contact form; check on a phone. |
+| 77 | GATE-A | FAB sits over card text on 375 px above the bar; expected, but check with keyboard open on /contacto/. |
 | 78 | REJECT | §3 requires both; FAB opens the menu, bar is the direct action. |
 | 79 | LATER | |
 | 80 | LATER | |
-| 81 | DONE | fieldset/legend in calculator. |
+| 81 | DONE | |
 | 82 | LATER | |
-| 83 | DONE | verify executes keyboard/focus/Escape on the menus. |
-| 84 | DONE (partial) | Sticky first column; no stacked mode. |
+| 83 | DONE | |
+| 84 | DONE (partial) | |
 | 85 | LATER | |
-| 86 | DONE | B5 error summary, inline errors, values preserved. |
-| 87 | DONE | Every wa.me link carries route and offer. |
-| 88 | DONE | Verified message includes extras, label, route, custom-quote state. |
-| 89 | NOW | /gracias.html WhatsApp link is the generic "tengo una consulta" text. Include the SID from the cookie so the chat can be tied to the form. |
-| 90 | DONE (obsolete) | Form built per §8. |
-| 91 | NOW | One line under the form: "Te respondemos por WhatsApp al número que nos dejás." |
-| 92 | NOW | HTML pattern and server regex both reject "0981 234 567". Strip spaces, hyphens, parentheses client- and server-side. |
-| 93 | REJECT | WhatsApp route covers foreign organisers. |
-| 94 | DONE (partial) | Panel foot says "Se abre WhatsApp con el mensaje ya escrito." |
-| 95 | GATE-A | Test in Chrome and Instagram in-app browser. |
-| 96 | LATER | Ops. |
+| 86 | DONE | |
+| 87 | DONE | |
+| 88 | DONE | |
+| 89 | DONE (Batch 2) | Thanks-page WhatsApp link carries the consultation reference. |
+| 90 | DONE (obsolete) | |
+| 91 | DONE (Batch 2) | "Te respondemos por WhatsApp al número que nos dejás". |
+| 92 | DONE (Batch 2) | Separators stripped client and server side. |
+| 93 | REJECT | |
+| 94 | DONE (partial) | |
+| 95 | GATE-A | Chrome and Instagram in-app browser. |
+| 96 | LATER | |
 | 97 | LATER | |
-| 98 | LATER | Ops. |
-| 99 | GATE-A | Anton needs a one-page pre-supplier script before the first lead. |
-| 100 | GATE-A | Decide internally what "24 horas hábiles" means for a Saturday-evening lead. |
+| 98 | LATER | |
+| 99 | GATE-A | One-page pre-supplier reply script. |
+| 100 | GATE-A | Define "24 horas hábiles" for a Saturday-evening lead. |
 | 101 | GATE-A | A queue, even a spreadsheet. |
 | 102 | LATER | |
 | 103 | LATER | |
 | 104–108 | LATER | Gate C. |
 | 109 | LATER | |
 | 110 | LATER | |
-| 111 | LATER | Gate C per plan; brand-plus-city identity is disclosed. |
-| 112 | LATER | Gate C. |
+| 111 | LATER | |
+| 112 | LATER | |
 | 113 | LATER | |
-| 114 | GATE-A | Codex is right that Ley 6534/2020 is the credit-data law; citing only it is wrong. See part 4. |
-| 115 | GATE-A | Verify Ley 7593/2025 and cite it with correct commencement wording. |
-| 116 | LATER | Gate C. |
-| 117 | LATER | Gate C. |
-| 118 | See part 5 | Character names. |
-| 119 | GATE-A | Privacy says "CRM propio"; it should name hosting, email, WhatsApp/Meta and consented Google Analytics. Copy edit. |
+| 114 | GATE-A | Ley 6534/2020 is the credit-data law; wrong citation in privacy, terms and consent copy. |
+| 115 | GATE-A | Verify Ley 7593/2025 wording and commencement; cite it correctly. |
+| 116 | LATER | |
+| 117 | LATER | |
+| 118 | PART-5 | Character names. |
+| 119 | GATE-A | Privacy "CRM propio" should name hosting (Hostinger, Brasil), email, WhatsApp/Meta, VenderCRM, Google Analytics when enabled. |
 | 120 | LATER | |
 | 121 | LATER | |
 | 122 | LATER | |
-| 123 | LATER | Gate B. |
-| 124 | LATER | Gate B. |
+| 123 | LATER | |
+| 124 | LATER | |
 | 125 | LATER | |
 | 126 | LATER | |
-| 127 | DONE | form_submit fires only on the server-set cookie. |
-| 128 | DONE | Event payload is ev_loc and page_path, never the wa.me URL. |
-| 129 | DONE | calc_submit fires on the calculator CTA click only. |
+| 127 | DONE | |
+| 128 | DONE | |
+| 129 | DONE | |
 | 130 | LATER | |
 | 131 | LATER | |
 | 132 | LATER | |
-| 133 | See part 5 | DESIGN-FINAL decision. |
-| 134 | DONE | LAUNCH_MODE and PRICES.mode are separate flags. |
-| 135 | DONE | Log line written first; receipt marks notified separately; retry with same SID re-notifies without a new line. |
-| 136 | GATE-A | sid is empty without JS and the server rejects it as "invalid". Either generate server-side when empty or accept it as a known no-JS limitation with the WhatsApp fallback shown. |
-| 137 | GATE-A | Anton confirms the notification lands in his inbox, not only that mail() returned true. |
+| 133 | PART-5 | DESIGN-FINAL decision. |
+| 134 | DONE | |
+| 135 | DONE | |
+| 136 | GATE-A | Empty sid without JS is rejected as "invalid". |
+| 137 | GATE-A | Until Q21 is configured every form POST ends in the failure state (no mail, no CRM). |
 | 138 | LATER | |
-| 139 | DONE | verify --calc covers switching and zona otra transitions. |
-| 140 | DONE | One generator, hashed assets, all 32 routes regenerated per phase. |
+| 139 | DONE | |
+| 140 | DONE | |
 
-Totals: DONE 62 (of which obsolete 12) · NOW 10 · GATE-A 22 · LATER 71 · REJECT 8 · sent to parts 3/5: 5.
+Totals: DONE 68 (of which obsolete 11, closed by Batch 1/2 12) · NOW 3 · GATE-A 17 · LATER 74 · REJECT 7 · argued in parts 3/5: 9.
+
+## Findings from the build itself, not in the 178 (2026-09-20)
+
+- NOW — Combo Sueño description ends "coordinación del evento (Sueño)". The "(Sueño)" is a spec annotation from BUILD-SPEC §0 copied into customer copy. content.mjs PACKAGES[2].description.
+- NOW — Combo Añito, Kit Sorpresa and Revelación Completa cards have no Exclusiones detail; A2 requires it on every card. build-site.mjs offerCard(), content.mjs ANITO/REVEAL.
+- NOW — /privacidad/ and /terminos/ promise "Preferencias de cookies, en el pie de página" and an analytics consent banner; with ANALYTICS_ID empty neither exists. Make LEGAL text conditional on ANALYTICS_ID. content.mjs LEGAL.
+- NOW — Zone-page WhatsApp text reads "quiero consultar por Luque". build-site.mjs programmatic() cta.
+- NOW — Guides render an empty tinted box labelled "Inspiración ilustrativa" where an image is planned. Drop the box until the image exists. build-site.mjs ideasBody().
+- NOW — Mobile home shows Estrella three times in the first two screens: hero sub, "Estimación orientativa" card, Estrella package card. Hide .home-proposal under 960 px. assets/css/site.css.
