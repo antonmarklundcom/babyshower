@@ -99,3 +99,42 @@ export const EXTRAS = {
  '/404.html': { title: 'Página no encontrada | Baby Shower Paraguay', description: 'La página que buscás no está disponible. Volvé al inicio para ver nuestros combos o escribinos por WhatsApp y contanos tu idea.', h1: 'No encontramos esta página', type: 'notFound' },
  '/gracias.html': { title: 'Gracias por tu consulta | Baby Shower Paraguay', description: 'Gracias por escribir a Baby Shower Paraguay. Te respondemos dentro de 24 horas hábiles para conversar sobre tu propuesta y disponibilidad.', h1: 'Gracias por tu consulta', type: 'thanks' }
 };
+
+export const REVEAL = {
+ intro: 'Una persona de tu confianza nos pasa solo el color por WhatsApp. No nos envíes estudios médicos.',
+ packages: [
+  { id: 'kit', name: 'Kit Sorpresa', price: 390000, description: 'Globo gigante negro con confeti del color + cartel + entrega en Asunción, Fernando de la Mora y Lambaré; otras zonas con recargo estimado. Ideal para una revelación sencilla en casa.' },
+  { id: 'revelacion', name: 'Revelación Completa', price: 690000, description: 'Kit + fondo decorativo + arco pequeño + mesa con 20 dulces + montaje.' }
+ ],
+ cake: { id: 'torta-revelacion', name: 'Torta de revelación', price: 180000 },
+ steps: ['Una persona de tu confianza nos pasa solo el color', 'Consultamos el alcance del kit con vos', 'Coordinamos la entrega o el montaje'],
+ repeat: 'Si volvés con nosotros para el baby shower o el primer añito, te armamos una propuesta con un beneficio que cotizamos en el momento.'
+};
+export const ANITO = { id: 'anito', name: 'Combo Añito', price: 1950000, description: 'Arco y fondo decorativo temáticos, cartel con nombre y número 1, mesa dulce 30 unidades, torta temática, 60 bocaditos, vajilla temática, montaje y desmontaje.', chip: '30 invitados', themes: ['dino-bebe', 'moana-bebe', 'minnie-bebe', 'mickey-bebe', 'safari', 'blanca-nieves-bebe', 'frutillita-bebe'] };
+export const EXTRA_FOOD = { basico: '', estrella: '+1 dulce y +2 salados por invitado extra.', premium: '+2 dulces y +3 salados por invitado extra.' };
+export const COMPARISON = [
+ ['Arco de globos', '2 metros', '3 metros, tres colores', 'Doble arco de 4 metros'],
+ ['Fondo decorativo', 'Incluido', 'Incluido', 'Consultá el alcance'],
+ ['Cartel del bebé', 'Incluido', 'Incluido', 'Acrílico personalizado'],
+ ['Mesa dulce', 'No incluida', '30 unidades', '60 unidades más torta'],
+ ['Bocaditos salados', 'No incluidos', '60 unidades', '120 unidades'],
+ ['Bebidas', 'No incluidas', 'No incluidas', 'Sin alcohol'],
+ ['Vajilla', 'No incluida', 'Descartable temática', 'Consultá el alcance'],
+ ['Juegos', 'No incluidos', '3 juegos impresos', 'Juegos impresos'],
+ ['Souvenirs', 'No incluidos', 'No incluidos', '40 unidades'],
+ ['Coordinación del evento', 'No incluida', 'No incluida', 'Incluida']
+];
+Object.assign(PAGES, {
+ '/combos-y-precios/': { type: 'combos', title: 'Combos y precios de baby shower | Paraguay', h1: 'Combos y precios de baby shower', description: 'Compará las inclusiones de cada combo de baby shower, sus precios estimados y adicionales. Calculá tu propuesta según invitados y zona.', intro: 'Acá podés ver qué incluye cada combo y qué queda fuera de la estimación. El precio final y la disponibilidad se confirman por WhatsApp. Montaje y desmontaje incluidos en la estimación.', faq: [FAQ[0], FAQ[1], FAQ[5], FAQ[7]] },
+ '/revelacion-de-genero/': { type: 'reveal', title: 'Revelación de género en Asunción | Kit y fiesta', h1: 'Revelación de género en Asunción: kit a domicilio o fiesta completa', description: 'Consultá por el Kit Sorpresa o la Revelación Completa en Asunción. Mirá precios estimados y cómo coordinar el color, la entrega y el montaje.', faq: [
+  { q: '¿Cómo se mantiene el secreto?', a: REVEAL.intro },
+  { q: '¿El humo se puede usar en interior?', a: 'No, solo exterior y a confirmar; para interior consultá por globo con confeti.' },
+  { q: '¿Qué información necesitan?', a: 'Fecha tentativa y zona; no necesitamos estudios médicos.' },
+  { q: '¿Puedo sumar la torta?', a: `${REVEAL.cake.name}: ${priceCaption(REVEAL.cake.price)}` }
+ ] },
+ '/primer-anito/': { type: 'anito', title: 'Primer añito con temática | Baby Shower Paraguay', h1: 'Primer añito con temática, listo para disfrutar', description: 'Conocé el Combo Añito para 30 invitados con decoración, torta y bocaditos. Elegí una temática y consultá el precio final y la disponibilidad.', faq: [
+  { q: '¿Puedo elegir cualquier temática?', a: 'Contanos qué temática tenés en mente y confirmamos el alcance por WhatsApp.' },
+  { q: '¿Incluye la torta?', a: 'Sí, 1 piso, hasta 30 porciones.' },
+  { q: '¿Sirve para salón de eventos?', a: 'Sí, coordinamos horario de ingreso con el salón.' }
+ ] }
+});

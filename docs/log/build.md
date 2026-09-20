@@ -104,3 +104,31 @@ Catálogo conservador de toda prosa en párrafos no literal de plan/04, incluida
 ### [REVISAR] Etiquetas breves añadidas
 
 Títulos SEO únicos y etiquetas funcionales en content.mjs: Saltá al contenido; Principal; Información del sitio; Abrí el menú; Cerrar; ¿Qué necesitás?; Mirá los combos y precios; Consultá tu estimación; Temáticas para tu celebración; Revelación; Consultá por una revelación de género; Impuestos y formas de pago; Tus preferencias de cookies; Elegí una opción; Consultá cómo tratamos tus datos; No encontramos esta página. Los demás textos se reutilizan o derivan de plan/04 y sección 0.
+
+## 2026-09-19 — B2 — ofertas y calculadora
+
+Leídas primero sección 0 de BUILD-SPEC y 10-REVISION-V2, luego AGENTS.md, BUILD-SPEC 4–7 y copy 3–6. Sin export de diseño elegido; se conserva la composición de B1. Matriz, adicionales, zonas y PRICES existentes reutilizados; ofertas de revelación y añito agregadas a content.mjs. Service enlazado en las tres ofertas, LocalBusiness solo en inicio; sin Product/Offer ni precio estructurado estimado.
+
+Calculadora en inicio y combos: controles progresivos, rango 15–60 paso 5, invitados conservados al cambiar combo, total oculto sobre máximo o zona otra, torta/souvenirs deshabilitados e incluidos en Sueño sin cargo duplicado, desglose, vigencia y mensaje WA derivados de datos. Sin JS queda enlace a combos y precios visibles en tarjetas. Tabla con desplazamiento horizontal y primera columna fija bajo 640px. Sitemap regenerado por el generador existente a partir de built; no totales codificados.
+
+- PASS — node build-site.mjs: 9 rutas construidas de 32, 11 HTML incluidos especiales, 9 entradas sitemap; conteos del manifiesto.
+- PASS — node verify.mjs --phase B2: checks aplicables; peso máximo 70.048 bytes.
+- PASS — node verify.mjs --phase B2 --calc: seis fixtures y ejecución del controlador real sobre adaptador DOM: cambios de paquete, invitados retenidos, adicionales incluidos, zona otra, salida/WA sin total obsoleto, consentimiento y debounce.
+- PASS — Get-Content, Select-String, Test-Path, git status --short, git diff --stat: lecturas y revisión de alcance; edición Node por stdin.
+- FAIL — rg: The term 'rg' is not recognized; lectura continuada con Select-String.
+- FAIL — python por stdin: The term 'python' is not recognized; no archivos escritos por ese intento; edición realizada con Node.
+- NO DISPONIBLE LOCALMENTE — php -l lead-forward.php; no es PASS. Anton hace prueba real del formulario alojado, email y log en Gate A.
+
+Pendientes heredados: fuentes locales ausentes (Instrument Serif + DM Sans vía Google Fonts); SITE.email y Q21 sin confirmar; endpoint B5, visual/navegador/HTTP/Lighthouse/ZIP B6. No se ejecutó navegador visual en B2: la prueba de controles usa adaptador DOM, no motor de diseño. Sesión/modelo/esfuerzo quedan para manager o Anton.
+
+### [REVISAR] Prosa nueva o adaptada, no literal de plan/04
+
+- Revelación Completa: «Kit + fondo decorativo + arco pequeño + mesa con 20 dulces + montaje.» Traducción de backdrop.
+- Añito: «Arco y fondo decorativo temáticos, cartel con nombre y número 1, mesa dulce 30 unidades, torta temática, 60 bocaditos, vajilla temática, montaje y desmontaje.» Traducción de backdrop.
+- Respuesta temática de añito: «Contanos qué temática tenés en mente y confirmamos el alcance por WhatsApp.»
+- FAQ de torta: «Torta de revelación: Precio estimado desde Gs. 180.000. El precio final y la disponibilidad se confirman por WhatsApp.» Traducción de reveal; precio derivado.
+- SEO combos: «Compará las inclusiones de cada combo de baby shower, sus precios estimados y adicionales. Calculá tu propuesta según invitados y zona.»
+- SEO revelación: «Consultá por el Kit Sorpresa o la Revelación Completa en Asunción. Mirá precios estimados y cómo coordinar el color, la entrega y el montaje.»
+- SEO añito: «Conocé el Combo Añito para 30 invitados con decoración, torta y bocaditos. Elegí una temática y consultá el precio final y la disponibilidad.»
+- Textos derivados: captions de todos los importes, PRICES.label, invitados extra y cotización personalizada según BUILD-SPEC 0/5; sin nueva promesa. Copys B1 reutilizados sin cambios.
+- Etiquetas nuevas: Elegí tu combo; Restá 5 invitados; Sumá 5 invitados; Invitados extra; Traslado (recargo estimado); Comparación de combos; Qué incluye cada combo; Detalle; Elegí tu temática; Consultá el alcance (tabla, campos de Sueño no especificados); Torta de revelación. Celdas de tabla resumen inclusiones aprobadas; sin inventar cantidades faltantes.

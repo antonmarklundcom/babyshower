@@ -4,6 +4,7 @@ import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash, webcrypto } from 'node:crypto';
 import vm from 'node:vm';
+import { REVEAL, ANITO, EXTRA_FOOD, CONFIRMATION } from './content.mjs';
 import { SITE, WA_NUMBER, ANALYTICS_ID, LAUNCH_MODE, BOOKING_ENABLED, PRICES, POLICY, TRUST, PRIMARY_CTA, PACKAGES, ADDONS, ZONES, WA_MENU, THEMES, PAGES, EXTRAS, UI, priceCaption, packageMessage } from './content.mjs';
 
 process.chdir(fileURLToPath(new URL('.', import.meta.url)));
@@ -154,7 +155,13 @@ for (const row of outputs) {
    assert(new URL(a.attrs.href).searchParams.get('text').includes(priceCaption(price)), 'WA estimate');
   }
   // Every displayed monetary amount must be configured (or a zone-adjusted price).
-  const amounts = new Set([...PACKAGES.flatMap(p => [p.price,p.extra,...ZONES.filter(z => z.delivery !== null).map(z => p.price + z.delivery)]), ...ADDONS.map(a => a.price), ...ZONES.map(z => z.delivery)]);
+  for (const card of all(dom, '[data-offer]')) {
+   const offer = [...REVEAL.packages, REVEAL.cake, ANITO, ...ADDONS].find(a => a.id === card.attrs['data-offer']);
+   assert(offer); assert.equal(Number(card.attrs['data-price']), offer.price);
+   assert.equal(text(one(card, '[data-price-caption]')), priceCaption(offer.price));
+   assert.equal(new URL(one(card, 'a').attrs.href).searchParams.get('text'), packageMessage(offer, row.route));
+  }
+  const amounts = new Set([...REVEAL.packages.map(a => a.price), REVEAL.cake.price, ANITO.price, ...PACKAGES.flatMap(p => [p.price,p.extra,...ZONES.filter(z => z.delivery !== null).map(z => p.price + z.delivery)]), ...ADDONS.map(a => a.price), ...ZONES.map(z => z.delivery)]);
   for (const m of bodyText.matchAll(/Gs\.\s*([\d.]+)/g)) assert(amounts.has(Number(m[1].replaceAll('.', '').replace(/\.$/, ''))), `Unconfigured price ${m[0]}`);
   for (const script of all(dom, 'script[src]')) assert(!/googletagmanager|analytics|vc-attribution/.test(script.attrs.src), 'Unconditional tracking tag');
   for (const el of all(dom, 'script[src],link[rel="stylesheet"]')) {
@@ -252,7 +259,7 @@ function browser(html, route, options = {}) {
  function attach(node) {
   if (!node.tag) return;
   node.dataset = Object.fromEntries(Object.entries(node.attrs).filter(([k]) => k.startsWith('data-')).map(([k,v]) => [k.slice(5).replace(/-([a-z])/g, (_,c) => c.toUpperCase()), v]));
-  node.style = {}; node.value = node.attrs.value || ''; node.name = node.attrs.name || ''; node.hidden = 'hidden' in node.attrs;
+  node.style = {}; node.value = node.attrs.value || (node.tag === 'select' ? one(node, 'option')?.attrs.value : '') || ''; node.name = node.attrs.name || ''; node.hidden = 'hidden' in node.attrs; node.checked = 'checked' in node.attrs;
   node.classList = { contains: cls => (node.attrs.class || '').split(/\s+/).includes(cls), add: cls => { if (!node.classList.contains(cls)) node.attrs.class = ((node.attrs.class || '') + ' ' + cls).trim(); }, remove: cls => { node.attrs.class = (node.attrs.class || '').split(/\s+/).filter(c => c !== cls).join(' '); }, toggle: (cls, force) => { const next = force ?? !node.classList.contains(cls); node.classList[next ? 'add' : 'remove'](cls); return next; } };
   node.setAttribute = (key,value) => { node.attrs[key] = String(value); };
   node.getAttribute = key => node.attrs[key]; node.hasAttribute = key => key in node.attrs; node.removeAttribute = key => { delete node.attrs[key]; };
@@ -346,15 +353,38 @@ if (args.includes('--calc') || Number(phase[1]) >= 2) {
    const context = { window: {}, document: { addEventListener() {}, querySelector() { return null; }, querySelectorAll() { return []; } }, console };
    vm.runInNewContext(source,context);
    const calc = context.window.BS_CALCULATOR;
+   const data = { PACKAGES, ADDONS, ZONES, PRICES, EXTRA_FOOD, confirmation: CONFIRMATION, pricePrefix: PRICES.mode === 'estimated' ? 'Precio estimado desde' : 'Precio desde', primaryCta: PRIMARY_CTA };
    assert.equal(typeof calc?.calculate, 'function', 'Expose window.BS_CALCULATOR.calculate(input, {PACKAGES,ADDONS,ZONES})');
    const fixtures = [ ['basico',15,[],'asuncion',1150000], ['estrella',30,[],'asuncion',1850000], ['estrella',40,['torta'],'asuncion',2620000], ['estrella',45,[],'asuncion',null], ['premium',40,['torta'],'asuncion',2750000], ['basico',15,[],'luque',1190000] ];
-   for (const [packageId,guests,addons,zone,total] of fixtures) { const out = calc.calculate({packageId,guests,addons,zone},{PACKAGES,ADDONS,ZONES}); assert.equal(out.total,total); assert.equal(out.guests,guests); assert.equal(out.custom,total === null); if (packageId === 'premium') assert(out.disabledAddons.includes('torta') && out.disabledAddons.includes('souvenirs')); }
-   const other = calc.calculate({packageId:'estrella',guests:35,addons:[],zone:'otra'},{PACKAGES,ADDONS,ZONES}); assert.equal(other.total,null); assert.equal(other.custom,true);
+   for (const [packageId,guests,addons,zone,total] of fixtures) { const out = calc.calculate({packageId,guests,addons,zone},data); assert.equal(out.total,total); assert.equal(out.guests,guests); assert.equal(out.custom,total === null); assert(out.whatsapp.includes(PRICES.label)); assert(calc.render(out).includes(PRICES.label)); if (total !== null) assert(out.whatsapp.includes(priceCaption(total))); if (packageId === 'premium') assert(out.disabledAddons.includes('torta') && out.disabledAddons.includes('souvenirs')); }
+   const other = calc.calculate({packageId:'estrella',guests:35,addons:[],zone:'otra'},data); assert.equal(other.total,null); assert.equal(other.custom,true);
    // UI contract: custom quote must omit a stale numeric total and serialize input.
    assert.equal(typeof calc.render, 'function', 'Expose calculator render(state) for UI fixtures');
-   const custom = calc.calculate({packageId:'estrella',guests:45,addons:[],zone:'asuncion'},{PACKAGES,ADDONS,ZONES});
+   const custom = calc.calculate({packageId:'estrella',guests:45,addons:[],zone:'asuncion'},data);
    const rendered = calc.render(custom); assert(/45/.test(rendered)); assert(!/Gs\.\s*\d/.test(rendered), 'Custom quote hides total');
    assert(!/Gs\.\s*\d/.test(custom.whatsapp || ''), 'Custom WhatsApp omits old total');
+   for (const route of ['/', '/combos-y-precios/']) {
+    const b = browser(pages.get(route).html, route);
+    b.context.CustomEvent = class { constructor(type) { this.type = type; } };
+    b.document.dispatchEvent = event => b.fire(b.document, event.type);
+    vm.runInNewContext(source, b.context);
+    const root = b.q('[data-calculator]'), range = b.q('[data-guests]'), cta = b.q('[data-calc-cta]');
+    const message = () => new URL(cta.href).searchParams.get('text');
+    const choose = id => { all(root, '[name="calc-package"]').forEach(n => n.checked = n.value === id); b.fire(root, 'change'); };
+    assert.equal(root.hidden, false); assert(message().includes(priceCaption(PACKAGES[1].price)));
+    range.value = '45'; b.fire(range, 'input'); assert(!/Gs\.\s*\d/.test(message()));
+    choose('premium'); assert.equal(range.value, '45'); assert(message().includes('3.050.000'));
+    for (const id of ['torta','souvenirs']) { assert(b.q(`[data-addon][value="${id}"]`).disabled); assert.equal(b.q(`[data-addon-note="${id}"]`).textContent, 'incluido'); }
+    choose('basico'); assert.equal(range.value, '45'); assert.equal(cta.textContent, 'Pedir cotización'); assert(!/Gs\.\s*\d/.test(b.q('[data-calc-output]').innerHTML));
+    choose('estrella'); range.value = '40'; b.q('[data-addon][value="torta"]').checked = true; b.fire(root, 'change'); assert(message().includes('2.620.000'));
+    choose('premium'); assert(message().includes('2.750.000')); choose('estrella'); assert(message().includes('2.620.000'));
+    b.q('[data-calc-zone]').value = 'otra'; b.fire(root, 'change'); assert(!/Gs\.\s*\d/.test(message())); assert(message().includes('Otra zona'));
+    b.fire(b.q('[data-guest-step="5"]'), 'click'); assert.equal(range.value, '45');
+    b.fire(cta, 'click'); assert.equal(b.events().length, 0);
+    b.fire(b.q('[data-consent="accepted"]'), 'click'); b.fire(cta, 'click'); b.fire(cta, 'click'); assert.equal(b.events().filter(e => e[1] === 'calc_submit').length, 1);
+    assert(all(pages.get(route).dom, 'a').some(a => a.attrs.href === '/combos-y-precios/'));
+   }
+   notes.push('PASS: six calculator fixtures; rendered package switching, bundled add-ons, zona otra, retained guests, WhatsApp and consent/debounce.');
   } catch (error) { check(false, 'Calculator: ' + error.message); }
  }
 } else notes.push('DEFERRED B2: JS calculator fixtures; static package prices checked.');

@@ -46,21 +46,21 @@
     "output": "combos-y-precios/index.html",
     "phase": "B2",
     "indexable": true,
-    "built": false
+    "built": true
   },
   {
     "route": "/revelacion-de-genero/",
     "output": "revelacion-de-genero/index.html",
     "phase": "B2",
     "indexable": true,
-    "built": false
+    "built": true
   },
   {
     "route": "/primer-anito/",
     "output": "primer-anito/index.html",
     "phase": "B2",
     "indexable": true,
-    "built": false
+    "built": true
   },
   {
     "route": "/tematicas/",

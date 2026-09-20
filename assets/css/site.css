@@ -271,3 +271,23 @@ textarea{resize:vertical}
  .wa-panel{right:1rem}.wa-fab{right:1rem}.actions>.btn{width:100%}.dark-band .statement{font-size:2.7rem}.inner-hero{padding-block:3rem}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}.btn:hover{transform:none}}
+.calc-panel fieldset{border:0;padding:0;margin:0 0 1.5rem;min-width:0}
+.calc-panel legend{font-weight:700;margin-bottom:.75rem}
+.calc-choice{display:flex;align-items:flex-start;gap:.75rem;padding:.75rem 0;min-height:48px}
+.calc-choice input{width:24px;height:24px;min-height:24px;flex-shrink:0;accent-color:var(--ink)}
+.calc-choice small{display:block;font-weight:400;margin-top:.3rem}
+.guest-controls{display:flex;align-items:center;gap:.75rem}
+.guest-controls button{min-width:48px;min-height:48px;background:var(--surface);border:1px solid var(--hairline);border-radius:var(--r-sm);font-size:1.5rem}
+.guest-controls input{padding:0;accent-color:var(--ink)}
+.calc-breakdown{margin:0 0 1.5rem;overflow-x:auto}
+.calc-breakdown>div{display:flex;justify-content:space-between;gap:1rem;padding:.75rem 0;border-bottom:1px solid var(--hairline)}
+.calc-breakdown dd{white-space:nowrap;margin:0}.calc-total{font-size:2rem;font-weight:700}
+.comparison-scroll{margin-top:3rem;overflow-x:auto;border:1px solid var(--hairline);border-radius:var(--r-md)}
+.comparison{width:100%;border-collapse:separate;border-spacing:0;font-size:.9rem}
+.comparison caption{text-align:left;padding:1rem;font-weight:700}
+.comparison th,.comparison td{text-align:left;vertical-align:top;padding:1rem;border-bottom:1px solid var(--hairline)}
+.comparison thead th{background:var(--tint-sage)}
+.comparison th:first-child{background:var(--base)}
+.offer-grid,.addon-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem;margin-block:2rem}
+.addon-grid h2{font-size:1.7rem}.offer-grid .card,.addon-grid .card{padding:1.5rem}
+@media(max-width:639px){.comparison{min-width:760px}.comparison th:first-child{position:sticky;left:0;z-index:1;min-width:140px;max-width:160px}.offer-grid,.addon-grid{grid-template-columns:1fr}}
