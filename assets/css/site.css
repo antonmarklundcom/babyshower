@@ -469,3 +469,6 @@ body:has(.home-page) .footer a{display:inline-flex;align-items:center;min-height
  .home-page .calc-panel>div:last-child{align-self:start;position:sticky;top:calc(75px + var(--s-6))}
  .home-page .calc-total{font-size:var(--t-6)}
 }
+
+/* Una sola acción en las páginas sin calculadora. */
+.mobile-bar > .btn:only-child{grid-column:1 / -1}

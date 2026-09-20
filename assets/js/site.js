@@ -74,6 +74,15 @@
     document.cookie = cfg.successCookie + '=; Max-Age=0; Path=/; SameSite=Lax';
   }
   if (banner) banner.hidden = choice === 'accepted' || choice === 'rejected';
+  if (location.pathname === '/gracias.html') {
+    var success = document.cookie.match(/(?:^|;\s*)bs_lead_success=(BS-\d{8}-[a-z0-9]{4})(?:;|$)/i);
+    if (success) document.querySelectorAll('a[href]').forEach(function (link) {
+      if (!link.getAttribute('href').startsWith('https://wa.me/')) return;
+      var url = new URL(link.getAttribute('href'));
+      url.searchParams.set('text', (url.searchParams.get('text') || '') + ' Mi número de consulta es ' + success[1] + '.');
+      link.setAttribute('href', url.toString());
+    });
+  }
   loadAnalytics();
   thanksConversion();
   document.querySelectorAll('[data-consent]').forEach(function (button) {
@@ -183,7 +192,9 @@
     });
     form.addEventListener('submit', function (e) {
       if (fields.nombre.value.trim().length < 2) { e.preventDefault(); showError(fields.nombre); fields.nombre.focus(); return; }
-      fields.whatsapp.value = fields.whatsapp.value.replace(/^0/, '595').replace(/^\+/, '');
+      var phone = fields.whatsapp.value.replace(/[ ().-]/g, '');
+      if (!/^(?:0|\+?595)9[0-9]{8}$/.test(phone)) { e.preventDefault(); showError(fields.whatsapp); fields.whatsapp.focus(); return; }
+      fields.whatsapp.value = phone.replace(/^0/, '595').replace(/^\+/, '');
       // Normal POST: B5 owns validation, persistence, redirect, and error restoration.
     });
   });

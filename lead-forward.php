@@ -107,6 +107,7 @@ foreach (['nombre','whatsapp','fecha','invitados','tipo','zona','mensaje','orige
 }
 $length = static function (string $s): int { return preg_match_all('/./us', $s, $matches) ?: 0; };
 if ($length($lead['nombre']) < 2 || $length($lead['nombre']) > 60) $errors[] = 'nombre';
+$lead['whatsapp'] = str_replace([' ', '-', '(', ')', '.'], '', $lead['whatsapp']);
 if (!preg_match('/^(?:0|\+?595)9[0-9]{8}$/D', $lead['whatsapp'])) $errors[] = 'whatsapp';
 $lead['whatsapp'] = preg_replace('/^0/', '595', ltrim($lead['whatsapp'], '+'));
 if (field('fecha_desconocida') === '1') $lead['fecha'] = '';

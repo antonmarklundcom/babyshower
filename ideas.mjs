@@ -35,7 +35,7 @@ export const IDEAS = [
  },
  {
   slug: 'juegos-para-baby-shower', title: '10 juegos para baby shower | Guía práctica',
-  h1: '10 juegos para baby shower que funcionan de verdad',
+  h1: '10 juegos para baby shower',
   description: 'Elegí juegos de baby shower con materiales fáciles de conseguir, reglas claras y opciones para participar sentado. Prepará una tarde sin complicaciones.',
   datePublished: '2026-09-19', theme: 'safari', offer: estrella,
   cta: 'Los combos Estrella y Sueño incluyen los juegos impresos', image: 'Composición ilustrativa de tarjetas, lápices y una mesa de juegos en tonos salvia',

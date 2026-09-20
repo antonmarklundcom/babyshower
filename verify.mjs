@@ -1,3 +1,4 @@
+import * as content from './content.mjs';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
@@ -113,7 +114,11 @@ for (const row of outputs) {
   assert(!/\breservar\b|Más elegido|Los precios son finales|llegamos 2 horas antes|coordinadora presente|bocaditos elaborados el mismo día/i.test(bodyText), 'Booking/supplier claim');
   if (!['/como-funciona/','/terminos/'].includes(row.route)) { assert(!bodyText.includes(POLICY.sena)); assert(!bodyText.includes(POLICY.cancel)); }
   else { assert(bodyText.includes(POLICY.heading)); assert(bodyText.includes(POLICY.sena)); assert(bodyText.includes(POLICY.cancel)); }
-  for (const selector of ['header','footer','[data-wa-menu]','.wa-fab','.mobile-bar','[data-consent-banner]','[data-consent-revoke]']) assert(one(dom, selector), `Missing shared ${selector}`);
+  for (const selector of ['header','footer','[data-wa-menu]','.wa-fab','.mobile-bar']) assert(one(dom, selector), `Missing shared ${selector}`);
+  for (const selector of ['[data-consent-banner]', '[data-consent-revoke]']) assert.equal(Boolean(one(dom, selector)), Boolean(ANALYTICS_ID));
+  const mobileLinks = all(one(dom, '.mobile-bar'), 'a');
+  assert.equal(mobileLinks.length, ['/revelacion-de-genero/', '/primer-anito/'].includes(row.route) ? 1 : 2);
+  if (mobileLinks.length === 2) assert.equal(text(mobileLinks[1]), UI.calc);
   assert.equal(all(dom, '.wa-menu__option').length, WA_MENU.options.length);
   assert.equal(one(dom, '.wa-fab').attrs['aria-label'], UI.waLabel);
   assert(bodyText.includes(SITE.phone) && bodyText.includes(SITE.operator), 'Missing operator/phone');
@@ -211,6 +216,10 @@ test('Home content and forms', () => {
   for (const name of ['origen','sid','empresa']) assert.equal(one(form, `[name="${name}"]`).attrs.type, 'hidden');
   assert.equal(one(form, '[name="origen"]').attrs.value, route);
   assert(one(form, '[data-date-unknown]'));
+  const phone = one(form, '[name="whatsapp"]');
+  assert(!('pattern' in phone.attrs));
+  for (const attr of ['type', 'inputmode', 'autocomplete']) assert.equal(phone.attrs[attr], 'tel');
+  assert('required' in phone.attrs); assert(text(form).includes(UI.form.reply));
   assert.equal(one(form, '[name="nombre"]').attrs.minlength, '2');
   assert.equal(one(form, '[name="nombre"]').attrs.maxlength, '60');
   assert.equal(one(form, '[name="invitados"]').attrs.min, '5');
@@ -253,6 +262,30 @@ test('Contrast and reference assets', () => {
  }
 });
 
+// Render the actual generator in memory with analytics enabled; no files or IDs are changed.
+const analyticsRender = { ...content, ANALYTICS_ID: 'G-TEST', PAGES: { ...content.PAGES }, THEME_DETAILS, ZONE_DETAILS, IDEAS,
+ readFileSync, existsSync, readdirSync, createHash, console, Buffer };
+const rendererSource = read('build-site.mjs').replace(/^import .*;\n/gm, '').replace(/^process\.chdir.*;\n/m, '').split('for (const row of manifest.filter(r => r.built))')[0];
+vm.createContext(analyticsRender);
+vm.runInContext(rendererSource, analyticsRender);
+const analyticsHtml = route => analyticsRender.render(route, analyticsRender.PAGES[route] || EXTRAS[route], !EXTRAS[route]);
+test('Short unit captions and calculator labels', () => {
+ for (const pkg of PACKAGES.filter(p => p.extra)) {
+  const caption = content.extraGuestCaption(pkg);
+  assert.equal(caption, 'Invitado extra: ' + content.fmtGs(pkg.extra) + ' por invitado (estimado)');
+  assert(visible(pages.get('/combos-y-precios/').dom).includes(caption));
+ }
+ for (const zone of ZONES) {
+  const caption = content.deliveryNote(zone);
+  assert(caption.includes('estimado')); assert(!caption.includes(CONFIRMATION));
+  if (zone.delivery) assert(caption.includes(content.fmtGs(zone.delivery)));
+ }
+ for (const route of ['/', '/combos-y-precios/']) {
+  const calc = one(pages.get(route).dom, '#calculadora');
+  assert.equal(text(one(calc, 'h2')), UI.calcTitle); assert.equal(text(one(calc, '.eyebrow')), UI.calculator);
+ }
+ assert.equal(ADDONS.find(a => a.id === 'hora').name, 'Coordinadora por hora');
+});
 // Execute the actual site script with a small DOM adapter: consent, tracking,
 // direct thanks visits, keyboard focus, no-JS hrefs, and form client state.
 function browser(html, route, options = {}) {
@@ -285,14 +318,14 @@ function browser(html, route, options = {}) {
  Object.defineProperty(document, 'cookie', { get: () => [...jar].map(([k,v]) => `${k}=${v}`).join('; '), set: s => { const [kv] = s.split(';'), [k,v] = kv.split('='); if (/Max-Age=0/.test(s)) jar.delete(k); else jar.set(k,v); } });
  if (options.cookie) document.cookie = options.cookie;
  document.getElementById('site-config').textContent = JSON.stringify({ analyticsId: options.id ?? 'G-TEST', consentKey: 'bs-consent', successCookie: 'bs_lead_success', errors: UI.errors, form: UI.form });
- const context = { document, location: new URL(SITE.url + route), localStorage: { getItem: key => storage.get(key) ?? null, setItem: (key,v) => storage.set(key,v) }, crypto: webcrypto, Intl, Uint8Array, URLSearchParams, Map, Date: class extends Date { static now() { return clock; } }, console, scrollY: 0 };
+ const context = { document, location: new URL(SITE.url + route), localStorage: { getItem: key => storage.get(key) ?? null, setItem: (key,v) => storage.set(key,v) }, crypto: webcrypto, Intl, Uint8Array, URL, URLSearchParams, Map, Date: class extends Date { static now() { return clock; } }, console, scrollY: 0 };
  context.window = context;
  vm.runInNewContext(read('assets/js/site.js'), context, { timeout: 3000 });
  function fire(target, type, extra = {}) { const event = { target, prevented: false, preventDefault() { this.prevented = true; }, ...extra }; for (let n = target; n; n = n.parent) for (const fn of handlers.get(n)?.get(type) || []) fn(event); for (const fn of handlers.get(document)?.get(type) || []) fn(event); return event; }
  return { context, dom, storage, jar, document, q: document.querySelector, fire, tick: () => { clock += 1001; }, events: () => (context.dataLayer || []).filter(v => v[0] === 'event'), tags: () => document.head.children.filter(n => n.src?.includes('googletagmanager')) };
 }
 test('Consent and interaction behavior', () => {
- const html = pages.get('/').html;
+ const html = analyticsHtml('/');
  const b = browser(html, '/');
  assert.equal(b.tags().length, 0); assert.equal(b.q('[data-consent-banner]').hidden, false);
  const wa = all(b.dom, 'a').find(n => n.attrs['data-ev'] === 'whatsapp_click' && !('data-wa-trigger' in n.attrs));
@@ -313,15 +346,31 @@ test('Consent and interaction behavior', () => {
  form.elements.fecha.value = '2027-01-01'; const unknown = b.q('[data-date-unknown]'); unknown.checked = true; b.fire(unknown,'change'); assert.equal(form.elements.fecha.value,''); assert.equal(form.elements.fecha.disabled,true);
  form.elements.nombre.value = 'Ana'; form.elements.whatsapp.value = '0992279599'; b.fire(form,'submit'); assert.equal(form.elements.whatsapp.value,'595992279599'); assert(!b.events().some(e => e[1] === 'form_submit'));
  const before = b.events().length; b.document.cookie = '_ga=test'; b.fire(b.q('[data-consent-revoke]'),'click'); assert.equal(b.context['ga-disable-G-TEST'],true); assert(!b.jar.has('_ga')); b.tick(); b.fire(wa,'click'); assert.equal(b.events().length,before);
- const empty = browser(html,'/',{ id: '', storage: new Map([['bs-consent','accepted']]) }); assert.equal(empty.tags().length,0);
+ const empty = browser(pages.get('/').html,'/',{ id: '', storage: new Map([['bs-consent','accepted']]) }); assert.equal(empty.tags().length,0);
  const rejected = browser(html,'/',{ storage: new Map([['bs-consent','rejected']]) }); assert.equal(rejected.tags().length,0); assert.equal(rejected.q('[data-consent-banner]').hidden,true);
 });
+test('Phone separators use actual client validation', () => {
+ for (const value of ['0981234567','+595981234567','595981234567','0981 234-567','(0981) 234 567','+595 981 234 567','0981.234.567','0981abc567','0981 234']) {
+  const b = browser(pages.get('/contacto/').html, '/contacto/', {id:''});
+  const form = b.q('form'); form.elements.nombre.value = 'Ana'; form.elements.whatsapp.value = value;
+  const valid = !['0981abc567','0981 234'].includes(value);
+  assert.equal(b.fire(form, 'submit').prevented, !valid, value);
+  if (valid) assert.equal(form.elements.whatsapp.value, '595981234567');
+  else assert.equal(b.q('#error-whatsapp').textContent, UI.errors.whatsapp);
+ }
+});
 test('Thanks conversion requires server success', () => {
- const html = pages.get('/gracias.html').html;
+ const html = analyticsHtml('/gracias.html');
  const storage = new Map([['bs-consent','accepted']]);
  const direct = browser(html,'/gracias.html?success=1&sid=BS-20260919-abcd',{storage});
  assert(!direct.events().some(e => e[1] === 'form_submit'));
+ const waLinks = b => all(b.dom, 'a').filter(a => a.attrs.href?.startsWith('https://wa.me/')).map(a => a.attrs.href);
+ assert.deepEqual(waLinks(direct), all(parse(html), 'a').filter(a => a.attrs.href?.startsWith('https://wa.me/')).map(a => a.attrs.href));
  const accepted = browser(html,'/gracias.html',{storage,cookie:'bs_lead_success=BS-20260919-abcd'});
+ for (const href of waLinks(accepted)) assert(new URL(href).searchParams.get('text').endsWith('Mi número de consulta es BS-20260919-abcd.'));
+ const disabled = browser(pages.get('/gracias.html').html, '/gracias.html', {id:'',cookie:'bs_lead_success=BS-20260919-abcd'});
+ for (const href of waLinks(disabled)) assert(new URL(href).searchParams.get('text').includes('BS-20260919-abcd'));
+ assert.equal(disabled.events().length, 0);
  assert.equal(accepted.events().filter(e => e[1] === 'form_submit').length,1); assert(!accepted.jar.has('bs_lead_success'));
  const reload = browser(html,'/gracias.html',{storage,cookie:'bs_lead_success=BS-20260919-abcd'}); assert(!reload.events().some(e => e[1] === 'form_submit'));
  const noConsent = browser(html,'/gracias.html',{cookie:'bs_lead_success=BS-20260919-ffff'}); assert(!noConsent.events().some(e => e[1] === 'form_submit')); assert.equal(noConsent.tags().length,0);
@@ -420,7 +469,7 @@ if (args.includes('--calc') || Number(phase[1]) >= 2) {
    const rendered = calc.render(custom); assert(/45/.test(rendered)); assert(!/Gs\.\s*\d/.test(rendered), 'Custom quote hides total');
    assert(!/Gs\.\s*\d/.test(custom.whatsapp || ''), 'Custom WhatsApp omits old total');
    for (const route of ['/', '/combos-y-precios/']) {
-    const b = browser(pages.get(route).html, route);
+    const b = browser(analyticsHtml(route), route);
     b.context.CustomEvent = class { constructor(type) { this.type = type; } };
     b.document.dispatchEvent = event => b.fire(b.document, event.type);
     vm.runInNewContext(source, b.context);
