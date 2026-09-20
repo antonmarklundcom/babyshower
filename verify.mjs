@@ -198,10 +198,8 @@ for (const row of outputs) {
    const zone = ZONES.find(z => row.route === `/zonas/${z.slug}/`);
    const price = pkg.price + (zone?.delivery || 0);
    assert.equal(Number(card.attrs['data-price']), price, 'Zone/package price');
-   if (row.route === '/') {
-    assert.equal(normalize(text(one(card, '[data-price-caption]'))), `${UI.pricePrefix} Gs. ${new Intl.NumberFormat('es-PY').format(price)}`);
-    assert.equal(text(one(card, '.package-confirmation')), CONFIRMATION, 'Home cards retain confirmation after CTA');
-   } else assert.equal(normalize(text(one(card, '[data-price-caption]'))), priceCaption(price));
+   assert.equal(normalize(text(one(card, '[data-price-caption]'))), `${UI.pricePrefix} Gs. ${new Intl.NumberFormat('es-PY').format(price)}`);
+   assert.equal(text(one(card, '.package-confirmation')), CONFIRMATION, 'Cards retain confirmation after CTA');
    assert(one(card, 'details'), 'Expandable exclusions');
    const a = all(card, 'a').find(n => n.attrs.href.startsWith('https://wa.me/'));
    assert(new URL(a.attrs.href).searchParams.get('text').includes(priceCaption(price)), 'WA estimate');
@@ -210,7 +208,8 @@ for (const row of outputs) {
   for (const card of all(dom, '[data-offer]')) {
    const offer = [...REVEAL.packages, REVEAL.cake, ANITO, ...ADDONS].find(a => a.id === card.attrs['data-offer']);
    assert(offer); assert.equal(Number(card.attrs['data-price']), offer.price);
-   assert.equal(text(one(card, '[data-price-caption]')), priceCaption(offer.price));
+   assert.equal(normalize(text(one(card, '[data-price-caption]'))), `${UI.pricePrefix} Gs. ${new Intl.NumberFormat('es-PY').format(offer.price)}`);
+   assert.equal(text(one(card, '.package-confirmation')), CONFIRMATION);
    assert.equal(new URL(one(card, 'a').attrs.href).searchParams.get('text'), packageMessage(offer, row.route));
   }
   const amounts = new Set([...REVEAL.packages.map(a => a.price), REVEAL.cake.price, ANITO.price, ...PACKAGES.flatMap(p => [p.price,p.extra,...ZONES.filter(z => z.delivery !== null).map(z => p.price + z.delivery)]), ...ADDONS.map(a => a.price), ...ZONES.map(z => z.delivery)]);
@@ -308,7 +307,9 @@ test('Contrast and reference assets', () => {
  if (existsSync(refRoot + 'motion.js')) assert(readFileSync(refRoot + 'motion.js').equals(readFileSync('assets/js/motion.js')), 'Motion must be byte-identical');
  if (existsSync(refRoot + 'tokens.css')) {
   const expected = read(refRoot + 'tokens.css').replace("--font-display:'Fraunces',Georgia,serif;", "--font-display:'Instrument Serif',Georgia,serif;").replace("--font-text:'Inter Tight',system-ui,sans-serif;", "--font-text:'Satoshi',system-ui,sans-serif;").replace('--base:#F7F4ED;', '--base:#FBF6F2;').replace('--ink:#14241E;', '--ink:#2B2430;').replace('--accent:#C2603A;', '--accent:#D97B6C;');
-  assert(css.startsWith(expected), 'Resolved token block changed beyond TRACK');
+  // CSS trimming may remove comments and unused reference components; tokens stay exact.
+  const tokens = source => source.replace(/\/\*[\s\S]*?\*\//g, '').match(/:root\s*\{([^}]*)\}/)[1].split(';').map(s => s.trim()).filter(Boolean);
+  assert.deepEqual(tokens(css), tokens(expected), 'Resolved token declarations changed beyond TRACK');
  }
 });
 
