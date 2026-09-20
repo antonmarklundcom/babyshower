@@ -26,7 +26,7 @@ export const EXCLUSIONS = 'No incluye local/salón, mozos, bebidas alcohólicas,
 export const PACKAGES = [
  { id: 'basico', name: 'Combo Nube', price: 1150000, included: 30, max: 30, extra: 0, bundled: [], description: 'Decoración lista para tu baby shower en casa: arco de globos orgánico de 2 metros, fondo decorativo y cartel con el nombre del bebé. Montaje y desmontaje incluidos en la estimación.', chip: 'Hasta 30 invitados en el lugar.', exclusions: `${EXCLUSIONS} Torta y souvenirs no incluidos.` },
  { id: 'estrella', name: 'Combo Estrella', price: 1850000, included: 30, max: 40, extra: 55000, bundled: [], badge: 'Combo completo', description: 'Todo listo: arco de 3 metros en tres colores, fondo decorativo, cartel, mesa dulce de 30 unidades, 60 bocaditos salados, vajilla descartable temática y 3 juegos impresos.', get chip() { return extraGuestCaption(this); }, exclusions: `${EXCLUSIONS} Torta y souvenirs no incluidos.` },
- { id: 'premium', name: 'Combo Sueño', price: 2750000, included: 40, max: 60, extra: 60000, bundled: ['torta', 'souvenirs'], description: 'Doble arco de 4 metros, cartel en acrílico personalizado, mesa dulce de 60 unidades más torta, 120 bocaditos, bebidas sin alcohol, 40 souvenirs y coordinación del evento (Sueño).', chip: '40 invitados incluidos en la estimación.', exclusions: `${EXCLUSIONS} Torta y souvenirs incluidos en la estimación.` }
+ { id: 'premium', name: 'Combo Sueño', price: 2750000, included: 40, max: 60, extra: 60000, bundled: ['torta', 'souvenirs'], description: 'Doble arco de 4 metros, cartel en acrílico personalizado, mesa dulce de 60 unidades más torta, 120 bocaditos, bebidas sin alcohol, 40 souvenirs y coordinación del evento.', chip: '40 invitados incluidos en la estimación.', exclusions: `${EXCLUSIONS} Torta y souvenirs incluidos en la estimación.` }
 ];
 export const ADDONS = [{ id: 'torta', name: 'Torta temática 1 piso', price: 220000 }, { id: 'souvenirs', name: 'Souvenirs personalizados x30', price: 180000 }, { id: 'regalos', name: 'Mesa de regalos y libro de firmas', price: 90000 }, { id: 'globo', name: 'Globo confeti gigante', price: 60000 }, { id: 'fotos', name: 'Sesión de fotos 30 min', price: 250000 }, { id: 'hora', name: 'Coordinadora por hora', price: 120000 }];
 export const ZONES = [ ['asuncion', 'Asunción', 0], ['fernando-de-la-mora', 'Fernando de la Mora', 0], ['lambare', 'Lambaré', 0], ['san-lorenzo', 'San Lorenzo', 40000], ['luque', 'Luque', 40000], ['mariano-roque-alonso', 'Mariano Roque Alonso', 60000], ['capiata', 'Capiatá', 60000], ['otra', 'Otra zona', null] ].map(([slug, name, delivery]) => ({ slug, name, delivery }));
@@ -80,6 +80,14 @@ export const LEGAL = {
  ]
 };
 export const UI = {
+ homeSteps: 'Cuatro pasos, sin vueltas', homeFaq: 'Lo que conviene saber antes de escribir',
+ pricePrefix: PRICES.mode === 'estimated' ? 'Precio estimado desde' : 'Precio desde',
+ homePackageTags: ['Hasta 30 invitados', PACKAGES[1].badge, `${PACKAGES[2].included} invitados`],
+ homeInclusions: [
+  { title: 'Qué incluye · Combo Estrella', items: ['Arco de 3 metros en tres colores', 'Fondo decorativo y cartel', 'Mesa dulce de 30 unidades', '60 bocaditos salados', 'Vajilla descartable temática', '3 juegos impresos', 'Montaje y desmontaje incluidos en la estimación'] },
+  { title: 'Qué no incluye', items: ['Local o salón', 'Mozos', 'Bebidas alcohólicas', 'Mesas y sillas', 'Mantelería', 'Hielo', 'Limpieza posterior', 'Torta y souvenirs (Nube y Estrella)'] }
+ ],
+ zonesEyebrow: 'Zonas de cobertura', zoneFree: 'Sin recargo', zoneExtra: 'Con recargo estimado', zoneOther: 'la cotizamos por WhatsApp',
  palette: 'Paleta', illustrativeImages: 'Las imágenes son ilustrativas.',
  zonePriceParts: (base, delivery) => `Base ${fmtGs(base)} + traslado estimado ${fmtGs(delivery)}`,
  includedGuests: 'Incluye hasta {N} invitados en este combo',
@@ -95,7 +103,7 @@ export const UI = {
  errors: { nombre: 'Escribí tu nombre, entre 2 y 60 caracteres.', whatsapp: 'Escribí un número de celular paraguayo válido.', fecha: 'Elegí una fecha de hoy en adelante o marcá No sé todavía.', invitados: 'Escribí una cantidad entera entre 5 y 200 invitados.', tipo: 'Elegí un tipo de evento de la lista.', zona: 'Elegí una zona de la lista.', mensaje: 'Tu mensaje puede tener hasta 500 caracteres.', invalid: 'No pudimos validar tu consulta. Volvé a cargar la página e intentá de nuevo.', rate: 'Recibimos varios intentos. Esperá un minuto y volvé a intentar, o escribinos por WhatsApp.', failure: `No pudimos guardar tu consulta. Escribinos por WhatsApp: ${SITE.phone}`, summary: 'Revisá los campos marcados y volvé a enviar tu consulta.', submitting: 'Enviando tu consulta…' }
 };
 export const PAGES = {
- '/': { title: 'Baby shower en Asunción | Precios estimados', description: 'Consultá combos de baby shower en Asunción y Gran Asunción. Mirá precios estimados, temáticas y qué incluye cada propuesta.', h1: 'Baby shower en Asunción con precio claro', type: 'home', faq: FAQ.slice(0, 6) },
+ '/': { title: 'Baby shower en Asunción | Precios estimados', description: 'Consultá combos de baby shower en Asunción y Gran Asunción. Mirá precios estimados, temáticas y qué incluye cada propuesta.', h1: 'Baby shower en Asunción con precio claro', type: 'home', faq: [...FAQ.slice(0, 2), { q: '¿Por qué los precios son estimados?', a: 'Cada evento cambia según la fecha, la zona y el alcance. Por eso mostramos precios estimados y confirmamos el precio final y la disponibilidad por WhatsApp antes de cualquier pago.' }, ...FAQ.slice(2, 6)] },
  '/como-funciona/': { title: 'Cómo funciona | Baby Shower Paraguay', description: 'Conocé cómo consultar por tu evento, coordinar los detalles y confirmar una propuesta por WhatsApp. Leé nuestras políticas previstas.', h1: 'Cómo funciona: consultás y coordinamos', type: 'process' },
  '/contacto/': { title: 'Contacto | Baby Shower Paraguay', description: 'Escribinos por WhatsApp o contanos tu fecha tentativa, zona y cantidad de invitados. Te respondemos dentro de 24 horas hábiles.', h1: 'Escribinos', type: 'contact' },
  '/preguntas-frecuentes/': { title: 'Preguntas frecuentes | Baby Shower Paraguay', description: 'Resolvé tus dudas sobre estimaciones, montaje, comida y zonas de atención para tu baby shower. Consultá los detalles por WhatsApp.', h1: 'Preguntas frecuentes', type: 'faq', faq: FAQ },

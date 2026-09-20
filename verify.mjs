@@ -198,7 +198,10 @@ for (const row of outputs) {
    const zone = ZONES.find(z => row.route === `/zonas/${z.slug}/`);
    const price = pkg.price + (zone?.delivery || 0);
    assert.equal(Number(card.attrs['data-price']), price, 'Zone/package price');
-   assert.equal(normalize(text(one(card, '[data-price-caption]'))), priceCaption(price));
+   if (row.route === '/') {
+    assert.equal(normalize(text(one(card, '[data-price-caption]'))), `${UI.pricePrefix} Gs. ${new Intl.NumberFormat('es-PY').format(price)}`);
+    assert.equal(text(one(card, '.package-confirmation')), CONFIRMATION, 'Home cards retain confirmation after CTA');
+   } else assert.equal(normalize(text(one(card, '[data-price-caption]'))), priceCaption(price));
    assert(one(card, 'details'), 'Expandable exclusions');
    const a = all(card, 'a').find(n => n.attrs.href.startsWith('https://wa.me/'));
    assert(new URL(a.attrs.href).searchParams.get('text').includes(priceCaption(price)), 'WA estimate');
@@ -250,6 +253,12 @@ test('Home content and forms', () => {
  assert.equal(all(home, '[data-package]').length, PACKAGES.length);
  assert.equal(all(home, '.theme-card').length, THEMES.length);
  assert(one(home, '.dark-band.grain'));
+ assert.equal(all(home, '.home-proposal, .comparison').length, 0, 'Home uses a photo hero and inclusion lists');
+ assert.equal(all(pages.get('/combos-y-precios/').dom, '.comparison').length, 1, 'Comparison stays on the combos page');
+ assert.deepEqual(all(one(home, '.home-inclusions'), 'li').map(text), UI.homeInclusions.flatMap(group => group.items));
+ assert.equal(all(home, '[data-faq]').length, 7);
+ assert.equal(text(one(all(home, '[data-faq]')[2], 'summary')), PAGES['/'].faq[2].q);
+ for (const card of all(home, '[data-package]')) assert.equal(all(one(card, '.package-rows'), 'div').length, 6, 'Six home comparison rows');
  for (const route of ['/', '/contacto/']) {
   const form = one(pages.get(route).dom, 'form');
   assert.equal(form.attrs.action, '/lead-forward.php'); assert.equal(form.attrs.method, 'post');
