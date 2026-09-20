@@ -137,7 +137,8 @@ function themeGrid(items, cls = 'theme-bento', images = false) {
 }
 function programmatic(route, page) {
  const t = page.detail;
- const cta = link(waHref(`Hola, vengo de ${SITE.domain} (${route}) y quiero consultar por ${t?.name || page.h1}. Fecha tentativa: ____ · Invitados: ____ · Zona: ____`), PRIMARY_CTA, 'consulta-tematica-zona', 'btn btn--primary');
+ const subject = page.type === 'zone' ? `un baby shower en ${t.name}` : page.type === 'zones' ? 'el traslado a mi zona' : page.type === 'themes' ? 'una temática' : `la temática ${t.name}`;
+ const cta = link(waHref(`Hola, vengo de ${SITE.domain} (${route}) y quiero consultar por ${subject}. Fecha tentativa: ____ · Invitados: ____ · Zona: ____`), PRIMARY_CTA, 'consulta-tematica-zona', 'btn btn--primary');
  if (page.type === 'themes') return `<section><div class="wrap">${themeGrid(THEME_DETAILS, 'theme-bento', true)}</div></section><section class="dark-band grain"><div class="wrap"><h2>Contanos qué temática te gusta</h2>${cta}</div></section>`;
  if (page.type === 'zones') return `<section><div class="wrap">${p(DELIVERY)}<div class="zone-grid">${ZONE_DETAILS.map(z => {
   const child = manifest.find(r => r.route === `/zonas/${z.slug}/`);

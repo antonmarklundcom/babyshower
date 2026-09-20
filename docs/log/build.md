@@ -303,3 +303,20 @@ Auditoría del manager, Batch 3 (Claude, sesión de Anton): worker Codex gpt-6-a
 - NO EJECUTADO — lead-forward.php: PHP no está instalado; prueba alojada en Gate A (Anton): enviar el formulario con JavaScript desactivado y comprobar que el SID generado aparece en leads.log.
 - HALLAZGO del manager, pendiente de un lote corto: con ANALYTICS_ID vacío, privacidad y términos aún dicen que se puede revocar la analítica desde Preferencias de cookies, un enlace que no se muestra; hacer ese texto condicional a ANALYTICS_ID.
 - NOTA — otra sesión (Fable, ventana aparte) actualizó docs/triage-178-ideas.md durante este lote (revisión 2 con hallazgos NOW). Ese cambio no es de este batch y no se incluye en el commit; queda para que Anton o Fable lo commiteen.
+
+## 2026-09-20 — Batch 3B — coherencia legal y consultas por WhatsApp
+
+Textos legales y descripción de privacidad condicionados a ANALYTICS_ID; vacío conserva una explicación veraz, configurado conserva los textos originales. Destinatarios y demás condiciones intactos. Mensajes de WhatsApp ajustados para zonas, temáticas y sus índices; HTML regenerado.
+
+Ediciones de verify.mjs: evaluación del contenido en memoria con cada ID para resolver LEGAL; aserciones de textos legales en ambos estados y correspondencia con HTML generado; aserciones del mensaje completo, destino, etiqueta y evento de los botones de zonas y temáticas. No había aserciones del mensaje anterior que sustituir.
+
+- PASS — node build-site.mjs y node verify.mjs --final: 32 rutas, 34 HTML y seis fixtures de calculadora.
+- FAIL inicial — dos ejecuciones de verify detectaron la referencia a revocar analítica en la descripción de privacidad; descripción condicionada y verificación repetida con PASS.
+- FAIL auxiliar — rg no disponible (CommandNotFoundException); lecturas continuadas con Node.
+- Sin comprobaciones visuales. Cambios ajenos preexistentes intactos; avisos heredados de fuentes y correos permanecen.
+- PASS — auditoría Node y git diff --check: alcance autorizado, tres paquetes en inicio, ID vacío, UTF-8 sin BOM, LF y sin mojibake añadido. Dos intentos iniciales de auditoría dieron FAIL por interpretar la interrogación de una URL técnica como texto; comprobación acotada al texto HTML y repetida con PASS. git status --short conserva únicamente el alcance autorizado y las excepciones ajenas indicadas.
+
+Auditoría del manager, Batch 3B (Claude, sesión de Anton): worker Codex gpt-6-astra, esfuerzo low, sesión 01a0bd08-e66b-73e1-9c09-add17fd20dfb, un turno (modelo y esfuerzo leídos del turn_context). Lote corto pedido por el manager para corregir dos inconsistencias halladas al auditar los Batches 2 y 3.
+- PASS — node build-site.mjs y node verify.mjs --final ejecutados por el manager (salida 0, seis fixtures).
+- PASS — privacidad y términos con ANALYTICS_ID vacío: sin las palabras Preferencias de cookies ni banner, con la línea Por ahora este sitio no usa analítica de terceros; la descripción SEO de privacidad también quedó condicional. Con ID no vacío los textos originales se prueban en verify.mjs con render en memoria.
+- PASS — texto de WhatsApp del botón de consulta: zona (quiero consultar por un baby shower en Luque), hub de zonas (el traslado a mi zona), hub de temáticas (una temática) y temática (la temática Dino bebé); cola Fecha tentativa / Invitados / Zona sin cambios.

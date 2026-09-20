@@ -303,13 +303,48 @@ test('Contrast and reference assets', () => {
  }
 });
 
-// Render the actual generator in memory with analytics enabled; no files or IDs are changed.
-const analyticsRender = { ...content, ANALYTICS_ID: 'G-TEST', PAGES: { ...content.PAGES }, THEME_DETAILS, ZONE_DETAILS, IDEAS,
- readFileSync, existsSync, readdirSync, createHash, console, Buffer };
+// Evaluar contenido y generador en memoria para ambos estados, sin escribir archivos.
 const rendererSource = read('build-site.mjs').replace(/^import .*;\n/gm, '').replace(/^process\.chdir.*;\n/m, '').split('for (const row of manifest.filter(r => r.built))')[0];
-vm.createContext(analyticsRender);
-vm.runInContext(rendererSource, analyticsRender);
-const analyticsHtml = route => analyticsRender.render(route, analyticsRender.PAGES[route] || EXTRAS[route], !EXTRAS[route]);
+function renderWithAnalytics(id) {
+ const source = read('content.mjs').replace(/^export /gm, '').replace(/const ANALYTICS_ID = '[^']*';/, `const ANALYTICS_ID = ${JSON.stringify(id)};`);
+ const configured = vm.runInNewContext(source + '\n;({ ' + Object.keys(content).join(', ') + ' });');
+ const context = { ...configured, THEME_DETAILS, ZONE_DETAILS, IDEAS, readFileSync, existsSync, readdirSync, createHash, console, Buffer };
+ vm.createContext(context);
+ vm.runInContext(rendererSource, context);
+ return route => context.render(route, context.PAGES[route] || EXTRAS[route], !EXTRAS[route]);
+}
+const analyticsHtml = renderWithAnalytics('G-TEST');
+test('Textos legales según la configuración de analítica', () => {
+ const disabledHtml = renderWithAnalytics('');
+ const inactive = 'Por ahora este sitio no usa analítica de terceros. Si la activamos, te pediremos tu consentimiento antes de cargarla y vas a poder revocarlo desde el pie de página.';
+ const originals = {
+  '/privacidad/': 'Podés aceptar o rechazar la analítica desde el aviso de cookies. No cargamos etiquetas de analítica antes de tu aceptación. Podés revocar el consentimiento desde Preferencias de cookies, en el pie de página. Guardamos tu elección para respetarla.',
+  '/terminos/': 'Podés aceptar, rechazar y revocar la analítica desde Preferencias de cookies.'
+ };
+ for (const [route, original] of Object.entries(originals)) {
+  const disabled = disabledHtml(route), enabled = analyticsHtml(route);
+  assert(!/Preferencias de cookies|banner|revocar la anal[ií]tica/i.test(disabled), disabled.match(/.{0,60}(?:Preferencias de cookies|banner|revocar la anal[ií]tica).{0,60}/i)?.[0]);
+  assert(disabled.includes(inactive)); assert(!disabled.includes(original));
+  assert(enabled.includes(original)); assert(!enabled.includes(inactive));
+  assert.equal(pages.get(route).html, ANALYTICS_ID ? renderWithAnalytics(ANALYTICS_ID)(route) : disabled);
+ }
+});
+test('Mensajes de consulta por zona y temática', () => {
+ for (const [route, { dom }] of pages) {
+  const buttons = all(dom, '[data-ev-loc="consulta-tematica-zona"]');
+  if (!/^\/(zonas|tematicas)\//.test(route)) continue;
+  const zone = ZONES.find(z => route === `/zonas/${z.slug}/`);
+  const theme = THEMES.find(t => route === `/tematicas/${t.slug}/`);
+  const subject = route === '/zonas/' ? 'el traslado a mi zona' : route === '/tematicas/' ? 'una temática' : zone ? `un baby shower en ${zone.name}` : `la temática ${theme.name}`;
+  assert(buttons.length > 0);
+  for (const button of buttons) {
+   const url = new URL(button.attrs.href);
+   assert.equal(url.origin + url.pathname, `https://wa.me/${WA_NUMBER}`);
+   assert.equal(url.searchParams.get('text'), `Hola, vengo de ${SITE.domain} (${route}) y quiero consultar por ${subject}. Fecha tentativa: ____ · Invitados: ____ · Zona: ____`);
+   assert.equal(text(button), PRIMARY_CTA); assert.equal(button.attrs['data-ev'], 'whatsapp_click');
+  }
+ }
+});
 test('Short unit captions and calculator labels', () => {
  for (const pkg of PACKAGES.filter(p => p.extra)) {
   const caption = content.extraGuestCaption(pkg);
