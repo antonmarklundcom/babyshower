@@ -203,3 +203,14 @@ Mickey remains blocked and unplaced. Blanca Nieves marked rejected/unplaced for 
 - FAIL: rg unavailable (CommandNotFoundException); used Select-String/Get-Content.
 - PASS: git diff --check and scope review; changes confined to allowed source/manifest/log and generated HTML (ZIP produced by required deploy command).
 - Existing flags: local fonts absent (Google Fonts fallback); public/notification email Q21 and hosted PHP checks remain manager-owned. No browser visual QA performed in B7.
+
+## 2026-09-19 - Batch 0 - evaluacion del export de diseno (solo lectura)
+
+Manager: Claude, sesion de Anton. Worker: Codex gpt-6-astra, esfuerzo low, sandbox read-only, sesion 01a0bcb9-13b9-75a3-9a31-46b98204fa3b (modelo y esfuerzo leidos del turn_context). Sin cambios en el sitio. Se agregaron docs/design-canvas-export.html (envoltorio empaquetado del export), docs/design-canvas-home.dc.html (composicion extraida del paquete; solo referencia de composicion y CSS) y docs/triage-178-ideas.md.
+
+Resultado de Codex: la composicion del export se mapea a los generadores existentes sin tocar la matriz de la calculadora ni el contrato de calc.js. Datos, precios, complementos y FAQ del export son inventados y no entran a content.mjs. verify.mjs exige que site.css empiece con la hoja de referencia completa, asi que los cambios se agregan al final. Codex senalo que las etiquetas nuevas de la portada (subtitulo en tres lineas, tres enlaces) viven en content.mjs y se solapan con Batch 2.
+
+Decision de Anton en el chat: confiar en Codex en todo lo mencionado y continuar construyendo con Codex. Decision del manager (no dictada por Anton): adelantar esas cinco etiquetas a Batch 1 y usar puntos de corte 640 y 960 px.
+
+- PASS - node verify.mjs --final (Codex y manager; salida 0).
+- PASS - git status: Codex no modifico archivos.
