@@ -114,6 +114,19 @@ img{max-width:100%;height:auto;display:block}
 /* Site components. The resolved reference token block above is preserved. */
 :root{--tint-sage:#DDE8E0;--tint-sky:#DCE6F2;--tint-blush:#F6E1DC}
 .font-fallback{--font-text:'DM Sans',system-ui,sans-serif}
+.ideas-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem}
+.ideas-grid h2{font-size:clamp(1.8rem,3vw,2.5rem);line-height:1.15}
+.guide{max-width:820px;padding-block:2rem 5rem;line-height:1.85}
+.guide p{max-width:none}
+.guide-breadcrumb{margin-bottom:2rem;font-size:.9rem}
+.guide-section{padding-block:1.8rem .5rem}
+.guide-section h2{font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.15}
+.cta-card{margin-block:2rem;padding:clamp(1.3rem,4vw,2rem);border:1px solid var(--hairline)}
+.cta-card h3{font-size:1.8rem;line-height:1.2}
+.guide-image{min-height:230px;aspect-ratio:16/9;border-radius:var(--r-md);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;margin-block:2rem;border:1px solid var(--hairline)}
+.guide-image>span:first-child{font-size:5rem;line-height:1}
+.guide-related{margin-top:2rem;border-top:1px solid var(--hairline);padding-top:1.5rem}
+@media(max-width:639px){.ideas-grid{grid-template-columns:1fr}.guide-image{min-height:180px}.cta-card .btn{width:100%}}
 [hidden]{display:none!important}
 html{scroll-padding-top:8rem}
 body{overflow-wrap:break-word}

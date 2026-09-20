@@ -186,41 +186,41 @@
     "output": "ideas/index.html",
     "phase": "B4",
     "indexable": true,
-    "built": false
+    "built": true
   },
   {
     "route": "/ideas/ideas-para-baby-shower/",
     "output": "ideas/ideas-para-baby-shower/index.html",
     "phase": "B4",
     "indexable": true,
-    "built": false
+    "built": true
   },
   {
     "route": "/ideas/juegos-para-baby-shower/",
     "output": "ideas/juegos-para-baby-shower/index.html",
     "phase": "B4",
     "indexable": true,
-    "built": false
+    "built": true
   },
   {
     "route": "/ideas/baby-shower-sencillo-en-casa/",
     "output": "ideas/baby-shower-sencillo-en-casa/index.html",
     "phase": "B4",
     "indexable": true,
-    "built": false
+    "built": true
   },
   {
     "route": "/ideas/revelacion-de-genero-sencilla/",
     "output": "ideas/revelacion-de-genero-sencilla/index.html",
     "phase": "B4",
     "indexable": true,
-    "built": false
+    "built": true
   },
   {
     "route": "/ideas/que-se-necesita-para-un-baby-shower/",
     "output": "ideas/que-se-necesita-para-un-baby-shower/index.html",
     "phase": "B4",
     "indexable": true,
-    "built": false
+    "built": true
   }
 ]

@@ -6,6 +6,7 @@ import { createHash, webcrypto } from 'node:crypto';
 import vm from 'node:vm';
 import { THEMES as THEME_DETAILS } from './themes.mjs';
 import { ZONES as ZONE_DETAILS } from './zones.mjs';
+import { IDEAS } from './ideas.mjs';
 import { REVEAL, ANITO, EXTRA_FOOD, CONFIRMATION } from './content.mjs';
 import { SITE, WA_NUMBER, ANALYTICS_ID, LAUNCH_MODE, BOOKING_ENABLED, PRICES, POLICY, TRUST, PRIMARY_CTA, PACKAGES, ADDONS, ZONES, WA_MENU, THEMES, PAGES, EXTRAS, UI, priceCaption, packageMessage } from './content.mjs';
 
@@ -369,12 +370,35 @@ for (const prefix of ['/tematicas/','/zonas/']) {
  if (members.length && (args.includes('--uniqueness') || final)) notes.push(`${prefix} main-paragraph uniqueness: ${members.length * (members.length - 1) / 2} pairs; maximum Jaccard ${maxSimilarity.toFixed(3)}.`);
  if (!members.length) notes.push(`DEFERRED B3: ${prefix} uniqueness (no built detail routes).`);
 }
-for (const page of [...pages.values()].filter(p => /^\/ideas\/[^/]+\/$/.test(p.route))) {
- const article = one(page.dom,'article');
- function articleText(n) { if (!n || ['header','footer','nav'].includes(n.tag) || n.attrs?.['data-faq'] !== undefined || /(?:^|\s)(?:cta-card|faq)(?:\s|$)/.test(n.attrs?.class || '')) return ''; return n.text ?? (n.children || []).map(articleText).join(' '); }
- const count = words(articleText(article)).length;
- check(count >= 700 && count <= 1000, `${page.route}: article words ${count}, expected 700–1000`);
+function articleText(n) {
+ if (!n || ['header','footer','nav','script','style'].includes(n.tag) || n.attrs?.hidden !== undefined || n.attrs?.['aria-hidden'] === 'true' || n.attrs?.['data-faq'] !== undefined || n.attrs?.['data-image-slot'] !== undefined || /(?:^|\s)(?:cta-card|faq)(?:\s|$)/.test(n.attrs?.class || '')) return '';
+ return n.text ?? (n.children || []).map(articleText).join(' ');
 }
+for (const page of [...pages.values()].filter(p => /^\/ideas\/[^/]+\/$/.test(p.route))) test(`B4 guide ${page.route}`, () => {
+ const article = one(page.dom,'article[data-guide]');
+ assert(article, 'Main guide article required');
+ const idea = IDEAS.find(i => page.route === `/ideas/${i.slug}/`); assert(idea);
+ assert.equal(text(one(page.dom, 'h1')), idea.h1);
+ assert.deepEqual(all(article, 'h2').map(text), idea.sections.map(s => s.heading));
+ const ctas = all(article, '.cta-card'); assert.equal(ctas.length, 2);
+ const sections = all(article, '.guide-section');
+ assert.equal(article.children.indexOf(ctas[0]), article.children.indexOf(sections[1]) + 1, 'CTA follows second H2 section');
+ assert.equal(article.children.at(-1), ctas[1], 'End CTA required');
+ for (const card of ctas) {
+  assert.equal(text(one(card, '[data-price-caption]')), priceCaption(idea.offer.price));
+  assert.equal(new URL(one(card, 'a').attrs.href).searchParams.get('text'), packageMessage(idea.offer, page.route));
+ }
+ assert.equal(all(article, '[data-image-slot]').length, 1);
+ assert(one(article, '[data-image-slot]').attrs.class.includes('tint-'), 'Tinted image panel required');
+ const links = all(article, 'a').map(a => a.attrs.href);
+ assert(links.includes(`/tematicas/${idea.theme}/`) && links.includes('/combos-y-precios/'), 'Theme and package links required');
+ assert(all(pages.get('/ideas/').dom, 'a').some(a => a.attrs.href === page.route), 'Hub links guide');
+ if (args.includes('--words') || final) {
+  const count = words(articleText(article)).length;
+  assert(count >= 700 && count <= 1000, `article words ${count}, expected 700–1000`);
+  notes.push(`${page.route}: ${count} article words (navigation, CTA, FAQ and image panel excluded).`);
+ }
+});
 if (![...pages.keys()].some(r => /^\/ideas\/[^/]+\/$/.test(r))) notes.push('DEFERRED B4: guide word counts (no built guides).');
 if (args.includes('--calc') || Number(phase[1]) >= 2) {
  // B2 supplies this pure contract alongside its browser renderer.

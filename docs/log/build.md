@@ -155,3 +155,16 @@ Pendientes heredados: fuentes locales ausentes y fallback Google Fonts; correo p
 - /zonas/asuncion/, /zonas/fernando-de-la-mora/, /zonas/lambare/, /zonas/san-lorenzo/, /zonas/luque/.
 - /zonas/: reutiliza los párrafos de las cinco ciudades y agrega textos breves para Mariano Roque Alonso y Capiatá sin enlaces a páginas inexistentes.
 - También revisar FAQ nuevas, descripciones SEO, etiquetas de secciones y aclaración de alcance temático. Captions, CTA e importes derivados de las fuentes compartidas; ningún marcador REVISAR se imprime en HTML.
+## 2026-09-19 — B4 — hub de ideas y cinco guías
+
+Implementación autorizada tras aclaración: Kit Sorpresa lee nombre y precio de REVEAL.packages; todos los importes salen de content.mjs y usan priceCaption. Sin export de diseño elegido; se reutilizan componentes existentes. Guías con H1 y esquema de sección 9, CTA tras la segunda sección H2 y al final, panel ilustrativo tintado, enlaces a temática y combos, Article con datePublished y author enlazado a /#org, y BreadcrumbList con Ideas como nivel intermedio. Manifiesto completo construido; sitemap y HTML regenerados (hash CSS compartido).
+
+- PASS — node build-site.mjs: 32 rutas construidas, 34 HTML, 32 entradas sitemap; totales derivados del manifiesto.
+- PASS — node verify.mjs --phase B4: estructura, enlaces, CTA/precios, schema y controles previos.
+- PASS — node verify.mjs --phase B4 --words: ideas 818, juegos 834, casa 836, revelación 820, checklist 787 palabras. Excluye navegación, header/footer, CTA, FAQ y panel ilustrativo.
+- PASS — Node por stdin, pruebas de límites sobre HTML temporal restaurado en finally: 699 y 1001 rechazados; 700 y 1000 aceptados.
+- FAIL inicial de prueba auxiliar, corregido: RangeError: Invalid array length; se amplió el fragmento sustituido. Segundo intento: AssertionError al comparar el guion Unicode por stdin de PowerShell; se corrigió la aserción auxiliar a texto ASCII. Sin cambios al verificador por estos errores; HTML restaurado en ambos casos.
+- PASS — Get-Content, Test-Path, git diff --stat, git status --short: lectura y revisión de alcance. No se ejecutó QA visual/HTTP, reservado a B6.
+- NO DISPONIBLE LOCALMENTE — php -l lead-forward.php. Anton realiza prueba real de formulario alojado y comprueba email + log en Gate A.
+
+[REVISAR] Redacción expandida de las cinco guías en ideas.mjs, resúmenes del hub, metadatos y etiquetas nuevas. Marcadores solo en este log, nunca en HTML. Pendientes heredados: fuentes locales y fallback Google Fonts, correo público/Q21, endpoint B5 y QA/ZIP B6. Session id/model/effort los agrega manager o Anton desde dispatch; no se inventan.

@@ -2,6 +2,7 @@ import { mkdirSync, writeFileSync, readFileSync, existsSync, readdirSync } from 
 import { dirname } from 'node:path';
 import { THEMES as THEME_DETAILS } from './themes.mjs';
 import { ZONES as ZONE_DETAILS } from './zones.mjs';
+import { IDEAS } from './ideas.mjs';
 import { ADDONS, REVEAL, ANITO, COMPARISON, EXTRA_FOOD, CONFIRMATION } from './content.mjs';
 import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
@@ -9,6 +10,13 @@ import { SITE, WA_NUMBER, ANALYTICS_ID, PRICES, PRIMARY_CTA, RESPONSE, POLICY, T
 
 process.chdir(fileURLToPath(new URL('.', import.meta.url)));
 const manifest = JSON.parse(readFileSync('docs/routes.json', 'utf8'));
+const guides = manifest.filter(r => r.phase === 'B4' && r.route !== '/ideas/').map(r => {
+ const detail = IDEAS.find(idea => r.route === `/ideas/${idea.slug}/`);
+ if (!detail) throw new Error(`Missing guide ${r.route}`);
+ PAGES[r.route] = { ...detail, type: 'guide', detail };
+ return { ...r, detail };
+});
+PAGES['/ideas/'] = { type: 'ideas', title: 'Ideas para tu baby shower | Guías en Paraguay', description: 'Explorá guías para organizar tu baby shower: temáticas, juegos, decoración en casa, revelación de género y una checklist para repartir las tareas.', h1: 'Ideas para tu baby shower' };
 const headerNav = [...NAV];
 headerNav.splice(headerNav.findIndex(([href]) => href === '/ideas/'), 0, ['/zonas/', 'Zonas']);
 for (const t of THEME_DETAILS) PAGES[`/tematicas/${t.slug}/`] = { type: 'theme', detail: t, title: `${t.name}: decoración para baby shower`, description: `Explorá la propuesta de ${t.name} para baby shower o primer añito: colores, elementos y combos con precios estimados. Consultá por WhatsApp.`, h1: `Decoración ${t.character ? 'inspirada en' : 'de'} ${t.name} para baby shower y primer añito`, faq: t.faq };
@@ -107,9 +115,20 @@ function programmatic(route, page) {
  }
  return `<section><div class="wrap narrow"><h2>Tu evento en ${esc(t.name)}</h2><p data-main-paragraph>${esc(t.paragraph)}</p>${p(deliveryNote({ name: t.name, delivery: page.delivery }))}${p('Los precios de los combos ya incluyen este recargo estimado; no lo sumes de nuevo.')}${cta}</div></section><section><div class="wrap"><h2>Combos con traslado contemplado</h2>${cards(route, PACKAGES, page.delivery)}</div></section><section><div class="wrap"><h2>Elegí tu temática</h2>${themeGrid(THEME_DETAILS, 'theme-strip')}</div></section>${questions}`;
 }
+function guideCta(route, idea, location) {
+ const offer = idea.offer;
+ return `<aside class="cta-card card card--raised" aria-label="Consulta sobre ${esc(offer.name)}"><h3>${esc(idea.cta)}</h3>${p(offer.name)}<p data-price-caption>${esc(priceCaption(offer.price))}</p>${p(RESPONSE)}${link(waHref(packageMessage(offer, route)), PRIMARY_CTA, location, 'btn btn--primary')}</aside>`;
+}
+function ideasBody(route, page) {
+ if (page.type === 'ideas') return `<section><div class="wrap"><div class="ideas-grid">${guides.map(({ route: child, detail }, i) => `<article class="card card--hair tint-${['sage','sky','blush'][i % 3]}"><h2>${link(child, detail.h1, 'ideas-hub')}</h2>${p(detail.description)}${link(child, 'Leé la guía', 'ideas-hub', 'btn btn--ghost')}</article>`).join('')}</div><div class="actions">${wa(route, 'ideas-hub')}</div></div></section>`;
+ const idea = page.detail;
+ const theme = THEMES.find(t => t.slug === idea.theme);
+ return `<article class="guide wrap" data-guide><nav class="guide-breadcrumb" aria-label="Ruta de navegación">${link('/', 'Inicio', 'migas')} / ${link('/ideas/', 'Ideas', 'migas')}</nav>${p(idea.intro)}${idea.sections.map((s, i) => `<section class="guide-section"><h2>${esc(s.heading)}</h2>${s.paragraphs.map(p).join('')}</section>${i === 1 ? guideCta(route, idea, 'guia-intermedia') : ''}${i === 2 ? `<div class="guide-image tint-sky" data-image-slot="article" role="img" aria-label="${esc(idea.image)}"><span aria-hidden="true">✦</span><span>Inspiración ilustrativa</span></div>` : ''}`).join('')}<div class="guide-related"><p>Explorá la temática ${link(`/tematicas/${theme.slug}/`, theme.name, 'guia-tematica')} y compará ${link('/combos-y-precios/', 'combos y precios', 'guia-combos')} para preparar tu consulta.</p>${idea.offer.id === 'kit' ? link('/revelacion-de-genero/', 'Conocé el Kit Sorpresa', 'guia-kit') : ''}</div>${guideCta(route, idea, 'guia-final')}</article>`;
+}
 function body(route, page) {
  if (page.type === 'home') return home(route, page);
  const hero = `<section class="inner-hero${page.type === 'theme' ? ' tint-' + page.detail.tint : ''}"><div class="wrap"><span class="eyebrow">${esc(SITE.name)}</span><h1>${esc(page.h1)}</h1></div></section>`;
+ if (['ideas', 'guide'].includes(page.type)) return hero + ideasBody(route, page);
  if (['themes', 'theme', 'zones', 'zone'].includes(page.type)) return hero + programmatic(route, page);
  if (['combos', 'reveal', 'anito'].includes(page.type)) return hero + offers(route, page);
  if (page.type === 'contact') return hero + contact(route, false);
@@ -124,6 +143,11 @@ function graph(route, page) {
  if (route === '/') data.push({ '@type': 'LocalBusiness', '@id': SITE.url + '/#local', name: SITE.name, url: SITE.url + '/', areaServed: SITE.area, parentOrganization: { '@id': org } });
  if (['home', 'combos', 'reveal', 'anito', 'theme', 'zone'].includes(page.type)) data.push({ '@type': 'Service', '@id': SITE.url + route + '#servicio', name: page.h1, provider: { '@id': org }, areaServed: page.type === 'zone' ? page.detail.name : SITE.area, serviceType: page.h1 });
  if (route !== '/') data.push({ '@type': 'BreadcrumbList', '@id': SITE.url + route + '#migas', itemListElement: [{ '@type': 'ListItem', position: 1, name: SITE.name, item: SITE.url + '/' }, { '@type': 'ListItem', position: 2, name: page.h1, item: SITE.url + route }] });
+ if (page.type === 'guide') {
+  data.find(n => n['@type'] === 'BreadcrumbList').itemListElement.splice(1, 0, { '@type': 'ListItem', position: 2, name: 'Ideas', item: SITE.url + '/ideas/' });
+  data.find(n => n['@type'] === 'BreadcrumbList').itemListElement.at(-1).position = 3;
+  data.push({ '@type': 'Article', '@id': SITE.url + route + '#articulo', headline: page.h1, description: page.description, datePublished: page.datePublished, author: { '@id': org }, publisher: { '@id': org }, mainEntityOfPage: SITE.url + route, inLanguage: 'es-PY' });
+ }
  if (page.faq) data.push({ '@type': 'FAQPage', '@id': SITE.url + route + '#preguntas', mainEntity: page.faq.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) });
  return { '@context': 'https://schema.org', '@graph': data };
 }
