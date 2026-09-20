@@ -472,3 +472,8 @@ body:has(.home-page) .footer a{display:inline-flex;align-items:center;min-height
 
 /* Una sola acción en las páginas sin calculadora. */
 .mobile-bar > .btn:only-child{grid-column:1 / -1}
+
+/* Batch 4: inner theme pages only. */
+.inner-hero .theme-hero-image.theme-palette{width:100%;aspect-ratio:4/3;max-height:600px}
+.theme-palette-list>p{font-weight:700;margin-bottom:.5rem}
+.theme-palette-list>ul{display:flex;flex-wrap:wrap;gap:.5rem 2rem;padding-left:1.25rem}

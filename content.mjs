@@ -80,6 +80,9 @@ export const LEGAL = {
  ]
 };
 export const UI = {
+ palette: 'Paleta', illustrativeImages: 'Las imágenes son ilustrativas.',
+ zonePriceParts: (base, delivery) => `Base ${fmtGs(base)} + traslado estimado ${fmtGs(delivery)}`,
+ includedGuests: 'Incluye hasta {N} invitados en este combo',
  instagram: 'Instagram', noContract: 'No existe contrato hasta la confirmación por escrito.',
  skip: 'Saltá al contenido', mainNav: 'Principal', footerNav: 'Información del sitio', menu: 'Abrí el menú', close: 'Cerrar', waLabel: 'Escribinos por WhatsApp', waTitle: '¿Qué necesitás?', waFoot: 'Se abre WhatsApp con el mensaje ya escrito.',
  calc: 'Calculá tu estimación', prices: 'Mirá los combos y precios', themeCta: 'Ver temáticas', home: 'Volver al inicio', inclusions: 'Qué incluye y qué no incluye', included: 'Qué incluye', exclusions: 'Exclusiones', montage: 'Montaje y desmontaje incluidos en la estimación', transparency: 'Precios estimados a la vista, sin preguntar al privado.',
@@ -138,8 +141,8 @@ Object.assign(PAGES, {
  ] },
  '/primer-anito/': { type: 'anito', title: 'Primer añito con temática | Baby Shower Paraguay', h1: 'Primer añito con temática, listo para disfrutar', description: 'Conocé el Combo Añito para 30 invitados con decoración, torta y bocaditos. Elegí una temática y consultá el precio final y la disponibilidad.', faq: [
   { q: '¿Puedo elegir cualquier temática?', a: 'Contanos qué temática tenés en mente y confirmamos el alcance por WhatsApp.' },
-  { q: '¿Incluye la torta?', a: 'Sí, 1 piso, hasta 30 porciones.' },
-  { q: '¿Sirve para salón de eventos?', a: 'Sí, coordinamos horario de ingreso con el salón.' }
+  { q: '¿Incluye la torta?', a: 'Sí, 1 piso, hasta 30 porciones, según la propuesta confirmada por WhatsApp.' },
+  { q: '¿Sirve para salón de eventos?', a: 'Sí, coordinamos horario de ingreso con el salón, según la propuesta confirmada por WhatsApp.' }
  ] }
 });
 

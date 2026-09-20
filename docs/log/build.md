@@ -320,3 +320,35 @@ Auditoría del manager, Batch 3B (Claude, sesión de Anton): worker Codex gpt-6-
 - PASS — node build-site.mjs y node verify.mjs --final ejecutados por el manager (salida 0, seis fixtures).
 - PASS — privacidad y términos con ANALYTICS_ID vacío: sin las palabras Preferencias de cookies ni banner, con la línea Por ahora este sitio no usa analítica de terceros; la descripción SEO de privacidad también quedó condicional. Con ID no vacío los textos originales se prueban en verify.mjs con render en memoria.
 - PASS — texto de WhatsApp del botón de consulta: zona (quiero consultar por un baby shower en Luque), hub de zonas (el traslado a mi zona), hub de temáticas (una temática) y temática (la temática Dino bebé); cola Fecha tentativa / Invitados / Zona sin cambios.
+
+## 2026-09-20 — Batch 4 — contenido y detalle de las propuestas
+
+Añadido el detalle Exclusiones con EXCLUSIONS a Añito, Kit Sorpresa y Revelación Completa, también en las temáticas que muestran Añito; el texto compartido no excluye torta ni mesa dulce. Adicionales y torta de revelación intactos. Las temáticas sin imagen colocada reutilizan las muestras del índice dentro del espacio del hero; las diez páginas muestran Paleta y una lista derivada de t.palette. Recargos positivos se desglosan bajo el precio sumado de las tarjetas de zona. La calculadora recibe montaje y capacidad desde content.mjs sin alterar importes, mensajes ni cotizaciones personalizadas. Índice de temáticas con respuesta de galería reutilizada. Dos respuestas de Añito condicionadas a la propuesta confirmada.
+
+Retirado únicamente el elemento vacío de imagen de las guías. Esto se desvía de BUILD-SPEC sección 6 (un espacio de imagen) hasta que existan imágenes; restaurar el espacio es una reversión de una línea. CTA tras el segundo H2, contenido, recuentos y esquema intactos.
+
+Ediciones de verify.mjs: sustituidas las dos aserciones de existencia y tinte del espacio vacío por una de ausencia; añadidas comprobaciones con el adaptador DOM de las dos líneas de calculadora, a 15/30 invitados, por encima del cupo y en cotización personalizada. No se alteraron los seis fixtures ni el control de precio base más traslado de zonas.
+
+### REVISAR
+
+- UI.palette: «Paleta». Ítems derivados de cada t.palette, separados por comas y la palabra y, con inicial mayúscula; palabras y calificadores originales conservados en las diez temáticas.
+- UI.zonePriceParts: «Base Gs. X + traslado estimado Gs. Y», con importes derivados del paquete y ZONES mediante fmtGs.
+- UI.includedGuests: «Incluye hasta N invitados en este combo», con N del cupo del paquete.
+- UI.montage reutilizado: «Montaje y desmontaje incluidos en la estimación».
+- Índice de temáticas: respuesta FAQ existente «Todavía no tenemos galería de trabajos propios. Te compartimos ideas ilustrativas por WhatsApp.» seguida de UI.illustrativeImages: «Las imágenes son ilustrativas.»
+- Exclusiones reutilizadas: «Exclusiones» y «No incluye local/salón, mozos, bebidas alcohólicas, mesas y sillas, mantelería, hielo ni limpieza posterior.»
+- Añito, ¿Incluye la torta?: «Sí, 1 piso, hasta 30 porciones, según la propuesta confirmada por WhatsApp.»
+- Añito, ¿Sirve para salón de eventos?: «Sí, coordinamos horario de ingreso con el salón, según la propuesta confirmada por WhatsApp.»
+
+- PASS — node build-site.mjs: 32 rutas, 34 HTML.
+- PASS — node verify.mjs --final: seis fixtures; guías entre 787 y 836 palabras; peso máximo 95.654 bytes.
+- PASS — auditoría Node: alcance autorizado, tres data-package en inicio, portada idéntica salvo configuración de calculadora y hashes, CSS añadido al final, UTF-8 sin BOM, LF y sin mojibake ni interrogaciones entre letras en líneas añadidas. Sin inglés nuevo; palabras preexistentes conservadas.
+- PASS — git status --short: fuentes autorizadas y HTML; los dos prompts sin seguimiento preexistentes intactos.
+- FAIL auxiliares — rg no disponible (CommandNotFoundException); lectura continuada con Node. Primer script de edición por tubería falló por conversión de caracteres a interrogaciones, sin escribir archivos; repetido con código ASCII y PASS.
+- No se ejecutaron comprobaciones visuales, Lighthouse ni servidor de vista previa. Avisos heredados del verificador: fuentes locales y correos pendientes; pruebas HTTP, ZIP y PHP alojado fuera de este lote. Límites de texto, propuesta de portada y og.jpg intactos.
+
+Auditoría del manager, Batch 4 (Claude, sesión de Anton): worker Codex gpt-6-astra, esfuerzo low, sesión 01a0bd14-c8ec-70f3-b88b-0e26a1b899e5, un turno (modelo y esfuerzo leídos del turn_context). Origen: revisión de Fable (docs/triage-178-ideas.md, revisión 2) pegada por Anton en el chat; solo se hicieron los siete puntos que no cambian la sección 0 ni contradicen una decisión de Anton. No se tocó: badge Combo completo, Todo listo, la anotación (Sueño), el caption Precio estimado desde del resultado de la calculadora, la tarjeta Estimación orientativa ni og.jpg (siguen esperando a Anton; verificado con grep en index.html).
+- PASS — node build-site.mjs y node verify.mjs --final ejecutados por el manager (salida 0, seis fixtures, peso máximo 95.654 bytes, tres data-package en inicio).
+- PASS — navegador real a 375 px: Exclusiones en la tarjeta Añito, Kit Sorpresa y Revelación Completa (no en la de torta); páginas de temática sin imagen con franja de colores en el hero y lista Paleta; tarjetas de Luque con la línea Base Gs. + traslado estimado Gs. (sin línea en Asunción); calculadora con Incluye hasta 30 invitados en este combo al elegir 15 invitados y la línea de montaje solo con total numérico (45 invitados sigue en cotización); guías sin el recuadro vacío; /tematicas/ con la respuesta de galería y Las imágenes son ilustrativas; respuestas de torta y coordinación de Añito con según la propuesta confirmada por WhatsApp.
+- CORRECCIÓN del manager (una línea, sin Codex): themes.mjs paleta de Mickey pasó de rojo, negro y amarillo suavizados a rojo, negro y amarillo, porque la lista dividía el calificativo y leía Amarillo suavizados; el párrafo principal ya dice que los tonos se trabajan suavizados.
+- PASS — Lighthouse móvil con preview-server.mjs (comprime): inicio 99, Mickey 98, Luque 100, Añito 100, guía de juegos 100; accesibilidad, buenas prácticas y SEO en 100; CLS máximo 0,084 (Mickey), el resto 0,007 a 0,05.

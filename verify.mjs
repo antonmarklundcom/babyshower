@@ -513,8 +513,7 @@ for (const page of [...pages.values()].filter(p => /^\/ideas\/[^/]+\/$/.test(p.r
   assert.equal(text(one(card, '[data-price-caption]')), priceCaption(idea.offer.price));
   assert.equal(new URL(one(card, 'a').attrs.href).searchParams.get('text'), packageMessage(idea.offer, page.route));
  }
- assert.equal(all(article, '[data-image-slot]').length, 1);
- assert(one(article, '[data-image-slot]').attrs.class.includes('tint-'), 'Tinted image panel required');
+ assert.equal(all(article, '[data-image-slot]').length, 0, 'No empty guide image placeholder until images exist');
  const links = all(article, 'a').map(a => a.attrs.href);
  assert(links.includes(`/tematicas/${idea.theme}/`) && links.includes('/combos-y-precios/'), 'Theme and package links required');
  assert(all(pages.get('/ideas/').dom, 'a').some(a => a.attrs.href === page.route), 'Hub links guide');
@@ -552,6 +551,17 @@ if (args.includes('--calc') || Number(phase[1]) >= 2) {
     const root = b.q('[data-calculator]'), range = b.q('[data-guests]'), cta = b.q('[data-calc-cta]');
     const message = () => new URL(cta.href).searchParams.get('text');
     const choose = id => { all(root, '[name="calc-package"]').forEach(n => n.checked = n.value === id); b.fire(root, 'change'); };
+    const result = () => parse(b.q('[data-calc-output]').innerHTML);
+    assert.equal(text(one(result(), '[data-calc-scope]')), UI.montage);
+    assert.equal(text(one(result(), '[data-calc-included]')), UI.includedGuests.replace('{N}', PACKAGES[1].included));
+    range.value = '15'; b.fire(range, 'input');
+    assert.equal(text(one(result(), '[data-calc-included]')), UI.includedGuests.replace('{N}', PACKAGES[1].included));
+    range.value = '35'; b.fire(range, 'input');
+    assert.equal(all(result(), '[data-calc-included]').length, 0);
+    assert.equal(text(one(result(), '[data-calc-scope]')), UI.montage);
+    range.value = '45'; b.fire(range, 'input');
+    assert.equal(all(result(), '[data-calc-scope], [data-calc-included]').length, 0);
+    range.value = '30'; b.fire(range, 'input');
     assert.equal(root.hidden, false); assert(message().includes(priceCaption(PACKAGES[1].price)));
     range.value = '45'; b.fire(range, 'input'); assert(!/Gs\.\s*\d/.test(message()));
     choose('premium'); assert.equal(range.value, '45'); assert(message().includes('3.050.000'));
