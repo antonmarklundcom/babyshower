@@ -132,3 +132,26 @@ Pendientes heredados: fuentes locales ausentes (Instrument Serif + DM Sans vía 
 - SEO añito: «Conocé el Combo Añito para 30 invitados con decoración, torta y bocaditos. Elegí una temática y consultá el precio final y la disponibilidad.»
 - Textos derivados: captions de todos los importes, PRICES.label, invitados extra y cotización personalizada según BUILD-SPEC 0/5; sin nueva promesa. Copys B1 reutilizados sin cambios.
 - Etiquetas nuevas: Elegí tu combo; Restá 5 invitados; Sumá 5 invitados; Invitados extra; Traslado (recargo estimado); Comparación de combos; Qué incluye cada combo; Detalle; Elegí tu temática; Consultá el alcance (tabla, campos de Sueño no especificados); Torta de revelación. Celdas de tabla resumen inclusiones aprobadas; sin inventar cantidades faltantes.
+
+## 2026-09-19 — B3 — temáticas, zonas y hubs
+
+Leídas BUILD-SPEC sección 0 primero, 10-REVISION-V2, AGENTS.md, BUILD-SPEC 6/7/11 y copy 7/8. No existe export de diseño elegido; componentes y composición de B1 reutilizados. Sin cambios en fuentes fuera de la lista autorizada. Todos los HTML construidos se regeneraron por el hash CSS y la navegación Zonas; sitemap regenerado a partir del manifiesto.
+
+themes.mjs contiene diez temáticas con paleta, elementos, dos combos, tres relacionados y dos FAQ. Párrafos principales de 146–155 palabras. Personajes con «inspirada en», sin productos licenciados. zones.mjs contiene solo slug, nombre, barrios, tipos de lugar, FAQ y párrafo; cinco páginas con 152–160 palabras y dos entradas solo en hub (Capiatá y Mariano Roque Alonso). Importes unidos por slug desde content.mjs; tarjetas y mensajes suman traslado una sola vez. FAQPage visible, BreadcrumbList, Service con ciudad y proveedor enlazado; LocalBusiness solo en inicio.
+
+- PASS — node build-site.mjs: 26/32 rutas, 28 HTML incluyendo especiales, 26 entradas sitemap; totales del manifiesto.
+- PASS — node verify.mjs --phase B3: contenido, enlaces, precios por zona, FAQ/schema y controles previos; peso máximo 71.187 bytes sin fuentes/imágenes.
+- PASS — node verify.mjs --phase B3 --uniqueness: solo data-main-paragraph; normalización de caja/tildes/puntuación, conjuntos de 5 palabras, 45 pares temáticos y 10 pares de zonas, máximo Jaccard 0.000; falla desde 0.60.
+- PASS — Get-Content, Select-String, Test-Path: lecturas; Node por stdin: edición acotada, manifiesto y comprobación independiente de palabras/similitud; git status --short y git diff --stat: revisión de alcance.
+- FAIL inicial de edición, corregido — apply_patch: «Failed to find expected lines» al buscar una línea parcial de cards; no modificó archivos en ese intento. Parche reducido aplicado y reemplazo acotado completado.
+- NO DISPONIBLE LOCALMENTE — php -l lead-forward.php; no es PASS. Anton realiza el envío real en addon domain y verifica email + log en Gate A.
+
+Pendientes heredados: fuentes locales ausentes y fallback Google Fonts; correo público y Q21; endpoint B5; QA visual/HTTP/Lighthouse/ZIP B6. No se ejecutó revisión visual en B3. Sesión/modelo/esfuerzo los agrega manager o Anton desde dispatch, sin inventarlos.
+
+### [REVISAR] Páginas con párrafos expandidos más allá del seed
+
+- /tematicas/jefe-en-panales/, /tematicas/dino-bebe/, /tematicas/moana-bebe/, /tematicas/minnie-bebe/, /tematicas/mickey-bebe/.
+- /tematicas/blanca-nieves-bebe/, /tematicas/frutillita-bebe/, /tematicas/mariposas/, /tematicas/safari/, /tematicas/nubes-y-ositos/.
+- /zonas/asuncion/, /zonas/fernando-de-la-mora/, /zonas/lambare/, /zonas/san-lorenzo/, /zonas/luque/.
+- /zonas/: reutiliza los párrafos de las cinco ciudades y agrega textos breves para Mariano Roque Alonso y Capiatá sin enlaces a páginas inexistentes.
+- También revisar FAQ nuevas, descripciones SEO, etiquetas de secciones y aclaración de alcance temático. Captions, CTA e importes derivados de las fuentes compartidas; ningún marcador REVISAR se imprime en HTML.

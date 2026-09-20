@@ -67,119 +67,119 @@
     "output": "tematicas/index.html",
     "phase": "B3",
     "indexable": true,
-    "built": false
+    "built": true
   },
   {
     "route": "/tematicas/jefe-en-panales/",
     "output": "tematicas/jefe-en-panales/index.html",
     "phase": "B3",
     "indexable": true,
-    "built": false
+    "built": true
   },
   {
     "route": "/tematicas/dino-bebe/",
     "output": "tematicas/dino-bebe/index.html",
     "phase": "B3",
     "indexable": true,
-    "built": false
+    "built": true
   },
   {
     "route": "/tematicas/moana-bebe/",
     "output": "tematicas/moana-bebe/index.html",
     "phase": "B3",
     "indexable": true,
-    "built": false
+    "built": true
   },
   {
     "route": "/tematicas/minnie-bebe/",
     "output": "tematicas/minnie-bebe/index.html",
     "phase": "B3",
     "indexable": true,
-    "built": false
+    "built": true
   },
   {
     "route": "/tematicas/mickey-bebe/",
     "output": "tematicas/mickey-bebe/index.html",
     "phase": "B3",
     "indexable": true,
-    "built": false
+    "built": true
   },
   {
     "route": "/tematicas/blanca-nieves-bebe/",
     "output": "tematicas/blanca-nieves-bebe/index.html",
     "phase": "B3",
     "indexable": true,
-    "built": false
+    "built": true
   },
   {
     "route": "/tematicas/frutillita-bebe/",
     "output": "tematicas/frutillita-bebe/index.html",
     "phase": "B3",
     "indexable": true,
-    "built": false
+    "built": true
   },
   {
     "route": "/tematicas/mariposas/",
     "output": "tematicas/mariposas/index.html",
     "phase": "B3",
     "indexable": true,
-    "built": false
+    "built": true
   },
   {
     "route": "/tematicas/safari/",
     "output": "tematicas/safari/index.html",
     "phase": "B3",
     "indexable": true,
-    "built": false
+    "built": true
   },
   {
     "route": "/tematicas/nubes-y-ositos/",
     "output": "tematicas/nubes-y-ositos/index.html",
     "phase": "B3",
     "indexable": true,
-    "built": false
+    "built": true
   },
   {
     "route": "/zonas/",
     "output": "zonas/index.html",
     "phase": "B3",
     "indexable": true,
-    "built": false
+    "built": true
   },
   {
     "route": "/zonas/asuncion/",
     "output": "zonas/asuncion/index.html",
     "phase": "B3",
     "indexable": true,
-    "built": false
+    "built": true
   },
   {
     "route": "/zonas/luque/",
     "output": "zonas/luque/index.html",
     "phase": "B3",
     "indexable": true,
-    "built": false
+    "built": true
   },
   {
     "route": "/zonas/san-lorenzo/",
     "output": "zonas/san-lorenzo/index.html",
     "phase": "B3",
     "indexable": true,
-    "built": false
+    "built": true
   },
   {
     "route": "/zonas/fernando-de-la-mora/",
     "output": "zonas/fernando-de-la-mora/index.html",
     "phase": "B3",
     "indexable": true,
-    "built": false
+    "built": true
   },
   {
     "route": "/zonas/lambare/",
     "output": "zonas/lambare/index.html",
     "phase": "B3",
     "indexable": true,
-    "built": false
+    "built": true
   },
   {
     "route": "/ideas/",

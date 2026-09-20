@@ -1,5 +1,7 @@
 import { mkdirSync, writeFileSync, readFileSync, existsSync, readdirSync } from 'node:fs';
 import { dirname } from 'node:path';
+import { THEMES as THEME_DETAILS } from './themes.mjs';
+import { ZONES as ZONE_DETAILS } from './zones.mjs';
 import { ADDONS, REVEAL, ANITO, COMPARISON, EXTRA_FOOD, CONFIRMATION } from './content.mjs';
 import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
@@ -7,6 +9,17 @@ import { SITE, WA_NUMBER, ANALYTICS_ID, PRICES, PRIMARY_CTA, RESPONSE, POLICY, T
 
 process.chdir(fileURLToPath(new URL('.', import.meta.url)));
 const manifest = JSON.parse(readFileSync('docs/routes.json', 'utf8'));
+const headerNav = [...NAV];
+headerNav.splice(headerNav.findIndex(([href]) => href === '/ideas/'), 0, ['/zonas/', 'Zonas']);
+for (const t of THEME_DETAILS) PAGES[`/tematicas/${t.slug}/`] = { type: 'theme', detail: t, title: `${t.name}: decoración para baby shower`, description: `Explorá la propuesta de ${t.name} para baby shower o primer añito: colores, elementos y combos con precios estimados. Consultá por WhatsApp.`, h1: `Decoración ${t.character ? 'inspirada en' : 'de'} ${t.name} para baby shower y primer añito`, faq: t.faq };
+const deliveryNote = z => `Recargo estimado de traslado en ${z.name}: ${priceCaption(z.delivery)}`;
+for (const z of ZONE_DETAILS.filter(z => manifest.some(r => r.route === `/zonas/${z.slug}/`))) {
+ const delivery = ZONES.find(item => item.slug === z.slug);
+ if (!delivery || delivery.delivery === null) throw new Error(`Missing delivery for ${z.slug}`);
+ PAGES[`/zonas/${z.slug}/`] = { type: 'zone', detail: z, delivery: delivery.delivery, title: `Baby shower en ${z.name}: combos`, description: `Consultá tu baby shower en ${z.name}. Conocé los espacios, el recargo estimado y los combos con traslado ya sumado al precio mostrado.`, h1: `Baby shower en ${z.name}`, faq: z.faq.map((f, i) => i ? f : { ...f, a: `${deliveryNote(delivery)} ${f.a}` }) };
+}
+PAGES['/tematicas/'] = { type: 'themes', title: 'Temáticas para baby shower y primer añito', description: 'Elegí una temática para tu baby shower o primer añito. Explorá paletas, elementos decorativos y combos con precios estimados para consultar.', h1: 'Temáticas para baby shower y primer añito' };
+PAGES['/zonas/'] = { type: 'zones', title: 'Zonas de baby shower en Gran Asunción', description: 'Consultá las zonas de atención para tu baby shower en Asunción y alrededores. Revisá el recargo estimado de traslado y las propuestas por ciudad.', h1: 'Zonas donde montamos tu baby shower' };
 const esc = value => String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#39;');
 const json = value => JSON.stringify(value).replaceAll('<', '\\u003c');
 const hash = path => createHash('sha256').update(readFileSync(path)).digest('hex').slice(0, 12);
@@ -25,7 +38,7 @@ function wa(route, loc, cls = 'btn btn--primary', trigger = false) {
 }
 const nav = (items, route, loc) => items.map(([href, label]) => link(href, label, loc, '', href === route ? 'aria-current="page"' : '')).join('');
 function header(route) {
- return `<a class="skip" href="#contenido">${esc(UI.skip)}</a><header class="hdr" data-hdr><div class="wrap hdr-row"><a href="/" class="brand" data-ev="navigation" data-ev-loc="marca">${esc(SITE.brand)}<span class="brand-suffix">${esc(SITE.suffix)}</span></a><nav class="desktop-nav" aria-label="${esc(UI.mainNav)}">${nav(NAV, route, 'cabecera')}</nav><div class="header-contact"><span class="phone">${esc(SITE.phone)}</span>${wa(route, 'cabecera', 'btn btn--outline', true)}</div><button type="button" class="burger" data-hdr-burger aria-expanded="false" aria-controls="hdr-panel" aria-label="${esc(UI.menu)}" data-ev="menu_open" data-ev-loc="cabecera"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2"/></svg></button></div><nav id="hdr-panel" data-hdr-panel class="mobile-nav wrap" aria-label="${esc(UI.mainNav)}">${nav(NAV, route, 'menu-movil')}</nav></header>`;
+ return `<a class="skip" href="#contenido">${esc(UI.skip)}</a><header class="hdr" data-hdr><div class="wrap hdr-row"><a href="/" class="brand" data-ev="navigation" data-ev-loc="marca">${esc(SITE.brand)}<span class="brand-suffix">${esc(SITE.suffix)}</span></a><nav class="desktop-nav" aria-label="${esc(UI.mainNav)}">${nav(headerNav, route, 'cabecera')}</nav><div class="header-contact"><span class="phone">${esc(SITE.phone)}</span>${wa(route, 'cabecera', 'btn btn--outline', true)}</div><button type="button" class="burger" data-hdr-burger aria-expanded="false" aria-controls="hdr-panel" aria-label="${esc(UI.menu)}" data-ev="menu_open" data-ev-loc="cabecera"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2"/></svg></button></div><nav id="hdr-panel" data-hdr-panel class="mobile-nav wrap" aria-label="${esc(UI.mainNav)}">${nav(headerNav, route, 'menu-movil')}</nav></header>`;
 }
 function footer(route) {
  return `<footer class="footer"><div class="wrap footer-grid"><div><strong class="brand">${esc(SITE.name)}</strong>${p(SITE.operator)}${p(SITE.serviceArea)}${p(SITE.hours)}${link(waDefault(route), SITE.phone, 'pie')}${SITE.email ? link('mailto:' + SITE.email, SITE.email, 'pie') : ''}${SITE.ruc ? p(SITE.ruc) : ''}${SITE.instagram ? link(SITE.instagram, UI.instagram, 'pie') : ''}</div><nav aria-label="${esc(UI.footerNav)}">${nav(FOOTER_NAV, route, 'pie')}<button type="button" class="text-button" data-consent-revoke data-ev="consent_revoke" data-ev-loc="pie">${esc(UI.preferences)}</button></nav></div></footer>`;
@@ -45,8 +58,8 @@ function form(route) {
 function contact(route, heading = true) {
  return `<section class="contact-section"><div class="wrap split contact-split"><div>${heading ? `<h2>${esc(UI.contact)}</h2>` : ''}${p(RESPONSE)}${wa(route, 'contacto')}${p(SITE.phone)}${p(SITE.hours)}</div><div class="form-panel">${form(route)}</div></div></section>`;
 }
-function cards(route) {
- return `<div class="package-grid">${PACKAGES.map((item, i) => `<article class="card ${i === 1 ? 'card--raised featured' : i === 0 ? 'card--hair' : 'card--bare'}" data-package="${item.id}" data-price="${item.price}"><div class="motif motif-${i}" aria-hidden="true"><span></span></div>${item.badge ? `<span class="badge">${esc(item.badge)}</span>` : ''}<h3>${esc(item.name)}</h3><p class="price-caption" data-price-caption>${esc(priceCaption(item.price))}</p>${p(item.description)}${p(item.chip)}<details><summary>${esc(UI.exclusions)}</summary>${p(item.exclusions)}</details>${link(waHref(packageMessage(item, route)), PRIMARY_CTA, 'combo-' + item.id, 'btn btn--primary')}</article>`).join('')}</div>`;
+function cards(route, items = PACKAGES, delivery = 0) {
+ return `<div class="package-grid">${items.map(item => ({ ...item, price: item.price + delivery })).map((item, i) => `<article class="card ${i === 1 ? 'card--raised featured' : i === 0 ? 'card--hair' : 'card--bare'}" data-package="${item.id}" data-price="${item.price}"><div class="motif motif-${i}" aria-hidden="true"><span></span></div>${item.badge ? `<span class="badge">${esc(item.badge)}</span>` : ''}<h3>${esc(item.name)}</h3><p class="price-caption" data-price-caption>${esc(priceCaption(item.price))}</p>${p(item.description)}${p(item.chip)}<details><summary>${esc(UI.exclusions)}</summary>${p(item.exclusions)}</details>${link(waHref(packageMessage(item, route)), PRIMARY_CTA, 'combo-' + item.id, 'btn btn--primary')}</article>`).join('')}</div>`;
 }
 const steps = () => `<section class="steps-section"><div class="wrap"><h2>${esc(UI.steps)}</h2><ol class="steps">${STEPS.map(([title, body], i) => `<li><span class="step-number" aria-hidden="true">0${i + 1}</span><h3>${esc(title)}</h3>${p(body)}</li>`).join('')}</ol></div></section>`;
 function faq(items, grouped = false) {
@@ -73,9 +86,31 @@ function offers(route, page) {
  if (page.type === 'reveal') return `<section><div class="wrap">${p(REVEAL.intro)}<div class="offer-grid">${REVEAL.packages.map(a => offerCard(a, route)).join('')}</div><h2>Cómo funciona</h2><ol class="steps">${REVEAL.steps.map(s => `<li>${esc(s)}</li>`).join('')}</ol>${offerCard(REVEAL.cake, route)}<h2>Adicionales a confirmar, solo exterior</h2><ul><li>Humo de color</li><li>Polvo holi</li></ul><h2>Revelación sencilla en casa</h2>${link('/ideas/revelacion-de-genero-sencilla/', '¿Querés hacerlo simple en casa? Mirá ideas de revelación de género sencilla', 'ideas-revelacion')}${p(REVEAL.repeat)}</div></section>${questions}`;
  return `<section><div class="wrap">${offerCard(ANITO, route)}<h2>Elegí tu temática</h2><div class="theme-grid">${THEMES.filter(t => ANITO.themes.includes(t.slug)).map((t, i) => link('/tematicas/' + t.slug + '/', t.name, 'tematicas-anito', 'theme-card theme-' + i % 3)).join('')}</div></div></section>${questions}`;
 }
+function themeGrid(items, cls = 'theme-bento') {
+ return `<div class="${cls}">${items.map(t => link(`/tematicas/${t.slug}/`, t.name, 'tematicas', `theme-card tint-${t.tint}`)).join('')}</div>`;
+}
+function programmatic(route, page) {
+ const t = page.detail;
+ const cta = link(waHref(`Hola, vengo de ${SITE.domain} (${route}) y quiero consultar por ${t?.name || page.h1}. Fecha tentativa: ____ · Invitados: ____ · Zona: ____`), PRIMARY_CTA, 'consulta-tematica-zona', 'btn btn--primary');
+ if (page.type === 'themes') return `<section><div class="wrap">${themeGrid(THEME_DETAILS)}</div></section><section class="dark-band grain"><div class="wrap"><h2>Contanos qué temática te gusta</h2>${cta}</div></section>`;
+ if (page.type === 'zones') return `<section><div class="wrap">${p(DELIVERY)}<div class="zone-grid">${ZONE_DETAILS.map(z => {
+  const child = manifest.find(r => r.route === `/zonas/${z.slug}/`);
+  const delivery = ZONES.find(item => item.slug === z.slug);
+  if (!delivery) throw new Error(`Missing zone ${z.slug}`);
+  return `<article class="card card--hair"><h2>${child ? link(child.route, z.name, 'zona-hub') : esc(z.name)}</h2>${p(z.paragraph)}${p(deliveryNote(delivery))}</article>`;
+ }).join('')}</div>${cta}</div></section>`;
+ const questions = `<section><div class="wrap narrow"><h2>${esc(UI.faq)}</h2>${faq(page.faq)}${cta}</div></section>`;
+ if (page.type === 'theme') {
+  const packages = t.combos.map(id => [...PACKAGES, ANITO].find(item => item.id === id));
+  if (packages.some(item => !item)) throw new Error(`Unknown combo for ${t.slug}`);
+  return `<section><div class="wrap narrow"><h2>Paleta y elementos</h2>${p(t.palette)}<p data-main-paragraph>${esc(t.paragraph)}</p><h2>Elementos decorativos de la propuesta</h2><ul>${t.elements.map(e => `<li>${esc(e)}</li>`).join('')}</ul>${p('Los elementos temáticos y su alcance se confirman por WhatsApp según el combo y el espacio.')}${cta}</div></section><section><div class="wrap"><h2>Combos para esta temática</h2>${cards(route, packages.filter(item => item.id !== ANITO.id))}${packages.some(item => item.id === ANITO.id) ? offerCard(ANITO, route) : ''}</div></section><section><div class="wrap"><h2>Otras temáticas para explorar</h2>${themeGrid(t.related.map(slug => THEME_DETAILS.find(item => item.slug === slug)), 'theme-related')}</div></section>${questions}`;
+ }
+ return `<section><div class="wrap narrow"><h2>Tu evento en ${esc(t.name)}</h2><p data-main-paragraph>${esc(t.paragraph)}</p>${p(deliveryNote({ name: t.name, delivery: page.delivery }))}${p('Los precios de los combos ya incluyen este recargo estimado; no lo sumes de nuevo.')}${cta}</div></section><section><div class="wrap"><h2>Combos con traslado contemplado</h2>${cards(route, PACKAGES, page.delivery)}</div></section><section><div class="wrap"><h2>Elegí tu temática</h2>${themeGrid(THEME_DETAILS, 'theme-strip')}</div></section>${questions}`;
+}
 function body(route, page) {
  if (page.type === 'home') return home(route, page);
- const hero = `<section class="inner-hero"><div class="wrap"><span class="eyebrow">${esc(SITE.name)}</span><h1>${esc(page.h1)}</h1></div></section>`;
+ const hero = `<section class="inner-hero${page.type === 'theme' ? ' tint-' + page.detail.tint : ''}"><div class="wrap"><span class="eyebrow">${esc(SITE.name)}</span><h1>${esc(page.h1)}</h1></div></section>`;
+ if (['themes', 'theme', 'zones', 'zone'].includes(page.type)) return hero + programmatic(route, page);
  if (['combos', 'reveal', 'anito'].includes(page.type)) return hero + offers(route, page);
  if (page.type === 'contact') return hero + contact(route, false);
  if (page.type === 'process') return hero + `<section><div class="wrap editorial"><h2>${esc(UI.who)}</h2><div>${p(ABOUT)}${wa(route, 'quienes-somos')}${SITE.email ? link('mailto:' + SITE.email, SITE.email, 'quienes-somos') : ''}</div></div></section>` + steps() + `<section><div class="wrap narrow"><h2>${esc(UI.payments)}</h2>${p(POLICY.pagos)}${p(POLICY.iva)}${p(POLICY.plazo)}</div></section>` + policy();
@@ -87,7 +122,7 @@ function graph(route, page) {
  const org = SITE.url + '/#org', site = SITE.url + '/#site';
  const data = [ { '@type': 'Organization', '@id': org, name: SITE.name, url: SITE.url + '/', telephone: '+' + WA_NUMBER, ...(SITE.email ? { email: SITE.email } : {}), ...(SITE.instagram ? { sameAs: [SITE.instagram] } : {}) }, { '@type': 'WebSite', '@id': site, name: SITE.name, url: SITE.url + '/', publisher: { '@id': org }, inLanguage: 'es-PY' } ];
  if (route === '/') data.push({ '@type': 'LocalBusiness', '@id': SITE.url + '/#local', name: SITE.name, url: SITE.url + '/', areaServed: SITE.area, parentOrganization: { '@id': org } });
- if (['home', 'combos', 'reveal', 'anito'].includes(page.type)) data.push({ '@type': 'Service', '@id': SITE.url + route + '#servicio', name: page.h1, provider: { '@id': org }, areaServed: SITE.area, serviceType: page.h1 });
+ if (['home', 'combos', 'reveal', 'anito', 'theme', 'zone'].includes(page.type)) data.push({ '@type': 'Service', '@id': SITE.url + route + '#servicio', name: page.h1, provider: { '@id': org }, areaServed: page.type === 'zone' ? page.detail.name : SITE.area, serviceType: page.h1 });
  if (route !== '/') data.push({ '@type': 'BreadcrumbList', '@id': SITE.url + route + '#migas', itemListElement: [{ '@type': 'ListItem', position: 1, name: SITE.name, item: SITE.url + '/' }, { '@type': 'ListItem', position: 2, name: page.h1, item: SITE.url + route }] });
  if (page.faq) data.push({ '@type': 'FAQPage', '@id': SITE.url + route + '#preguntas', mainEntity: page.faq.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) });
  return { '@context': 'https://schema.org', '@graph': data };

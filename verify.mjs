@@ -4,6 +4,8 @@ import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash, webcrypto } from 'node:crypto';
 import vm from 'node:vm';
+import { THEMES as THEME_DETAILS } from './themes.mjs';
+import { ZONES as ZONE_DETAILS } from './zones.mjs';
 import { REVEAL, ANITO, EXTRA_FOOD, CONFIRMATION } from './content.mjs';
 import { SITE, WA_NUMBER, ANALYTICS_ID, LAUNCH_MODE, BOOKING_ENABLED, PRICES, POLICY, TRUST, PRIMARY_CTA, PACKAGES, ADDONS, ZONES, WA_MENU, THEMES, PAGES, EXTRAS, UI, priceCaption, packageMessage } from './content.mjs';
 
@@ -329,12 +331,42 @@ const words = s => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'
 const grams = s => { const w = words(s); return new Set(w.slice(0,-4).map((_,i) => w.slice(i,i+5).join(' '))); };
 for (const prefix of ['/tematicas/','/zonas/']) {
  const members = [...pages.values()].filter(p => p.route.startsWith(prefix) && p.route !== prefix);
- for (let i = 0; i < members.length; i++) for (let j = i + 1; j < members.length; j++) {
-  const sets = [members[i],members[j]].map(p => grams(all(one(p.dom,'main'),'p').map(text).join(' ')));
+ for (const member of members) test(`B3 content ${member.route}`, () => {
+  const paragraphs = all(member.dom, '[data-main-paragraph]');
+  assert.equal(paragraphs.length, 1, 'One dedicated main paragraph');
+  assert(words(text(paragraphs[0])).length >= 120, 'Main paragraph requires 120 words');
+  assert.equal(all(member.dom, '[data-faq]').length, 2);
+  const graph = JSON.parse(text(one(member.dom, 'script[type="application/ld+json"]')))['@graph'];
+  assert(graph.some(n => n['@type'] === 'FAQPage'), 'Required FAQPage');
+  const links = all(member.dom, 'a').map(a => a.attrs.href);
+  const hub = pages.get(prefix);
+  assert(hub && all(hub.dom, 'a').some(a => a.attrs.href === member.route), 'Hub links child');
+  for (const href of ['/tematicas/', '/zonas/']) assert(all(one(member.dom, 'header'), 'a').some(a => a.attrs.href === href), 'Header hub link');
+  if (prefix === '/tematicas/') {
+   const detail = THEME_DETAILS.find(t => member.route === `${prefix}${t.slug}/`); assert(detail);
+   assert.equal(all(member.dom, '[data-package], [data-offer]').length, 2);
+   assert.equal(detail.related.length, 3); assert.equal(new Set(detail.related).size, 3);
+   for (const slug of detail.related) assert(slug !== detail.slug && links.includes(`${prefix}${slug}/`));
+   for (const element of detail.elements) assert(text(one(member.dom, 'main')).includes(element));
+   assert(links.some(href => href.startsWith('https://wa.me/') && new URL(href).searchParams.get('text').includes(detail.name)), 'Theme-specific CTA');
+   if (detail.character) assert(text(paragraphs[0]).includes('inspirada en') && !/licenciad[oa]|oficial/i.test(visible(one(member.dom, 'main'))));
+  } else {
+   const detail = ZONE_DETAILS.find(z => member.route === `${prefix}${z.slug}/`); assert(detail);
+   assert.deepEqual(Object.keys(detail).sort(), ['slug','name','barrios','venues','faq','paragraph'].sort());
+   assert.equal(all(member.dom, '[data-package]').length, PACKAGES.length);
+   assert.equal(graph.find(n => n['@type'] === 'Service').areaServed, detail.name);
+   assert(!/\bminutos?\b/i.test(text(paragraphs[0])));
+  }
+ });
+ let maxSimilarity = 0;
+ if (args.includes('--uniqueness') || final) for (let i = 0; i < members.length; i++) for (let j = i + 1; j < members.length; j++) {
+  const sets = [members[i],members[j]].map(p => grams(text(one(p.dom,'[data-main-paragraph]'))));
   const intersection = [...sets[0]].filter(s => sets[1].has(s)).length;
   const union = new Set([...sets[0],...sets[1]]).size;
+  maxSimilarity = Math.max(maxSimilarity, union ? intersection / union : 1);
   check(union > 0 && intersection / union < .60, `Paragraph 5-gram Jaccard >= .60: ${members[i].route}, ${members[j].route}`);
  }
+ if (members.length && (args.includes('--uniqueness') || final)) notes.push(`${prefix} main-paragraph uniqueness: ${members.length * (members.length - 1) / 2} pairs; maximum Jaccard ${maxSimilarity.toFixed(3)}.`);
  if (!members.length) notes.push(`DEFERRED B3: ${prefix} uniqueness (no built detail routes).`);
 }
 for (const page of [...pages.values()].filter(p => /^\/ideas\/[^/]+\/$/.test(p.route))) {
