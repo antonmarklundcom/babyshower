@@ -20,6 +20,41 @@ const failures = [], notes = [];
 function check(condition, message) { if (!condition) failures.push(message); }
 function test(name, fn) { try { fn(); } catch (error) { failures.push(`${name}: ${error.message}`); } }
 const read = path => readFileSync(path, 'utf8');
+
+// Batch 3: verify the cropped sharing asset from its JPEG SOF header.
+test('Sharing JPEG', () => {
+ assert(existsSync('assets/img/og.jpg'), 'Missing og.jpg');
+ const data = readFileSync('assets/img/og.jpg');
+ assert(data.length <= 200000, 'og.jpg exceeds 200 KB');
+ assert.equal(data.readUInt16BE(0), 0xffd8, 'JPEG SOI');
+ let dimensions;
+ for (let offset = 2; offset + 4 <= data.length;) {
+  assert.equal(data[offset], 0xff, 'JPEG marker');
+  const marker = data[offset + 1], length = data.readUInt16BE(offset + 2);
+  assert(length >= 2 && offset + 2 + length <= data.length, 'JPEG segment length');
+  if ([0xc0,0xc1,0xc2,0xc3,0xc5,0xc6,0xc7,0xc9,0xca,0xcb,0xcd,0xce,0xcf].includes(marker)) {
+   dimensions = [data.readUInt16BE(offset + 7), data.readUInt16BE(offset + 5)]; break;
+  }
+  if (marker === 0xda) break;
+  offset += 2 + length;
+ }
+ assert.deepEqual(dimensions, [1200, 630]);
+ console.log('PASS: og.jpg ' + dimensions.join(' x ') + '; ' + data.length + ' bytes');
+});
+test('Server SID fallback', () => {
+ const php = read('lead-forward.php');
+ const generation = "if ($lead['sid'] === '') {\n    $lead['sid'] = 'BS-' . date('Ymd') . '-' . bin2hex(random_bytes(2));\n}";
+ const validation = "preg_match('/^BS-[0-9]{8}-[a-z0-9]{4}$/Di', $lead['sid'])";
+ assert(php.includes(generation), 'Missing empty-only random SID generation');
+ assert(php.indexOf(generation) < php.indexOf(validation), 'SID generation must precede validation');
+ assert(read('assets/js/site.js').includes('BS-' + String.fromCharCode(92) + 'd{8}-[a-z0-9]{4}'), 'Cookie SID format');
+});
+check(!/Ley (?:6534\/2020|4868\/2013)/i.test(read('content.mjs')), 'Unreviewed source statute citation');
+for (const zone of ZONE_DETAILS.filter(z => ['mariano-roque-alonso', 'capiata'].includes(z.slug))) {
+ const words = zone.paragraph.trim().split(/\s+/).length;
+ check(words >= 140 && words <= 160, zone.slug + ' access paragraph word count');
+}
+
 const manifest = JSON.parse(read('docs/routes.json'));
 const built = manifest.filter(r => r.built);
 const routes = new Map(manifest.map(r => [r.route, r]));
@@ -106,7 +141,13 @@ for (const row of outputs) {
   assert.equal(one(dom, 'meta[property="og:description"]').attrs.content, desc);
   assert(one(dom, 'meta[name="viewport"]'));
   assert(one(dom, 'link[rel="icon"]').attrs.href.startsWith('data:image/svg+xml,'));
-  if (!existsSync('assets/img/og.jpg')) assert(!one(dom, 'meta[property="og:image"]'), 'Premature og:image');
+  assert.equal(one(dom, 'meta[property="og:image"]').attrs.content, SITE.url + '/assets/img/og.jpg');
+  assert(/^https:\/\//.test(one(dom, 'meta[property="og:image"]').attrs.content));
+  assert.equal(one(dom, 'meta[property="og:image:width"]').attrs.content, '1200');
+  assert.equal(one(dom, 'meta[property="og:image:height"]').attrs.content, '630');
+  assert.equal(one(dom, 'meta[property="og:image:alt"]').attrs.content, JSON.parse(read('docs/imagery-manifest.json')).images.find(image => image.id === 'hero-baby-shower-quincho').alt_es);
+  assert.equal(one(dom, 'meta[name="twitter:card"]').attrs.content, 'summary_large_image');
+  assert(!/Ley (?:6534\/2020|4868\/2013)/i.test(html), 'Unreviewed statute citation');
   if (!row.indexable) assert(/noindex/.test(one(dom, 'meta[name="robots"]')?.attrs.content), 'Special output requires noindex');
   const bodyText = normalize(visible(one(dom, 'body')));
   assert(!/\[(?:REVISAR|COMPLETAR|PENDIENTE)[^\]]*\]|\b(?:lorem|PLACEHOLDER|TBD|FIXME)\b|\{\{[^}]+\}\}|�|Ã[\u0080-\u00bf]|Â[\u0080-\u00bf]|â€|[a-z]\?[a-z]/i.test(bodyText) && !/\bTODO\b/.test(bodyText), 'Placeholder/mojibake in visible Spanish');

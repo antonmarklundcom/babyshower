@@ -105,6 +105,9 @@ foreach (['nombre','whatsapp','fecha','invitados','tipo','zona','mensaje','orige
     $lead[$name] = field($name);
     if (isset($_POST[$name]) && !is_string($_POST[$name])) $errors[] = 'invalid';
 }
+if ($lead['sid'] === '') {
+    $lead['sid'] = 'BS-' . date('Ymd') . '-' . bin2hex(random_bytes(2));
+}
 $length = static function (string $s): int { return preg_match_all('/./us', $s, $matches) ?: 0; };
 if ($length($lead['nombre']) < 2 || $length($lead['nombre']) > 60) $errors[] = 'nombre';
 $lead['whatsapp'] = str_replace([' ', '-', '(', ')', '.'], '', $lead['whatsapp']);
