@@ -57,7 +57,6 @@ export const FAQ = [
  { group: 'Montaje', q: '¿Cómo coordinan el montaje?', a: 'Coordinamos horario de montaje con vos y revisamos el acceso y las medidas del espacio.' },
  { group: 'Montaje', q: '¿Puedo consultar por un salón de eventos?', a: 'Sí, contanos las reglas de ingreso, las medidas y los horarios del lugar.' },
  { group: 'Montaje', q: '¿Hasta qué hora desmontan?', a: 'Coordinamos el horario de desmontaje con vos y lo dejamos en la propuesta.' },
- { group: 'Consultas y estimaciones', q: '¿Puedo ver fotos de eventos anteriores?', a: 'Todavía no tenemos galería de trabajos propios. Te compartimos ideas ilustrativas por WhatsApp.' },
  { group: 'Zonas', q: '¿Atienden fuera de Gran Asunción?', a: 'Consultá por tu zona; el traslado se cotiza por WhatsApp.' }
 ];
 export const ABOUT = 'Baby Shower Paraguay, sitio operado desde Asunción. Organizamos y coordinamos propuestas de baby shower, revelación de género y primer añito. Trabajamos con estimaciones orientativas y confirmamos manualmente el alcance, el precio final y la disponibilidad por WhatsApp antes de cualquier acuerdo. Podés contactarnos por WhatsApp.';
@@ -73,7 +72,7 @@ export const LEGAL = {
  terms: [
  ['Operador y contacto', `${SITE.operator}. Consultas y reclamos: ${SITE.phone}${SITE.email ? ' y el correo publicado en este sitio' : ''}.`],
  ['Alcance del sitio', 'Recibimos consultas para baby shower, revelación de género y primer añito. Los importes publicados son estimaciones orientativas. El precio final, el alcance y la disponibilidad se confirman por WhatsApp. No existe contrato hasta la confirmación por escrito. Por ahora no pedimos seña desde este sitio.'],
- ['Qué incluye la propuesta', `Revisá las inclusiones y exclusiones de cada combo. ${DELIVERY} Las imágenes ilustrativas son ideas de ambientación; no son una galería de trabajos propios. Cualquier cambio de alcance debe quedar acordado por escrito antes de confirmar.`],
+ ['Qué incluye la propuesta', `Revisá las inclusiones y exclusiones de cada combo. ${DELIVERY} Cualquier cambio de alcance debe quedar acordado por escrito antes de confirmar.`],
  ['Impuestos y pagos', POLICY.iva, POLICY.pagos],
  [POLICY.heading, POLICY.sena, POLICY.cancel],
  ['Con quién compartimos datos', 'Los datos necesarios para atender tu consulta pueden ser recibidos por el proveedor de alojamiento del sitio, el servicio de correo electrónico que usamos para recibir consultas y nuestro sistema propio de gestión de consultas (CRM). Si nos escribís por WhatsApp, también los recibe WhatsApp, un servicio de Meta. Google Analytics recibe datos de navegación únicamente si aceptaste la analítica y una vez configurada su identificación en el sitio; no enviamos nombres, teléfonos ni mensajes a ese servicio. Compartimos con proveedores de eventos solo los datos necesarios para eventos confirmados.'],

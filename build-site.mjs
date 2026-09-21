@@ -3,7 +3,7 @@ import { dirname } from 'node:path';
 import { THEMES as THEME_DETAILS } from './themes.mjs';
 import { ZONES as ZONE_DETAILS } from './zones.mjs';
 import { IDEAS } from './ideas.mjs';
-import { ADDONS, REVEAL, ANITO, COMPARISON, EXTRA_FOOD, CONFIRMATION, ZERO_PRICE, extraGuestCaption, deliveryNote, EXCLUSIONS, FAQ, fmtGs } from './content.mjs';
+import { ADDONS, REVEAL, ANITO, COMPARISON, EXTRA_FOOD, CONFIRMATION, ZERO_PRICE, extraGuestCaption, deliveryNote, EXCLUSIONS, fmtGs } from './content.mjs';
 import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { SITE, WA_NUMBER, ANALYTICS_ID, PRICES, PRIMARY_CTA, RESPONSE, POLICY, TRUST, DELIVERY, PACKAGES, ZONES, THEMES, NAV, FOOTER_NAV, WA_MENU, STEPS, ABOUT, LEGAL, UI, PAGES, EXTRAS, priceCaption, packageMessage } from './content.mjs';
@@ -140,7 +140,7 @@ function home(route, page) {
  ${calculator(route)}
  <section class="dark-band grain scrim image-band">${imageFigure('band-montaje', 'band-image', '100vw')}<div class="wrap"><h2 class="statement">${esc(UI.band)}</h2>${link('/tematicas/', UI.themeCta, 'franja', 'btn btn--ghost')}</div></section>
  <section class="steps-section"><div class="wrap"><span class="eyebrow">${esc(UI.steps)}</span><h2>${esc(UI.homeSteps)}</h2>${stepList()}</div></section>
- <section class="theme-section"><div class="wrap"><div class="theme-heading"><h2>${esc(UI.themes)}</h2>${p(FAQ[12].a)}</div>${themeGrid()}${link('/tematicas/', UI.themesLink, 'tematicas', 'home-more')}</div></section>
+ <section class="theme-section"><div class="wrap"><div class="theme-heading"><h2>${esc(UI.themes)}</h2></div>${themeGrid()}${link('/tematicas/', UI.themesLink, 'tematicas', 'home-more')}</div></section>
  <section class="inclusions-section"><div class="wrap">${homeInclusions()}</div></section>${homeZones()}
  <section class="home-faq"><div class="wrap"><div><span class="eyebrow">${esc(UI.faq)}</span><h2>${esc(UI.homeFaq)}</h2>${link('/preguntas-frecuentes/', UI.faqLink, 'preguntas', 'home-more')}</div>${faq(page.faq)}</div></section>${contact(route)}`;
 }
@@ -170,7 +170,7 @@ function programmatic(route, page) {
  const t = page.detail;
  const subject = page.type === 'zone' ? `un baby shower en ${t.name}` : page.type === 'zones' ? 'el traslado a mi zona' : page.type === 'themes' ? 'una temática' : `la temática ${t.name}`;
  const cta = link(waHref(`Hola, vengo de ${SITE.domain} (${route}) y quiero consultar por ${subject}. Fecha tentativa: ____ · Invitados: ____ · Zona: ____`), PRIMARY_CTA, 'consulta-tematica-zona', 'btn btn--primary');
- if (page.type === 'themes') return `<section><div class="wrap">${p(FAQ[12].a)}${themeGrid(THEME_DETAILS, 'theme-bento', true)}</div></section><section class="dark-band grain"><div class="wrap"><h2>Contanos qué temática te gusta</h2>${cta}</div></section>`;
+ if (page.type === 'themes') return `<section><div class="wrap">${themeGrid(THEME_DETAILS, 'theme-bento', true)}</div></section><section class="dark-band grain"><div class="wrap"><h2>Contanos qué temática te gusta</h2>${cta}</div></section>`;
  if (page.type === 'zones') return `<section><div class="wrap">${p(DELIVERY)}<div class="zone-grid">${ZONE_DETAILS.map(z => {
   const child = manifest.find(r => r.route === `/zonas/${z.slug}/`);
   const delivery = ZONES.find(item => item.slug === z.slug);
