@@ -420,3 +420,11 @@ Worker: none (Sonnet manager session). Anton, in chat, told the manager to skip 
 Private config: prepared outside the repo at C:Claude 1abyshower-privateendercrm-config.babyshower.php (lead_email set, url and api_key empty, php -l and require checked). Not in git, not in the zip; Anton uploads it one level above the public_html of the addon domain.
 
 Validation: node build-site.mjs PASS; node verify.mjs --final PASS and with --http PASS; docs/qa-tools/php-endpoint.mjs 14 of 14 PASS; zip rebuilt (147 entries, nothing private); /tematicas/ viewed at 1440 and 375 px, no gap where the paragraph was.
+
+## 2026-09-21 - Batch 11 - Playwright scan and end-to-end flows
+
+Worker: none (Sonnet manager session). New tools: docs/qa-tools/site-scan.mjs (every route plus 404 and gracias at 375, 768 and 1440 px: console and page errors, failed and 4xx or 5xx requests, external requests, horizontal overflow, broken or alt-less images, duplicate ids, heading order, dead links and anchors, wa.me format, tap targets) and docs/qa-tools/site-flows.mjs (extracts the shipped zip, runs it under php -S with the private config and a fake SMTP sink, drives menu, skip link, WhatsApp menu, FAQ, calculator, form validation, a real submit, the no-JS submit and the mobile bar).
+
+Result: scan over 34 routes x 3 widths and 32 internal links found no console or page errors, failed requests, external requests, overflow, broken images, duplicate ids, dead links or bad wa.me links; the only flags are the known 35 px breadcrumb links and inline text links inside guides (inline links are exempt under WCAG 2.5.8). Flows: 17 of 18 passed on the first run. Defect found: at 375 px a focused form field (nombre, mensaje) could sit under the fixed mobile bar because browsers do not scroll a partly visible field. Fix: html scroll-padding-bottom 6rem below 1024 px (CSS only, appended). After the fix 18 of 18 pass, the scan is unchanged, node verify.mjs --final (also with --http) PASS, php-endpoint 14 of 14 PASS.
+
+Not covered by these tools: the consent banner (ANALYTICS_ID is empty, so the banner is not rendered), the CRM call, real mail delivery and compression on the host. Zip rebuilt as dist/babyshower-2026-09-21.zip (147 entries); the 2026-09-20 zip was removed as stale.

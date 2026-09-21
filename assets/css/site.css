@@ -568,3 +568,5 @@ main:not(.home-page) section{padding-block:80px}
 .inner-hero .hero-wide{aspect-ratio:16/9}
 .guide-figure{margin:1.5rem 0 2rem;max-width:720px}
 @media (prefers-reduced-motion:reduce){.home-page .hero-slide{transition:none}}
+/* Batch 11: keep focused fields clear of the fixed mobile bar (bar is shown below 1024px) */
+@media(max-width:1023px){html{scroll-padding-bottom:6rem}}
