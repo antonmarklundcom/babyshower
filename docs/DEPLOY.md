@@ -22,7 +22,8 @@ Aplicá la retención de 12 meses a log y recibos privados, con mantenimiento co
 - Revisar `PRICES.label` y las estimaciones vigentes, sin habilitar reservas.
 - Configurar el destinatario de notificación privado. Q21 sigue pendiente; no inventar `SITE.leadEmail` ni el correo público `SITE.email`. Este último requiere confirmación antes de publicarse.
 - Revisar analytics id y consentimiento; Gate B exige conversiones verificadas antes de tráfico pago.
-- Revisar fuentes: actualmente fallback Google Fonts Instrument Serif + DM Sans; faltan los archivos locales Instrument Serif/Satoshi.
+- Fuentes autoalojadas en `assets/fonts` (Instrument Serif 400 y DM Sans 400/500/700, licencia SIL OFL incluida); el sitio no hace pedidos a Google Fonts. Si algún día se agregan archivos Satoshi 400/500/700, el generador los usa en lugar de DM Sans.
+- El endpoint PHP se probó localmente con PHP 8.3.33 (`node docs/qa-tools/php-endpoint.mjs`, 14 comprobaciones); falta solo la prueba en el hosting real y la llamada a VenderCRM (requiere HTTPS).
 - **Anton, Gate A:** enviar un formulario real en el addon domain; verificar email recibido y una sola línea durable en el log. Probar también error con fallback WhatsApp, SID repetido sin nueva línea/notificación y CRM si se configura. Sin destinatario ni CRM disponible el formulario debe fallar, aunque guarde el lead.
 - Completar QA de B6: rutas HTTP, 404/gracias, vista móvil, accesibilidad y Lighthouse.
 

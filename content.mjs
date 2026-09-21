@@ -89,7 +89,7 @@ export const UI = {
   { title: 'Qué no incluye', items: ['Local o salón', 'Mozos', 'Bebidas alcohólicas', 'Mesas y sillas', 'Mantelería', 'Hielo', 'Limpieza posterior', 'Torta y souvenirs (Nube y Estrella)'] }
  ],
  zonesEyebrow: 'Zonas de cobertura', zoneFree: 'Sin recargo', zoneExtra: 'Con recargo estimado', zoneOther: 'la cotizamos por WhatsApp',
- palette: 'Paleta', illustrativeImages: 'Las imágenes son ilustrativas.', heroSlides: { label: 'Imágenes de ejemplo', pause: 'Pausar las imágenes', play: 'Reanudar las imágenes', dot: 'Ver la imagen {n} de {total}' },
+ palette: 'Paleta', heroSlides: { label: 'Imágenes de ejemplo', pause: 'Pausar las imágenes', play: 'Reanudar las imágenes', dot: 'Ver la imagen {n} de {total}' },
  zonePriceParts: (base, delivery) => `Base ${fmtGs(base)} + traslado estimado ${fmtGs(delivery)}`,
  includedGuests: 'Incluye hasta {N} invitados en este combo',
  instagram: 'Instagram', noContract: 'No existe contrato hasta la confirmación por escrito.',

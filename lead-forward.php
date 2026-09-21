@@ -164,7 +164,10 @@ $payload = ['phone' => $lead['whatsapp'], 'name' => $lead['nombre'], 'message' =
     'idempotency_key' => hash('sha256', 'babyshower|' . $sid)];
 $emailed = false;
 if ($notificationEmail !== '' && filter_var($notificationEmail, FILTER_VALIDATE_EMAIL) && function_exists('mail')) {
-    $emailed = @mail($notificationEmail, 'Nueva consulta Baby Shower', $note, "MIME-Version: 1.0\r\nContent-Type: text/plain; charset=UTF-8");
+    // An on-domain From keeps shared-hosting mail out of spam; the host comes from the generated site defaults.
+    $mailHost = (string) parse_url((string) ($site['url'] ?? ''), PHP_URL_HOST);
+    $fromHeader = $mailHost !== '' ? 'From: Baby Shower <no-reply@' . $mailHost . ">\r\n" : '';
+    $emailed = @mail($notificationEmail, 'Nueva consulta Baby Shower', $note, $fromHeader . "MIME-Version: 1.0\r\nContent-Type: text/plain; charset=UTF-8");
 }
 $forwarded = false;
 $crmUrl = trim((string) ($config['url'] ?? ''));
