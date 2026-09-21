@@ -198,4 +198,63 @@
       // Normal POST: B5 owns validation, persistence, redirect, and error restoration.
     });
   });
+
+  // Home hero carousel. Slide 1 renders without JavaScript; slides 2 and 3 are unhidden after load. No autoplay under reduced motion.
+  var deck = document.querySelector('[data-hero-slides]');
+  var slides = deck ? [].slice.call(deck.querySelectorAll('.hero-slide')) : [];
+  if (slides.length > 1 && cfg.slides) {
+    var current = 0, timer = null, userPaused = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var bar = document.createElement('div'), toggle = document.createElement('button'), dots = [];
+    bar.className = 'hero-controls';
+    toggle.type = 'button';
+    bar.appendChild(toggle);
+    slides.forEach(function (slide, i) {
+      var dot = document.createElement('button');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', cfg.slides.dot.replace('{n}', i + 1).replace('{total}', slides.length));
+      dot.innerHTML = '<span class="dot"></span>';
+      dot.addEventListener('click', function () { go(i); });
+      dots.push(dot);
+      bar.appendChild(dot);
+    });
+    deck.appendChild(bar);
+    var pauseIcon = '<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="2" width="4" height="12"/><rect x="9" y="2" width="4" height="12"/></svg>';
+    var playIcon = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2l10 6-10 6z"/></svg>';
+    function paint() {
+      toggle.innerHTML = userPaused ? playIcon : pauseIcon;
+      toggle.setAttribute('aria-label', userPaused ? cfg.slides.play : cfg.slides.pause);
+      dots.forEach(function (dot, i) { dot.setAttribute('aria-current', i === current ? 'true' : 'false'); });
+    }
+    function go(next) {
+      if (next === current) return;
+      var img = slides[next].querySelector('img');
+      var prev = slides[current];
+      slides[next].hidden = false;
+      void slides[next].offsetWidth;
+      prev.classList.add('is-leaving');
+      prev.classList.remove('is-active');
+      prev.setAttribute('aria-hidden', 'true');
+      slides[next].classList.add('is-active');
+      slides[next].removeAttribute('aria-hidden');
+      setTimeout(function () { prev.classList.remove('is-leaving'); }, 950);
+      current = next;
+      paint();
+      if (img && !img.complete) img.decode && img.decode().catch(function () {});
+    }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    function start() {
+      stop();
+      if (userPaused || document.hidden) return;
+      timer = setInterval(function () { go((current + 1) % slides.length); }, 6000);
+    }
+    toggle.addEventListener('click', function () { userPaused = !userPaused; paint(); start(); });
+    dots.forEach(function (dot) { dot.addEventListener('click', start); });
+    document.addEventListener('visibilitychange', start);
+    function activate() {
+      slides.forEach(function (slide, i) { if (i) slide.hidden = false; });
+      start();
+    }
+    paint();
+    if (document.readyState === 'complete') activate(); else window.addEventListener('load', activate);
+  }
 })();

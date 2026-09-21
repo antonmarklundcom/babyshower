@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-19T22:25:23.774Z",
+  "generated_at": "2026-09-21T00:28:21.626Z",
   "images": [
     {
       "filename_base": "hero-baby-shower-quincho",
@@ -381,45 +381,6 @@
       "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"assets/img/tema-minnie-bebe-640.avif 640w, assets/img/tema-minnie-bebe-1168.avif 1168w\">\n  <source type=\"image/webp\" srcset=\"assets/img/tema-minnie-bebe-640.webp 640w, assets/img/tema-minnie-bebe-1168.webp 1168w\">\n  <img src=\"assets/img/tema-minnie-bebe-640.webp\" alt=\"Ambientación rosa con lunares blancos y moños decorativos\" width=\"640\" height=\"480\" loading=\"lazy\" decoding=\"async\">\n</picture>"
     },
     {
-      "filename_base": "tema-blanca-nieves-bebe",
-      "source": "https://d8j0ntlcm91z4.cloudfront.net/user_349VrHjTFIpx9q71lpfpAXcLXvR/hf_20260919_213411_6c6b5e7e-df26-4994-9983-9328d2445f40.png",
-      "prompt": "higgsfield tema-blanca-nieves-bebe",
-      "alt_text": "Manzanas rojas, telas azul real y amarillo y follaje de bosque sobre una mesa decorada",
-      "naming_source": "fallback",
-      "aspect_ratio": "4:3",
-      "files": [
-        {
-          "file": "tema-blanca-nieves-bebe-640.avif",
-          "format": "avif",
-          "width": 640,
-          "height": 480,
-          "kb": 35.2
-        },
-        {
-          "file": "tema-blanca-nieves-bebe-640.webp",
-          "format": "webp",
-          "width": 640,
-          "height": 480,
-          "kb": 43.8
-        },
-        {
-          "file": "tema-blanca-nieves-bebe-1168.avif",
-          "format": "avif",
-          "width": 1168,
-          "height": 876,
-          "kb": 72.1
-        },
-        {
-          "file": "tema-blanca-nieves-bebe-1168.webp",
-          "format": "webp",
-          "width": 1168,
-          "height": 876,
-          "kb": 98.1
-        }
-      ],
-      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"assets/img/tema-blanca-nieves-bebe-640.avif 640w, assets/img/tema-blanca-nieves-bebe-1168.avif 1168w\">\n  <source type=\"image/webp\" srcset=\"assets/img/tema-blanca-nieves-bebe-640.webp 640w, assets/img/tema-blanca-nieves-bebe-1168.webp 1168w\">\n  <img src=\"assets/img/tema-blanca-nieves-bebe-640.webp\" alt=\"Manzanas rojas, telas azul real y amarillo y follaje de bosque sobre una mesa decorada\" width=\"640\" height=\"480\" loading=\"lazy\" decoding=\"async\">\n</picture>"
-    },
-    {
       "filename_base": "tema-frutillita-bebe",
       "source": "https://d8j0ntlcm91z4.cloudfront.net/user_349VrHjTFIpx9q71lpfpAXcLXvR/hf_20260919_213411_10cd41fc-4bec-4fa7-845a-b4b3f9fead79.png",
       "prompt": "higgsfield tema-frutillita-bebe",
@@ -574,6 +535,385 @@
         }
       ],
       "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"assets/img/tema-nubes-y-ositos-640.avif 640w, assets/img/tema-nubes-y-ositos-1168.avif 1168w\">\n  <source type=\"image/webp\" srcset=\"assets/img/tema-nubes-y-ositos-640.webp 640w, assets/img/tema-nubes-y-ositos-1168.webp 1168w\">\n  <img src=\"assets/img/tema-nubes-y-ositos-640.webp\" alt=\"Nubes de espuma, un osito de peluche beige y una luna decorativa sobre una mesa de montaje\" width=\"640\" height=\"480\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "hero-revelacion-genero",
+      "source": "../../Users/anton/AppData/Local/Temp/claude/C--Claude-1/5f93c815-ce48-41e4-bba3-d148385bc94f/scratchpad/img/hero-revelacion-genero.png",
+      "prompt": "higgsfield hero-revelacion-genero",
+      "alt_text": "Globo negro gigante rodeado de globos rosas y celestes sobre el césped de un jardín, sostenido por manos con la luz de la tarde",
+      "naming_source": "fallback",
+      "aspect_ratio": "source",
+      "files": [
+        {
+          "file": "hero-revelacion-genero-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 362,
+          "kb": 22.4
+        },
+        {
+          "file": "hero-revelacion-genero-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 362,
+          "kb": 31.7
+        },
+        {
+          "file": "hero-revelacion-genero-1280.avif",
+          "format": "avif",
+          "width": 1280,
+          "height": 724,
+          "kb": 48.3
+        },
+        {
+          "file": "hero-revelacion-genero-1280.webp",
+          "format": "webp",
+          "width": 1280,
+          "height": 724,
+          "kb": 77.1
+        },
+        {
+          "file": "hero-revelacion-genero-1920.avif",
+          "format": "avif",
+          "width": 1920,
+          "height": 1086,
+          "kb": 71.5
+        },
+        {
+          "file": "hero-revelacion-genero-1920.webp",
+          "format": "webp",
+          "width": 1920,
+          "height": 1086,
+          "kb": 121.8
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"C:/Claude 1/babyshower/assets/img/hero-revelacion-genero-640.avif 640w, C:/Claude 1/babyshower/assets/img/hero-revelacion-genero-1280.avif 1280w, C:/Claude 1/babyshower/assets/img/hero-revelacion-genero-1920.avif 1920w\">\n  <source type=\"image/webp\" srcset=\"C:/Claude 1/babyshower/assets/img/hero-revelacion-genero-640.webp 640w, C:/Claude 1/babyshower/assets/img/hero-revelacion-genero-1280.webp 1280w, C:/Claude 1/babyshower/assets/img/hero-revelacion-genero-1920.webp 1920w\">\n  <img src=\"C:/Claude 1/babyshower/assets/img/hero-revelacion-genero-1280.webp\" alt=\"Globo negro gigante rodeado de globos rosas y celestes sobre el césped de un jardín, sostenido por manos con la luz de la tarde\" width=\"1280\" height=\"724\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "hero-primer-anito",
+      "source": "../../Users/anton/AppData/Local/Temp/claude/C--Claude-1/5f93c815-ce48-41e4-bba3-d148385bc94f/scratchpad/img/hero-primer-anito.png",
+      "prompt": "higgsfield hero-primer-anito",
+      "alt_text": "Montaje de primer añito con temática de dinosaurios: arco de globos verde salvia y terracota, huevos de espuma, hojas tropicales y torta de un piso",
+      "naming_source": "fallback",
+      "aspect_ratio": "source",
+      "files": [
+        {
+          "file": "hero-primer-anito-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 362,
+          "kb": 25.6
+        },
+        {
+          "file": "hero-primer-anito-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 362,
+          "kb": 33.7
+        },
+        {
+          "file": "hero-primer-anito-1280.avif",
+          "format": "avif",
+          "width": 1280,
+          "height": 724,
+          "kb": 65.5
+        },
+        {
+          "file": "hero-primer-anito-1280.webp",
+          "format": "webp",
+          "width": 1280,
+          "height": 724,
+          "kb": 92.2
+        },
+        {
+          "file": "hero-primer-anito-1920.avif",
+          "format": "avif",
+          "width": 1920,
+          "height": 1086,
+          "kb": 111.1
+        },
+        {
+          "file": "hero-primer-anito-1920.webp",
+          "format": "webp",
+          "width": 1920,
+          "height": 1086,
+          "kb": 164.9
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"C:/Claude 1/babyshower/assets/img/hero-primer-anito-640.avif 640w, C:/Claude 1/babyshower/assets/img/hero-primer-anito-1280.avif 1280w, C:/Claude 1/babyshower/assets/img/hero-primer-anito-1920.avif 1920w\">\n  <source type=\"image/webp\" srcset=\"C:/Claude 1/babyshower/assets/img/hero-primer-anito-640.webp 640w, C:/Claude 1/babyshower/assets/img/hero-primer-anito-1280.webp 1280w, C:/Claude 1/babyshower/assets/img/hero-primer-anito-1920.webp 1920w\">\n  <img src=\"C:/Claude 1/babyshower/assets/img/hero-primer-anito-1280.webp\" alt=\"Montaje de primer añito con temática de dinosaurios: arco de globos verde salvia y terracota, huevos de espuma, hojas tropicales y torta de un piso\" width=\"1280\" height=\"724\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "tema-mickey-bebe",
+      "source": "../../Users/anton/AppData/Local/Temp/claude/C--Claude-1/5f93c815-ce48-41e4-bba3-d148385bc94f/scratchpad/img/tema-mickey-bebe.png",
+      "prompt": "higgsfield tema-mickey-bebe",
+      "alt_text": "Mesa decorada con globos con lunares en rojo, negro y amarillo, abanicos de papel y flores blancas",
+      "naming_source": "fallback",
+      "aspect_ratio": "source",
+      "files": [
+        {
+          "file": "tema-mickey-bebe-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 482,
+          "kb": 27.7
+        },
+        {
+          "file": "tema-mickey-bebe-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 482,
+          "kb": 34.6
+        },
+        {
+          "file": "tema-mickey-bebe-1168.avif",
+          "format": "avif",
+          "width": 1168,
+          "height": 880,
+          "kb": 53.5
+        },
+        {
+          "file": "tema-mickey-bebe-1168.webp",
+          "format": "webp",
+          "width": 1168,
+          "height": 880,
+          "kb": 75
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"C:/Claude 1/babyshower/assets/img/tema-mickey-bebe-640.avif 640w, C:/Claude 1/babyshower/assets/img/tema-mickey-bebe-1168.avif 1168w\">\n  <source type=\"image/webp\" srcset=\"C:/Claude 1/babyshower/assets/img/tema-mickey-bebe-640.webp 640w, C:/Claude 1/babyshower/assets/img/tema-mickey-bebe-1168.webp 1168w\">\n  <img src=\"C:/Claude 1/babyshower/assets/img/tema-mickey-bebe-640.webp\" alt=\"Mesa decorada con globos con lunares en rojo, negro y amarillo, abanicos de papel y flores blancas\" width=\"640\" height=\"482\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "tema-blanca-nieves-bebe",
+      "source": "../../Users/anton/AppData/Local/Temp/claude/C--Claude-1/5f93c815-ce48-41e4-bba3-d148385bc94f/scratchpad/img/tema-blanca-nieves-bebe.png",
+      "prompt": "higgsfield tema-blanca-nieves-bebe",
+      "alt_text": "Cuenco de madera con manzanas rojas y moño rojo sobre caminos de mesa azul real y amarillo, con follaje de jardín",
+      "naming_source": "fallback",
+      "aspect_ratio": "source",
+      "files": [
+        {
+          "file": "tema-blanca-nieves-bebe-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 482,
+          "kb": 39
+        },
+        {
+          "file": "tema-blanca-nieves-bebe-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 482,
+          "kb": 47.4
+        },
+        {
+          "file": "tema-blanca-nieves-bebe-1168.avif",
+          "format": "avif",
+          "width": 1168,
+          "height": 880,
+          "kb": 72.6
+        },
+        {
+          "file": "tema-blanca-nieves-bebe-1168.webp",
+          "format": "webp",
+          "width": 1168,
+          "height": 880,
+          "kb": 101
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"C:/Claude 1/babyshower/assets/img/tema-blanca-nieves-bebe-640.avif 640w, C:/Claude 1/babyshower/assets/img/tema-blanca-nieves-bebe-1168.avif 1168w\">\n  <source type=\"image/webp\" srcset=\"C:/Claude 1/babyshower/assets/img/tema-blanca-nieves-bebe-640.webp 640w, C:/Claude 1/babyshower/assets/img/tema-blanca-nieves-bebe-1168.webp 1168w\">\n  <img src=\"C:/Claude 1/babyshower/assets/img/tema-blanca-nieves-bebe-640.webp\" alt=\"Cuenco de madera con manzanas rojas y moño rojo sobre caminos de mesa azul real y amarillo, con follaje de jardín\" width=\"640\" height=\"482\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "idea-juegos-para-baby-shower",
+      "source": "../../Users/anton/AppData/Local/Temp/claude/C--Claude-1/5f93c815-ce48-41e4-bba3-d148385bc94f/scratchpad/img/idea-juegos-para-baby-shower.png",
+      "prompt": "higgsfield idea-juegos-para-baby-shower",
+      "alt_text": "Tarjetas impresas de juegos para baby shower sobre una mesa de madera con lápices y un peluche de conejo",
+      "naming_source": "fallback",
+      "aspect_ratio": "source",
+      "files": [
+        {
+          "file": "idea-juegos-para-baby-shower-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 482,
+          "kb": 30.9
+        },
+        {
+          "file": "idea-juegos-para-baby-shower-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 482,
+          "kb": 42.3
+        },
+        {
+          "file": "idea-juegos-para-baby-shower-1168.avif",
+          "format": "avif",
+          "width": 1168,
+          "height": 880,
+          "kb": 65.1
+        },
+        {
+          "file": "idea-juegos-para-baby-shower-1168.webp",
+          "format": "webp",
+          "width": 1168,
+          "height": 880,
+          "kb": 96.3
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"C:/Claude 1/babyshower/assets/img/idea-juegos-para-baby-shower-640.avif 640w, C:/Claude 1/babyshower/assets/img/idea-juegos-para-baby-shower-1168.avif 1168w\">\n  <source type=\"image/webp\" srcset=\"C:/Claude 1/babyshower/assets/img/idea-juegos-para-baby-shower-640.webp 640w, C:/Claude 1/babyshower/assets/img/idea-juegos-para-baby-shower-1168.webp 1168w\">\n  <img src=\"C:/Claude 1/babyshower/assets/img/idea-juegos-para-baby-shower-640.webp\" alt=\"Tarjetas impresas de juegos para baby shower sobre una mesa de madera con lápices y un peluche de conejo\" width=\"640\" height=\"482\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "idea-baby-shower-sencillo-en-casa",
+      "source": "../../Users/anton/AppData/Local/Temp/claude/C--Claude-1/5f93c815-ce48-41e4-bba3-d148385bc94f/scratchpad/img/idea-baby-shower-sencillo-en-casa.png",
+      "prompt": "higgsfield idea-baby-shower-sencillo-en-casa",
+      "alt_text": "Arco de globos pastel sencillo armado en una pared de la sala de una casa",
+      "naming_source": "fallback",
+      "aspect_ratio": "source",
+      "files": [
+        {
+          "file": "idea-baby-shower-sencillo-en-casa-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 482,
+          "kb": 13.1
+        },
+        {
+          "file": "idea-baby-shower-sencillo-en-casa-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 482,
+          "kb": 18.2
+        },
+        {
+          "file": "idea-baby-shower-sencillo-en-casa-1168.avif",
+          "format": "avif",
+          "width": 1168,
+          "height": 880,
+          "kb": 29.8
+        },
+        {
+          "file": "idea-baby-shower-sencillo-en-casa-1168.webp",
+          "format": "webp",
+          "width": 1168,
+          "height": 880,
+          "kb": 46.4
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"C:/Claude 1/babyshower/assets/img/idea-baby-shower-sencillo-en-casa-640.avif 640w, C:/Claude 1/babyshower/assets/img/idea-baby-shower-sencillo-en-casa-1168.avif 1168w\">\n  <source type=\"image/webp\" srcset=\"C:/Claude 1/babyshower/assets/img/idea-baby-shower-sencillo-en-casa-640.webp 640w, C:/Claude 1/babyshower/assets/img/idea-baby-shower-sencillo-en-casa-1168.webp 1168w\">\n  <img src=\"C:/Claude 1/babyshower/assets/img/idea-baby-shower-sencillo-en-casa-640.webp\" alt=\"Arco de globos pastel sencillo armado en una pared de la sala de una casa\" width=\"640\" height=\"482\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "idea-revelacion-de-genero-sencilla",
+      "source": "../../Users/anton/AppData/Local/Temp/claude/C--Claude-1/5f93c815-ce48-41e4-bba3-d148385bc94f/scratchpad/img/idea-revelacion-de-genero-sencilla.png",
+      "prompt": "higgsfield idea-revelacion-de-genero-sencilla",
+      "alt_text": "Torta de revelación cortada que muestra el interior rosa, con globos pastel al fondo",
+      "naming_source": "fallback",
+      "aspect_ratio": "source",
+      "files": [
+        {
+          "file": "idea-revelacion-de-genero-sencilla-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 482,
+          "kb": 16.8
+        },
+        {
+          "file": "idea-revelacion-de-genero-sencilla-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 482,
+          "kb": 24.6
+        },
+        {
+          "file": "idea-revelacion-de-genero-sencilla-1168.avif",
+          "format": "avif",
+          "width": 1168,
+          "height": 880,
+          "kb": 37.8
+        },
+        {
+          "file": "idea-revelacion-de-genero-sencilla-1168.webp",
+          "format": "webp",
+          "width": 1168,
+          "height": 880,
+          "kb": 59.9
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"C:/Claude 1/babyshower/assets/img/idea-revelacion-de-genero-sencilla-640.avif 640w, C:/Claude 1/babyshower/assets/img/idea-revelacion-de-genero-sencilla-1168.avif 1168w\">\n  <source type=\"image/webp\" srcset=\"C:/Claude 1/babyshower/assets/img/idea-revelacion-de-genero-sencilla-640.webp 640w, C:/Claude 1/babyshower/assets/img/idea-revelacion-de-genero-sencilla-1168.webp 1168w\">\n  <img src=\"C:/Claude 1/babyshower/assets/img/idea-revelacion-de-genero-sencilla-640.webp\" alt=\"Torta de revelación cortada que muestra el interior rosa, con globos pastel al fondo\" width=\"640\" height=\"482\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "idea-que-se-necesita-para-un-baby-shower",
+      "source": "../../Users/anton/AppData/Local/Temp/claude/C--Claude-1/5f93c815-ce48-41e4-bba3-d148385bc94f/scratchpad/img/idea-que-se-necesita-para-un-baby-shower.png",
+      "prompt": "higgsfield idea-que-se-necesita-para-un-baby-shower",
+      "alt_text": "Cuaderno de lista de verificación con un lápiz, flores y globos pastel sobre una mesa",
+      "naming_source": "fallback",
+      "aspect_ratio": "source",
+      "files": [
+        {
+          "file": "idea-que-se-necesita-para-un-baby-shower-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 482,
+          "kb": 13.5
+        },
+        {
+          "file": "idea-que-se-necesita-para-un-baby-shower-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 482,
+          "kb": 18.5
+        },
+        {
+          "file": "idea-que-se-necesita-para-un-baby-shower-1168.avif",
+          "format": "avif",
+          "width": 1168,
+          "height": 880,
+          "kb": 27.3
+        },
+        {
+          "file": "idea-que-se-necesita-para-un-baby-shower-1168.webp",
+          "format": "webp",
+          "width": 1168,
+          "height": 880,
+          "kb": 42.3
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"C:/Claude 1/babyshower/assets/img/idea-que-se-necesita-para-un-baby-shower-640.avif 640w, C:/Claude 1/babyshower/assets/img/idea-que-se-necesita-para-un-baby-shower-1168.avif 1168w\">\n  <source type=\"image/webp\" srcset=\"C:/Claude 1/babyshower/assets/img/idea-que-se-necesita-para-un-baby-shower-640.webp 640w, C:/Claude 1/babyshower/assets/img/idea-que-se-necesita-para-un-baby-shower-1168.webp 1168w\">\n  <img src=\"C:/Claude 1/babyshower/assets/img/idea-que-se-necesita-para-un-baby-shower-640.webp\" alt=\"Cuaderno de lista de verificación con un lápiz, flores y globos pastel sobre una mesa\" width=\"640\" height=\"482\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "idea-ideas-para-baby-shower",
+      "source": "../../Users/anton/AppData/Local/Temp/claude/C--Claude-1/5f93c815-ce48-41e4-bba3-d148385bc94f/scratchpad/img/idea-ideas-para-baby-shower.png",
+      "prompt": "higgsfield idea-ideas-para-baby-shower",
+      "alt_text": "Primer plano de dulces, tartaletas con frutas y cupcakes sobre una tabla de madera",
+      "naming_source": "fallback",
+      "aspect_ratio": "source",
+      "files": [
+        {
+          "file": "idea-ideas-para-baby-shower-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 482,
+          "kb": 26.4
+        },
+        {
+          "file": "idea-ideas-para-baby-shower-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 482,
+          "kb": 34.4
+        },
+        {
+          "file": "idea-ideas-para-baby-shower-1168.avif",
+          "format": "avif",
+          "width": 1168,
+          "height": 880,
+          "kb": 50.4
+        },
+        {
+          "file": "idea-ideas-para-baby-shower-1168.webp",
+          "format": "webp",
+          "width": 1168,
+          "height": 880,
+          "kb": 73.9
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"C:/Claude 1/babyshower/assets/img/idea-ideas-para-baby-shower-640.avif 640w, C:/Claude 1/babyshower/assets/img/idea-ideas-para-baby-shower-1168.avif 1168w\">\n  <source type=\"image/webp\" srcset=\"C:/Claude 1/babyshower/assets/img/idea-ideas-para-baby-shower-640.webp 640w, C:/Claude 1/babyshower/assets/img/idea-ideas-para-baby-shower-1168.webp 1168w\">\n  <img src=\"C:/Claude 1/babyshower/assets/img/idea-ideas-para-baby-shower-640.webp\" alt=\"Primer plano de dulces, tartaletas con frutas y cupcakes sobre una tabla de madera\" width=\"640\" height=\"482\" loading=\"lazy\" decoding=\"async\">\n</picture>"
     }
   ]
 }
