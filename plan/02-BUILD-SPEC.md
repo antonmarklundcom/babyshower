@@ -132,7 +132,7 @@ Each row: route · primary keyword · H1 · sections (named patterns from layout
 
 Theme slugs: `jefe-en-panales`, `dino-bebe`, `moana-bebe`, `minnie-bebe`, `mickey-bebe`, `blanca-nieves-bebe`, `frutillita-bebe`, `mariposas`, `safari`, `nubes-y-ositos`.
 Zone slugs (5 at launch): `asuncion`, `luque`, `san-lorenzo`, `fernando-de-la-mora`, `lambare`, `capiata`, `mariano-roque-alonso`. Capiatá and Mariano Roque Alonso got pages in Batch 12 (2026-09-24, Anton: more SEO pages), using their existing ZONES delivery amounts. Counts are derived from the manifest snapshot above. `/trabajos-reales/` is NOT built in this phase (deferred until authorised photos exist).
-Idea slugs: `ideas-para-baby-shower`, `juegos-para-baby-shower`, `baby-shower-sencillo-en-casa`, `revelacion-de-genero-sencilla`, `que-se-necesita-para-un-baby-shower`.
+Idea slugs: `ideas-para-baby-shower`, `juegos-para-baby-shower`, `baby-shower-sencillo-en-casa`, `revelacion-de-genero-sencilla`, `que-se-necesita-para-un-baby-shower`, `centros-de-mesa-para-baby-shower`, `que-regalar-en-un-baby-shower`, `baby-shower-de-nina`, `fiesta-de-primer-anito`.
 
 Copy for every page is in `plan/04-CONTENT-AND-COPY.md`. Where a paragraph is not written there, the worker writes it in Paraguayan Spanish following the tone rules and marks it `[REVISAR]` in the report list, never in the HTML.
 

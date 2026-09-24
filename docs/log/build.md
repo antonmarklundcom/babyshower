@@ -436,3 +436,7 @@ Worker: none (cloud Claude Code session). Git deploy clones the whole repo into 
 Home: 'Ver cómo funciona en detalle' link under the four steps (home-more style, 44 px). Ideas reviewed: footer FAQ link and per-page WhatsApp button already existed; dropdowns, new guides, city pages, photos and tracking left for later.
 
 Validation: node build-site.mjs PASS with no diff; node verify.mjs --final PASS; php -l PASS; php-endpoint 14/14 PASS and site-flows 18/18 PASS (Linux PHP 8.4 with a sendmail shim to the test SMTP sink, zip built from the make-zip ship list, 147 entries); site-scan 34 routes x 3 widths, only the known breadcrumb and inline-link tap flags.
+
+## 2026-09-24 - Batch 13 - SEO growth: two zone pages, four guides, titles
+
+Anton asked for more SEO traffic and sales. Zone pages for Capiatá and Mariano Roque Alonso (existing ZONES delivery amounts, two FAQs each); home zone lists link every city page. Theme titles lead with "Decoración de/inspirada en …", zone titles add "Decoración". Four new guides (Sonnet subagent, manager-reviewed): centros-de-mesa-para-baby-shower, que-regalar-en-un-baby-shower, baby-shower-de-nina, fiesta-de-primer-anito (803-892 words, prices only via priceCaption). One "reservar" removed. Spec inventory, manifest (38 routes) and make-zip count updated. build PASS, verify --final PASS, site-scan 40 routes x 3 widths clean apart from known tap flags. Guides have no image yet (no credits spent).

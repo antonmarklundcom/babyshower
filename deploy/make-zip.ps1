@@ -12,7 +12,7 @@ try {
     } else {
         $routes = @($manifest)
     }
-    if ($routes.Count -ne 34) { throw "Expected 34 manifest routes for this release; found $($routes.Count)" }
+    if ($routes.Count -ne 38) { throw "Expected 38 manifest routes for this release; found $($routes.Count)" }
     if (@($routes | Where-Object { -not $_.built }).Count) { throw 'Manifest has unbuilt routes' }
     $ship = [System.Collections.Generic.HashSet[string]]::new([System.StringComparer]::Ordinal)
     foreach ($fixed in @('index.html','404.html','gracias.html','lead-forward.php','.htaccess','robots.txt','sitemap.xml')) { [void]$ship.Add($fixed) }

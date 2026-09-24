@@ -236,5 +236,33 @@
     "phase": "B4",
     "indexable": true,
     "built": true
+  },
+  {
+    "route": "/ideas/centros-de-mesa-para-baby-shower/",
+    "output": "ideas/centros-de-mesa-para-baby-shower/index.html",
+    "phase": "B4",
+    "indexable": true,
+    "built": true
+  },
+  {
+    "route": "/ideas/que-regalar-en-un-baby-shower/",
+    "output": "ideas/que-regalar-en-un-baby-shower/index.html",
+    "phase": "B4",
+    "indexable": true,
+    "built": true
+  },
+  {
+    "route": "/ideas/baby-shower-de-nina/",
+    "output": "ideas/baby-shower-de-nina/index.html",
+    "phase": "B4",
+    "indexable": true,
+    "built": true
+  },
+  {
+    "route": "/ideas/fiesta-de-primer-anito/",
+    "output": "ideas/fiesta-de-primer-anito/index.html",
+    "phase": "B4",
+    "indexable": true,
+    "built": true
   }
 ]
