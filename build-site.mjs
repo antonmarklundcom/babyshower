@@ -185,13 +185,18 @@ function programmatic(route, page) {
  if (page.type === 'theme') {
   const packages = t.combos.map(id => [...PACKAGES, ANITO].find(item => item.id === id));
   if (packages.some(item => !item)) throw new Error(`Unknown combo for ${t.slug}`);
-  return `<section><div class="wrap narrow"><h2>Paleta y elementos</h2><div class="theme-palette-list">${p(UI.palette)}<ul>${t.palette.split(/,|\s+y\s+/).map(word => word.trim()).filter(Boolean).map(word => `<li>${esc(word.charAt(0).toLocaleUpperCase('es-PY') + word.slice(1))}</li>`).join('')}</ul></div><p data-main-paragraph>${esc(t.paragraph)}</p><h2>Elementos decorativos de la propuesta</h2><ul>${t.elements.map(e => `<li>${esc(e)}</li>`).join('')}</ul>${p('Los elementos temáticos y su alcance se confirman por WhatsApp según el combo y el espacio.')}${cta}</div></section><section><div class="wrap"><h2>Combos para esta temática</h2>${cards(route, packages)}</div></section><section><div class="wrap"><h2>Otras temáticas para explorar</h2>${themeGrid(t.related.map(slug => THEME_DETAILS.find(item => item.slug === slug)), 'theme-related')}</div></section>${questions}`;
+  return `<section><div class="wrap narrow"><h2>Paleta y elementos</h2><div class="theme-palette-list">${p(UI.palette)}<ul>${t.palette.split(/,|\s+y\s+/).map(word => word.trim()).filter(Boolean).map(word => `<li>${esc(word.charAt(0).toLocaleUpperCase('es-PY') + word.slice(1))}</li>`).join('')}</ul></div><p data-main-paragraph>${esc(t.paragraph)}</p><h2>Elementos decorativos de la propuesta</h2><ul>${t.elements.map(e => `<li>${esc(e)}</li>`).join('')}</ul>${p('Los elementos temáticos y su alcance se confirman por WhatsApp según el combo y el espacio.')}${cta}</div></section><section><div class="wrap"><h2>Combos para esta temática</h2>${cards(route, packages)}</div></section><section><div class="wrap"><h2>Otras temáticas para explorar</h2>${themeGrid(t.related.map(slug => THEME_DETAILS.find(item => item.slug === slug)), 'theme-related')}</div></section>${guideLinks([GIRL_THEMES.includes(t.slug) ? 'baby-shower-de-nina' : 'baby-shower-de-nino', ...IDEAS.filter(i => i.theme === t.slug).map(i => i.slug), 'centros-de-mesa-para-baby-shower', 'mesa-dulce-para-baby-shower', 'ideas-para-baby-shower'], 'tema-guias')}${questions}`;
  }
- return `<section><div class="wrap narrow"><h2>Tu evento en ${esc(t.name)}</h2><p data-main-paragraph>${esc(t.paragraph)}</p>${p(deliveryNote({ name: t.name, delivery: page.delivery }))}${p('Los precios de los combos ya incluyen este recargo estimado; no lo sumes de nuevo.')}${cta}</div></section><section><div class="wrap"><h2>Combos con traslado contemplado</h2>${cards(route, PACKAGES, page.delivery)}</div></section><section><div class="wrap"><h2>Elegí tu temática</h2>${themeGrid(THEME_DETAILS, 'theme-strip')}</div></section>${questions}`;
+ return `<section><div class="wrap narrow"><h2>Tu evento en ${esc(t.name)}</h2><p data-main-paragraph>${esc(t.paragraph)}</p>${p(deliveryNote({ name: t.name, delivery: page.delivery }))}${p('Los precios de los combos ya incluyen este recargo estimado; no lo sumes de nuevo.')}${cta}</div></section><section><div class="wrap"><h2>Combos con traslado contemplado</h2>${cards(route, PACKAGES, page.delivery)}</div></section><section><div class="wrap"><h2>Elegí tu temática</h2>${themeGrid(THEME_DETAILS, 'theme-strip')}</div></section>${guideLinks(['que-se-necesita-para-un-baby-shower', 'ideas-para-baby-shower', 'mesa-dulce-para-baby-shower', 'centros-de-mesa-para-baby-shower'], 'zona-guias')}${questions}`;
 }
 function guideCta(route, idea, location) {
  const offer = idea.offer;
  return `<aside class="cta-card card card--raised" aria-label="Consulta sobre ${esc(offer.name)}"><h3>${esc(idea.cta)}</h3>${p(offer.name)}<p data-price-caption>${esc(priceCaption(offer.price))}</p>${p(RESPONSE)}${link(waHref(packageMessage(offer, route)), PRIMARY_CTA, location, 'btn btn--primary')}</aside>`;
+}
+const GIRL_THEMES = ['mariposas', 'minnie-bebe', 'frutillita-bebe', 'blanca-nieves-bebe'];
+function guideLinks(slugs, loc) {
+ const list = [...new Set(slugs)].map(slug => guides.find(g => g.route === `/ideas/${slug}/`)).filter(Boolean).slice(0, 4);
+ return list.length ? `<section><div class="wrap narrow guide-more"><h2>${esc(UI.relatedGuides)}</h2><ul>${list.map(g => `<li>${link(g.route, g.detail.h1, loc)}</li>`).join('')}</ul></div></section>` : '';
 }
 function moreGuides(route) {
  const others = guides.filter(g => g.route !== route);
@@ -220,14 +225,16 @@ function body(route, page) {
 function graph(route, page) {
  const org = SITE.url + '/#org', site = SITE.url + '/#site';
  const data = [ { '@type': 'Organization', '@id': org, name: SITE.name, url: SITE.url + '/', telephone: '+' + WA_NUMBER, ...(SITE.email ? { email: SITE.email } : {}), ...(SITE.instagram ? { sameAs: [SITE.instagram] } : {}) }, { '@type': 'WebSite', '@id': site, name: SITE.name, url: SITE.url + '/', publisher: { '@id': org }, inLanguage: 'es-PY' } ];
- if (route === '/') data.push({ '@type': 'LocalBusiness', '@id': SITE.url + '/#local', name: SITE.name, url: SITE.url + '/', areaServed: SITE.area, parentOrganization: { '@id': org } });
+ if (route === '/') data.push({ '@type': 'LocalBusiness', '@id': SITE.url + '/#local', name: SITE.name, url: SITE.url + '/', areaServed: ZONES.filter(z => z.delivery !== null).map(z => ({ '@type': 'City', name: z.name })), telephone: '+' + WA_NUMBER, image: SITE.url + '/assets/img/og.jpg', openingHoursSpecification: { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], opens: '08:00', closes: '20:00' }, parentOrganization: { '@id': org } });
  if (['home', 'combos', 'reveal', 'anito', 'theme', 'zone'].includes(page.type)) data.push({ '@type': 'Service', '@id': SITE.url + route + '#servicio', name: page.h1, provider: { '@id': org }, areaServed: page.type === 'zone' ? page.detail.name : SITE.area, serviceType: page.h1 });
  if (route !== '/') data.push({ '@type': 'BreadcrumbList', '@id': SITE.url + route + '#migas', itemListElement: [{ '@type': 'ListItem', position: 1, name: SITE.name, item: SITE.url + '/' }, { '@type': 'ListItem', position: 2, name: page.h1, item: SITE.url + route }] });
  if (page.type === 'guide') {
   data.find(n => n['@type'] === 'BreadcrumbList').itemListElement.splice(1, 0, { '@type': 'ListItem', position: 2, name: 'Ideas', item: SITE.url + '/ideas/' });
   data.find(n => n['@type'] === 'BreadcrumbList').itemListElement.at(-1).position = 3;
-  data.push({ '@type': 'Article', '@id': SITE.url + route + '#articulo', headline: page.h1, description: page.description, datePublished: page.datePublished, author: { '@id': org }, publisher: { '@id': org }, mainEntityOfPage: SITE.url + route, inLanguage: 'es-PY' });
+  data.push({ '@type': 'Article', '@id': SITE.url + route + '#articulo', headline: page.h1, description: page.description, datePublished: page.datePublished, dateModified: page.dateModified || page.datePublished, image: SITE.url + '/assets/img/og.jpg', author: { '@id': org }, publisher: { '@id': org }, mainEntityOfPage: SITE.url + route, inLanguage: 'es-PY' });
  }
+ const hubItems = page.type === 'ideas' ? guides.map(g => [g.route, g.detail.h1]) : page.type === 'themes' ? THEME_DETAILS.map(t => [`/tematicas/${t.slug}/`, t.name]) : page.type === 'zones' ? ZONE_DETAILS.filter(z => manifest.some(r => r.route === `/zonas/${z.slug}/`)).map(z => [`/zonas/${z.slug}/`, z.name]) : null;
+ if (hubItems) data.push({ '@type': 'ItemList', '@id': SITE.url + route + '#lista', itemListElement: hubItems.map(([href, name], i) => ({ '@type': 'ListItem', position: i + 1, name, url: SITE.url + href })) });
  if (page.faq) data.push({ '@type': 'FAQPage', '@id': SITE.url + route + '#preguntas', mainEntity: page.faq.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) });
  return { '@context': 'https://schema.org', '@graph': data };
 }
