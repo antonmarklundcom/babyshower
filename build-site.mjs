@@ -122,7 +122,7 @@ function themeGrid(items = THEME_DETAILS, cls = 'theme-grid') {
  }).join('')}</div>`;
 }
 function homeZones() {
- return `<section class="zones-section" id="zonas"><div class="wrap"><div class="home-zones"><div><span class="eyebrow">${esc(UI.zonesEyebrow)}</span><h2>${esc(UI.zones)}</h2>${p(DELIVERY)}${link('/zonas/', UI.zonesLink, 'zonas', 'home-more')}</div><div class="zone-lists">${[false, true].map(extra => `<div><h3>${esc(extra ? UI.zoneExtra : UI.zoneFree)}</h3><ul>${ZONES.filter(z => extra ? z.delivery !== 0 : z.delivery === 0).map(z => `<li>${esc(z.name)}${extra ? `<span> · ${z.delivery === null ? esc(UI.zoneOther) : '+ ' + esc(fmtGs(z.delivery))}</span>` : ''}</li>`).join('')}</ul></div>`).join('')}</div></div></div></section>`;
+ return `<section class="zones-section" id="zonas"><div class="wrap"><div class="home-zones"><div><span class="eyebrow">${esc(UI.zonesEyebrow)}</span><h2>${esc(UI.zones)}</h2>${p(DELIVERY)}${link('/zonas/', UI.zonesLink, 'zonas', 'home-more')}</div><div class="zone-lists">${[false, true].map(extra => `<div><h3>${esc(extra ? UI.zoneExtra : UI.zoneFree)}</h3><ul>${ZONES.filter(z => extra ? z.delivery !== 0 : z.delivery === 0).map(z => `<li>${manifest.some(r => r.route === `/zonas/${z.slug}/`) ? link(`/zonas/${z.slug}/`, z.name, 'zonas') : esc(z.name)}${extra ? `<span> · ${z.delivery === null ? esc(UI.zoneOther) : '+ ' + esc(fmtGs(z.delivery))}</span>` : ''}</li>`).join('')}</ul></div>`).join('')}</div></div></div></section>`;
 }
 const HERO_SLIDES = ['hero-baby-shower-quincho', 'hero-revelacion-genero', 'hero-primer-anito'];
 // Slide 1 is the LCP image and stays visible without JavaScript; slides 2 and 3 start hidden so they load only after site.js activates the carousel.

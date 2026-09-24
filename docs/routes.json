@@ -182,6 +182,20 @@
     "built": true
   },
   {
+    "route": "/zonas/capiata/",
+    "output": "zonas/capiata/index.html",
+    "phase": "B3",
+    "indexable": true,
+    "built": true
+  },
+  {
+    "route": "/zonas/mariano-roque-alonso/",
+    "output": "zonas/mariano-roque-alonso/index.html",
+    "phase": "B3",
+    "indexable": true,
+    "built": true
+  },
+  {
     "route": "/ideas/",
     "output": "ideas/index.html",
     "phase": "B4",
