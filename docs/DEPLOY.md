@@ -1,5 +1,7 @@
 # Publicación en Hostinger
 
+Recomendado: Git deploy desde hPanel, ver `docs/HOSTINGER-GIT.md`. El ZIP de abajo queda como alternativa manual.
+
 El servidor aloja HTML estático y `lead-forward.php`; Node solo se usa localmente. PHP 8.1 o posterior recomendado, con mail y cURL/HTTPS cuando se use CRM.
 
 1. Desde la raíz del repositorio ejecutá `node build-site.mjs`, `node verify.mjs --phase B5` y `node verify.mjs --final`.
