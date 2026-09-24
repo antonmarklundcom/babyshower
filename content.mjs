@@ -141,13 +141,13 @@ export const COMPARISON = [
 ];
 Object.assign(PAGES, {
  '/combos-y-precios/': { type: 'combos', title: 'Combos y precios de baby shower | Paraguay', h1: 'Combos y precios de baby shower', description: 'Compará las inclusiones de cada combo de baby shower, sus precios estimados y adicionales. Calculá tu propuesta según invitados y zona.', intro: 'Acá podés ver qué incluye cada combo y qué queda fuera de la estimación. El precio final y la disponibilidad se confirman por WhatsApp. Montaje y desmontaje incluidos en la estimación.', faq: [FAQ[0], FAQ[1], FAQ[5], FAQ[7]] },
- '/revelacion-de-genero/': { type: 'reveal', title: 'Revelación de género en Asunción | Kit y fiesta', h1: 'Revelación de género en Asunción: kit a domicilio o fiesta completa', description: 'Consultá por el Kit Sorpresa o la Revelación Completa en Asunción. Mirá precios estimados y cómo coordinar el color, la entrega y el montaje.', faq: [
+ '/revelacion-de-genero/': { type: 'reveal', title: 'Decoración para revelación de género en Asunción', h1: 'Revelación de género en Asunción: kit a domicilio o fiesta completa', description: 'Consultá por el Kit Sorpresa o la Revelación Completa en Asunción. Mirá precios estimados y cómo coordinar el color, la entrega y el montaje.', faq: [
   { q: '¿Cómo se mantiene el secreto?', a: REVEAL.intro },
   { q: '¿El humo se puede usar en interior?', a: 'No, solo exterior y a confirmar; para interior consultá por globo con confeti.' },
   { q: '¿Qué información necesitan?', a: 'Fecha tentativa y zona; no necesitamos estudios médicos.' },
   { q: '¿Puedo sumar la torta?', a: `${REVEAL.cake.name}: ${priceCaption(REVEAL.cake.price)}` }
  ] },
- '/primer-anito/': { type: 'anito', title: 'Primer añito con temática | Baby Shower Paraguay', h1: 'Primer añito con temática, listo para disfrutar', description: 'Conocé el Combo Añito para 30 invitados con decoración, torta y bocaditos. Elegí una temática y consultá el precio final y la disponibilidad.', faq: [
+ '/primer-anito/': { type: 'anito', title: 'Decoración para primer añito en Asunción | 1 año', h1: 'Primer añito con temática, listo para disfrutar', description: 'Conocé el Combo Añito para 30 invitados con decoración, torta y bocaditos. Elegí una temática y consultá el precio final y la disponibilidad.', faq: [
   { q: '¿Puedo elegir cualquier temática?', a: 'Contanos qué temática tenés en mente y confirmamos el alcance por WhatsApp.' },
   { q: '¿Incluye la torta?', a: 'Sí, 1 piso, hasta 30 porciones, según la propuesta confirmada por WhatsApp.' },
   { q: '¿Sirve para salón de eventos?', a: 'Sí, coordinamos horario de ingreso con el salón, según la propuesta confirmada por WhatsApp.' }
