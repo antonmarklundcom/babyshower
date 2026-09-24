@@ -264,5 +264,33 @@
     "phase": "B4",
     "indexable": true,
     "built": true
+  },
+  {
+    "route": "/ideas/baby-shower-de-nino/",
+    "output": "ideas/baby-shower-de-nino/index.html",
+    "phase": "B4",
+    "indexable": true,
+    "built": true
+  },
+  {
+    "route": "/ideas/mesa-dulce-para-baby-shower/",
+    "output": "ideas/mesa-dulce-para-baby-shower/index.html",
+    "phase": "B4",
+    "indexable": true,
+    "built": true
+  },
+  {
+    "route": "/ideas/souvenirs-para-baby-shower/",
+    "output": "ideas/souvenirs-para-baby-shower/index.html",
+    "phase": "B4",
+    "indexable": true,
+    "built": true
+  },
+  {
+    "route": "/ideas/torta-para-baby-shower/",
+    "output": "ideas/torta-para-baby-shower/index.html",
+    "phase": "B4",
+    "indexable": true,
+    "built": true
   }
 ]
