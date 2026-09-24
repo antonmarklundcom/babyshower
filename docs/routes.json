@@ -292,5 +292,33 @@
     "phase": "B4",
     "indexable": true,
     "built": true
+  },
+  {
+    "route": "/ideas/torta-para-revelacion-de-genero/",
+    "output": "ideas/torta-para-revelacion-de-genero/index.html",
+    "phase": "B4",
+    "indexable": true,
+    "built": true
+  },
+  {
+    "route": "/ideas/juegos-para-revelacion-de-genero/",
+    "output": "ideas/juegos-para-revelacion-de-genero/index.html",
+    "phase": "B4",
+    "indexable": true,
+    "built": true
+  },
+  {
+    "route": "/ideas/arco-de-globos-para-baby-shower/",
+    "output": "ideas/arco-de-globos-para-baby-shower/index.html",
+    "phase": "B4",
+    "indexable": true,
+    "built": true
+  },
+  {
+    "route": "/ideas/primer-anito-varon/",
+    "output": "ideas/primer-anito-varon/index.html",
+    "phase": "B4",
+    "indexable": true,
+    "built": true
   }
 ]
