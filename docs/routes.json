@@ -320,5 +320,12 @@
     "phase": "B4",
     "indexable": true,
     "built": true
+  },
+  {
+    "route": "/ideas/ajuar-para-bebe/",
+    "output": "ideas/ajuar-para-bebe/index.html",
+    "phase": "B4",
+    "indexable": true,
+    "built": true
   }
 ]
