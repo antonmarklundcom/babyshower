@@ -4,6 +4,13 @@ RewriteCond %{HTTPS} !=on [OR]
 RewriteCond %{HTTP_HOST} !^babyshower\.com\.py$ [NC]
 RewriteRule ^ https://babyshower.com.py%{REQUEST_URI} [R=301,L,NE]
 
+# Hostinger Git deploy clones the whole repo here; only the built site is public.
+RewriteCond %{REQUEST_URI} !^/\.well-known/
+RewriteRule (^|/)\. - [F,L]
+RewriteRule ^(plan|docs|codex-input|deploy|dist|node_modules)(/|$) - [F,L,NC]
+RewriteRule \.(md|mjs|ps1)$ - [F,L,NC]
+ErrorDocument 403 /404.html
+
 <FilesMatch "(?i)(^leads\.log$|\.mjs$|^vendercrm-config.*\.php$)">
   Require all denied
 </FilesMatch>
