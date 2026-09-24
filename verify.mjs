@@ -74,11 +74,12 @@ const spec = read('plan/02-BUILD-SPEC.md');
 const inventory = spec.split('## 6.')[1].split('## 7.')[0];
 const expectedRoutes = new Set();
 for (const m of inventory.matchAll(/`(\/(?:[a-z0-9-]+\/)*|\/(?:404|gracias)\.html)`/g)) if (!m[1].endsWith('.html') && m[1] !== '/trabajos-reales/') expectedRoutes.add(m[1]);
-for (const [label, root] of [['Theme slugs:', '/tematicas/'], ['Zone slugs (5 at launch):', '/zonas/'], ['Idea slugs:', '/ideas/']]) {
+for (const [label, root] of [['Theme slugs:', '/tematicas/'], ['Zone slugs (5 at launch):', '/zonas/'], ]) {
  const line = inventory.split('\n').find(s => s.startsWith(label));
  check(Boolean(line), `Missing specification inventory ${label}`);
  for (const m of (line || '').split('. ')[0].matchAll(/`([a-z0-9-]+)`/g)) expectedRoutes.add(root + m[1] + '/');
 }
+for (const idea of IDEAS) expectedRoutes.add(`/ideas/${idea.slug}/`); // guides are registered from ideas.mjs
 check([...expectedRoutes].every(route => routes.has(route)) && [...routes.keys()].every(route => expectedRoutes.has(route)), 'Manifest differs from complete section 6 route inventory');
 
 const decode = s => String(s).replace(/&(#x[0-9a-f]+|#\d+|amp|lt|gt|quot|apos);/gi, (all, key) => key[0] === '#' ? String.fromCodePoint(key[1].toLowerCase() === 'x' ? parseInt(key.slice(2), 16) : Number(key.slice(1))) : ({amp:'&',lt:'<',gt:'>',quot:'"',apos:"'"}[key] || all));

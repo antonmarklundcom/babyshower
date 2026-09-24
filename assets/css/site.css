@@ -570,3 +570,4 @@ main:not(.home-page) section{padding-block:80px}
 @media (prefers-reduced-motion:reduce){.home-page .hero-slide{transition:none}}
 /* Batch 11: keep focused fields clear of the fixed mobile bar (bar is shown below 1024px) */
 @media(max-width:1023px){html{scroll-padding-bottom:6rem}}
+.guide-more{margin-block:48px 64px}.guide-more ul{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:8px}.guide-more a{display:inline-flex;align-items:center;min-height:44px;font-weight:600}

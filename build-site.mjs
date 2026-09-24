@@ -10,6 +10,10 @@ import { SITE, WA_NUMBER, ANALYTICS_ID, PRICES, PRIMARY_CTA, RESPONSE, POLICY, T
 
 process.chdir(fileURLToPath(new URL('.', import.meta.url)));
 const manifest = JSON.parse(readFileSync('docs/routes.json', 'utf8'));
+// New guides only need an entry in ideas.mjs: register any missing guide route in the manifest.
+const missingIdeas = IDEAS.filter(idea => !manifest.some(r => r.route === `/ideas/${idea.slug}/`));
+for (const idea of missingIdeas) manifest.push({ route: `/ideas/${idea.slug}/`, output: `ideas/${idea.slug}/index.html`, phase: 'B4', indexable: true, built: true });
+if (missingIdeas.length) writeFileSync('docs/routes.json', JSON.stringify(manifest, null, 2) + '\n');
 const guides = manifest.filter(r => r.phase === 'B4' && r.route !== '/ideas/').map(r => {
  const detail = IDEAS.find(idea => r.route === `/ideas/${idea.slug}/`);
  if (!detail) throw new Error(`Missing guide ${r.route}`);
@@ -189,6 +193,12 @@ function guideCta(route, idea, location) {
  const offer = idea.offer;
  return `<aside class="cta-card card card--raised" aria-label="Consulta sobre ${esc(offer.name)}"><h3>${esc(idea.cta)}</h3>${p(offer.name)}<p data-price-caption>${esc(priceCaption(offer.price))}</p>${p(RESPONSE)}${link(waHref(packageMessage(offer, route)), PRIMARY_CTA, location, 'btn btn--primary')}</aside>`;
 }
+function moreGuides(route) {
+ const others = guides.filter(g => g.route !== route);
+ const start = guides.findIndex(g => g.route === route);
+ const pick = [0, 1, 2].map(i => others[(start + i) % others.length]).filter(Boolean);
+ return `<nav class="guide-more wrap" aria-label="${esc(UI.moreGuides)}"><h2>${esc(UI.moreGuides)}</h2><ul>${pick.map(g => `<li>${link(g.route, g.detail.h1, 'guia-relacionada')}</li>`).join('')}</ul></nav>`;
+}
 function ideasBody(route, page) {
  if (page.type === 'ideas') return `<section><div class="wrap"><div class="ideas-grid">${guides.map(({ route: child, detail }, i) => `<article class="card card--hair tint-${['sage','sky','blush'][i % 3]}"><h2>${link(child, detail.h1, 'ideas-hub')}</h2>${p(detail.description)}${link(child, 'Leé la guía', 'ideas-hub', 'btn btn--ghost')}</article>`).join('')}</div><div class="actions">${wa(route, 'ideas-hub')}</div></div></section>`;
  const idea = page.detail;
@@ -198,7 +208,7 @@ function ideasBody(route, page) {
 function body(route, page) {
  if (page.type === 'home') return home(route, page);
  const hero = `<section class="inner-hero${page.type === 'theme' ? ' tint-' + page.detail.tint : ''}"><div class="wrap"><span class="eyebrow">${esc(SITE.name)}</span><h1>${esc(page.h1)}</h1>${page.type === 'theme' ? (imageFigure(imagery.find(image => image.use === route && image.placed && image.status !== 'rejected')?.id, 'theme-hero-image', imageSizes.theme) || themePalette(page.detail, 'theme-hero-image')) : ['reveal', 'anito'].includes(page.type) ? imageFigure(imagery.find(image => image.use === route && image.placed && image.status !== 'rejected')?.id, 'theme-hero-image hero-wide', imageSizes.theme, true) : ''}</div></section>`;
- if (['ideas', 'guide'].includes(page.type)) return hero + ideasBody(route, page);
+ if (['ideas', 'guide'].includes(page.type)) return hero + ideasBody(route, page) + (page.type === 'guide' ? moreGuides(route) : '');
  if (['themes', 'theme', 'zones', 'zone'].includes(page.type)) return hero + programmatic(route, page);
  if (['combos', 'reveal', 'anito'].includes(page.type)) return hero + offers(route, page);
  if (page.type === 'contact') return hero + contact(route, false);
