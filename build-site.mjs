@@ -139,7 +139,7 @@ function home(route, page) {
  <section class="home-packages" id="combos"><div class="wrap"><span class="eyebrow">${esc(UI.packagesEyebrow)}</span><h2>${esc(UI.packages)}</h2><p class="packages-intro">${esc(UI.transparency)} ${esc(PRICES.label)}.</p>${homeCards(route)}</div></section>
  ${calculator(route)}
  <section class="dark-band grain scrim image-band">${imageFigure('band-montaje', 'band-image', '100vw')}<div class="wrap"><h2 class="statement">${esc(UI.band)}</h2>${link('/tematicas/', UI.themeCta, 'franja', 'btn btn--ghost')}</div></section>
- <section class="steps-section"><div class="wrap"><span class="eyebrow">${esc(UI.steps)}</span><h2>${esc(UI.homeSteps)}</h2>${stepList()}</div></section>
+ <section class="steps-section"><div class="wrap"><span class="eyebrow">${esc(UI.steps)}</span><h2>${esc(UI.homeSteps)}</h2>${stepList()}${link('/como-funciona/', UI.stepsLink, 'pasos', 'home-more')}</div></section>
  <section class="theme-section"><div class="wrap"><div class="theme-heading"><h2>${esc(UI.themes)}</h2></div>${themeGrid()}${link('/tematicas/', UI.themesLink, 'tematicas', 'home-more')}</div></section>
  <section class="inclusions-section"><div class="wrap">${homeInclusions()}</div></section>${homeZones()}
  <section class="home-faq"><div class="wrap"><div><span class="eyebrow">${esc(UI.faq)}</span><h2>${esc(UI.homeFaq)}</h2>${link('/preguntas-frecuentes/', UI.faqLink, 'preguntas', 'home-more')}</div>${faq(page.faq)}</div></section>${contact(route)}`;
