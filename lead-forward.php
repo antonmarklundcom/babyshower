@@ -159,7 +159,7 @@ flock($log, LOCK_UN); fclose($log);
 // Payload follows tasacion's /api/v1/leads contract; unmapped fields stay in message.
 $note = "Pipeline: Baby Shower\nStage: Nuevo\n";
 foreach ($lead as $key => $value) $note .= $key . ': ' . $value . "\n";
-$payload = ['phone' => $lead['whatsapp'], 'name' => $lead['nombre'], 'message' => $note,
+$payload = ['phone' => '+' . $lead['whatsapp'], 'name' => $lead['nombre'], 'message' => $note,
     'source' => 'site:babyshower', 'page_url' => $site['url'] . $lead['origen'],
     'idempotency_key' => hash('sha256', 'babyshower|' . $sid)];
 $emailed = false;

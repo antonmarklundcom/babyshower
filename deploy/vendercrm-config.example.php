@@ -5,6 +5,6 @@
 // Optional constant BABYSHOWER_LEAD_EMAIL overrides lead_email when non-empty.
 return [
     'lead_email' => 'REEMPLAZAR', // Notification recipient; never public site content.
-    'url' => 'REEMPLAZAR',        // HTTPS base URL; pipeline Baby Shower, stage Nuevo.
+    'url' => 'https://crm.clientes.com.py', // VenderCRM base URL; the site's pipeline stage is set in the CRM.
     'api_key' => '',             // Configure the site credential privately on the host.
 ];
