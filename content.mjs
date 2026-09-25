@@ -160,10 +160,10 @@ Object.assign(PAGES, {
 
 export const deliveryNote = z => z.delivery === null ? 'Recargo estimado por traslado: a cotizar por WhatsApp.' : `Recargo estimado por traslado: ${z.delivery === 0 ? ZERO_PRICE : fmtGs(z.delivery)}`;
 
-// Servicios adicionales (2026-09-25, Anton: una página por grupo del KWP). Importes PROVISIONALES: Anton los confirma antes de Gate A.
-export const SERVICE_NOTE = 'Precios estimados provisionales para este servicio. El alcance, el precio final y la disponibilidad se confirman por WhatsApp.';
+// Servicios adicionales (2026-09-25, Anton: una página por grupo del KWP). Importes confirmados por Anton el 2026-09-25.
+export const SERVICE_NOTE = 'Precios estimados para este servicio. El alcance, el precio final y la disponibilidad se confirman por WhatsApp.';
 export const SERVICES = [
- { slug: 'decoracion-con-globos', nav: 'Decoración con globos', icon: 'globo', image: 'combo-nube', formType: 'globos', subject: 'decoración con globos',
+ { slug: 'decoracion-con-globos', nav: 'Decoración con globos', icon: 'globo', image: 'servicio-decoracion-con-globos', formType: 'globos', subject: 'decoración con globos',
   title: 'Decoración con globos en Asunción | Arcos y columnas', h1: 'Decoración con globos en Asunción: arcos, columnas y globos personalizados',
   description: 'Arcos de globos orgánicos, columnas y globos personalizados para cumpleaños, bautismos y baby showers en Asunción. Mirá precios estimados.',
   summary: 'Arcos orgánicos, columnas, centros de mesa y globos burbuja con nombre para cualquier celebración.',
@@ -181,7 +181,7 @@ export const SERVICES = [
    { q: '¿Puedo elegir los colores?', a: 'Sí. Contanos dos o tres colores y la ocasión; confirmamos por WhatsApp los tonos disponibles para tu fecha.' },
    { q: '¿Hacen globos con nombre?', a: 'Sí, globos burbuja con nombre o frase en vinilo. Set de globos personalizados: ' + priceCaption(150000) }
   ] },
- { slug: 'bautismo', nav: 'Bautismo', icon: 'gota', image: 'combo-sueno', formType: 'bautismo', subject: 'decoración para bautismo',
+ { slug: 'bautismo', nav: 'Bautismo', icon: 'gota', image: 'servicio-bautismo', formType: 'bautismo', subject: 'decoración para bautismo',
   title: 'Decoración para bautismo en Asunción | Precios estimados', h1: 'Decoración para bautismo en Asunción: arco, mesa dulce y torta',
   description: 'Decoración para bautismo de nena o varón en Asunción: arco de globos, cartel con nombre, mesa dulce y torta. Consultá precios estimados.',
   summary: 'Decoración en tonos claros para el festejo después de la ceremonia, con opción de mesa dulce y torta.',
@@ -198,7 +198,7 @@ export const SERVICES = [
    { q: '¿Tienen souvenirs para bautismo?', a: 'Sí, podés sumar ' + ADDONS[1].name.toLowerCase() + ': ' + priceCaption(ADDONS[1].price) },
    { q: '¿Pueden montar mientras estamos en la ceremonia?', a: 'Sí, si alguien de confianza nos abre el lugar. Coordinamos el horario de montaje con vos según la propuesta confirmada por WhatsApp.' }
   ] },
- { slug: 'cumpleanos-infantil', nav: 'Cumpleaños infantil', icon: 'fiesta', image: 'hero-primer-anito', formType: 'cumpleanos', subject: 'decoración de cumpleaños infantil',
+ { slug: 'cumpleanos-infantil', nav: 'Cumpleaños infantil', icon: 'fiesta', image: 'servicio-cumpleanos-infantil', formType: 'cumpleanos', subject: 'decoración de cumpleaños infantil',
   title: 'Decoración de cumpleaños infantil en Asunción', h1: 'Decoración de cumpleaños infantil en Asunción, con la temática que elijan',
   description: 'Decoración para cumpleaños infantiles en Asunción: arco de globos temático, cartel con nombre y edad, mesa dulce y torta. Mirá precios estimados.',
   summary: 'Arco temático, cartel con nombre y edad, mesa dulce y torta para cumpleaños en casa o en salón.',
@@ -215,7 +215,7 @@ export const SERVICES = [
    { q: '¿Sirve para un salón de fiestas infantiles?', a: 'Sí, coordinamos el horario de ingreso con el salón según la propuesta confirmada por WhatsApp.' },
    { q: '¿Para cuántos invitados es el Cumple Completo?', a: 'La estimación contempla 40 invitados entre chicos y adultos. Si son más, lo cotizamos por WhatsApp.' }
   ] },
- { slug: 'bienvenida-de-bebe', nav: 'Bienvenida de bebé', icon: 'casa', image: 'tema-nubes-y-ositos', formType: 'bienvenida', subject: 'una bienvenida de bebé',
+ { slug: 'bienvenida-de-bebe', nav: 'Bienvenida de bebé', icon: 'casa', image: 'servicio-bienvenida-de-bebe', formType: 'bienvenida', subject: 'una bienvenida de bebé',
   title: 'Bienvenida de bebé en casa | Decoración en Asunción', h1: 'Bienvenida de bebé: decoración para recibirlo en casa',
   description: 'Decoración de bienvenida para el bebé en casa: guirnalda de globos, cartel con el nombre y mesa dulce para las visitas en Asunción.',
   summary: 'Globos y cartel con el nombre para recibir al bebé en casa, con opción de mesa dulce para las visitas.',
@@ -241,7 +241,7 @@ export const SERVICE_HUB = [
  ...SERVICES.map(s => ({ route: `/${s.slug}/`, name: s.nav, icon: s.icon, summary: s.summary, price: Math.min(...s.offers.map(o => o.price)) }))
 ];
 for (const s of SERVICES) PAGES[`/${s.slug}/`] = { type: 'service', detail: s, title: s.title, h1: s.h1, description: s.description, faq: s.faq };
-PAGES['/servicios/'] = { type: 'services', title: 'Servicios de decoración para eventos en Asunción', h1: 'Servicios de decoración para celebraciones familiares', description: 'Baby shower, revelación de género, primer añito, bautismo, cumpleaños infantil, bienvenida de bebé y decoración con globos en Gran Asunción.', intro: 'Organizamos la decoración de las celebraciones de la familia, desde la espera del bebé hasta sus primeros cumpleaños. Elegí el servicio, mirá qué incluye y el precio estimado, y escribinos con la fecha y la zona.', faq: [
+PAGES['/servicios/'] = { type: 'services', image: 'servicios-decoracion-eventos', title: 'Servicios de decoración para eventos en Asunción', h1: 'Servicios de decoración para celebraciones familiares', description: 'Baby shower, revelación de género, primer añito, bautismo, cumpleaños infantil, bienvenida de bebé y decoración con globos en Gran Asunción.', intro: 'Organizamos la decoración de las celebraciones de la familia, desde la espera del bebé hasta sus primeros cumpleaños. Elegí el servicio, mirá qué incluye y el precio estimado, y escribinos con la fecha y la zona.', faq: [
  { q: '¿Puedo combinar servicios?', a: 'Sí. Por ejemplo, una revelación de género y después el baby shower, o globos personalizados para un cumpleaños. Contanos qué necesitás y armamos la propuesta por WhatsApp.' },
  { q: '¿En qué zonas trabajan?', a: DELIVERY },
  { q: '¿El precio que veo es definitivo?', a: 'No. Son estimaciones orientativas. ' + CONFIRMATION }
