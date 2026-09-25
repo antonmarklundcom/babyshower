@@ -35,7 +35,7 @@ function fail_form(array $errors, int $status = 422): void {
             return substr(preg_replace('~\svalue="[^"]*"~', '', $m[0]), 0, -1) . ' value="' . $value . '">';
         }, $html);
         if ($name === 'mensaje') $html = preg_replace_callback('~(<textarea\b[^>]*name="mensaje"[^>]*>).*?(</textarea>)~s', static fn($m) => $m[1] . $value . $m[2], $html);
-        if (in_array($name, ['tipo','zona'], true)) $html = preg_replace_callback('~(<select\b[^>]*name="' . $name . '"[^>]*>)(.*?)(</select>)~s', static fn($m) => $m[1] . str_replace('value="' . $value . '"', 'value="' . $value . '" selected', $m[2]) . $m[3], $html);
+        if (in_array($name, ['tipo','zona'], true)) $html = preg_replace_callback('~(<select\b[^>]*name="' . $name . '"[^>]*>)(.*?)(</select>)~s', static fn($m) => $m[1] . str_replace('value="' . $value . '"', 'value="' . $value . '" selected', str_replace(' selected', '', $m[2])) . $m[3], $html);
         if (in_array($name, $errors, true)) {
             $html = str_replace('id="' . $name . '"', 'id="' . $name . '" aria-invalid="true"', $html);
             $html = str_replace('id="error-' . $name . '" hidden></span>', 'id="error-' . $name . '">' . escape_html($messages[$name]) . '</span>', $html);

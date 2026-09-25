@@ -41,6 +41,18 @@ const waHref = text => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(tex
 const waDefault = route => waHref(WA_MENU.options.at(-1).text(route));
 const p = text => `<p>${esc(text)}</p>`;
 const icon = '<svg viewBox="0 0 24 24" class="wa-icon" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.5 14.4c-.3.7-1.4 1.2-2 1.2-1.4 0-3.3-1-4.9-2.4-1.7-1.5-3-3.5-3-4.9 0-.8.4-1.7.9-2.1.2-.2.5-.3.8-.2l1 2.3c.1.3-.5.9-.7 1.1.5 1.2 2 2.8 3.4 3.4.3-.3.9-1.1 1.2-1l2.3 1.1c.3.1.3.8.1 1.5Z"/></svg>';
+// Line icons for services (24px grid, stroke only, inherit colour).
+const SVC_ICONS = {
+ corazon: '<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/>',
+ destello: '<path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/>',
+ torta: '<path d="M4 20h16v-7H4v7Z"/><path d="M4 16c2 1.5 4 1.5 6 0s4-1.5 6 0 3 1.5 4 0"/><path d="M12 13V9"/><path d="M12 6.5c.8-.8.8-1.7 0-2.5-.8.8-.8 1.7 0 2.5Z"/>',
+ globo: '<path d="M12 3a6 6 0 0 0-6 6c0 4 3.5 7 6 7s6-3 6-7a6 6 0 0 0-6-6Z"/><path d="M11 16h2l-1 1.6c0 1.4 1 2 1 3.4"/>',
+ gota: '<path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11Z"/><path d="M9.5 14.5a2.5 2.5 0 0 0 2.5 2.5"/>',
+ fiesta: '<path d="M4 20 9 7l8 8-13 5Z"/><path d="M14 4v2M18 8h2M16.5 5.5 18 4"/>',
+ casa: '<path d="M4 11 12 4l8 7v9H4v-9Z"/><path d="M10 20v-5h4v5"/>',
+ check: '<path d="m5 12.5 4.5 4.5L19 7.5"/>'
+};
+const svcIcon = (name, cls = 'svc-icon') => `<svg viewBox="0 0 24 24" class="${cls}" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${SVC_ICONS[name] || ''}</svg>`;
 function link(href, label, loc, cls = '', extra = '') {
  const event = href.startsWith('https://wa.me/') ? 'whatsapp_click' : 'navigation';
  return `<a href="${esc(href)}"${cls ? ` class="${cls}"` : ''} data-ev="${event}" data-ev-loc="${loc}" ${extra}>${esc(label)}</a>`;
@@ -52,7 +64,8 @@ const nav = (items, route, loc) => items.map(([href, label]) => link(href, label
 const current = (href, route) => href === route ? 'aria-current="page"' : '';
 // Servicios: link to the overview plus a disclosure button; the submenu opens on hover (pointer) or with the button.
 function servicesDrop(route) {
- return `<div class="nav-drop" data-nav-drop>${link('/servicios/', 'Servicios', 'cabecera', SERVICE_NAV.some(([href]) => href === route) ? 'is-section' : '', current('/servicios/', route))}<button type="button" class="nav-drop__toggle" data-nav-drop-toggle aria-expanded="false" aria-controls="nav-servicios" aria-label="${esc(UI.servicesMenu)}" data-ev="menu_open" data-ev-loc="cabecera-servicios"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2"/></svg></button><ul class="nav-drop__menu" id="nav-servicios">${SERVICE_NAV.map(([href, label]) => `<li>${link(href, label, 'cabecera-servicios', '', current(href, route))}</li>`).join('')}</ul></div>`;
+ const items = SERVICE_HUB.map(s => `<li><a class="mega-item" href="${s.route}" data-ev="navigation" data-ev-loc="cabecera-servicios" ${current(s.route, route)}>${svcIcon(s.icon)}<span><strong>${esc(s.name)}</strong><small>${esc(s.summary)}</small></span></a></li>`).join('');
+ return `<div class="nav-drop" data-nav-drop>${link('/servicios/', 'Servicios', 'cabecera', SERVICE_NAV.some(([href]) => href === route) ? 'is-section' : '', current('/servicios/', route))}<button type="button" class="nav-drop__toggle" data-nav-drop-toggle aria-expanded="false" aria-controls="nav-servicios" aria-label="${esc(UI.servicesMenu)}" data-ev="menu_open" data-ev-loc="cabecera-servicios"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2"/></svg></button><div class="nav-drop__menu" id="nav-servicios"><ul class="mega-grid">${items}</ul><div class="mega-foot">${link('/servicios/', 'Todos los servicios', 'cabecera-servicios', 'mega-all', current('/servicios/', route))}<span>${esc(RESPONSE)}</span></div></div></div>`;
 }
 function header(route) {
  const desktop = headerNav.map(([href, label]) => href === '/servicios/' ? servicesDrop(route) : link(href, label, 'cabecera', '', current(href, route))).join('');
@@ -66,21 +79,32 @@ function footer(route) {
  return `<footer class="footer"><div class="wrap footer-grid footer-grid--cols"><div class="footer-about"><strong class="brand">${esc(SITE.name)}</strong>${p(SITE.operator)}${p(SITE.serviceArea)}${p(SITE.hours)}${link(waDefault(route), SITE.phone, 'pie')}${SITE.email ? link('mailto:' + SITE.email, SITE.email, 'pie') : ''}${SITE.ruc ? p(SITE.ruc) : ''}${SITE.instagram ? link(SITE.instagram, UI.instagram, 'pie') : ''}</div>${col(UI.footerServices, [...SERVICE_NAV.slice(1), SERVICE_NAV[0]])}${col(UI.footerZones, [...zoneItems, ['/zonas/', 'Todas las zonas']])}${col(UI.footerGuides, [...guideItems, ['/ideas/', UI.allGuides]])}<nav class="footer-col" aria-label="${esc(UI.footerNav)}"><h2>${esc(UI.footerInfo)}</h2><ul>${[['/combos-y-precios/', 'Combos y precios'], ['/tematicas/', 'Temáticas'], ...FOOTER_NAV].map(([href, label]) => `<li>${link(href, label, 'pie', '', current(href, route))}</li>`).join('')}</ul>${ANALYTICS_ID ? `<button type="button" class="text-button" data-consent-revoke data-ev="consent_revoke" data-ev-loc="pie">${esc(UI.preferences)}</button>` : ''}</nav></div></footer>`;
 }
 function waMenu(route, page) {
- return `<div id="wa-menu" class="wa-menu" data-wa-menu hidden><div class="wa-backdrop" data-wa-close aria-hidden="true"></div><div class="wa-panel" data-wa-panel role="dialog" aria-modal="true" aria-labelledby="wa-title"><div class="panel-head"><h2 id="wa-title">${esc(UI.waTitle)}</h2><button class="close" type="button" data-wa-close aria-label="${esc(UI.close)}" data-ev="menu_close" data-ev-loc="whatsapp">×</button></div><ul>${WA_MENU.options.map(o => `<li>${link(waHref(o.text(route)), o.label, 'panel-whatsapp', 'wa-menu__option', `data-wa-option="${o.id}"`)}</li>`).join('')}</ul>${p(UI.waFoot)}</div></div><a class="wa-fab" href="${esc(waDefault(route))}" data-wa-trigger aria-haspopup="dialog" aria-controls="wa-menu" aria-expanded="false" aria-label="${esc(UI.waLabel)}" data-ev="whatsapp_click" data-ev-loc="flotante">${icon}</a><div class="mobile-bar">${wa(route, 'barra-movil')}${['reveal', 'anito', 'service', 'services'].includes(page.type) ? '' : link('/#calculadora', UI.calc, 'barra-movil', 'btn btn--ghost')}</div>`;
+ return `<div id="wa-menu" class="wa-menu" data-wa-menu hidden><div class="wa-backdrop" data-wa-close aria-hidden="true"></div><div class="wa-panel" data-wa-panel role="dialog" aria-modal="true" aria-labelledby="wa-title"><div class="panel-head"><h2 id="wa-title">${esc(UI.waTitle)}</h2><button class="close" type="button" data-wa-close aria-label="${esc(UI.close)}" data-ev="menu_close" data-ev-loc="whatsapp">×</button></div><ul>${WA_MENU.options.map(o => `<li>${link(waHref(o.text(route)), o.label, 'panel-whatsapp', 'wa-menu__option', `data-wa-option="${o.id}"`)}</li>`).join('')}</ul>${p(UI.waFoot)}</div></div><a class="wa-fab" href="${esc(waDefault(route))}" data-wa-trigger aria-haspopup="dialog" aria-controls="wa-menu" aria-expanded="false" aria-label="${esc(UI.waLabel)}" data-ev="whatsapp_click" data-ev-loc="flotante">${icon}</a><div class="mobile-bar">${wa(route, 'barra-movil')}${hasQuote(page) && page.type !== 'combos' ? link('#presupuesto', UI.quoteShort, 'barra-movil', 'btn btn--ghost') : link('/#calculadora', UI.calc, 'barra-movil', 'btn btn--ghost')}</div>`;
 }
 function consent() {
  if (!ANALYTICS_ID) return '';
  return `<aside class="consent" data-consent-banner aria-labelledby="consent-title" hidden><strong id="consent-title">${esc(UI.consentTitle)}</strong>${p(UI.consent)}<div class="actions"><button type="button" class="btn btn--primary" data-consent="accepted" data-ev="consent_accept" data-ev-loc="cookies">${esc(UI.accept)}</button><button type="button" class="btn btn--ghost" data-consent="rejected" data-ev="consent_reject" data-ev-loc="cookies">${esc(UI.reject)}</button></div></aside>`;
 }
-function form(route) {
+function form(route, tipo = '') {
  const f = UI.form;
  const input = (name, attrs) => `<div class="field"><label for="${name}">${esc(f[name])}</label><input id="${name}" name="${name}" ${attrs} aria-describedby="error-${name}"><span class="field-error" id="error-${name}" hidden></span></div>`;
- const select = (name, options) => `<div class="field"><label for="${name}">${esc(f[name])}</label><select name="${name}" id="${name}" required aria-describedby="error-${name}"><option value="">${esc(f.choose)}</option>${options.map(([value, label]) => `<option value="${value}">${esc(label)}</option>`).join('')}</select><span class="field-error" id="error-${name}" hidden></span></div>`;
- return `<form method="post" action="/lead-forward.php" data-lead-form><p role="alert" tabindex="-1" data-form-errors hidden></p><div class="form-grid">${input('nombre', 'autocomplete="name" minlength="2" maxlength="60" required')}${input('whatsapp', 'type="tel" autocomplete="tel" inputmode="tel" required')}${input('fecha', 'type="date"')}<label class="checkbox"><input type="checkbox" name="fecha_desconocida" value="1" data-date-unknown>${esc(f.unknown)}</label>${input('invitados', 'type="number" min="5" max="200" step="1"')}${select('tipo', f.types)}${select('zona', ZONES.map(z => [z.slug, z.name]))}<div class="field field-wide"><label for="mensaje">${esc(f.mensaje)}</label><textarea name="mensaje" id="mensaje" maxlength="500" rows="4" aria-describedby="error-mensaje"></textarea><span class="field-error" id="error-mensaje" hidden></span></div></div><input type="hidden" name="origen" value="${route}"><input type="hidden" name="sid" value=""><input type="hidden" name="empresa" value=""><button class="btn btn--primary" type="submit" data-ev="form_attempt" data-ev-loc="formulario">${esc(f.submit)}</button>${p(f.reply)}${p(RESPONSE)}${link('/privacidad/', f.privacy, 'formulario')}</form>`;
+ const select = (name, options, chosen = '') => `<div class="field"><label for="${name}">${esc(f[name])}</label><select name="${name}" id="${name}" required aria-describedby="error-${name}"><option value="">${esc(f.choose)}</option>${options.map(([value, label]) => `<option value="${value}"${value === chosen ? ' selected' : ''}>${esc(label)}</option>`).join('')}</select><span class="field-error" id="error-${name}" hidden></span></div>`;
+ return `<form method="post" action="/lead-forward.php" data-lead-form><p role="alert" tabindex="-1" data-form-errors hidden></p><div class="form-grid">${input('nombre', 'autocomplete="name" minlength="2" maxlength="60" required')}${input('whatsapp', 'type="tel" autocomplete="tel" inputmode="tel" required')}${input('fecha', 'type="date"')}<label class="checkbox"><input type="checkbox" name="fecha_desconocida" value="1" data-date-unknown>${esc(f.unknown)}</label>${input('invitados', 'type="number" min="5" max="200" step="1"')}${select('tipo', f.types, tipo)}${select('zona', ZONES.map(z => [z.slug, z.name]))}<div class="field field-wide"><label for="mensaje">${esc(f.mensaje)}</label><textarea name="mensaje" id="mensaje" maxlength="500" rows="4" aria-describedby="error-mensaje"></textarea><span class="field-error" id="error-mensaje" hidden></span></div></div><input type="hidden" name="origen" value="${route}"><input type="hidden" name="sid" value=""><input type="hidden" name="empresa" value=""><button class="btn btn--primary" type="submit" data-ev="form_attempt" data-ev-loc="formulario">${esc(f.submit)}</button>${p(f.reply)}${p(RESPONSE)}${link('/privacidad/', f.privacy, 'formulario')}</form>`;
 }
 function contact(route, heading = true) {
- return `<section class="contact-section"><div class="wrap split contact-split"><div>${heading ? `<h2>${esc(UI.contact)}</h2>` : ''}${p(RESPONSE)}${wa(route, 'contacto')}${p(SITE.phone)}${p(SITE.hours)}</div><div class="form-panel">${form(route)}</div></div></section>`;
+ return `<section class="contact-section" id="presupuesto"><div class="wrap split contact-split"><div>${heading ? `<h2>${esc(UI.contact)}</h2>` : ''}${p(RESPONSE)}${wa(route, 'contacto')}${p(SITE.phone)}${p(SITE.hours)}</div><div class="form-panel">${form(route)}</div></div></section>`;
 }
+// Lead form for commercial pages: event type preselected from the page, WhatsApp as the fast alternative.
+function quote(route, tipo) {
+ return `<section class="contact-section quote-section" id="presupuesto"><div class="wrap split contact-split"><div><span class="eyebrow">${esc(UI.quoteShort)}</span><h2>${esc(UI.quoteTitle)}</h2>${p(UI.quoteIntro)}<ul class="check-list">${UI.heroTrust.map(t => `<li>${svcIcon('check', 'check-icon')}${esc(t)}</li>`).join('')}</ul>${wa(route, 'presupuesto', 'btn btn--outline')}${p(SITE.hours)}</div><div class="form-panel">${form(route, tipo)}</div></div></section>`;
+}
+const QUOTE_TYPES = { reveal: 'revelacion', anito: 'primer-anito', combos: 'baby-shower', theme: 'baby-shower', zone: 'baby-shower', services: '' };
+function quoteType(page) {
+ if (page.type === 'service') return page.detail.formType;
+ if (page.type === 'guide') return page.detail.offer.id === 'kit' ? 'revelacion' : page.detail.offer.id === 'anito' ? 'primer-anito' : 'baby-shower';
+ return QUOTE_TYPES[page.type];
+}
+const hasQuote = page => quoteType(page) !== undefined;
 
 // Placement approval and alt copy come from the editorial manifest; variants from webimg.
 const imagery = JSON.parse(readFileSync('docs/imagery-manifest.json', 'utf8')).images;
@@ -156,6 +180,7 @@ function home(route, page) {
  <section class="dark-band grain scrim image-band">${imageFigure('band-montaje', 'band-image', '100vw')}<div class="wrap"><h2 class="statement">${esc(UI.band)}</h2>${link('/tematicas/', UI.themeCta, 'franja', 'btn btn--ghost')}</div></section>
  <section class="steps-section"><div class="wrap"><span class="eyebrow">${esc(UI.steps)}</span><h2>${esc(UI.homeSteps)}</h2>${stepList()}${link('/como-funciona/', UI.stepsLink, 'pasos', 'home-more')}</div></section>
  <section class="theme-section"><div class="wrap"><div class="theme-heading"><h2>${esc(UI.themes)}</h2></div>${themeGrid()}${link('/tematicas/', UI.themesLink, 'tematicas', 'home-more')}</div></section>
+ <section class="services-section home-services"><div class="wrap"><span class="eyebrow">${esc(UI.servicesEyebrow)}</span><h2>${esc(UI.servicesTitle)}</h2>${serviceCards(SERVICE_HUB, 'inicio-servicios')}${link('/servicios/', UI.servicesLink, 'inicio-servicios', 'home-more')}</div></section>
  <section class="inclusions-section"><div class="wrap">${homeInclusions()}</div></section>${homeZones()}
  <section class="home-faq"><div class="wrap"><div><span class="eyebrow">${esc(UI.faq)}</span><h2>${esc(UI.homeFaq)}</h2>${link('/preguntas-frecuentes/', UI.faqLink, 'preguntas', 'home-more')}</div>${faq(page.faq)}</div></section>${contact(route)}`;
 }
@@ -224,20 +249,31 @@ function ideasBody(route, page) {
 function serviceCta(route, subject) {
  return link(waHref(`Hola, vengo de ${SITE.domain} (${route}) y quiero consultar por ${subject}. Fecha tentativa: ____ · Invitados: ____ · Zona: ____`), PRIMARY_CTA, 'consulta-servicio', 'btn btn--primary');
 }
+// Service cards shared by the home page, /servicios/ and "Otros servicios" on each service page.
+function serviceCards(items, loc, heading = 'h3') {
+ return `<div class="service-cards">${items.map(s => `<article class="service-card">${svcIcon(s.icon)}<${heading}>${link(s.route, s.name, loc, 'service-card__link')}</${heading}>${p(s.summary)}<p class="service-card__price"><span class="price-label">${esc(UI.pricePrefix)}</span> <strong>${esc(fmtGs(s.price))}</strong></p></article>`).join('')}</div>`;
+}
+function serviceHero(route, page) {
+ const s = page.detail;
+ const from = s ? Math.min(...s.offers.map(o => o.price)) : null;
+ const figure = s ? imageFigure(s.image, 'svc-hero__image', '(max-width: 959px) 90vw, 560px', true) : '';
+ return `<section class="svc-hero"><div class="wrap svc-hero__grid"><div class="svc-hero__copy"><span class="eyebrow">${esc(s ? SITE.serviceArea : UI.servicesEyebrow)}</span><h1>${esc(page.h1)}</h1>${p(s ? s.intro : page.intro)}${from ? `<p class="svc-hero__price"><span class="price-label">${esc(UI.pricePrefix)}</span> <span class="price-amount">${esc(fmtGs(from))}</span></p>` : ''}<div class="actions">${s ? serviceCta(route, s.subject) : wa(route, 'portada-servicios')}${link('#presupuesto', UI.quoteShort, 'portada-servicio', 'btn btn--ghost')}</div><ul class="check-list check-list--inline">${UI.heroTrust.map(t => `<li>${svcIcon('check', 'check-icon')}${esc(t)}</li>`).join('')}</ul></div>${figure ? `<div class="svc-hero__media">${figure}</div>` : ''}</div></section>`;
+}
 function servicesBody(route, page) {
  const questions = `<section><div class="wrap narrow"><h2>${esc(UI.faq)}</h2>${faq(page.faq)}</div></section>`;
- if (page.type === 'services') return `<section><div class="wrap">${p(page.intro)}<div class="ideas-grid service-grid">${SERVICE_HUB.map((s, i) => `<article class="card card--hair tint-${['sage', 'sky', 'blush'][i % 3]}"><h2>${link(s.route, s.name, 'servicios-hub')}</h2>${p(s.summary)}<p class="price-caption"><span class="price-label">${esc(UI.pricePrefix)}</span> <span class="price-amount">${esc(fmtGs(s.price))}</span></p>${link(s.route, UI.allServices, 'servicios-hub', 'btn btn--ghost')}</article>`).join('')}</div>${p(CONFIRMATION)}</div></section>${steps()}${homeZones()}${questions}<section class="dark-band grain"><div class="wrap"><h2>Contanos qué estás organizando</h2>${serviceCta(route, 'un servicio de decoración')}</div></section>`;
+ if (page.type === 'services') return `<section class="services-section"><div class="wrap">${serviceCards(SERVICE_HUB, 'servicios-hub', 'h2')}${p(CONFIRMATION)}</div></section>${steps()}${homeZones()}${questions}${quote(route, '')}`;
  const s = page.detail;
  const themes = s.themes.map(slug => THEME_DETAILS.find(t => t.slug === slug)).filter(Boolean);
- return `<section><div class="wrap">${p(s.intro)}<div class="offer-grid${s.offers.length === 3 ? ' offer-grid--3' : ''}">${s.offers.map(o => offerCard(o, route)).join('')}</div>${p(SERVICE_NOTE)}</div></section><section><div class="wrap narrow"><h2>Ideal para</h2><ul>${s.ideal.map(item => `<li>${esc(item)}</li>`).join('')}</ul><h2>Cómo lo organizamos</h2><p data-main-paragraph>${esc(s.paragraph)}</p>${p(DELIVERY)}${serviceCta(route, s.subject)}</div></section>${themes.length ? `<section><div class="wrap"><h2>Temáticas para inspirarte</h2>${themeGrid(themes, 'theme-related')}</div></section>` : ''}${guideLinks(s.guides, 'servicio-guias')}<section><div class="wrap narrow"><h2>Otros servicios</h2><ul>${SERVICE_NAV.filter(([href]) => href !== route).map(([href, label]) => `<li>${link(href, label, 'servicio-otros')}</li>`).join('')}</ul></div></section>${questions}`;
+ return `<section class="svc-options"><div class="wrap"><span class="eyebrow">${esc(UI.optionsTitle)}</span><h2>${esc(s.nav)}: elegí la opción que va con tu evento</h2><div class="offer-grid${s.offers.length === 3 ? ' offer-grid--3' : ''}">${s.offers.map(o => offerCard(o, route)).join('')}</div>${p(SERVICE_NOTE)}</div></section><section class="svc-detail"><div class="wrap svc-detail__grid"><div><span class="eyebrow">${esc(UI.idealTitle)}</span><h2>${esc(UI.idealTitle)}</h2><ul class="ideal-list">${s.ideal.map(item => `<li>${svcIcon('check', 'check-icon')}${esc(item)}</li>`).join('')}</ul></div><div><h2>${esc(UI.howTitle)}</h2><p data-main-paragraph>${esc(s.paragraph)}</p>${p(DELIVERY)}${serviceCta(route, s.subject)}</div></div></section>${steps()}${themes.length ? `<section><div class="wrap"><h2>Temáticas para inspirarte</h2>${themeGrid(themes, 'theme-related')}</div></section>` : ''}${guideLinks(s.guides, 'servicio-guias')}<section class="services-section"><div class="wrap"><h2>${esc(UI.otherServices)}</h2>${serviceCards(SERVICE_HUB.filter(item => item.route !== route), 'servicio-otros')}</div></section>${questions}${quote(route, s.formType)}`;
 }
 function body(route, page) {
  if (page.type === 'home') return home(route, page);
  const hero = `<section class="inner-hero${page.type === 'theme' ? ' tint-' + page.detail.tint : ''}"><div class="wrap"><span class="eyebrow">${esc(SITE.name)}</span><h1>${esc(page.h1)}</h1>${page.type === 'theme' ? (imageFigure(imagery.find(image => image.use === route && image.placed && image.status !== 'rejected')?.id, 'theme-hero-image', imageSizes.theme) || themePalette(page.detail, 'theme-hero-image')) : ['reveal', 'anito'].includes(page.type) ? imageFigure(imagery.find(image => image.use === route && image.placed && image.status !== 'rejected')?.id, 'theme-hero-image hero-wide', imageSizes.theme, true) : ''}</div></section>`;
- if (['ideas', 'guide'].includes(page.type)) return hero + ideasBody(route, page) + (page.type === 'guide' ? moreGuides(route) : '');
- if (['themes', 'theme', 'zones', 'zone'].includes(page.type)) return hero + programmatic(route, page);
- if (['combos', 'reveal', 'anito'].includes(page.type)) return hero + offers(route, page);
- if (['service', 'services'].includes(page.type)) return hero + servicesBody(route, page);
+ const lead = hasQuote(page) ? quote(route, quoteType(page)) : '';
+ if (['ideas', 'guide'].includes(page.type)) return hero + ideasBody(route, page) + lead + (page.type === 'guide' ? moreGuides(route) : '');
+ if (['themes', 'theme', 'zones', 'zone'].includes(page.type)) return hero + programmatic(route, page) + lead;
+ if (['combos', 'reveal', 'anito'].includes(page.type)) return hero + offers(route, page) + lead;
+ if (['service', 'services'].includes(page.type)) return serviceHero(route, page) + servicesBody(route, page);
  if (page.type === 'contact') return hero + contact(route, false);
  if (page.type === 'process') return hero + `<section><div class="wrap editorial"><h2>${esc(UI.who)}</h2><div>${p(ABOUT)}${wa(route, 'quienes-somos')}${SITE.email ? link('mailto:' + SITE.email, SITE.email, 'quienes-somos') : ''}</div></div></section>` + steps() + `<section><div class="wrap narrow"><h2>${esc(UI.payments)}</h2>${p(POLICY.pagos)}${p(POLICY.iva)}${p(POLICY.plazo)}</div></section>` + policy();
  if (page.type === 'faq') return hero + `<section><div class="wrap narrow">${faq(page.faq, true)}${wa(route, 'preguntas')}</div></section>`;
