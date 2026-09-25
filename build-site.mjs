@@ -256,7 +256,7 @@ function serviceCards(items, loc, heading = 'h3') {
 function serviceHero(route, page) {
  const s = page.detail;
  const from = s ? Math.min(...s.offers.map(o => o.price)) : null;
- const figure = s ? imageFigure(s.image, 'svc-hero__image', '(max-width: 959px) 90vw, 560px', true) : '';
+ const figure = imageFigure(s ? s.image : page.image, 'svc-hero__image', '(max-width: 959px) 90vw, 560px', true);
  return `<section class="svc-hero"><div class="wrap svc-hero__grid"><div class="svc-hero__copy"><span class="eyebrow">${esc(s ? SITE.serviceArea : UI.servicesEyebrow)}</span><h1>${esc(page.h1)}</h1>${p(s ? s.intro : page.intro)}${from ? `<p class="svc-hero__price"><span class="price-label">${esc(UI.pricePrefix)}</span> <span class="price-amount">${esc(fmtGs(from))}</span></p>` : ''}<div class="actions">${s ? serviceCta(route, s.subject) : wa(route, 'portada-servicios')}${link('#presupuesto', UI.quoteShort, 'portada-servicio', 'btn btn--ghost')}</div><ul class="check-list check-list--inline">${UI.heroTrust.map(t => `<li>${svcIcon('check', 'check-icon')}${esc(t)}</li>`).join('')}</ul></div>${figure ? `<div class="svc-hero__media">${figure}</div>` : ''}</div></section>`;
 }
 function servicesBody(route, page) {

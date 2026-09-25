@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-21T00:28:21.626Z",
+  "generated_at": "2026-09-25T05:15:25.566Z",
   "images": [
     {
       "filename_base": "hero-baby-shower-quincho",
@@ -914,6 +914,201 @@
         }
       ],
       "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"C:/Claude 1/babyshower/assets/img/idea-ideas-para-baby-shower-640.avif 640w, C:/Claude 1/babyshower/assets/img/idea-ideas-para-baby-shower-1168.avif 1168w\">\n  <source type=\"image/webp\" srcset=\"C:/Claude 1/babyshower/assets/img/idea-ideas-para-baby-shower-640.webp 640w, C:/Claude 1/babyshower/assets/img/idea-ideas-para-baby-shower-1168.webp 1168w\">\n  <img src=\"C:/Claude 1/babyshower/assets/img/idea-ideas-para-baby-shower-640.webp\" alt=\"Primer plano de dulces, tartaletas con frutas y cupcakes sobre una tabla de madera\" width=\"640\" height=\"482\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "servicio-decoracion-con-globos",
+      "source": "../img/servicio-decoracion-con-globos.png",
+      "prompt": "higgsfield servicio-decoracion-con-globos",
+      "alt_text": "Arco de globos orgánico en verde salvia, crema y rosa en la entrada de un quincho de ladrillo, con columnas de globos y globos burbuja transparentes",
+      "naming_source": "fallback",
+      "aspect_ratio": "source",
+      "files": [
+        {
+          "file": "servicio-decoracion-con-globos-480.avif",
+          "format": "avif",
+          "width": 480,
+          "height": 600,
+          "kb": 29.4
+        },
+        {
+          "file": "servicio-decoracion-con-globos-480.webp",
+          "format": "webp",
+          "width": 480,
+          "height": 600,
+          "kb": 36.6
+        },
+        {
+          "file": "servicio-decoracion-con-globos-896.avif",
+          "format": "avif",
+          "width": 896,
+          "height": 1120,
+          "kb": 60.1
+        },
+        {
+          "file": "servicio-decoracion-con-globos-896.webp",
+          "format": "webp",
+          "width": 896,
+          "height": 1120,
+          "kb": 83.8
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"assets/img/servicio-decoracion-con-globos-480.avif 480w, assets/img/servicio-decoracion-con-globos-896.avif 896w\">\n  <source type=\"image/webp\" srcset=\"assets/img/servicio-decoracion-con-globos-480.webp 480w, assets/img/servicio-decoracion-con-globos-896.webp 896w\">\n  <img src=\"assets/img/servicio-decoracion-con-globos-480.webp\" alt=\"Arco de globos orgánico en verde salvia, crema y rosa en la entrada de un quincho de ladrillo, con columnas de globos y globos burbuja transparentes\" width=\"480\" height=\"600\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "servicio-bautismo",
+      "source": "../img/servicio-bautismo.png",
+      "prompt": "higgsfield servicio-bautismo",
+      "alt_text": "Mesa de bautismo con mantel blanco, torta blanca de un piso con flores, velas, rosas blancas y una paloma de cerámica, bajo un arco de globos blanco y dorado",
+      "naming_source": "fallback",
+      "aspect_ratio": "source",
+      "files": [
+        {
+          "file": "servicio-bautismo-480.avif",
+          "format": "avif",
+          "width": 480,
+          "height": 600,
+          "kb": 18.2
+        },
+        {
+          "file": "servicio-bautismo-480.webp",
+          "format": "webp",
+          "width": 480,
+          "height": 600,
+          "kb": 23.9
+        },
+        {
+          "file": "servicio-bautismo-896.avif",
+          "format": "avif",
+          "width": 896,
+          "height": 1120,
+          "kb": 37.4
+        },
+        {
+          "file": "servicio-bautismo-896.webp",
+          "format": "webp",
+          "width": 896,
+          "height": 1120,
+          "kb": 55.3
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"assets/img/servicio-bautismo-480.avif 480w, assets/img/servicio-bautismo-896.avif 896w\">\n  <source type=\"image/webp\" srcset=\"assets/img/servicio-bautismo-480.webp 480w, assets/img/servicio-bautismo-896.webp 896w\">\n  <img src=\"assets/img/servicio-bautismo-480.webp\" alt=\"Mesa de bautismo con mantel blanco, torta blanca de un piso con flores, velas, rosas blancas y una paloma de cerámica, bajo un arco de globos blanco y dorado\" width=\"480\" height=\"600\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "servicio-cumpleanos-infantil",
+      "source": "../img/servicio-cumpleanos-infantil.png",
+      "prompt": "higgsfield servicio-cumpleanos-infantil",
+      "alt_text": "Decoración de cumpleaños infantil con temática safari: arco de globos mostaza, terracota y oliva, mesa dulce con cupcakes y peluches de león, jirafa y elefante",
+      "naming_source": "fallback",
+      "aspect_ratio": "source",
+      "files": [
+        {
+          "file": "servicio-cumpleanos-infantil-480.avif",
+          "format": "avif",
+          "width": 480,
+          "height": 600,
+          "kb": 44.3
+        },
+        {
+          "file": "servicio-cumpleanos-infantil-480.webp",
+          "format": "webp",
+          "width": 480,
+          "height": 600,
+          "kb": 54.2
+        },
+        {
+          "file": "servicio-cumpleanos-infantil-896.avif",
+          "format": "avif",
+          "width": 896,
+          "height": 1120,
+          "kb": 95.2
+        },
+        {
+          "file": "servicio-cumpleanos-infantil-896.webp",
+          "format": "webp",
+          "width": 896,
+          "height": 1120,
+          "kb": 130.2
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"assets/img/servicio-cumpleanos-infantil-480.avif 480w, assets/img/servicio-cumpleanos-infantil-896.avif 896w\">\n  <source type=\"image/webp\" srcset=\"assets/img/servicio-cumpleanos-infantil-480.webp 480w, assets/img/servicio-cumpleanos-infantil-896.webp 896w\">\n  <img src=\"assets/img/servicio-cumpleanos-infantil-480.webp\" alt=\"Decoración de cumpleaños infantil con temática safari: arco de globos mostaza, terracota y oliva, mesa dulce con cupcakes y peluches de león, jirafa y elefante\" width=\"480\" height=\"600\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "servicio-bienvenida-de-bebe",
+      "source": "../img/servicio-bienvenida-de-bebe.png",
+      "prompt": "higgsfield servicio-bienvenida-de-bebe",
+      "alt_text": "Puerta de entrada de una casa decorada con guirnalda de globos verde salvia, celeste y crema, un cartel de madera y una canasta con mantas y un osito",
+      "naming_source": "fallback",
+      "aspect_ratio": "source",
+      "files": [
+        {
+          "file": "servicio-bienvenida-de-bebe-480.avif",
+          "format": "avif",
+          "width": 480,
+          "height": 600,
+          "kb": 28.9
+        },
+        {
+          "file": "servicio-bienvenida-de-bebe-480.webp",
+          "format": "webp",
+          "width": 480,
+          "height": 600,
+          "kb": 37.4
+        },
+        {
+          "file": "servicio-bienvenida-de-bebe-896.avif",
+          "format": "avif",
+          "width": 896,
+          "height": 1120,
+          "kb": 66.3
+        },
+        {
+          "file": "servicio-bienvenida-de-bebe-896.webp",
+          "format": "webp",
+          "width": 896,
+          "height": 1120,
+          "kb": 92.7
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"assets/img/servicio-bienvenida-de-bebe-480.avif 480w, assets/img/servicio-bienvenida-de-bebe-896.avif 896w\">\n  <source type=\"image/webp\" srcset=\"assets/img/servicio-bienvenida-de-bebe-480.webp 480w, assets/img/servicio-bienvenida-de-bebe-896.webp 896w\">\n  <img src=\"assets/img/servicio-bienvenida-de-bebe-480.webp\" alt=\"Puerta de entrada de una casa decorada con guirnalda de globos verde salvia, celeste y crema, un cartel de madera y una canasta con mantas y un osito\" width=\"480\" height=\"600\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "servicios-decoracion-eventos",
+      "source": "../img/servicios-decoracion-eventos.png",
+      "prompt": "higgsfield servicios-decoracion-eventos",
+      "alt_text": "Rincón de celebración con arco de globos rosa, crema y salvia, mesa de madera con torta de dos pisos, macarons, flores y cajas de regalo",
+      "naming_source": "fallback",
+      "aspect_ratio": "source",
+      "files": [
+        {
+          "file": "servicios-decoracion-eventos-480.avif",
+          "format": "avif",
+          "width": 480,
+          "height": 600,
+          "kb": 36
+        },
+        {
+          "file": "servicios-decoracion-eventos-480.webp",
+          "format": "webp",
+          "width": 480,
+          "height": 600,
+          "kb": 44.4
+        },
+        {
+          "file": "servicios-decoracion-eventos-896.avif",
+          "format": "avif",
+          "width": 896,
+          "height": 1120,
+          "kb": 79.5
+        },
+        {
+          "file": "servicios-decoracion-eventos-896.webp",
+          "format": "webp",
+          "width": 896,
+          "height": 1120,
+          "kb": 107.9
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"assets/img/servicios-decoracion-eventos-480.avif 480w, assets/img/servicios-decoracion-eventos-896.avif 896w\">\n  <source type=\"image/webp\" srcset=\"assets/img/servicios-decoracion-eventos-480.webp 480w, assets/img/servicios-decoracion-eventos-896.webp 896w\">\n  <img src=\"assets/img/servicios-decoracion-eventos-480.webp\" alt=\"Rincón de celebración con arco de globos rosa, crema y salvia, mesa de madera con torta de dos pisos, macarons, flores y cajas de regalo\" width=\"480\" height=\"600\" loading=\"lazy\" decoding=\"async\">\n</picture>"
     }
   ]
 }
