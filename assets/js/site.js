@@ -122,6 +122,14 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && nav.classList.contains('is-open')) { closeNav(); burger.focus(); } });
     document.addEventListener('click', function (e) { if (!hdr.contains(e.target)) closeNav(); });
   }
+  var drop = document.querySelector('[data-nav-drop]');
+  var dropToggle = document.querySelector('[data-nav-drop-toggle]');
+  if (drop && dropToggle) {
+    function closeDrop() { drop.classList.remove('is-open'); dropToggle.setAttribute('aria-expanded', 'false'); }
+    dropToggle.addEventListener('click', function () { dropToggle.setAttribute('aria-expanded', drop.classList.toggle('is-open') ? 'true' : 'false'); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && drop.classList.contains('is-open')) { closeDrop(); dropToggle.focus(); } });
+    document.addEventListener('click', function (e) { if (!drop.contains(e.target)) closeDrop(); });
+  }
   var menu = document.querySelector('[data-wa-menu]');
   var triggers = Array.from(document.querySelectorAll('[data-wa-trigger]'));
   if (menu && triggers.length) {

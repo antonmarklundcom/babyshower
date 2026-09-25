@@ -32,13 +32,17 @@ export const PACKAGES = [
 export const ADDONS = [{ id: 'torta', name: 'Torta temática 1 piso', price: 220000 }, { id: 'souvenirs', name: 'Souvenirs personalizados x30', price: 180000 }, { id: 'regalos', name: 'Mesa de regalos y libro de firmas', price: 90000 }, { id: 'globo', name: 'Globo confeti gigante', price: 60000 }, { id: 'fotos', name: 'Sesión de fotos 30 min', price: 250000 }, { id: 'hora', name: 'Coordinadora por hora', price: 120000 }];
 export const ZONES = [ ['asuncion', 'Asunción', 0], ['fernando-de-la-mora', 'Fernando de la Mora', 0], ['lambare', 'Lambaré', 0], ['san-lorenzo', 'San Lorenzo', 40000], ['luque', 'Luque', 40000], ['mariano-roque-alonso', 'Mariano Roque Alonso', 60000], ['capiata', 'Capiatá', 60000], ['otra', 'Otra zona', null] ].map(([slug, name, delivery]) => ({ slug, name, delivery }));
 export const THEMES = [ ['jefe-en-panales', 'Jefe en Pañales'], ['dino-bebe', 'Dino bebé'], ['moana-bebe', 'Moana bebé'], ['minnie-bebe', 'Minnie bebé'], ['mickey-bebe', 'Mickey bebé'], ['blanca-nieves-bebe', 'Blanca Nieves bebé'], ['frutillita-bebe', 'Frutillita bebé'], ['mariposas', 'Mariposas'], ['safari', 'Safari'], ['nubes-y-ositos', 'Nubes y ositos'] ].map(([slug, name]) => ({ slug, name }));
-export const NAV = [['/combos-y-precios/', 'Combos y precios'], ['/revelacion-de-genero/', 'Revelación de género'], ['/tematicas/', 'Temáticas'], ['/primer-anito/', 'Primer añito'], ['/ideas/', 'Ideas'], ['/contacto/', 'Contacto']];
-export const FOOTER_NAV = [['/como-funciona/', 'Cómo funciona'], ['/preguntas-frecuentes/', 'Preguntas frecuentes'], ['/privacidad/', 'Privacidad'], ['/terminos/', 'Términos']];
+export const NAV = [['/servicios/', 'Servicios'], ['/combos-y-precios/', 'Combos y precios'], ['/tematicas/', 'Temáticas'], ['/ideas/', 'Ideas'], ['/contacto/', 'Contacto']];
+// Submenú Servicios de la cabecera y columna del pie; el primer elemento es la página resumen.
+export const SERVICE_NAV = [['/servicios/', 'Todos los servicios'], ['/combos-y-precios/', 'Baby shower'], ['/revelacion-de-genero/', 'Revelación de género'], ['/primer-anito/', 'Primer añito'], ['/decoracion-con-globos/', 'Decoración con globos'], ['/bautismo/', 'Bautismo'], ['/cumpleanos-infantil/', 'Cumpleaños infantil'], ['/bienvenida-de-bebe/', 'Bienvenida de bebé']];
+export const FOOTER_GUIDES = ['ideas-para-baby-shower', 'que-se-necesita-para-un-baby-shower', 'mesa-dulce-para-baby-shower', 'arco-de-globos-para-baby-shower', 'nombres-de-bebe-paraguay', 'ajuar-para-bebe'];
+export const FOOTER_NAV = [['/como-funciona/', 'Cómo funciona'], ['/preguntas-frecuentes/', 'Preguntas frecuentes'], ['/contacto/', 'Contacto'], ['/privacidad/', 'Privacidad'], ['/terminos/', 'Términos']];
 const introWA = route => `Hola, vengo de ${SITE.domain} (${route})`;
 export const WA_MENU = { options: [
  { id: 'combo', label: 'Quiero consultar por un combo de baby shower', text: route => `${introWA(route)} y quiero consultar por un combo de baby shower. Fecha tentativa: ____ · Invitados: ____ · Zona: ____` },
  { id: 'revelacion', label: 'Quiero una revelación de género', text: route => `${introWA(route)} y quiero organizar una revelación de género. Fecha tentativa: ____ · Zona: ____` },
  { id: 'anito', label: 'Quiero organizar un primer añito', text: route => `${introWA(route)} y quiero organizar un primer añito. Temática: ____ · Fecha: ____ · Invitados: ____` },
+ { id: 'servicios', label: 'Quiero globos, bautismo, cumpleaños o bienvenida', text: route => `${introWA(route)} y quiero consultar por decoración para ____ (globos, bautismo, cumpleaños infantil o bienvenida de bebé). Fecha tentativa: ____ · Zona: ____` },
  { id: 'disponibilidad', label: 'Quiero saber si tienen fecha disponible', text: route => `${introWA(route)} y quiero consultar disponibilidad para el ____ en ____` },
  { id: 'consulta', label: 'Tengo otra consulta', text: route => `${introWA(route)} y tengo una consulta.` }
 ] };
@@ -59,7 +63,7 @@ export const FAQ = [
  { group: 'Montaje', q: '¿Hasta qué hora desmontan?', a: 'Coordinamos el horario de desmontaje con vos y lo dejamos en la propuesta.' },
  { group: 'Zonas', q: '¿Atienden fuera de Gran Asunción?', a: 'Consultá por tu zona; el traslado se cotiza por WhatsApp.' }
 ];
-export const ABOUT = 'Baby Shower Paraguay, sitio operado desde Asunción. Organizamos y coordinamos propuestas de baby shower, revelación de género y primer añito. Trabajamos con estimaciones orientativas y confirmamos manualmente el alcance, el precio final y la disponibilidad por WhatsApp antes de cualquier acuerdo. Podés contactarnos por WhatsApp.';
+export const ABOUT = 'Baby Shower Paraguay, sitio operado desde Asunción. Organizamos y coordinamos propuestas de baby shower, revelación de género, primer añito, bautismo, cumpleaños infantil, bienvenida de bebé y decoración con globos. Trabajamos con estimaciones orientativas y confirmamos manualmente el alcance, el precio final y la disponibilidad por WhatsApp antes de cualquier acuerdo. Podés contactarnos por WhatsApp.';
 export const LEGAL = {
  privacy: [
  ['Quién opera este sitio', `${SITE.operator}. Para consultas, reclamos o pedidos de eliminación de datos, escribinos al ${SITE.phone}${SITE.email ? ' o al correo publicado en este sitio' : ''}.`],
@@ -71,7 +75,7 @@ export const LEGAL = {
  ],
  terms: [
  ['Operador y contacto', `${SITE.operator}. Consultas y reclamos: ${SITE.phone}${SITE.email ? ' y el correo publicado en este sitio' : ''}.`],
- ['Alcance del sitio', 'Recibimos consultas para baby shower, revelación de género y primer añito. Los importes publicados son estimaciones orientativas. El precio final, el alcance y la disponibilidad se confirman por WhatsApp. No existe contrato hasta la confirmación por escrito. Por ahora no pedimos seña desde este sitio.'],
+ ['Alcance del sitio', 'Recibimos consultas para baby shower, revelación de género, primer añito, bautismo, cumpleaños infantil, bienvenida de bebé y decoración con globos. Los importes publicados son estimaciones orientativas. El precio final, el alcance y la disponibilidad se confirman por WhatsApp. No existe contrato hasta la confirmación por escrito. Por ahora no pedimos seña desde este sitio.'],
  ['Qué incluye la propuesta', `Revisá las inclusiones y exclusiones de cada combo. ${DELIVERY} Cualquier cambio de alcance debe quedar acordado por escrito antes de confirmar.`],
  ['Impuestos y pagos', POLICY.iva, POLICY.pagos],
  [POLICY.heading, POLICY.sena, POLICY.cancel],
@@ -92,14 +96,14 @@ export const UI = {
  zonePriceParts: (base, delivery) => `Base ${fmtGs(base)} + traslado estimado ${fmtGs(delivery)}`,
  includedGuests: 'Incluye hasta {N} invitados en este combo',
  instagram: 'Instagram', noContract: 'No existe contrato hasta la confirmación por escrito.',
- skip: 'Saltá al contenido', mainNav: 'Principal', footerNav: 'Información del sitio', menu: 'Abrí el menú', close: 'Cerrar', waLabel: 'Escribinos por WhatsApp', waTitle: '¿Qué necesitás?', waFoot: 'Se abre WhatsApp con el mensaje ya escrito.',
+ skip: 'Saltá al contenido', mainNav: 'Principal', footerNav: 'Información del sitio', servicesMenu: 'Abrí el submenú de servicios', footerServices: 'Servicios', footerZones: 'Zonas', footerGuides: 'Guías', footerInfo: 'Información', allGuides: 'Todas las guías', allServices: 'Ver el servicio', menu: 'Abrí el menú', close: 'Cerrar', waLabel: 'Escribinos por WhatsApp', waTitle: '¿Qué necesitás?', waFoot: 'Se abre WhatsApp con el mensaje ya escrito.',
  calc: 'Calculá tu estimación', prices: 'Mirá los combos y precios', themeCta: 'Ver temáticas', home: 'Volver al inicio', inclusions: 'Qué incluye y qué no incluye', included: 'Qué incluye', exclusions: 'Exclusiones', montage: 'Montaje y desmontaje incluidos en la estimación', transparency: 'Precios estimados a la vista, sin preguntar al privado.',
  eyebrow: 'Baby shower en Asunción y Gran Asunción', packagesEyebrow: 'Combos', packages: 'Tres combos con precios estimados a la vista', calculator: 'Calculadora', calcTitle: 'Consultá tu estimación', band: 'Vos elegís la temática. Coordinamos horario de montaje con vos.', steps: 'Cómo funciona', stepsLink: 'Ver cómo funciona en detalle', moreGuides: 'Más guías para organizar tu evento', relatedGuides: 'Guías para organizar tu baby shower', themes: 'Temáticas para tu celebración', zones: 'Asunción y Gran Asunción', faq: 'Preguntas frecuentes', reveal: 'Revelación', revealLink: 'Consultá por una revelación de género', who: 'Quiénes somos', payments: 'Impuestos y formas de pago', contact: 'Escribinos y contanos tu idea', estimation: 'Estimación orientativa',
  hero: [`${PACKAGES[1].name}: decoración, mesa dulce y bocaditos para ${PACKAGES[1].included} invitados.`, priceCaption(PACKAGES[1].price), `${RESPONSE} Precios estimados a la vista, sin preguntar al privado.`],
  themesLink: `Ver las ${THEMES.length} temáticas`, faqLink: 'Ver todas las preguntas', zonesLink: 'Ver zonas y recargos estimados',
  consentTitle: 'Tus preferencias de cookies', consent: 'Usamos analítica solo si aceptás. Podés rechazarla o revocar tu consentimiento desde el pie de página. Referencia: la normativa paraguaya aplicable de protección de datos y comercio electrónico.', accept: 'Aceptar', reject: 'Rechazar', preferences: 'Preferencias de cookies',
  notFound: 'No encontramos esta página. Volvé al inicio o escribinos por WhatsApp.', thanks: `Recibimos tu consulta. ${RESPONSE} ${CONFIRMATION}`,
- form: { nombre: 'Tu nombre', whatsapp: 'Tu WhatsApp', fecha: 'Fecha tentativa', unknown: 'No sé todavía', invitados: 'Cantidad de invitados', tipo: 'Tipo de evento', zona: 'Zona', mensaje: 'Mensaje (opcional)', submit: 'Enviar consulta', reply: 'Te respondemos por WhatsApp al número que nos dejás', choose: 'Elegí una opción', privacy: 'Consultá cómo tratamos tus datos', types: [['baby-shower', 'Baby shower'], ['revelacion', 'Revelación de género'], ['primer-anito', 'Primer añito'], ['otro', 'Otro']] },
+ form: { nombre: 'Tu nombre', whatsapp: 'Tu WhatsApp', fecha: 'Fecha tentativa', unknown: 'No sé todavía', invitados: 'Cantidad de invitados', tipo: 'Tipo de evento', zona: 'Zona', mensaje: 'Mensaje (opcional)', submit: 'Enviar consulta', reply: 'Te respondemos por WhatsApp al número que nos dejás', choose: 'Elegí una opción', privacy: 'Consultá cómo tratamos tus datos', types: [['baby-shower', 'Baby shower'], ['revelacion', 'Revelación de género'], ['primer-anito', 'Primer añito'], ['bautismo', 'Bautismo'], ['cumpleanos', 'Cumpleaños infantil'], ['globos', 'Decoración con globos'], ['bienvenida', 'Bienvenida de bebé'], ['otro', 'Otro']] },
  errors: { nombre: 'Escribí tu nombre, entre 2 y 60 caracteres.', whatsapp: 'Escribí un número de celular paraguayo válido.', fecha: 'Elegí una fecha de hoy en adelante o marcá No sé todavía.', invitados: 'Escribí una cantidad entera entre 5 y 200 invitados.', tipo: 'Elegí un tipo de evento de la lista.', zona: 'Elegí una zona de la lista.', mensaje: 'Tu mensaje puede tener hasta 500 caracteres.', invalid: 'No pudimos validar tu consulta. Volvé a cargar la página e intentá de nuevo.', rate: 'Recibimos varios intentos. Esperá un minuto y volvé a intentar, o escribinos por WhatsApp.', failure: `No pudimos guardar tu consulta. Escribinos por WhatsApp: ${SITE.phone}`, summary: 'Revisá los campos marcados y volvé a enviar tu consulta.', submitting: 'Enviando tu consulta…' }
 };
 export const PAGES = {
@@ -155,3 +159,90 @@ Object.assign(PAGES, {
 });
 
 export const deliveryNote = z => z.delivery === null ? 'Recargo estimado por traslado: a cotizar por WhatsApp.' : `Recargo estimado por traslado: ${z.delivery === 0 ? ZERO_PRICE : fmtGs(z.delivery)}`;
+
+// Servicios adicionales (2026-09-25, Anton: una página por grupo del KWP). Importes PROVISIONALES: Anton los confirma antes de Gate A.
+export const SERVICE_NOTE = 'Precios estimados provisionales para este servicio. El alcance, el precio final y la disponibilidad se confirman por WhatsApp.';
+export const SERVICES = [
+ { slug: 'decoracion-con-globos', nav: 'Decoración con globos', subject: 'decoración con globos',
+  title: 'Decoración con globos en Asunción | Arcos y columnas', h1: 'Decoración con globos en Asunción: arcos, columnas y globos personalizados',
+  description: 'Arcos de globos orgánicos, columnas y globos personalizados para cumpleaños, bautismos y baby showers en Asunción. Mirá precios estimados.',
+  summary: 'Arcos orgánicos, columnas, centros de mesa y globos burbuja con nombre para cualquier celebración.',
+  intro: 'Armamos decoración con globos para celebraciones familiares: un arco para la entrada, un rincón para fotos o globos burbuja con el nombre de quien festejás. Trabajamos en Asunción y Gran Asunción y coordinamos el montaje con vos.',
+  offers: [
+   { id: 'globos-personalizados', name: 'Set de globos personalizados', price: 150000, description: '3 globos burbuja con nombre o frase en vinilo, inflados con helio. Entrega en Asunción, Fernando de la Mora y Lambaré; otras zonas con recargo estimado.' },
+   { id: 'globos-arco', name: 'Arco de globos orgánico', price: 550000, description: 'Arco orgánico de 2 metros en hasta tres colores, armado en el lugar. Montaje y desmontaje incluidos en la estimación.' },
+   { id: 'globos-completa', name: 'Decoración con globos completa', price: 950000, description: 'Arco orgánico de 3 metros, dos columnas o guirnalda de entrada, 6 centros de mesa con globos y cartel con nombre o frase. Montaje y desmontaje incluidos en la estimación.' }
+  ],
+  ideal: ['Cumpleaños de chicos y grandes', 'Bautismos y bienvenidas de bebé', 'Baby shower y revelación de género', 'Aniversarios, graduaciones y reuniones familiares'],
+  paragraph: 'Un arco orgánico mezcla globos de distintos tamaños para lograr un efecto natural, sin la rigidez de una fila pareja. Funciona en la entrada de un quincho, detrás de la mesa principal o como fondo para fotos. Para elegir la medida, mirá el ancho de la pared: en una sala de casa suele alcanzar un arco de 2 metros, mientras que en un salón o un patio amplio conviene pensar en 3 metros o sumar columnas a los costados. Los colores rinden más cuando elegís dos o tres tonos y los repetís en el cartel y en los centros de mesa. Los globos personalizados con vinilo son una opción práctica para regalar o para marcar la mesa de quien cumple años. Con calor fuerte y sol directo los globos duran menos; por eso conviene montar en un espacio con sombra y coordinar el horario cerca del inicio del evento.',
+  themes: [], guides: ['arco-de-globos-para-baby-shower', 'centros-de-mesa-para-baby-shower', 'baby-shower-sencillo-en-casa'],
+  faq: [
+   { q: '¿Cuánto dura un arco de globos?', a: 'Depende del calor, del sol y del viento. Bajo techo dura bastante más que al sol; por eso coordinamos el montaje cerca del horario del evento.' },
+   { q: '¿Puedo elegir los colores?', a: 'Sí. Contanos dos o tres colores y la ocasión; confirmamos por WhatsApp los tonos disponibles para tu fecha.' },
+   { q: '¿Hacen globos con nombre?', a: 'Sí, globos burbuja con nombre o frase en vinilo. Set de globos personalizados: ' + priceCaption(150000) }
+  ] },
+ { slug: 'bautismo', nav: 'Bautismo', subject: 'decoración para bautismo',
+  title: 'Decoración para bautismo en Asunción | Precios estimados', h1: 'Decoración para bautismo en Asunción: arco, mesa dulce y torta',
+  description: 'Decoración para bautismo de nena o varón en Asunción: arco de globos, cartel con nombre, mesa dulce y torta. Consultá precios estimados.',
+  summary: 'Decoración en tonos claros para el festejo después de la ceremonia, con opción de mesa dulce y torta.',
+  intro: 'Preparamos la decoración del festejo después de la ceremonia, en casa, en un quincho o en un salón. Vos elegís los colores y el estilo; nosotros coordinamos el montaje y lo que quieras sumar a la mesa.',
+  offers: [
+   { id: 'bautismo-deco', name: 'Bautismo Deco', price: 1150000, description: 'Arco de globos de 2 metros en blanco, dorado o tonos pastel, fondo decorativo, cartel con el nombre y la fecha y mesa principal ambientada. Montaje y desmontaje incluidos en la estimación.' },
+   { id: 'bautismo-completo', name: 'Bautismo Completo', price: 2050000, description: 'Bautismo Deco más mesa dulce de 30 unidades, torta de 1 piso, 60 bocaditos salados y vajilla descartable, para 30 invitados.' }
+  ],
+  ideal: ['Bautismo de nena o de varón', 'Festejo en casa, quincho o salón', 'Almuerzo o merienda después de la ceremonia', 'Padrinos que quieren regalar la decoración'],
+  paragraph: 'Para un bautismo suelen funcionar los tonos claros: blanco con dorado, celeste con gris perla, rosa empolvado con crema o verde salvia con blanco. Un arco de globos detrás de la mesa principal, un cartel con el nombre y la fecha y algunos detalles en las mesas alcanzan para que el lugar se vea preparado sin recargarlo. Si el festejo es al mediodía, pensá en la sombra y en dónde va a quedar la torta, que suele ser el centro de las fotos. Contanos si la reunión es en casa, en un quincho o en un salón, cuántos invitados esperás y a qué hora termina la ceremonia; con esos datos coordinamos el montaje para que todo esté listo cuando llegue la familia. Los souvenirs y los centros de mesa se suman según el presupuesto y la cantidad de invitados.',
+  themes: ['nubes-y-ositos', 'mariposas'], guides: ['mesa-dulce-para-baby-shower', 'centros-de-mesa-para-baby-shower', 'souvenirs-para-baby-shower'],
+  faq: [
+   { q: '¿Incluye la torta?', a: 'Bautismo Completo incluye una torta de 1 piso en la estimación. En Bautismo Deco podés sumar una ' + ADDONS[0].name.toLowerCase() + ': ' + priceCaption(ADDONS[0].price) },
+   { q: '¿Tienen souvenirs para bautismo?', a: 'Sí, podés sumar ' + ADDONS[1].name.toLowerCase() + ': ' + priceCaption(ADDONS[1].price) },
+   { q: '¿Pueden montar mientras estamos en la ceremonia?', a: 'Sí, si alguien de confianza nos abre el lugar. Coordinamos el horario de montaje con vos según la propuesta confirmada por WhatsApp.' }
+  ] },
+ { slug: 'cumpleanos-infantil', nav: 'Cumpleaños infantil', subject: 'decoración de cumpleaños infantil',
+  title: 'Decoración de cumpleaños infantil en Asunción', h1: 'Decoración de cumpleaños infantil en Asunción, con la temática que elijan',
+  description: 'Decoración para cumpleaños infantiles en Asunción: arco de globos temático, cartel con nombre y edad, mesa dulce y torta. Mirá precios estimados.',
+  summary: 'Arco temático, cartel con nombre y edad, mesa dulce y torta para cumpleaños en casa o en salón.',
+  intro: 'Del primer añito en adelante: armamos la decoración del cumpleaños con la temática que elija la familia, en casa, en un quincho o en un salón de fiestas infantiles.',
+  offers: [
+   { id: 'cumple-deco', name: 'Cumple Deco', price: 1250000, description: 'Arco de globos de 3 metros con los colores de la temática, fondo decorativo, cartel con nombre y edad y centros de mesa para 5 mesas. Montaje y desmontaje incluidos en la estimación.' },
+   { id: 'cumple-completo', name: 'Cumple Completo', price: 2300000, description: 'Cumple Deco más mesa dulce de 40 unidades, torta temática de 1 piso, 80 bocaditos salados y vajilla temática, para 40 invitados entre chicos y adultos.' }
+  ],
+  ideal: ['Cumpleaños de 1 a 10 años', 'Fiestas en casa, quincho o salón infantil', 'Temáticas elegidas por la familia', 'Festejos con chicos y adultos'],
+  paragraph: 'En un cumpleaños infantil la decoración tiene que convivir con chicos corriendo, así que conviene dejar el arco y el fondo contra una pared y liberar el centro para jugar. Elegí una temática y dos o tres colores que se repitan en el cartel, la mesa dulce y los centros de mesa; dinosaurios, safari o mariposas funcionan bien si no se recarga cada rincón. Contanos la edad, porque no se decora igual un cumpleaños de 3 años que uno de 8: a los más grandes les gusta participar en la elección. Si la fiesta es en un salón infantil, pasanos las reglas de ingreso y el horario de montaje. Para calcular la mesa dulce y los bocaditos, contá por separado chicos y adultos: los adultos suelen quedarse más tiempo y comer más salado.',
+  themes: ['dino-bebe', 'safari', 'mariposas', 'moana-bebe'], guides: ['fiesta-de-primer-anito', 'primer-anito-varon', 'mesa-dulce-para-baby-shower'],
+  faq: [
+   { q: '¿Qué temáticas hacen?', a: 'Contanos la temática que eligieron y confirmamos por WhatsApp qué elementos podemos incluir según el alcance.' },
+   { q: '¿Sirve para un salón de fiestas infantiles?', a: 'Sí, coordinamos el horario de ingreso con el salón según la propuesta confirmada por WhatsApp.' },
+   { q: '¿Para cuántos invitados es el Cumple Completo?', a: 'La estimación contempla 40 invitados entre chicos y adultos. Si son más, lo cotizamos por WhatsApp.' }
+  ] },
+ { slug: 'bienvenida-de-bebe', nav: 'Bienvenida de bebé', subject: 'una bienvenida de bebé',
+  title: 'Bienvenida de bebé en casa | Decoración en Asunción', h1: 'Bienvenida de bebé: decoración para recibirlo en casa',
+  description: 'Decoración de bienvenida para el bebé en casa: guirnalda de globos, cartel con el nombre y mesa dulce para las visitas en Asunción.',
+  summary: 'Globos y cartel con el nombre para recibir al bebé en casa, con opción de mesa dulce para las visitas.',
+  intro: 'Para el regreso a casa después del nacimiento: dejamos lista la entrada o la sala con globos y un cartel con el nombre, coordinando el horario con la familia para que todo esté preparado al llegar.',
+  offers: [
+   { id: 'bienvenida-casa', name: 'Bienvenida en casa', price: 450000, description: 'Guirnalda de globos para la puerta o la sala, cartel de bienvenida con el nombre y 2 globos burbuja. Montaje incluido en la estimación; coordinamos el horario con la familia.' },
+   { id: 'bienvenida-mesa', name: 'Bienvenida con mesa dulce', price: 890000, description: 'Bienvenida en casa más mesa dulce de 20 unidades y 30 bocaditos salados para la visita de familiares.' }
+  ],
+  ideal: ['Regreso a casa después del nacimiento', 'Sorpresa organizada por familia o amigas', 'Visita de abuelos y padrinos', 'Presentación del bebé a la familia'],
+  paragraph: 'La bienvenida suele organizarla alguien de la familia o una amiga mientras la mamá y el bebé todavía no volvieron a casa. Por eso conviene tener resuelto quién abre la puerta, en qué horario y dónde va el cartel. Una guirnalda de globos en la entrada o en la sala, con colores suaves, alcanza para que la llegada se sienta especial sin llenar el lugar de cosas: en los primeros días la casa necesita espacio para descansar. Si van a venir abuelos y tíos a conocer al bebé, una mesa dulce chica y algunos bocaditos resuelven la visita sin que nadie tenga que cocinar. Pedí que los globos queden lejos de la cuna y del paso. Si querés decorar en el sanatorio, consultá primero sus reglas: cada lugar tiene las suyas.',
+  themes: ['nubes-y-ositos'], guides: ['ajuar-para-bebe', 'nombres-de-bebe-paraguay', 'que-regalar-en-un-baby-shower'],
+  faq: [
+   { q: '¿Pueden decorar mientras la familia no está en casa?', a: 'Sí, si alguien de confianza nos abre la casa. Coordinamos el día y el horario por WhatsApp.' },
+   { q: '¿Decoran en el sanatorio?', a: 'Cada sanatorio tiene sus propias reglas. Consultá primero con el lugar y contanos qué permiten; confirmamos el alcance por WhatsApp.' },
+   { q: '¿Con cuánta anticipación hay que avisar?', a: 'Como la fecha depende del alta, escribinos apenas tengas un día estimado y confirmamos la disponibilidad por WhatsApp.' }
+  ] }
+];
+// Tarjetas del resumen /servicios/: servicios existentes con su importe configurado más los nuevos.
+export const SERVICE_HUB = [
+ { route: '/combos-y-precios/', name: 'Baby shower', summary: 'Tres combos con decoración, mesa dulce y bocaditos, con precios estimados a la vista y calculadora.', price: PACKAGES[0].price },
+ { route: '/revelacion-de-genero/', name: 'Revelación de género', summary: 'Kit Sorpresa a domicilio o fiesta completa; el color lo guarda alguien de tu confianza.', price: REVEAL.packages[0].price },
+ { route: '/primer-anito/', name: 'Primer añito', summary: 'Combo Añito con temática, torta y bocaditos para 30 invitados.', price: ANITO.price },
+ ...SERVICES.map(s => ({ route: `/${s.slug}/`, name: s.nav, summary: s.summary, price: Math.min(...s.offers.map(o => o.price)) }))
+];
+for (const s of SERVICES) PAGES[`/${s.slug}/`] = { type: 'service', detail: s, title: s.title, h1: s.h1, description: s.description, faq: s.faq };
+PAGES['/servicios/'] = { type: 'services', title: 'Servicios de decoración para eventos en Asunción', h1: 'Servicios de decoración para celebraciones familiares', description: 'Baby shower, revelación de género, primer añito, bautismo, cumpleaños infantil, bienvenida de bebé y decoración con globos en Gran Asunción.', intro: 'Organizamos la decoración de las celebraciones de la familia, desde la espera del bebé hasta sus primeros cumpleaños. Elegí el servicio, mirá qué incluye y el precio estimado, y escribinos con la fecha y la zona.', faq: [
+ { q: '¿Puedo combinar servicios?', a: 'Sí. Por ejemplo, una revelación de género y después el baby shower, o globos personalizados para un cumpleaños. Contanos qué necesitás y armamos la propuesta por WhatsApp.' },
+ { q: '¿En qué zonas trabajan?', a: DELIVERY },
+ { q: '¿El precio que veo es definitivo?', a: 'No. Son estimaciones orientativas. ' + CONFIRMATION }
+] };

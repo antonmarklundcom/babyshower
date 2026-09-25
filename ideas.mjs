@@ -446,5 +446,31 @@ export const IDEAS = [
     'Antes de cerrar la compra, revisá qué talles y qué unidades ya tenés confirmadas entre lo comprado y lo recibido de regalo, para no repetir el mismo artículo en dos talles que el bebé va a usar por poco tiempo. Los objetos decorativos para el cuarto, los accesorios de moda para salidas puntuales y los juguetes con piezas pequeñas pueden esperar a más adelante: no forman parte del ajuar básico de las primeras semanas.',
     `Una forma práctica de completar lo que falta es usar el baby shower: pedile a quien organiza que comparta con los invitados los talles y las categorías pendientes, así los regalos se reparten entre ropa, cuna e higiene en lugar de repetirse en un mismo rubro. Si además estás por organizar ese encuentro, ${nube.name}: ${priceCaption(nube.price)} cubre la decoración del día; contanos fecha tentativa, zona y cantidad de invitados para revisar el alcance.`)
   ]
+ },
+ {
+  slug: 'nombres-de-bebe-paraguay', title: 'Nombres de bebé en Paraguay: cómo elegir',
+  h1: 'Nombres de bebé en Paraguay: ideas, significados y cómo elegir',
+  description: 'Ideas de nombres de bebé para familias paraguayas: clásicos, compuestos y guaraníes, con su significado y consejos para combinarlos con el apellido.',
+  datePublished: '2026-09-25', theme: 'nubes-y-ositos', offer: estrella,
+  links: [['https://nombres.com.py/', 'Buscá y guardá tus favoritos en nombres.com.py, con significado y origen de cada nombre']],
+  cta: 'Si el nombre ya está elegido, armemos el baby shower', image: 'Cartel de madera con un nombre de bebé sobre una mesa decorada con globos en tonos suaves',
+  intro: 'Elegir el nombre es una de las primeras decisiones que la familia toma juntos, y muchas veces llega antes que la ropa o la cuna. En Paraguay conviven los nombres heredados de abuelos, los compuestos de tradición católica, los que se escuchan en series y canciones y los nombres en guaraní. Esta guía te ayuda a ordenar ideas, probar combinaciones y llegar a una lista corta sin discusiones eternas.',
+  sections: [
+   section('Clásicos, compuestos y nombres de familia',
+    'Los nombres clásicos atraviesan generaciones porque se entienden en cualquier lugar y no pasan de moda: María, José, Ana, Juan, Carmen o Pedro siguen apareciendo en cada familia. Muchas parejas eligen un nombre compuesto para unir dos tradiciones, como María José, Juan Pablo, María Paz o Ana Belén. Es una forma práctica de honrar a una abuela o a un padrino sin renunciar a un nombre que les guste a ustedes.',
+    'Si pensás en un nombre de familia, conversalo antes con la persona. A algunos les emociona que el nieto lleve su nombre y a otros les incomoda. También podés usarlo como segundo nombre: queda en los documentos y en la historia familiar, mientras el bebé se llama en la vida diaria por el primero.'),
+   section('Nombres en guaraní para bebés',
+    'El guaraní ofrece nombres con significados muy ligados a la naturaleza. Yvoty significa flor, Jasy es la luna, Mainumby es el picaflor y Yerutí es el nombre de una paloma. Aramí se suele traducir como pedacito de cielo y se usa sobre todo para nenas. Son nombres cortos, fáciles de pronunciar en castellano y con una identidad bien paraguaya.',
+    'Antes de decidir, consultá la escritura con alguien que hable guaraní o con una fuente confiable, porque hay variantes con y sin tilde y con distintas grafías. Pensá también cómo se va a leer el nombre fuera del país: si la familia tiene parientes en el exterior, una ortografía simple ayuda a que lo escriban bien en formularios y documentos.'),
+   section('Significado y origen: por qué importan',
+    'Muchas familias buscan un significado que les guste contar. Sofía viene del griego y significa sabiduría; Mateo viene del hebreo y significa regalo de Dios; Valentina viene del latín y se asocia con la fuerza y el valor. No hace falta que el significado sea profundo, pero conviene conocerlo: es probable que alguien se lo pregunte al chico en la escuela.',
+    'El origen también sirve para filtrar opciones. Hay parejas que prefieren nombres bíblicos, otras buscan nombres latinos o de raíz germánica, y otras mezclan un nombre tradicional con uno guaraní. Anotá tres o cuatro criterios que compartan y descartá lo que no cumpla ninguno; así la lista se achica sola.'),
+   section('Cómo suena con el apellido',
+    'En Paraguay el bebé lleva dos apellidos, así que el nombre completo puede quedar largo. Decilo en voz alta con los dos apellidos, como lo diría una maestra al pasar lista. Si el apellido es largo, un nombre corto suele equilibrar; si el apellido es corto, un compuesto puede sonar bien. Evitá que el nombre termine con la misma sílaba con la que empieza el apellido, porque se pega al pronunciarlo.',
+    'Revisá también las iniciales y los apodos posibles. Un nombre que se abrevia de una forma que no te gusta va a terminar abreviado igual. Escribí la firma completa, probá cómo queda en un correo y pensá si es fácil de deletrear por teléfono. Son detalles pequeños que el chico va a repetir toda la vida.'),
+   section('De la lista larga a la decisión',
+    'Una forma simple de decidir es que cada uno arme su lista de diez nombres por separado, sin mirar la del otro. Después comparan y se quedan con los que aparecen en las dos o con los que ninguno descarta. Con tres o cuatro finalistas, dejen pasar unos días y usen el nombre en voz baja para ver cuál se siente natural.',
+    'Cuando el bebé nace, el nombre se inscribe en el Registro Civil; consultá allí los requisitos vigentes antes de la fecha, sobre todo si elegís una grafía poco común. Y si el nombre ya está decidido, el baby shower es un buen momento para anunciarlo: un cartel con el nombre sobre la mesa dulce suele ser la foto que todos quieren sacarse.')
+  ]
  }
 ];

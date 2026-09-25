@@ -8,7 +8,9 @@ import vm from 'node:vm';
 import { THEMES as THEME_DETAILS } from './themes.mjs';
 import { ZONES as ZONE_DETAILS } from './zones.mjs';
 import { IDEAS } from './ideas.mjs';
-import { REVEAL, ANITO, EXTRA_FOOD, CONFIRMATION } from './content.mjs';
+import { REVEAL, ANITO, EXTRA_FOOD, CONFIRMATION, SERVICES } from './content.mjs';
+const SERVICE_ROUTES = ['/servicios/', ...SERVICES.map(s => `/${s.slug}/`)];
+const SERVICE_OFFERS = SERVICES.flatMap(s => s.offers);
 import { SITE, WA_NUMBER, ANALYTICS_ID, LAUNCH_MODE, BOOKING_ENABLED, PRICES, POLICY, TRUST, PRIMARY_CTA, PACKAGES, ADDONS, ZONES, WA_MENU, THEMES, PAGES, EXTRAS, UI, priceCaption, packageMessage } from './content.mjs';
 
 process.chdir(fileURLToPath(new URL('.', import.meta.url)));
@@ -159,7 +161,7 @@ for (const row of outputs) {
   for (const selector of ['header','footer','[data-wa-menu]','.wa-fab','.mobile-bar']) assert(one(dom, selector), `Missing shared ${selector}`);
   for (const selector of ['[data-consent-banner]', '[data-consent-revoke]']) assert.equal(Boolean(one(dom, selector)), Boolean(ANALYTICS_ID));
   const mobileLinks = all(one(dom, '.mobile-bar'), 'a');
-  assert.equal(mobileLinks.length, ['/revelacion-de-genero/', '/primer-anito/'].includes(row.route) ? 1 : 2);
+  assert.equal(mobileLinks.length, ['/revelacion-de-genero/', '/primer-anito/', ...SERVICE_ROUTES].includes(row.route) ? 1 : 2);
   if (mobileLinks.length === 2) assert.equal(text(mobileLinks[1]), UI.calc);
   assert.equal(all(dom, '.wa-menu__option').length, WA_MENU.options.length);
   assert.equal(one(dom, '.wa-fab').attrs['aria-label'], UI.waLabel);
@@ -183,7 +185,7 @@ for (const row of outputs) {
   const local = nodes.find(n => n['@type'] === 'LocalBusiness');
   assert.equal(Boolean(local), row.route === '/'); if (local) assert(local.areaServed && !local.address);
   if (row.route !== '/') assert(nodes.some(n => n['@type'] === 'BreadcrumbList' && n.itemListElement.at(-1).item === SITE.url + row.route));
-  if (row.route === '/' || /^\/(combos-y-precios|revelacion-de-genero|primer-anito|tematicas\/[^/]+|zonas\/[^/]+)\/$/.test(row.route)) {
+  if (row.route === '/' || (SERVICE_ROUTES.includes(row.route) && row.route !== '/servicios/') || /^\/(combos-y-precios|revelacion-de-genero|primer-anito|tematicas\/[^/]+|zonas\/[^/]+)\/$/.test(row.route)) {
    const service = nodes.find(n => n['@type'] === 'Service'); assert(service?.areaServed && service.serviceType && service.provider['@id'] === SITE.url + '/#org', 'Service graph');
   }
   if (/^\/ideas\/[^/]+\/$/.test(row.route)) { const article = nodes.find(n => n['@type'] === 'Article'); assert(article?.datePublished && article.author['@id'] === SITE.url + '/#org', 'Article graph'); }
@@ -207,13 +209,13 @@ for (const row of outputs) {
   }
   // Every displayed monetary amount must be configured (or a zone-adjusted price).
   for (const card of all(dom, '[data-offer]')) {
-   const offer = [...REVEAL.packages, REVEAL.cake, ANITO, ...ADDONS].find(a => a.id === card.attrs['data-offer']);
+   const offer = [...REVEAL.packages, REVEAL.cake, ANITO, ...ADDONS, ...SERVICE_OFFERS].find(a => a.id === card.attrs['data-offer']);
    assert(offer); assert.equal(Number(card.attrs['data-price']), offer.price);
    assert.equal(normalize(text(one(card, '[data-price-caption]'))), `${UI.pricePrefix} Gs. ${new Intl.NumberFormat('es-PY').format(offer.price)}`);
    assert.equal(text(one(card, '.package-confirmation')), CONFIRMATION);
    assert.equal(new URL(one(card, 'a').attrs.href).searchParams.get('text'), packageMessage(offer, row.route));
   }
-  const amounts = new Set([...REVEAL.packages.map(a => a.price), REVEAL.cake.price, ANITO.price, ...PACKAGES.flatMap(p => [p.price,p.extra,...ZONES.filter(z => z.delivery !== null).map(z => p.price + z.delivery)]), ...ADDONS.map(a => a.price), ...ZONES.map(z => z.delivery)]);
+  const amounts = new Set([...REVEAL.packages.map(a => a.price), REVEAL.cake.price, ANITO.price, ...PACKAGES.flatMap(p => [p.price,p.extra,...ZONES.filter(z => z.delivery !== null).map(z => p.price + z.delivery)]), ...ADDONS.map(a => a.price), ...ZONES.map(z => z.delivery), ...SERVICE_OFFERS.map(o => o.price)]);
   for (const m of bodyText.matchAll(/Gs\.\s*([\d.]+)/g)) assert(amounts.has(Number(m[1].replaceAll('.', '').replace(/\.$/, ''))), `Unconfigured price ${m[0]}`);
   for (const script of all(dom, 'script[src]')) assert(!/googletagmanager|analytics|vc-attribution/.test(script.attrs.src), 'Unconditional tracking tag');
   for (const el of all(dom, 'script[src],link[rel="stylesheet"]')) {

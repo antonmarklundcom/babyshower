@@ -63,6 +63,41 @@
     "built": true
   },
   {
+    "route": "/servicios/",
+    "output": "servicios/index.html",
+    "phase": "B1",
+    "indexable": true,
+    "built": true
+  },
+  {
+    "route": "/decoracion-con-globos/",
+    "output": "decoracion-con-globos/index.html",
+    "phase": "B1",
+    "indexable": true,
+    "built": true
+  },
+  {
+    "route": "/bautismo/",
+    "output": "bautismo/index.html",
+    "phase": "B1",
+    "indexable": true,
+    "built": true
+  },
+  {
+    "route": "/cumpleanos-infantil/",
+    "output": "cumpleanos-infantil/index.html",
+    "phase": "B1",
+    "indexable": true,
+    "built": true
+  },
+  {
+    "route": "/bienvenida-de-bebe/",
+    "output": "bienvenida-de-bebe/index.html",
+    "phase": "B1",
+    "indexable": true,
+    "built": true
+  },
+  {
     "route": "/tematicas/",
     "output": "tematicas/index.html",
     "phase": "B3",
@@ -324,6 +359,13 @@
   {
     "route": "/ideas/ajuar-para-bebe/",
     "output": "ideas/ajuar-para-bebe/index.html",
+    "phase": "B4",
+    "indexable": true,
+    "built": true
+  },
+  {
+    "route": "/ideas/nombres-de-bebe-paraguay/",
+    "output": "ideas/nombres-de-bebe-paraguay/index.html",
     "phase": "B4",
     "indexable": true,
     "built": true
