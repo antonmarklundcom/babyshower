@@ -34,7 +34,8 @@ PAGES['/tematicas/'] = { type: 'themes', title: 'Temáticas para baby shower y p
 PAGES['/zonas/'] = { type: 'zones', title: 'Zonas de baby shower en Gran Asunción', description: 'Consultá las zonas de atención para tu baby shower en Asunción y alrededores. Revisá el recargo estimado de traslado y las propuestas por ciudad.', h1: 'Zonas donde montamos tu baby shower' };
 const esc = value => String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#39;');
 const json = value => JSON.stringify(value).replaceAll('<', '\\u003c');
-const hash = path => createHash('sha256').update(readFileSync(path)).digest('hex').slice(0, 12);
+// Git checkouts can use CRLF on Windows; text asset versions must be platform-independent.
+const hash = path => createHash('sha256').update(readFileSync(path, 'utf8').replace(/\r\n/g, '\n')).digest('hex').slice(0, 12);
 const ASSET_V = Object.fromEntries(['assets/css/site.css', 'assets/js/site.js', 'assets/js/motion.js', 'assets/js/calc.js'].map(path => [path, hash(path)]));
 const asset = path => `/${path}?v=${ASSET_V[path]}`;
 const waHref = text => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;

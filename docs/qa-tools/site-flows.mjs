@@ -4,15 +4,15 @@
 import { createRequire } from 'node:module';
 import { spawn, execFileSync } from 'node:child_process';
 import net from 'node:net';
-import { readdirSync, readFileSync, rmSync, mkdirSync, writeFileSync, existsSync } from 'node:fs';
+import { readdirSync, readFileSync, mkdtempSync, mkdirSync, writeFileSync, existsSync } from 'node:fs';
 const require = createRequire(process.env.PW_BASE || 'C:/Users/anton/AppData/Roaming/npm/node_modules/');
 const { chromium } = require('playwright');
 const root = new URL('../../', import.meta.url).pathname.slice(1).replace(/%20/g, ' ');
 const zip = process.argv[2] || root + 'dist/' + readdirSync(root + 'dist').filter(f => f.endsWith('.zip')).sort().at(-1);
 const PHP = process.env.PHP_EXE || 'C:/dev/php/php.exe';
-const E = (process.env.TEMP || '/tmp').split('\\').join('/') + '/bs-flows';
-rmSync(E, { recursive: true, force: true }); mkdirSync(E + '/site/public', { recursive: true });
-execFileSync('powershell.exe', ['-NoProfile', '-Command', `Expand-Archive -Force '${zip.split('/').join('\\')}' '${(E + '/site/public').split('/').join('\\')}'`]);
+const E = mkdtempSync((process.env.TEMP || '/tmp').split('\\').join('/') + '/bs-flows-');
+mkdirSync(E + '/site/public', { recursive: true });
+execFileSync('powershell.exe', ['-NoProfile', '-Command', 'Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory($env:BS_TEST_ZIP, $env:BS_TEST_PUBLIC)'], { env: { ...process.env, BS_TEST_ZIP: zip, BS_TEST_PUBLIC: E + '/site/public' } });
 writeFileSync(E + '/site/vendercrm-config.babyshower.php', "<?php return ['lead_email' => 'antonmarklund.com@gmail.com', 'url' => '', 'api_key' => ''];");
 const mails = [];
 const smtp = net.createServer(sock => { let inData = false, data = '', raw = ''; sock.write('220 sink\r\n'); sock.on('data', d => { raw += d; let i; while ((i = raw.indexOf('\r\n')) >= 0) { const l = raw.slice(0, i); raw = raw.slice(i + 2); if (inData) { if (l === '.') { inData = false; mails.push(data); data = ''; sock.write('250 ok\r\n'); } else data += l + '\n'; continue; } const u = l.toUpperCase(); if (u.startsWith('DATA')) { inData = true; sock.write('354 go\r\n'); } else if (u.startsWith('QUIT')) { sock.write('221 bye\r\n'); sock.end(); } else sock.write('250 ok\r\n'); } }); }).listen(2526, '127.0.0.1');
@@ -96,6 +96,7 @@ try {
   t('desktop contact page renders the form', await d.locator('[data-lead-form]').isVisible());
   t('no JavaScript or console errors during all flows', errors.length === 0, errors.slice(0, 3).join(' | '));
 } finally {
+  await browser.close();
   server.kill(); smtp.close();
 }
 console.log(`${res.filter(Boolean).length}/${res.length} passed`);
