@@ -1109,6 +1109,708 @@
         }
       ],
       "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"assets/img/servicios-decoracion-eventos-480.avif 480w, assets/img/servicios-decoracion-eventos-896.avif 896w\">\n  <source type=\"image/webp\" srcset=\"assets/img/servicios-decoracion-eventos-480.webp 480w, assets/img/servicios-decoracion-eventos-896.webp 896w\">\n  <img src=\"assets/img/servicios-decoracion-eventos-480.webp\" alt=\"Rincón de celebración con arco de globos rosa, crema y salvia, mesa de madera con torta de dos pisos, macarons, flores y cajas de regalo\" width=\"480\" height=\"600\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "idea-centros-de-mesa-para-baby-shower",
+      "source": "../../Users/anton/AppData/Local/Temp/bsimg/src/0.png",
+      "prompt": "",
+      "alt_text": "Frascos de vidrio con caramelos rosados, flores de papel, velas y frutillas sobre una mesa redonda con mantel claro",
+      "naming_source": "fallback",
+      "aspect_ratio": "4:3",
+      "files": [
+        {
+          "file": "idea-centros-de-mesa-para-baby-shower-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 480,
+          "kb": 19
+        },
+        {
+          "file": "idea-centros-de-mesa-para-baby-shower-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 480,
+          "kb": 26.4
+        },
+        {
+          "file": "idea-centros-de-mesa-para-baby-shower-1168.avif",
+          "format": "avif",
+          "width": 1168,
+          "height": 876,
+          "kb": 37.5
+        },
+        {
+          "file": "idea-centros-de-mesa-para-baby-shower-1168.webp",
+          "format": "webp",
+          "width": 1168,
+          "height": 876,
+          "kb": 57.2
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"/assets/img/idea-centros-de-mesa-para-baby-shower-640.avif 640w, /assets/img/idea-centros-de-mesa-para-baby-shower-1168.avif 1168w\" sizes=\"(max-width: 959px) 90vw, 720px\">\n  <source type=\"image/webp\" srcset=\"/assets/img/idea-centros-de-mesa-para-baby-shower-640.webp 640w, /assets/img/idea-centros-de-mesa-para-baby-shower-1168.webp 1168w\" sizes=\"(max-width: 959px) 90vw, 720px\">\n  <img src=\"/assets/img/idea-centros-de-mesa-para-baby-shower-640.webp\" alt=\"Frascos de vidrio con caramelos rosados, flores de papel, velas y frutillas sobre una mesa redonda con mantel claro\" width=\"640\" height=\"480\" sizes=\"(max-width: 959px) 90vw, 720px\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "idea-que-regalar-en-un-baby-shower",
+      "source": "../../Users/anton/AppData/Local/Temp/bsimg/src/1.png",
+      "prompt": "",
+      "alt_text": "Caja de regalo blanca con moño celeste, ropa de bebé doblada, escarpines, un osito tejido y una tarjeta en blanco",
+      "naming_source": "fallback",
+      "aspect_ratio": "4:3",
+      "files": [
+        {
+          "file": "idea-que-regalar-en-un-baby-shower-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 480,
+          "kb": 19.6
+        },
+        {
+          "file": "idea-que-regalar-en-un-baby-shower-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 480,
+          "kb": 27.4
+        },
+        {
+          "file": "idea-que-regalar-en-un-baby-shower-1168.avif",
+          "format": "avif",
+          "width": 1168,
+          "height": 876,
+          "kb": 36.6
+        },
+        {
+          "file": "idea-que-regalar-en-un-baby-shower-1168.webp",
+          "format": "webp",
+          "width": 1168,
+          "height": 876,
+          "kb": 56.7
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"/assets/img/idea-que-regalar-en-un-baby-shower-640.avif 640w, /assets/img/idea-que-regalar-en-un-baby-shower-1168.avif 1168w\" sizes=\"(max-width: 959px) 90vw, 720px\">\n  <source type=\"image/webp\" srcset=\"/assets/img/idea-que-regalar-en-un-baby-shower-640.webp 640w, /assets/img/idea-que-regalar-en-un-baby-shower-1168.webp 1168w\" sizes=\"(max-width: 959px) 90vw, 720px\">\n  <img src=\"/assets/img/idea-que-regalar-en-un-baby-shower-640.webp\" alt=\"Caja de regalo blanca con moño celeste, ropa de bebé doblada, escarpines, un osito tejido y una tarjeta en blanco\" width=\"640\" height=\"480\" sizes=\"(max-width: 959px) 90vw, 720px\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "idea-baby-shower-de-nina",
+      "source": "../../Users/anton/AppData/Local/Temp/bsimg/src/2.png",
+      "prompt": "",
+      "alt_text": "Arco de globos en rosa viejo, lila y crema con mariposas de papel sobre una mesa dulce blanca",
+      "naming_source": "fallback",
+      "aspect_ratio": "4:3",
+      "files": [
+        {
+          "file": "idea-baby-shower-de-nina-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 480,
+          "kb": 33.8
+        },
+        {
+          "file": "idea-baby-shower-de-nina-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 480,
+          "kb": 42.4
+        },
+        {
+          "file": "idea-baby-shower-de-nina-1168.avif",
+          "format": "avif",
+          "width": 1168,
+          "height": 876,
+          "kb": 71.1
+        },
+        {
+          "file": "idea-baby-shower-de-nina-1168.webp",
+          "format": "webp",
+          "width": 1168,
+          "height": 876,
+          "kb": 98.5
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"/assets/img/idea-baby-shower-de-nina-640.avif 640w, /assets/img/idea-baby-shower-de-nina-1168.avif 1168w\" sizes=\"(max-width: 959px) 90vw, 720px\">\n  <source type=\"image/webp\" srcset=\"/assets/img/idea-baby-shower-de-nina-640.webp 640w, /assets/img/idea-baby-shower-de-nina-1168.webp 1168w\" sizes=\"(max-width: 959px) 90vw, 720px\">\n  <img src=\"/assets/img/idea-baby-shower-de-nina-640.webp\" alt=\"Arco de globos en rosa viejo, lila y crema con mariposas de papel sobre una mesa dulce blanca\" width=\"640\" height=\"480\" sizes=\"(max-width: 959px) 90vw, 720px\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "idea-fiesta-de-primer-anito",
+      "source": "../../Users/anton/AppData/Local/Temp/bsimg/src/3.png",
+      "prompt": "",
+      "alt_text": "Rincón de primer añito safari con globo dorado del número uno, guirnalda verde y terracota, león y jirafa de peluche",
+      "naming_source": "fallback",
+      "aspect_ratio": "4:3",
+      "files": [
+        {
+          "file": "idea-fiesta-de-primer-anito-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 480,
+          "kb": 38.5
+        },
+        {
+          "file": "idea-fiesta-de-primer-anito-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 480,
+          "kb": 49.1
+        },
+        {
+          "file": "idea-fiesta-de-primer-anito-1168.avif",
+          "format": "avif",
+          "width": 1168,
+          "height": 876,
+          "kb": 81.2
+        },
+        {
+          "file": "idea-fiesta-de-primer-anito-1168.webp",
+          "format": "webp",
+          "width": 1168,
+          "height": 876,
+          "kb": 113.3
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"/assets/img/idea-fiesta-de-primer-anito-640.avif 640w, /assets/img/idea-fiesta-de-primer-anito-1168.avif 1168w\" sizes=\"(max-width: 959px) 90vw, 720px\">\n  <source type=\"image/webp\" srcset=\"/assets/img/idea-fiesta-de-primer-anito-640.webp 640w, /assets/img/idea-fiesta-de-primer-anito-1168.webp 1168w\" sizes=\"(max-width: 959px) 90vw, 720px\">\n  <img src=\"/assets/img/idea-fiesta-de-primer-anito-640.webp\" alt=\"Rincón de primer añito safari con globo dorado del número uno, guirnalda verde y terracota, león y jirafa de peluche\" width=\"640\" height=\"480\" sizes=\"(max-width: 959px) 90vw, 720px\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "idea-baby-shower-de-nino",
+      "source": "../../Users/anton/AppData/Local/Temp/bsimg/src/4.png",
+      "prompt": "",
+      "alt_text": "Arco de globos celeste, verde salvia y crema sobre una mesa dulce de madera con dinosaurios de peluche",
+      "naming_source": "fallback",
+      "aspect_ratio": "4:3",
+      "files": [
+        {
+          "file": "idea-baby-shower-de-nino-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 480,
+          "kb": 33.6
+        },
+        {
+          "file": "idea-baby-shower-de-nino-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 480,
+          "kb": 42.5
+        },
+        {
+          "file": "idea-baby-shower-de-nino-1168.avif",
+          "format": "avif",
+          "width": 1168,
+          "height": 876,
+          "kb": 69.7
+        },
+        {
+          "file": "idea-baby-shower-de-nino-1168.webp",
+          "format": "webp",
+          "width": 1168,
+          "height": 876,
+          "kb": 97.5
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"/assets/img/idea-baby-shower-de-nino-640.avif 640w, /assets/img/idea-baby-shower-de-nino-1168.avif 1168w\" sizes=\"(max-width: 959px) 90vw, 720px\">\n  <source type=\"image/webp\" srcset=\"/assets/img/idea-baby-shower-de-nino-640.webp 640w, /assets/img/idea-baby-shower-de-nino-1168.webp 1168w\" sizes=\"(max-width: 959px) 90vw, 720px\">\n  <img src=\"/assets/img/idea-baby-shower-de-nino-640.webp\" alt=\"Arco de globos celeste, verde salvia y crema sobre una mesa dulce de madera con dinosaurios de peluche\" width=\"640\" height=\"480\" sizes=\"(max-width: 959px) 90vw, 720px\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "idea-mesa-dulce-para-baby-shower",
+      "source": "../../Users/anton/AppData/Local/Temp/bsimg/src/5.png",
+      "prompt": "",
+      "alt_text": "Mesa dulce en tonos crema con alfajores de maicena, cupcakes, merenguitos y frascos de caramelos",
+      "naming_source": "fallback",
+      "aspect_ratio": "4:3",
+      "files": [
+        {
+          "file": "idea-mesa-dulce-para-baby-shower-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 480,
+          "kb": 27
+        },
+        {
+          "file": "idea-mesa-dulce-para-baby-shower-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 480,
+          "kb": 34.6
+        },
+        {
+          "file": "idea-mesa-dulce-para-baby-shower-1168.avif",
+          "format": "avif",
+          "width": 1168,
+          "height": 876,
+          "kb": 54.8
+        },
+        {
+          "file": "idea-mesa-dulce-para-baby-shower-1168.webp",
+          "format": "webp",
+          "width": 1168,
+          "height": 876,
+          "kb": 77.8
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"/assets/img/idea-mesa-dulce-para-baby-shower-640.avif 640w, /assets/img/idea-mesa-dulce-para-baby-shower-1168.avif 1168w\" sizes=\"(max-width: 959px) 90vw, 720px\">\n  <source type=\"image/webp\" srcset=\"/assets/img/idea-mesa-dulce-para-baby-shower-640.webp 640w, /assets/img/idea-mesa-dulce-para-baby-shower-1168.webp 1168w\" sizes=\"(max-width: 959px) 90vw, 720px\">\n  <img src=\"/assets/img/idea-mesa-dulce-para-baby-shower-640.webp\" alt=\"Mesa dulce en tonos crema con alfajores de maicena, cupcakes, merenguitos y frascos de caramelos\" width=\"640\" height=\"480\" sizes=\"(max-width: 959px) 90vw, 720px\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "idea-souvenirs-para-baby-shower",
+      "source": "../../Users/anton/AppData/Local/Temp/bsimg/src/6.png",
+      "prompt": "",
+      "alt_text": "Bolsitas de lino con lavanda y frascos de vidrio con confites pastel sobre una bandeja de madera",
+      "naming_source": "fallback",
+      "aspect_ratio": "4:3",
+      "files": [
+        {
+          "file": "idea-souvenirs-para-baby-shower-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 480,
+          "kb": 29.3
+        },
+        {
+          "file": "idea-souvenirs-para-baby-shower-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 480,
+          "kb": 38.9
+        },
+        {
+          "file": "idea-souvenirs-para-baby-shower-1168.avif",
+          "format": "avif",
+          "width": 1168,
+          "height": 876,
+          "kb": 67.3
+        },
+        {
+          "file": "idea-souvenirs-para-baby-shower-1168.webp",
+          "format": "webp",
+          "width": 1168,
+          "height": 876,
+          "kb": 97.1
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"/assets/img/idea-souvenirs-para-baby-shower-640.avif 640w, /assets/img/idea-souvenirs-para-baby-shower-1168.avif 1168w\" sizes=\"(max-width: 959px) 90vw, 720px\">\n  <source type=\"image/webp\" srcset=\"/assets/img/idea-souvenirs-para-baby-shower-640.webp 640w, /assets/img/idea-souvenirs-para-baby-shower-1168.webp 1168w\" sizes=\"(max-width: 959px) 90vw, 720px\">\n  <img src=\"/assets/img/idea-souvenirs-para-baby-shower-640.webp\" alt=\"Bolsitas de lino con lavanda y frascos de vidrio con confites pastel sobre una bandeja de madera\" width=\"640\" height=\"480\" sizes=\"(max-width: 959px) 90vw, 720px\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "idea-torta-para-baby-shower",
+      "source": "../../Users/anton/AppData/Local/Temp/bsimg/src/7.png",
+      "prompt": "",
+      "alt_text": "Torta de un piso con hojas de fondant verde, un elefante y un león de azúcar sobre un soporte blanco",
+      "naming_source": "fallback",
+      "aspect_ratio": "4:3",
+      "files": [
+        {
+          "file": "idea-torta-para-baby-shower-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 480,
+          "kb": 23.6
+        },
+        {
+          "file": "idea-torta-para-baby-shower-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 480,
+          "kb": 32.3
+        },
+        {
+          "file": "idea-torta-para-baby-shower-1168.avif",
+          "format": "avif",
+          "width": 1168,
+          "height": 876,
+          "kb": 53.2
+        },
+        {
+          "file": "idea-torta-para-baby-shower-1168.webp",
+          "format": "webp",
+          "width": 1168,
+          "height": 876,
+          "kb": 77
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"/assets/img/idea-torta-para-baby-shower-640.avif 640w, /assets/img/idea-torta-para-baby-shower-1168.avif 1168w\" sizes=\"(max-width: 959px) 90vw, 720px\">\n  <source type=\"image/webp\" srcset=\"/assets/img/idea-torta-para-baby-shower-640.webp 640w, /assets/img/idea-torta-para-baby-shower-1168.webp 1168w\" sizes=\"(max-width: 959px) 90vw, 720px\">\n  <img src=\"/assets/img/idea-torta-para-baby-shower-640.webp\" alt=\"Torta de un piso con hojas de fondant verde, un elefante y un león de azúcar sobre un soporte blanco\" width=\"640\" height=\"480\" sizes=\"(max-width: 959px) 90vw, 720px\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "idea-torta-para-revelacion-de-genero",
+      "source": "../../Users/anton/AppData/Local/Temp/bsimg/src/8.png",
+      "prompt": "",
+      "alt_text": "Torta blanca cortada con relleno celeste y una porción servida en un plato, con globos rosa y celeste",
+      "naming_source": "fallback",
+      "aspect_ratio": "4:3",
+      "files": [
+        {
+          "file": "idea-torta-para-revelacion-de-genero-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 480,
+          "kb": 21.4
+        },
+        {
+          "file": "idea-torta-para-revelacion-de-genero-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 480,
+          "kb": 28.9
+        },
+        {
+          "file": "idea-torta-para-revelacion-de-genero-1168.avif",
+          "format": "avif",
+          "width": 1168,
+          "height": 876,
+          "kb": 43.5
+        },
+        {
+          "file": "idea-torta-para-revelacion-de-genero-1168.webp",
+          "format": "webp",
+          "width": 1168,
+          "height": 876,
+          "kb": 64.8
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"/assets/img/idea-torta-para-revelacion-de-genero-640.avif 640w, /assets/img/idea-torta-para-revelacion-de-genero-1168.avif 1168w\" sizes=\"(max-width: 959px) 90vw, 720px\">\n  <source type=\"image/webp\" srcset=\"/assets/img/idea-torta-para-revelacion-de-genero-640.webp 640w, /assets/img/idea-torta-para-revelacion-de-genero-1168.webp 1168w\" sizes=\"(max-width: 959px) 90vw, 720px\">\n  <img src=\"/assets/img/idea-torta-para-revelacion-de-genero-640.webp\" alt=\"Torta blanca cortada con relleno celeste y una porción servida en un plato, con globos rosa y celeste\" width=\"640\" height=\"480\" sizes=\"(max-width: 959px) 90vw, 720px\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "idea-juegos-para-revelacion-de-genero",
+      "source": "../../Users/anton/AppData/Local/Temp/bsimg/src/9.png",
+      "prompt": "",
+      "alt_text": "Mesa de votación con frascos de pompones rosa y celeste, tarjetas de colores y lápices",
+      "naming_source": "fallback",
+      "aspect_ratio": "4:3",
+      "files": [
+        {
+          "file": "idea-juegos-para-revelacion-de-genero-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 480,
+          "kb": 18.9
+        },
+        {
+          "file": "idea-juegos-para-revelacion-de-genero-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 480,
+          "kb": 26.3
+        },
+        {
+          "file": "idea-juegos-para-revelacion-de-genero-1168.avif",
+          "format": "avif",
+          "width": 1168,
+          "height": 876,
+          "kb": 40.8
+        },
+        {
+          "file": "idea-juegos-para-revelacion-de-genero-1168.webp",
+          "format": "webp",
+          "width": 1168,
+          "height": 876,
+          "kb": 63.2
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"/assets/img/idea-juegos-para-revelacion-de-genero-640.avif 640w, /assets/img/idea-juegos-para-revelacion-de-genero-1168.avif 1168w\" sizes=\"(max-width: 959px) 90vw, 720px\">\n  <source type=\"image/webp\" srcset=\"/assets/img/idea-juegos-para-revelacion-de-genero-640.webp 640w, /assets/img/idea-juegos-para-revelacion-de-genero-1168.webp 1168w\" sizes=\"(max-width: 959px) 90vw, 720px\">\n  <img src=\"/assets/img/idea-juegos-para-revelacion-de-genero-640.webp\" alt=\"Mesa de votación con frascos de pompones rosa y celeste, tarjetas de colores y lápices\" width=\"640\" height=\"480\" sizes=\"(max-width: 959px) 90vw, 720px\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "idea-arco-de-globos-para-baby-shower",
+      "source": "../../Users/anton/AppData/Local/Temp/bsimg/src/10.png",
+      "prompt": "",
+      "alt_text": "Arco de globos orgánico en celeste, crema y blanco con globos transparentes sobre una mesa dulce frente a una pared de ladrillo",
+      "naming_source": "fallback",
+      "aspect_ratio": "4:3",
+      "files": [
+        {
+          "file": "idea-arco-de-globos-para-baby-shower-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 480,
+          "kb": 32.7
+        },
+        {
+          "file": "idea-arco-de-globos-para-baby-shower-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 480,
+          "kb": 41.3
+        },
+        {
+          "file": "idea-arco-de-globos-para-baby-shower-1168.avif",
+          "format": "avif",
+          "width": 1168,
+          "height": 876,
+          "kb": 75.5
+        },
+        {
+          "file": "idea-arco-de-globos-para-baby-shower-1168.webp",
+          "format": "webp",
+          "width": 1168,
+          "height": 876,
+          "kb": 102
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"/assets/img/idea-arco-de-globos-para-baby-shower-640.avif 640w, /assets/img/idea-arco-de-globos-para-baby-shower-1168.avif 1168w\" sizes=\"(max-width: 959px) 90vw, 720px\">\n  <source type=\"image/webp\" srcset=\"/assets/img/idea-arco-de-globos-para-baby-shower-640.webp 640w, /assets/img/idea-arco-de-globos-para-baby-shower-1168.webp 1168w\" sizes=\"(max-width: 959px) 90vw, 720px\">\n  <img src=\"/assets/img/idea-arco-de-globos-para-baby-shower-640.webp\" alt=\"Arco de globos orgánico en celeste, crema y blanco con globos transparentes sobre una mesa dulce frente a una pared de ladrillo\" width=\"640\" height=\"480\" sizes=\"(max-width: 959px) 90vw, 720px\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "idea-primer-anito-varon",
+      "source": "../../Users/anton/AppData/Local/Temp/bsimg/src/11.png",
+      "prompt": "",
+      "alt_text": "Rincón de primer añito en mostaza y verde salvia con globo dorado del número uno, silla alta y torta con moñito",
+      "naming_source": "fallback",
+      "aspect_ratio": "4:3",
+      "files": [
+        {
+          "file": "idea-primer-anito-varon-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 480,
+          "kb": 34
+        },
+        {
+          "file": "idea-primer-anito-varon-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 480,
+          "kb": 42.7
+        },
+        {
+          "file": "idea-primer-anito-varon-1168.avif",
+          "format": "avif",
+          "width": 1168,
+          "height": 876,
+          "kb": 79.6
+        },
+        {
+          "file": "idea-primer-anito-varon-1168.webp",
+          "format": "webp",
+          "width": 1168,
+          "height": 876,
+          "kb": 110.8
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"/assets/img/idea-primer-anito-varon-640.avif 640w, /assets/img/idea-primer-anito-varon-1168.avif 1168w\" sizes=\"(max-width: 959px) 90vw, 720px\">\n  <source type=\"image/webp\" srcset=\"/assets/img/idea-primer-anito-varon-640.webp 640w, /assets/img/idea-primer-anito-varon-1168.webp 1168w\" sizes=\"(max-width: 959px) 90vw, 720px\">\n  <img src=\"/assets/img/idea-primer-anito-varon-640.webp\" alt=\"Rincón de primer añito en mostaza y verde salvia con globo dorado del número uno, silla alta y torta con moñito\" width=\"640\" height=\"480\" sizes=\"(max-width: 959px) 90vw, 720px\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "idea-ajuar-para-bebe",
+      "source": "../../Users/anton/AppData/Local/Temp/bsimg/src/12.png",
+      "prompt": "",
+      "alt_text": "Ropa de recién nacido doblada, frascos con algodón, un moisés de mimbre con toalla y un conejito tejido",
+      "naming_source": "fallback",
+      "aspect_ratio": "4:3",
+      "files": [
+        {
+          "file": "idea-ajuar-para-bebe-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 480,
+          "kb": 22.7
+        },
+        {
+          "file": "idea-ajuar-para-bebe-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 480,
+          "kb": 31.7
+        },
+        {
+          "file": "idea-ajuar-para-bebe-1168.avif",
+          "format": "avif",
+          "width": 1168,
+          "height": 876,
+          "kb": 54
+        },
+        {
+          "file": "idea-ajuar-para-bebe-1168.webp",
+          "format": "webp",
+          "width": 1168,
+          "height": 876,
+          "kb": 82
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"/assets/img/idea-ajuar-para-bebe-640.avif 640w, /assets/img/idea-ajuar-para-bebe-1168.avif 1168w\" sizes=\"(max-width: 959px) 90vw, 720px\">\n  <source type=\"image/webp\" srcset=\"/assets/img/idea-ajuar-para-bebe-640.webp 640w, /assets/img/idea-ajuar-para-bebe-1168.webp 1168w\" sizes=\"(max-width: 959px) 90vw, 720px\">\n  <img src=\"/assets/img/idea-ajuar-para-bebe-640.webp\" alt=\"Ropa de recién nacido doblada, frascos con algodón, un moisés de mimbre con toalla y un conejito tejido\" width=\"640\" height=\"480\" sizes=\"(max-width: 959px) 90vw, 720px\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "idea-nombres-de-bebe-paraguay",
+      "source": "../../Users/anton/AppData/Local/Temp/bsimg/src/13.png",
+      "prompt": "",
+      "alt_text": "Cuaderno abierto con un lápiz, escarpines tejidos y un florero con pampas sobre un mantel de lino",
+      "naming_source": "fallback",
+      "aspect_ratio": "4:3",
+      "files": [
+        {
+          "file": "idea-nombres-de-bebe-paraguay-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 480,
+          "kb": 18
+        },
+        {
+          "file": "idea-nombres-de-bebe-paraguay-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 480,
+          "kb": 26.2
+        },
+        {
+          "file": "idea-nombres-de-bebe-paraguay-1168.avif",
+          "format": "avif",
+          "width": 1168,
+          "height": 876,
+          "kb": 36.3
+        },
+        {
+          "file": "idea-nombres-de-bebe-paraguay-1168.webp",
+          "format": "webp",
+          "width": 1168,
+          "height": 876,
+          "kb": 57.6
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"/assets/img/idea-nombres-de-bebe-paraguay-640.avif 640w, /assets/img/idea-nombres-de-bebe-paraguay-1168.avif 1168w\" sizes=\"(max-width: 959px) 90vw, 720px\">\n  <source type=\"image/webp\" srcset=\"/assets/img/idea-nombres-de-bebe-paraguay-640.webp 640w, /assets/img/idea-nombres-de-bebe-paraguay-1168.webp 1168w\" sizes=\"(max-width: 959px) 90vw, 720px\">\n  <img src=\"/assets/img/idea-nombres-de-bebe-paraguay-640.webp\" alt=\"Cuaderno abierto con un lápiz, escarpines tejidos y un florero con pampas sobre un mantel de lino\" width=\"640\" height=\"480\" sizes=\"(max-width: 959px) 90vw, 720px\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "idea-torta-para-bautismo",
+      "source": "../../Users/anton/AppData/Local/Temp/bsimg/src/14.png",
+      "prompt": "",
+      "alt_text": "Torta blanca de bautismo con detalles de hoja de oro, borde de perlitas y una cruz dorada, rodeada de rosas blancas",
+      "naming_source": "fallback",
+      "aspect_ratio": "4:3",
+      "files": [
+        {
+          "file": "idea-torta-para-bautismo-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 480,
+          "kb": 16.9
+        },
+        {
+          "file": "idea-torta-para-bautismo-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 480,
+          "kb": 23.7
+        },
+        {
+          "file": "idea-torta-para-bautismo-1168.avif",
+          "format": "avif",
+          "width": 1168,
+          "height": 876,
+          "kb": 32.3
+        },
+        {
+          "file": "idea-torta-para-bautismo-1168.webp",
+          "format": "webp",
+          "width": 1168,
+          "height": 876,
+          "kb": 50.2
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"/assets/img/idea-torta-para-bautismo-640.avif 640w, /assets/img/idea-torta-para-bautismo-1168.avif 1168w\" sizes=\"(max-width: 959px) 90vw, 720px\">\n  <source type=\"image/webp\" srcset=\"/assets/img/idea-torta-para-bautismo-640.webp 640w, /assets/img/idea-torta-para-bautismo-1168.webp 1168w\" sizes=\"(max-width: 959px) 90vw, 720px\">\n  <img src=\"/assets/img/idea-torta-para-bautismo-640.webp\" alt=\"Torta blanca de bautismo con detalles de hoja de oro, borde de perlitas y una cruz dorada, rodeada de rosas blancas\" width=\"640\" height=\"480\" sizes=\"(max-width: 959px) 90vw, 720px\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "idea-decoracion-para-bautismo",
+      "source": "../../Users/anton/AppData/Local/Temp/bsimg/src/15.png",
+      "prompt": "",
+      "alt_text": "Arco de globos blanco y dorado con palomitas de papel sobre una mesa dulce con mantel blanco",
+      "naming_source": "fallback",
+      "aspect_ratio": "4:3",
+      "files": [
+        {
+          "file": "idea-decoracion-para-bautismo-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 480,
+          "kb": 18.1
+        },
+        {
+          "file": "idea-decoracion-para-bautismo-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 480,
+          "kb": 23.9
+        },
+        {
+          "file": "idea-decoracion-para-bautismo-1168.avif",
+          "format": "avif",
+          "width": 1168,
+          "height": 876,
+          "kb": 38
+        },
+        {
+          "file": "idea-decoracion-para-bautismo-1168.webp",
+          "format": "webp",
+          "width": 1168,
+          "height": 876,
+          "kb": 55.2
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"/assets/img/idea-decoracion-para-bautismo-640.avif 640w, /assets/img/idea-decoracion-para-bautismo-1168.avif 1168w\" sizes=\"(max-width: 959px) 90vw, 720px\">\n  <source type=\"image/webp\" srcset=\"/assets/img/idea-decoracion-para-bautismo-640.webp 640w, /assets/img/idea-decoracion-para-bautismo-1168.webp 1168w\" sizes=\"(max-width: 959px) 90vw, 720px\">\n  <img src=\"/assets/img/idea-decoracion-para-bautismo-640.webp\" alt=\"Arco de globos blanco y dorado con palomitas de papel sobre una mesa dulce con mantel blanco\" width=\"640\" height=\"480\" sizes=\"(max-width: 959px) 90vw, 720px\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "idea-decoracion-cumpleanos-infantil",
+      "source": "../../Users/anton/AppData/Local/Temp/bsimg/src/16.png",
+      "prompt": "",
+      "alt_text": "Rincón de cumpleaños de dinosaurios con arco de globos verdes y naranjas, figuras de dinosaurio y mesa dulce temática",
+      "naming_source": "fallback",
+      "aspect_ratio": "4:3",
+      "files": [
+        {
+          "file": "idea-decoracion-cumpleanos-infantil-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 480,
+          "kb": 42.9
+        },
+        {
+          "file": "idea-decoracion-cumpleanos-infantil-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 480,
+          "kb": 51.3
+        },
+        {
+          "file": "idea-decoracion-cumpleanos-infantil-1168.avif",
+          "format": "avif",
+          "width": 1168,
+          "height": 876,
+          "kb": 95.2
+        },
+        {
+          "file": "idea-decoracion-cumpleanos-infantil-1168.webp",
+          "format": "webp",
+          "width": 1168,
+          "height": 876,
+          "kb": 124.7
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"/assets/img/idea-decoracion-cumpleanos-infantil-640.avif 640w, /assets/img/idea-decoracion-cumpleanos-infantil-1168.avif 1168w\" sizes=\"(max-width: 959px) 90vw, 720px\">\n  <source type=\"image/webp\" srcset=\"/assets/img/idea-decoracion-cumpleanos-infantil-640.webp 640w, /assets/img/idea-decoracion-cumpleanos-infantil-1168.webp 1168w\" sizes=\"(max-width: 959px) 90vw, 720px\">\n  <img src=\"/assets/img/idea-decoracion-cumpleanos-infantil-640.webp\" alt=\"Rincón de cumpleaños de dinosaurios con arco de globos verdes y naranjas, figuras de dinosaurio y mesa dulce temática\" width=\"640\" height=\"480\" sizes=\"(max-width: 959px) 90vw, 720px\" loading=\"lazy\" decoding=\"async\">\n</picture>"
+    },
+    {
+      "filename_base": "idea-arreglos-de-globos",
+      "source": "../../Users/anton/AppData/Local/Temp/bsimg/src/17.png",
+      "prompt": "",
+      "alt_text": "Guirnalda de globos en terracota, arena y verde salvia contra una pared clara y un centro de mesa con tres globos",
+      "naming_source": "fallback",
+      "aspect_ratio": "4:3",
+      "files": [
+        {
+          "file": "idea-arreglos-de-globos-640.avif",
+          "format": "avif",
+          "width": 640,
+          "height": 480,
+          "kb": 22.9
+        },
+        {
+          "file": "idea-arreglos-de-globos-640.webp",
+          "format": "webp",
+          "width": 640,
+          "height": 480,
+          "kb": 30.5
+        },
+        {
+          "file": "idea-arreglos-de-globos-1168.avif",
+          "format": "avif",
+          "width": 1168,
+          "height": 876,
+          "kb": 44
+        },
+        {
+          "file": "idea-arreglos-de-globos-1168.webp",
+          "format": "webp",
+          "width": 1168,
+          "height": 876,
+          "kb": 65.3
+        }
+      ],
+      "html_snippet": "<picture>\n  <source type=\"image/avif\" srcset=\"/assets/img/idea-arreglos-de-globos-640.avif 640w, /assets/img/idea-arreglos-de-globos-1168.avif 1168w\" sizes=\"(max-width: 959px) 90vw, 720px\">\n  <source type=\"image/webp\" srcset=\"/assets/img/idea-arreglos-de-globos-640.webp 640w, /assets/img/idea-arreglos-de-globos-1168.webp 1168w\" sizes=\"(max-width: 959px) 90vw, 720px\">\n  <img src=\"/assets/img/idea-arreglos-de-globos-640.webp\" alt=\"Guirnalda de globos en terracota, arena y verde salvia contra una pared clara y un centro de mesa con tres globos\" width=\"640\" height=\"480\" sizes=\"(max-width: 959px) 90vw, 720px\" loading=\"lazy\" decoding=\"async\">\n</picture>"
     }
   ]
 }

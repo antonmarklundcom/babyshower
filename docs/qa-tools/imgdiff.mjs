@@ -1,5 +1,5 @@
-import { createRequire } from 'node:module'; import { readdirSync, readFileSync } from 'node:fs';
-const require = createRequire('C:/Users/anton/AppData/Roaming/npm/node_modules/'); const { chromium } = require('playwright');
+import { readdirSync, readFileSync } from 'node:fs';
+import { chromium } from './env.mjs';
 const dir = 'C:/Claude 1/babyshower/docs/qa-tools/out/';
 const pairs = [['t768','A-t768'],['r375','A-r375'],['c375','A-c375'],['z768','A-z768'],['a375','A-a375'],['h2-1440','A-h1440'],['h2-375','A-h375']];
 const b = await chromium.launch({ executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe', headless: true }); const p = await b.newPage();

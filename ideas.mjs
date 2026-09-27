@@ -1,4 +1,4 @@
-import { PACKAGES, ADDONS, REVEAL, ANITO, priceCaption } from './content.mjs';
+import { PACKAGES, ADDONS, REVEAL, ANITO, SERVICES, priceCaption } from './content.mjs';
 
 const nube = PACKAGES.find(p => p.id === 'basico');
 const estrella = PACKAGES.find(p => p.id === 'estrella');
@@ -6,6 +6,9 @@ const sueno = PACKAGES.find(p => p.id === 'premium');
 const torta = ADDONS.find(a => a.id === 'torta');
 const souvenirsAddon = ADDONS.find(a => a.id === 'souvenirs');
 const kit = REVEAL.packages.find(p => p.id === 'kit');
+const offer = id => SERVICES.flatMap(s => s.offers).find(o => o.id === id);
+const bautismoDeco = offer('bautismo-deco'), bautismoCompleto = offer('bautismo-completo');
+const cumpleDeco = offer('cumple-deco'), globosArco = offer('globos-arco');
 const section = (heading, ...paragraphs) => ({ heading, paragraphs });
 
 export const IDEAS = [
@@ -471,6 +474,110 @@ export const IDEAS = [
    section('De la lista larga a la decisión',
     'Una forma simple de decidir es que cada uno arme su lista de diez nombres por separado, sin mirar la del otro. Después comparan y se quedan con los que aparecen en las dos o con los que ninguno descarta. Con tres o cuatro finalistas, dejen pasar unos días y usen el nombre en voz baja para ver cuál se siente natural.',
     'Cuando el bebé nace, el nombre se inscribe en el Registro Civil; consultá allí los requisitos vigentes antes de la fecha, sobre todo si elegís una grafía poco común. Y si el nombre ya está decidido, el baby shower es un buen momento para anunciarlo: un cartel con el nombre sobre la mesa dulce suele ser la foto que todos quieren sacarse.')
+  ]
+ },
+ {
+  slug: 'torta-para-bautismo', title: 'Torta para bautismo: ideas para nena y varón',
+  h1: 'Torta para bautismo: ideas para nena y varón, sencillas y modernas',
+  description: 'Ideas de torta para bautismo de nena o varón: colores, detalles, rellenos que aguantan el calor y cuántas porciones pedir para que alcance para todos.',
+  datePublished: '2026-09-26', theme: 'nubes-y-ositos', offer: bautismoCompleto, formType: 'bautismo',
+  service: ['/bautismo/', 'Mirá las opciones de decoración para bautismo'],
+  cta: 'Torta, mesa dulce y decoración en una sola consulta', image: 'Torta blanca de un piso con detalles dorados, una pequeña cruz y el nombre del bebé sobre una mesa decorada',
+  intro: 'La torta suele ser el centro de la mesa después de la ceremonia y la foto que la familia más comparte. No hace falta que sea grande ni complicada: alcanza con que combine con la decoración, se corte fácil y llegue entera al salón o al quincho. Estas ideas te ayudan a elegir estilo, tamaño y relleno antes de hablar con la repostería.',
+  sections: [
+   section('Tortas de bautismo para nena',
+    'Para una nena, los tonos que más se piden son el blanco con rosa empolvado, el marfil con dorado y el lila muy suave. Un piso liso con una guarda de perlitas de azúcar, un moño o unas flores pequeñas queda delicado sin recargar. Si la decoración usa mariposas o flores, repetí uno de esos elementos arriba de la torta para que todo se vea pensado junto.',
+    'Las versiones modernas cambian el fondant brillante por un acabado texturado, con espátula, o por un semidesnudo con flores naturales comestibles. Otra idea que funciona es escribir el nombre en letras doradas sobre un cartelito acrílico clavado en la parte superior: se retira antes de cortar y queda de recuerdo para la familia.'),
+   section('Tortas de bautismo para varón',
+    'Para un varón, el celeste suave, el blanco con plateado y el verde salvia son combinaciones seguras. Una palomita, una cruz pequeña, un angelito o las iniciales en relieve alcanzan como detalle principal. Si preferís algo más simple, una torta blanca con el nombre y la fecha escritos a mano en celeste queda prolija y cuesta menos que una figura modelada.',
+    'Si el bautismo tiene una temática, como nubes y ositos, podés sumar un osito de azúcar sentado en el borde y dos o tres nubes en la base. Pedí que las figuras vengan aparte y se coloquen en el lugar: así no se caen en el traslado y se pueden guardar después de la fiesta.'),
+   section('Tamaño y porciones: que alcance para todos',
+    'Antes de elegir el diseño, contá cuántas personas van a comer torta. En un bautismo suelen quedarse padrinos, abuelos, tíos y amigos cercanos, y no siempre todos se quedan hasta el final. Pedile a la repostería que te diga cuántas porciones rinde cada tamaño y sumá un margen chico para quienes llegan tarde o quieren llevar un pedacito a casa.',
+    'Si el grupo es grande, una torta de un piso bien alta y una bandeja aparte con porciones del mismo sabor resuelve el problema sin gastar en un segundo piso. Otra opción es completar con una mesa dulce de alfajores, cupcakes y bombones: así la torta queda para la foto y el corte, y nadie se queda sin postre.'),
+   section('Rellenos y coberturas que aguantan el calor',
+    'En Paraguay el calor es el principal enemigo de la torta. El chantilly y el merengue se ablandan rápido si la mesa está al sol o en un quincho sin ventilación. El fondant y la ganache de chocolate resisten mejor, y el dulce de leche es un relleno que casi todos aceptan. Preguntá a la repostería cuánto tiempo puede estar la torta fuera de la heladera.',
+    'Coordiná la entrega para que la torta llegue poco antes de servirla y no pase horas en el auto. Dejá un lugar con sombra y una base firme para apoyarla, y tené a mano un cuchillo largo, una pala de servir y servilletas. Si hay niños chicos, ubicá la mesa lejos de la zona de juegos para evitar accidentes.'),
+   section('Cómo encargarla y combinarla con la mesa dulce',
+    'Encargá la torta con tiempo, sobre todo si el bautismo cae en una fecha de mucha demanda. Mandá a la repostería una foto de referencia, los colores de la decoración, el nombre exacto con su escritura y la fecha de la ceremonia. Pedí confirmación por escrito del sabor, el relleno, la cobertura y el horario de entrega.',
+    `Si preferís resolver todo en una sola consulta, el ${bautismoCompleto.name} incluye la torta de un piso, la mesa dulce y la decoración en los mismos colores. ${priceCaption(bautismoCompleto.price)} Contanos la fecha, la zona y la cantidad de invitados y te respondemos con el alcance y la disponibilidad.`)
+  ]
+ },
+ {
+  slug: 'decoracion-para-bautismo', title: 'Decoración para bautismo: ideas sencillas',
+  h1: 'Decoración para bautismo: ideas sencillas para nena y varón',
+  description: 'Ideas de decoración para bautismo en casa o en el salón: colores, arco de globos, cartel con nombre, mesa dulce y recuerdos para los invitados.',
+  datePublished: '2026-09-26', theme: 'mariposas', offer: bautismoDeco, formType: 'bautismo',
+  service: ['/bautismo/', 'Conocé Bautismo Deco y Bautismo Completo'],
+  cta: 'Si querés que la decoración te espere lista', image: 'Arco de globos blanco y dorado con un cartel de bautismo y una mesa dulce en tonos claros',
+  intro: 'El bautismo tiene un ritmo particular: primero la ceremonia en la iglesia o la capilla y después el encuentro con la familia. Por eso la decoración tiene que estar lista antes de que vuelvan los invitados y tiene que verse bien en fotos con el ropón blanco. Estas ideas te ayudan a decorar con poco, elegir colores y ordenar el espacio.',
+  sections: [
+   section('Colores y estilo: blanco como base',
+    'El blanco es la base de casi todas las decoraciones de bautismo porque acompaña al ropón y al sentido de la celebración. Sumale un segundo color suave y un detalle metálico: blanco, celeste y plateado; blanco, rosa empolvado y dorado; o blanco, beige y verde salvia si querés algo neutro que sirva para nena o varón.',
+    'Elegí un estilo y sostenelo en todo: clásico con perlas y cintas, natural con hojas verdes y madera, o moderno con acrílico y letras finas. Mezclar muchos estilos hace que la mesa se vea desordenada. Una buena regla es que cada objeto nuevo repita un color o un material que ya esté en la decoración.'),
+   section('Decoración de bautismo sencilla en casa',
+    'Si el festejo es en casa, concentrá la decoración en un solo rincón: una pared libre detrás de la mesa principal. Un arco de globos, un cartel con el nombre y la fecha y una mesa con mantel blanco alcanzan para que el espacio cambie por completo. El resto de la casa puede quedar igual, con algunas flores o velas en la entrada. Si tenés patio o quincho, sumá una guirnalda de globos en la puerta para que los invitados sepan dónde es el festejo apenas llegan, y dejá sillas a la sombra para los abuelos y los padrinos.',
+    'Prepará todo el día anterior lo que no se arruina: carteles, recuerdos, mantel y vajilla. El día del bautismo, dejá a alguien de confianza en la casa mientras la familia está en la iglesia, así recibe la comida, termina los detalles y abre la puerta a quienes lleguen primero.'),
+   section('Ideas para varón y para nena',
+    'Para un varón funcionan las nubes, los ositos, las palomitas y los tonos celeste o salvia. Un arco de globos blanco y celeste con algunos globos transparentes y un cartel con letras plateadas queda sobrio y luminoso. Si querés una temática, elegí una sola figura y repetila en el cartel, la torta y los recuerdos.',
+    'Para una nena, las mariposas, las flores y los detalles dorados combinan muy bien con el ropón y la luz de la mañana. Un arco en blanco y rosa suave con algunas flores secas intercaladas se ve delicado. Evitá sumar demasiados tonos de rosa: con uno claro y uno un poco más intenso, más el blanco, la decoración se ve armada y no recargada.'),
+   section('Mesa dulce y recuerdos para los invitados',
+    'La mesa dulce ordena la decoración y resuelve el postre. Usá bandejas a distintas alturas, repetí los colores del arco en los envoltorios y dejá la torta en el centro. Alfajores de maicena, cupcakes con una palomita de azúcar y bombones envueltos en papel blanco son opciones que se sirven fácil y combinan con cualquier estilo.',
+    'Los recuerdos de bautismo más comunes son estampitas con el nombre y la fecha, velitas, rosarios pequeños, jaboncitos o frascos con dulces. Elegí uno solo, pedí la cantidad justa según la lista de invitados y dejalos en una bandeja cerca de la salida con un cartelito, así cada familia se lleva el suyo al despedirse.'),
+   section('Cuándo montar y qué consultar antes',
+    'Calculá los tiempos al revés: si la ceremonia termina a las once, la decoración tiene que estar terminada antes de las diez y media. Los globos se arman el mismo día para que no pierdan forma y la mesa dulce se completa al final para que nada se derrita. Si el lugar es un salón, preguntá desde qué hora te dejan entrar.',
+    `Si preferís llegar de la iglesia y encontrar todo listo, ${bautismoDeco.name} incluye arco de globos, fondo decorativo, cartel con nombre y fecha y mesa principal ambientada. ${priceCaption(bautismoDeco.price)} Escribinos con la fecha, el horario de la ceremonia y la zona.`)
+  ]
+ },
+ {
+  slug: 'decoracion-cumpleanos-infantil', title: 'Decoración de cumpleaños infantil: ideas',
+  h1: 'Decoración de cumpleaños infantil: ideas por temática y edad',
+  description: 'Ideas de decoración para cumpleaños infantiles: temáticas por edad, centros de mesa, globos, mesa dulce y un rincón para fotos sin gastar de más.',
+  datePublished: '2026-09-26', theme: 'dino-bebe', offer: cumpleDeco, formType: 'cumpleanos',
+  service: ['/cumpleanos-infantil/', 'Mirá Cumple Deco y Cumple Completo'],
+  cta: 'Si querés que el cumple se arme solo', image: 'Rincón de cumpleaños infantil con arco de globos verdes, dinosaurios y una mesa dulce temática',
+  intro: 'Un cumpleaños infantil se decora para dos públicos: los chicos, que quieren ver su personaje favorito, y los adultos, que buscan una buena foto y un lugar cómodo. La clave es elegir una temática clara, concentrar la decoración donde se va a mirar y dejar libre el espacio de juego. Estas ideas sirven para casa, quincho o salón.',
+  sections: [
+   section('Elegí la temática según la edad',
+    'Entre el primer y el tercer año, las temáticas con animales y colores suaves funcionan mejor: safari, ositos, granja o dinosaurios bebés. El chico todavía no elige, así que la decisión es de la familia. Buscá una paleta de tres colores y un personaje simple que se pueda repetir en el cartel, la torta y los centros de mesa.',
+    'Desde los cuatro años, el cumpleañero suele tener un personaje favorito y conviene preguntarle. Dinosaurios, superhéroes, princesas, espacio o fútbol son pedidos frecuentes. Si la temática tiene muchos colores, elegí dos principales y usá los demás solo en detalles, así la decoración no se ve caótica en las fotos.'),
+   section('Decoración de dinosaurios y otras temáticas populares',
+    'Los dinosaurios se decoran fácil: verdes, naranjas y marrones, hojas tropicales, un volcán de cartón y algunas figuras grandes en el piso. Un arco de globos en tres tonos de verde con globos con forma de huella completa el rincón. Para los más grandes podés sumar un cartel estilo excavación con el nombre y la edad.',
+    'Otras temáticas que se arman bien con globos son el safari, con tonos tierra y animales; las mariposas, con lila, rosa y dorado; y el mar, con celestes, turquesas y figuras de peces. En todas vale lo mismo: un elemento grande que se vea de lejos y detalles pequeños que se descubran al acercarse a la mesa.'),
+   section('Centros de mesa para cumple infantil',
+    'Los centros de mesa tienen que ser bajos para que los adultos puedan conversar y estables para que no se caigan con el primer empujón. Un frasco con caramelos del color de la temática, una maceta chica con una figura del personaje o un racimo de tres globos atado a un peso son opciones simples y económicas.',
+    'Si la fiesta es al aire libre, evitá los centros con velas y los papeles livianos que se vuelan. Preferí materiales que resistan el calor: nada de chocolate expuesto ni figuras de cera. Un buen truco es que el centro de mesa sea también el recuerdo: cada familia se lleva el suyo al terminar el cumpleaños.'),
+   section('Globos, cartel y rincón para fotos',
+    'El rincón de fotos concentra la decoración: arco de globos, fondo decorativo y cartel con el nombre y la edad. Ubicalo donde haya buena luz pero no sol directo, porque el sol del mediodía revienta los globos de látex y deja las fotos con sombras fuertes. Una pared lisa o una cortina clara funcionan mejor que un fondo con muchos objetos.',
+    'Dejá espacio delante del rincón para que entren el cumpleañero y dos o tres adultos en la foto. La mesa dulce puede ir justo adelante, un poco más baja que el cartel, así la torta aparece en todas las fotos del soplido de velas. Probá el encuadre con el celular antes de que lleguen los invitados. Si el cumpleañero es chico, bajá el cartel a la altura de su cabeza sentado en brazos de un adulto: así el nombre y la cara quedan juntos en la misma foto.'),
+   section('Presupuesto y cómo organizar los tiempos',
+    'Separá el presupuesto en tres partes: decoración, comida y entretenimiento. Si el dinero no alcanza para todo, invertí en el rincón de fotos y en la mesa dulce, que son lo que más se ve, y simplificá el resto. Los cotillones, la piñata y las bolsitas de recuerdos se pueden comprar con tiempo para evitar apuros.',
+    `Si querés que alguien arme la decoración mientras vos recibís a los invitados, ${cumpleDeco.name} incluye arco de globos de 3 metros con los colores de la temática, fondo decorativo, cartel con nombre y edad y centros de mesa. ${priceCaption(cumpleDeco.price)} Contanos la temática, la fecha y la zona.`)
+  ]
+ },
+ {
+  slug: 'arreglos-de-globos', title: 'Arreglos de globos: ideas sencillas para fiestas',
+  h1: 'Arreglos de globos: ideas sencillas para cumpleaños y fiestas',
+  description: 'Ideas de arreglos con globos: arcos, guirnaldas, columnas, cortinas y centros de mesa. Cómo elegir colores, helio o aire y cuidarlos del calor.',
+  datePublished: '2026-09-26', theme: 'safari', offer: globosArco, formType: 'globos',
+  service: ['/decoracion-con-globos/', 'Mirá los arcos, columnas y globos personalizados'],
+  cta: 'Si querés el arco armado en el lugar', image: 'Arco orgánico de globos en tres colores con globos de distintos tamaños sobre una pared clara',
+  intro: 'Los globos son la forma más rápida de transformar un espacio: con pocos elementos, una sala común se convierte en el lugar de la fiesta. Hay arreglos para cada presupuesto, desde un racimo en la puerta hasta un arco completo detrás de la mesa. Esta guía te muestra las opciones más usadas y cómo elegir la que va con tu evento.',
+  sections: [
+   section('Tipos de arreglos de globos',
+    'El arco orgánico es el arreglo más pedido: globos de distintos tamaños agrupados de forma irregular, que forman una curva sobre la mesa o la entrada. La guirnalda es parecida pero se apoya sobre una pared o baja por un costado. Las columnas son estructuras rectas que marcan una entrada o los extremos de un escenario.',
+    'Para mesas, los centros con globos son un racimo pequeño atado a un peso decorado. Las cortinas combinan tiras metalizadas con globos arriba y funcionan muy bien como fondo de fotos. Los globos burbuja transparentes, con el nombre o una frase en vinilo, suman un detalle personalizado que los invitados suelen querer llevarse a casa.'),
+   section('Decoración de globos sencilla que se ve bien',
+    'Si buscás algo simple, elegí un solo arreglo grande en lugar de muchos pequeños repartidos. Una guirnalda de dos metros detrás de la mesa principal luce más que diez racimos por toda la casa. Usá tres colores: uno principal, uno de apoyo y uno de acento, y variá los tamaños para que el arreglo tenga volumen.',
+    'Los globos transparentes, blancos o nude ayudan a que cualquier combinación se vea más elegante. Si la paleta tiene un color fuerte, como rojo o fucsia, usalo en pocos globos y dejá que los tonos claros hagan de base. Evitá mezclar globos mate y metalizados de muchos colores distintos en el mismo arreglo. Antes de decidir, medí el ancho y la altura del lugar donde va el arreglo: un arco que queda chico se pierde en la pared y uno demasiado grande tapa ventanas, enchufes o la puerta de la cocina.'),
+   section('Helio o aire: qué conviene',
+    'Los globos con aire son los que forman arcos, guirnaldas y columnas, porque se atan a una estructura y no dependen del helio. Duran más, cuestan menos y no se escapan. El helio se usa para racimos que flotan, globos sueltos atados a los centros de mesa o globos numéricos grandes que tienen que quedar en el aire.',
+    'Tené en cuenta que el látex con helio flota menos tiempo que el globo metalizado, así que conviene inflarlo el mismo día. Si el festejo es largo, preferí globos metalizados para los números y las letras, y dejá el látex con helio para detalles que no importe reponer si empiezan a bajar.'),
+   section('Cómo cuidar los globos del calor',
+    'El sol directo y el calor intenso son el mayor riesgo para los globos en Paraguay. El látex se expande, pierde brillo y puede reventar si queda horas al sol. Armá los arreglos a la sombra, lejos de ventanas con sol de tarde, y evitá apoyarlos contra paredes que se calientan mucho durante el día.',
+    'Si la fiesta es en un quincho o un patio, pensá dónde va a estar la sombra a la hora del evento, no a la hora del montaje. Los globos armados al mediodía para una fiesta de la tarde deben quedar en un lugar fresco. Un ventilador cerca o el aire acondicionado del salón ayudan a que se mantengan firmes hasta el final.'),
+   section('Globos para cumpleaños y otras fiestas',
+    'Para un cumpleaños, un arco con los colores de la temática y un globo con el número de la edad resuelven el rincón de fotos. En un bautismo funcionan los tonos claros con un detalle dorado o plateado. Para un baby shower o una revelación de género, los globos en tonos pastel o con confeti adentro suman color sin quitarle protagonismo a la mesa.',
+    `Si querés que el arco llegue armado, el ${globosArco.name} es un arco de 2 metros en hasta tres colores, con montaje y desmontaje en la estimación. ${priceCaption(globosArco.price)} Escribinos con la fecha, la zona y los colores que tenés en mente.`)
   ]
  }
 ];

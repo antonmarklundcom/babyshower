@@ -57,6 +57,7 @@ button,summary,a,input,select,textarea{-webkit-tap-highlight-color:transparent}
 .btn--outline{background:transparent;border:1px solid var(--hairline);box-shadow:inset 0 0 0 1px var(--accent);color:var(--ink)}
 .eyebrow{font-size:12px;color:var(--ink);font-weight:700;display:flex;align-items:center;gap:.75rem}
 .eyebrow::before{content:"";width:1.5rem;height:2px;background:var(--accent)}
+.hero-breadcrumb{gap:.5rem}.hero-breadcrumb a{color:inherit;text-decoration:underline;text-underline-offset:3px}
 .actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem}
 .narrow{max-width:850px}
 .split{display:grid;grid-template-columns:7fr 5fr;gap:var(--s-12);align-items:center}
@@ -164,7 +165,7 @@ textarea{resize:vertical}
 .mobile-nav.is-open{display:block}
 }
 @media(max-width:1023px){
-body{padding-bottom:82px}
+body{padding-bottom:calc(92px + env(safe-area-inset-bottom))}
 .brand{font-size:1.7rem}
 .split,.editorial,.calc-panel{grid-template-columns:1fr}
 .hero-art{grid-row:1;min-height:270px}
@@ -176,10 +177,19 @@ body{padding-bottom:82px}
 .steps{grid-template-columns:1fr 1fr}
 .theme-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
 .theme-card:last-child{grid-column:auto}
-.mobile-bar{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;position:fixed;bottom:0;left:0;right:0;padding:.6rem .75rem calc(.6rem + env(safe-area-inset-bottom));background:var(--base);z-index:40;border-top:1px solid var(--hairline)}
-.mobile-bar .btn{font-size:.85rem;padding:.7rem .5rem;min-height:48px}
-.mobile-bar .wa-icon{display:none}
-.wa-fab,.wa-panel,.consent{bottom:6.5rem}
+/* Mobile action bar: a floating card with WhatsApp as the big, green, thumb-reach target. */
+.mobile-bar{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr);gap:.4rem;position:fixed;left:.5rem;right:.5rem;bottom:calc(.5rem + env(safe-area-inset-bottom));padding:.35rem;background:color-mix(in srgb,var(--surface) 90%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--hairline);border-radius:20px;box-shadow:0 10px 30px rgba(43,36,48,.18);z-index:40}
+.mobile-bar a{display:flex;align-items:center;justify-content:center;gap:.55rem;min-height:56px;padding:0 .75rem;border-radius:15px;text-decoration:none;font-weight:600;-webkit-tap-highlight-color:transparent;transition:transform .12s ease}
+.mobile-bar a:active{transform:scale(.97)}
+.bar-wa{background:#25D366;color:#0B2A17;box-shadow:inset 0 -2px 0 rgba(0,0,0,.08)}
+.bar-wa .wa-icon{display:block;width:28px;height:28px;flex:none;color:#0B2A17}
+.bar-label{display:flex;flex-direction:column;line-height:1.1;text-align:left}
+.bar-label strong{font-size:1.05rem;font-weight:700}
+.bar-label small{font-size:.72rem;font-weight:500;opacity:.78}
+.bar-alt{background:var(--surface);color:var(--ink);border:1px solid var(--hairline-strong);font-size:.92rem}
+.wa-panel,.consent{bottom:6.5rem}
+/* The mobile bar already carries WhatsApp; a second floating button covered card text. */
+.wa-fab{display:none}
 }
 @media(max-width:639px){
 .hdr-row{gap:.65rem}
@@ -275,7 +285,6 @@ body{padding-bottom:82px}
 .theme-palette{display:flex;overflow:hidden;border-radius:var(--r-md)}
 .theme-palette>span{flex:1;min-width:0}
 .calc-breakdown dd{white-space:normal;text-align:right;max-width:65%}
-.mobile-bar > .btn:only-child{grid-column:1 / -1}
 /* Batch 4 */
 .inner-hero .theme-hero-image.theme-palette{width:100%;aspect-ratio:4/3;max-height:600px}
 .theme-palette-list>p{font-weight:700;margin-bottom:.5rem}
@@ -567,6 +576,7 @@ main:not(.home-page) section{padding-block:80px}
 .hero-controls :focus-visible{outline:2px solid var(--base);outline-offset:-4px;border-radius:999px}
 .inner-hero .hero-wide{aspect-ratio:16/9}
 .guide-figure{margin:1.5rem 0 2rem;max-width:720px}
+.idea-card-image{margin:0 0 1.25rem}
 @media (prefers-reduced-motion:reduce){.home-page .hero-slide{transition:none}}
 /* Batch 11: keep focused fields clear of the fixed mobile bar (bar is shown below 1024px) */
 @media(max-width:1023px){html{scroll-padding-bottom:6rem}}

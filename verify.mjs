@@ -165,7 +165,8 @@ for (const row of outputs) {
   const quotePage = Boolean(one(dom, '.quote-section'));
   assert.equal(mobileLinks.length, 2);
   const barQuote = quotePage && row.route !== '/combos-y-precios/';
-  assert.equal(text(mobileLinks[1]), barQuote ? UI.quoteShort : UI.calc);
+  assert.equal(text(mobileLinks[1]), barQuote ? UI.barQuote : UI.barCalc);
+  assert(one(mobileLinks[0], '.wa-icon') && new URL(mobileLinks[0].attrs.href).hostname === 'wa.me', 'Bar WhatsApp button with icon');
   if (quotePage) { if (barQuote) assert.equal(mobileLinks[1].attrs.href, '#presupuesto'); assert.equal(all(dom, '[id="presupuesto"]').length, 1); assert(one(one(dom, '.quote-section'), 'form[action="/lead-forward.php"]'), 'Quote form'); }
   if (/^\/(revelacion-de-genero|primer-anito|servicios|decoracion-con-globos|bautismo|cumpleanos-infantil|bienvenida-de-bebe|combos-y-precios|tematicas\/[^/]+|zonas\/[^/]+|ideas\/[^/]+)\/$/.test(row.route)) assert(quotePage, 'Commercial page needs the quote form');
   assert.equal(all(dom, '.wa-menu__option').length, WA_MENU.options.length);

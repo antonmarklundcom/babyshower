@@ -1,10 +1,8 @@
 // Usage: node docs/qa-tools/og.mjs (installed Chrome and global Playwright).
-import { createRequire } from 'node:module';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { SITE, PAGES } from '../../content.mjs';
 
-const require = createRequire(process.env.PW_BASE || 'C:/Users/anton/AppData/Roaming/npm/node_modules/');
-const { chromium } = require('playwright');
+import { chromium } from './env.mjs';
 const photo = readFileSync(new URL('../../assets/img/hero-baby-shower-quincho-1920.webp', import.meta.url)).toString('base64');
 const output = new URL('../../assets/img/og.jpg', import.meta.url);
 const font = name => readFileSync(new URL('../../assets/fonts/' + name, import.meta.url)).toString('base64');

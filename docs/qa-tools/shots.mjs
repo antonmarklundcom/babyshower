@@ -2,11 +2,9 @@
 // Usage: node docs/qa-tools/shots.mjs <url> <width> <prefix> [sliceHeight=1500]
 // Output: docs/qa-tools/out/<prefix>-00.png, -01.png ... (gitignore or delete after use).
 // Needs: npm i -g playwright (already present on Anton's laptop) and Chrome at the path below.
-import { createRequire } from 'node:module';
 import { mkdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-const require = createRequire(process.env.PW_BASE || 'C:/Users/anton/AppData/Roaming/npm/node_modules/');
-const { chromium } = require('playwright');
+import { chromium } from './env.mjs';
 const [, , url, width, prefix, sliceH = '1500'] = process.argv;
 if (!url || !width || !prefix) { console.error('usage: node docs/qa-tools/shots.mjs <url> <width> <prefix> [sliceHeight]'); process.exit(1); }
 const out = fileURLToPath(new URL('./out/', import.meta.url));

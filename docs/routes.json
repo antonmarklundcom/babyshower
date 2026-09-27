@@ -369,5 +369,33 @@
     "phase": "B4",
     "indexable": true,
     "built": true
+  },
+  {
+    "route": "/ideas/torta-para-bautismo/",
+    "output": "ideas/torta-para-bautismo/index.html",
+    "phase": "B4",
+    "indexable": true,
+    "built": true
+  },
+  {
+    "route": "/ideas/decoracion-para-bautismo/",
+    "output": "ideas/decoracion-para-bautismo/index.html",
+    "phase": "B4",
+    "indexable": true,
+    "built": true
+  },
+  {
+    "route": "/ideas/decoracion-cumpleanos-infantil/",
+    "output": "ideas/decoracion-cumpleanos-infantil/index.html",
+    "phase": "B4",
+    "indexable": true,
+    "built": true
+  },
+  {
+    "route": "/ideas/arreglos-de-globos/",
+    "output": "ideas/arreglos-de-globos/index.html",
+    "phase": "B4",
+    "indexable": true,
+    "built": true
   }
 ]

@@ -1,15 +1,14 @@
 // End-to-end flows on the SHIPPED zip: extracts dist/*.zip into a sandbox, runs it under php -S with a private
 // config one level above the document root and a fake SMTP sink, then drives it with Playwright.
 // Usage: node docs/qa-tools/site-flows.mjs [path-to-zip]   (env PHP_EXE, ports 8092 and 2526)
-import { createRequire } from 'node:module';
+
 import { spawn, execFileSync } from 'node:child_process';
 import net from 'node:net';
 import { readdirSync, readFileSync, mkdtempSync, mkdirSync, writeFileSync, existsSync } from 'node:fs';
-const require = createRequire(process.env.PW_BASE || 'C:/Users/anton/AppData/Roaming/npm/node_modules/');
-const { chromium } = require('playwright');
+import { chromium, PHP } from './env.mjs';
 const root = new URL('../../', import.meta.url).pathname.slice(1).replace(/%20/g, ' ');
 const zip = process.argv[2] || root + 'dist/' + readdirSync(root + 'dist').filter(f => f.endsWith('.zip')).sort().at(-1);
-const PHP = process.env.PHP_EXE || 'C:/dev/php/php.exe';
+
 const E = mkdtempSync((process.env.TEMP || '/tmp').split('\\').join('/') + '/bs-flows-');
 mkdirSync(E + '/site/public', { recursive: true });
 execFileSync('powershell.exe', ['-NoProfile', '-Command', 'Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory($env:BS_TEST_ZIP, $env:BS_TEST_PUBLIC)'], { env: { ...process.env, BS_TEST_ZIP: zip, BS_TEST_PUBLIC: E + '/site/public' } });
@@ -36,10 +35,13 @@ try {
   t('burger opens the menu (aria-expanded true, panel visible)', await m.evaluate(() => document.querySelector('.burger').getAttribute('aria-expanded') === 'true' && getComputedStyle(document.getElementById('hdr-panel')).display !== 'none'));
   await m.keyboard.press('Escape');
   t('Escape closes the menu', await m.evaluate(() => document.querySelector('.burger').getAttribute('aria-expanded') === 'false'));
+  t('mobile hides the floating button (the bottom bar carries WhatsApp)', await m.evaluate(() => getComputedStyle(document.querySelector('.wa-fab')).display === 'none' && getComputedStyle(document.querySelector('.mobile-bar')).display !== 'none'));
+  await m.setViewportSize({ width: 1280, height: 800 });
   await m.click('.wa-fab');
   const dlg = await m.evaluate(() => { const d = document.getElementById('wa-menu'); return d && getComputedStyle(d).display !== 'none' && !d.hidden; });
   t('floating WhatsApp button opens its menu', !!dlg);
   await m.keyboard.press('Escape');
+  await m.setViewportSize({ width: 375, height: 812 });
   await m.evaluate(() => window.scrollTo(0, 0));
   const faq = m.locator('[data-faq] summary').first();
   await faq.click();

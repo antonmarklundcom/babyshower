@@ -6,7 +6,7 @@ import { spawn } from 'node:child_process';
 import { readFileSync, existsSync, rmSync, mkdirSync, copyFileSync, writeFileSync, readdirSync } from 'node:fs';
 const ROOT = process.env.PT_ROOT || (process.env.TEMP || '/tmp').split('\\').join('/') + '/bs-phptest';
 const SRC = fileURLToPath(new URL('../../', import.meta.url)).replace(/\/$/, '');
-const PHP = process.env.PHP_EXE || 'C:/dev/php/php.exe';
+import { PHP } from './env.mjs';
 const pub = ROOT + '/site/public';
 mkdirSync(pub, { recursive: true });
 const reset = (withConfig) => {

@@ -1,5 +1,4 @@
-import { createRequire } from 'node:module';
-const require = createRequire('C:/Users/anton/AppData/Roaming/npm/node_modules/'); const { chromium } = require('playwright');
+import { chromium } from './env.mjs';
 const b = await chromium.launch({ executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe', headless: true });
 for (const u of process.argv.slice(2)) { const v = [];
   for (let i = 0; i < 5; i++) { const c = await b.newContext({ viewport: { width: 412, height: 823 }, deviceScaleFactor: 1.75, isMobile: true, hasTouch: true }); const p = await c.newPage();
