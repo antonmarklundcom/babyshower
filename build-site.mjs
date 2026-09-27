@@ -269,7 +269,10 @@ function servicesBody(route, page) {
 }
 function body(route, page) {
  if (page.type === 'home') return home(route, page);
- const hero = `<section class="inner-hero${page.type === 'theme' ? ' tint-' + page.detail.tint : ''}"><div class="wrap"><span class="eyebrow">${esc(SITE.name)}</span><h1>${esc(page.h1)}</h1>${page.type === 'theme' ? (imageFigure(imagery.find(image => image.use === route && image.placed && image.status !== 'rejected')?.id, 'theme-hero-image', imageSizes.theme) || themePalette(page.detail, 'theme-hero-image')) : ['reveal', 'anito'].includes(page.type) ? imageFigure(imagery.find(image => image.use === route && image.placed && image.status !== 'rejected')?.id, 'theme-hero-image hero-wide', imageSizes.theme, true) : ''}</div></section>`;
+ // Theme and zone detail pages show the same hub path as their BreadcrumbList; other pages keep the brand eyebrow.
+ const hub = { theme: ['/tematicas/', 'Temáticas'], zone: ['/zonas/', 'Zonas'] }[page.type];
+ const eyebrow = hub ? `<nav class="eyebrow hero-breadcrumb" aria-label="Ruta de navegación">${link('/', 'Inicio', 'migas')}<span aria-hidden="true">/</span>${link(hub[0], hub[1], 'migas')}</nav>` : `<span class="eyebrow">${esc(SITE.name)}</span>`;
+ const hero = `<section class="inner-hero${page.type === 'theme' ? ' tint-' + page.detail.tint : ''}"><div class="wrap">${eyebrow}<h1>${esc(page.h1)}</h1>${page.type === 'theme' ? (imageFigure(imagery.find(image => image.use === route && image.placed && image.status !== 'rejected')?.id, 'theme-hero-image', imageSizes.theme) || themePalette(page.detail, 'theme-hero-image')) : ['reveal', 'anito'].includes(page.type) ? imageFigure(imagery.find(image => image.use === route && image.placed && image.status !== 'rejected')?.id, 'theme-hero-image hero-wide', imageSizes.theme, true) : ''}</div></section>`;
  const lead = hasQuote(page) ? quote(route, quoteType(page)) : '';
  if (['ideas', 'guide'].includes(page.type)) return hero + ideasBody(route, page) + lead + (page.type === 'guide' ? moreGuides(route) : '');
  if (['themes', 'theme', 'zones', 'zone'].includes(page.type)) return hero + programmatic(route, page) + lead;

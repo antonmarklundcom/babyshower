@@ -1,15 +1,14 @@
 // End-to-end flows on the SHIPPED zip: extracts dist/*.zip into a sandbox, runs it under php -S with a private
 // config one level above the document root and a fake SMTP sink, then drives it with Playwright.
 // Usage: node docs/qa-tools/site-flows.mjs [path-to-zip]   (env PHP_EXE, ports 8092 and 2526)
-import { createRequire } from 'node:module';
+
 import { spawn, execFileSync } from 'node:child_process';
 import net from 'node:net';
 import { readdirSync, readFileSync, mkdtempSync, mkdirSync, writeFileSync, existsSync } from 'node:fs';
-const require = createRequire(process.env.PW_BASE || 'C:/Users/anton/AppData/Roaming/npm/node_modules/');
-const { chromium } = require('playwright');
+import { chromium, PHP } from './env.mjs';
 const root = new URL('../../', import.meta.url).pathname.slice(1).replace(/%20/g, ' ');
 const zip = process.argv[2] || root + 'dist/' + readdirSync(root + 'dist').filter(f => f.endsWith('.zip')).sort().at(-1);
-const PHP = process.env.PHP_EXE || 'C:/dev/php/php.exe';
+
 const E = mkdtempSync((process.env.TEMP || '/tmp').split('\\').join('/') + '/bs-flows-');
 mkdirSync(E + '/site/public', { recursive: true });
 execFileSync('powershell.exe', ['-NoProfile', '-Command', 'Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory($env:BS_TEST_ZIP, $env:BS_TEST_PUBLIC)'], { env: { ...process.env, BS_TEST_ZIP: zip, BS_TEST_PUBLIC: E + '/site/public' } });

@@ -1,7 +1,5 @@
-import { createRequire } from 'node:module';
 import { readFileSync } from 'node:fs';
-const require = createRequire('C:/Users/anton/AppData/Roaming/npm/node_modules/');
-const { chromium } = require('playwright');
+import { chromium } from './env.mjs';
 const routes = JSON.parse(readFileSync('C:/Claude 1/babyshower/docs/routes.json', 'utf8'));
 const list = (Array.isArray(routes) ? routes : routes.routes || Object.keys(routes)).map(r => typeof r === 'string' ? r : r.route || r.path);
 const browser = await chromium.launch({ executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe', headless: true });

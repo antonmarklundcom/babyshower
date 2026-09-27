@@ -3,10 +3,8 @@
 // Reports console/page errors, failed or 4xx/5xx requests, external requests, horizontal overflow, broken or
 // alt-less images, duplicate ids, heading order, dead internal links and anchors, malformed wa.me links,
 // undersized tap targets (375 px), and fixed bars covering form controls.
-import { createRequire } from 'node:module';
 import { readFileSync } from 'node:fs';
-const require = createRequire(process.env.PW_BASE || 'C:/Users/anton/AppData/Roaming/npm/node_modules/');
-const { chromium } = require('playwright');
+import { chromium } from './env.mjs';
 const origin = process.argv[2] || 'http://127.0.0.1:4185';
 const routesFile = JSON.parse(readFileSync(new URL('../routes.json', import.meta.url), 'utf8'));
 const routes = [...(Array.isArray(routesFile) ? routesFile : routesFile.routes).map(r => typeof r === 'string' ? r : r.route), '/404.html', '/gracias.html'];
