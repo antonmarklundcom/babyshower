@@ -29,7 +29,10 @@ try {
     }
     [void][System.IO.Directory]::CreateDirectory((Join-Path $siteRoot 'dist'))
     $zipPath = Join-Path $siteRoot ('dist/babyshower-' + (Get-Date -Format 'yyyy-MM-dd') + '.zip')
-    if (Test-Path -LiteralPath $zipPath) { Remove-Item -LiteralPath $zipPath }
+    # Preserve earlier artifacts, including multiple builds on the same day.
+    if (Test-Path -LiteralPath $zipPath) {
+        $zipPath = Join-Path $siteRoot ('dist/babyshower-' + (Get-Date -Format 'yyyy-MM-dd-HHmmss-fffffff') + '.zip')
+    }
     $zip = [System.IO.Compression.ZipFile]::Open($zipPath, [System.IO.Compression.ZipArchiveMode]::Create)
     try {
         foreach ($entry in ($ship | Sort-Object)) {

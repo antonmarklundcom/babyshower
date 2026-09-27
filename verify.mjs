@@ -44,7 +44,7 @@ test('Sharing JPEG', () => {
  console.log('PASS: og.jpg ' + dimensions.join(' x ') + '; ' + data.length + ' bytes');
 });
 test('Server SID fallback', () => {
- const php = read('lead-forward.php');
+ const php = read('lead-forward.php').replace(/\r\n/g, '\n');
  const generation = "if ($lead['sid'] === '') {\n    $lead['sid'] = 'BS-' . date('Ymd') . '-' . bin2hex(random_bytes(2));\n}";
  const validation = "preg_match('/^BS-[0-9]{8}-[a-z0-9]{4}$/Di', $lead['sid'])";
  assert(php.includes(generation), 'Missing empty-only random SID generation');
@@ -225,7 +225,7 @@ for (const row of outputs) {
   for (const script of all(dom, 'script[src]')) assert(!/googletagmanager|analytics|vc-attribution/.test(script.attrs.src), 'Unconditional tracking tag');
   for (const el of all(dom, 'script[src],link[rel="stylesheet"]')) {
    const url = el.attrs.src || el.attrs.href;
-   if (url.startsWith('/assets/')) { const [path, query] = url.slice(1).split('?'); assert.equal(new URLSearchParams(query).get('v'), createHash('sha256').update(readFileSync(path)).digest('hex').slice(0,12), 'Asset hash'); }
+   if (url.startsWith('/assets/')) { const [path, query] = url.slice(1).split('?'); assert.equal(new URLSearchParams(query).get('v'), createHash('sha256').update(read(path).replace(/\r\n/g, '\n')).digest('hex').slice(0,12), 'Asset hash'); }
   }
  });
  const weight = Buffer.byteLength(html) + assetBytes; maxWeight = Math.max(maxWeight, weight);
@@ -298,6 +298,8 @@ test('Launch settings and server configuration', () => {
  assert(ht.includes('ErrorDocument 404 /404.html'));
  assert(ht.includes('RewriteRule (^|/)\\. - [F,L]') && ht.includes('RewriteRule ^(plan|docs|codex-input|deploy|dist|node_modules)(/|$) - [F,L,NC]') && ht.includes('RewriteRule \\.(md|mjs|ps1)$ - [F,L,NC]'), 'Git deploy: .git, plan, docs and sources must be denied');
  assert(!/tasacion|Redirect\s+301/.test(ht));
+ assert(ht.includes('X-Content-Type-Options "nosniff"') && ht.includes('RewriteRule ^assets/img/manifest\\.json$ - [F,L,NC]'), 'Security header and provenance denial');
+ assert(/immutable" "expr=[^"]*QUERY_STRING[^"]*v=/.test(ht), 'Only ?v= versioned assets may be immutable');
  assert(!read('assets/js/site.js').includes('vc-attribution'));
 });
 
@@ -323,7 +325,7 @@ test('Contrast and reference assets', () => {
 });
 
 // Evaluar contenido y generador en memoria para ambos estados, sin escribir archivos.
-const rendererSource = read('build-site.mjs').replace(/^import .*;\n/gm, '').replace(/^process\.chdir.*;\n/m, '').split('for (const row of manifest.filter(r => r.built))')[0];
+const rendererSource = read('build-site.mjs').replace(/^import .*;\r?\n/gm, '').replace(/^process\.chdir.*;\r?\n/m, '').split('for (const row of manifest.filter(r => r.built))')[0];
 function renderWithAnalytics(id) {
  const source = read('content.mjs').replace(/^export /gm, '').replace(/const ANALYTICS_ID = '[^']*';/, `const ANALYTICS_ID = ${JSON.stringify(id)};`);
  const configured = vm.runInNewContext(source + '\n;({ ' + Object.keys(content).join(', ') + ' });');
@@ -624,7 +626,7 @@ console.log(`Weight: max HTML + CSS + JS + calc ${maxWeight} bytes; fonts ${byte
 if (!SITE.email) notes.push('FLAG: public SITE.email must be confirmed before Gate A; none invented.');
 if (!SITE.leadEmail) notes.push('FLAG: notification email Q21 awaits confirmation for B5/Gate A.');
 if (pages.get('/')?.html.includes('fonts.googleapis.com')) notes.push('FLAG: Google Fonts fallback; local Instrument Serif/Satoshi files absent.');
-notes.push('PHP lint: php -l lead-forward.php — not available locally; Anton owns hosted form/email/log test at Gate A.');
+notes.push('PHP lint is a separate check: run php -l lead-forward.php with the installed PHP executable. Hosted form/email/log verification remains Gate A.');
 for (const note of notes) console.log(note);
 if (failures.length) { failures.forEach(f => console.error('FAIL: ' + f)); process.exitCode = 1; }
 else console.log(`PASS: applicable ${phase} checks, including executed consent/menu/form/analytics behavior.`);

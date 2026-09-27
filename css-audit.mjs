@@ -7,7 +7,7 @@ const verifier = read('verify.mjs');
 // Use the verifier's HTML parser and simple-selector matcher unchanged.
 const { parse, walk, matches } = vm.runInNewContext(verifier.slice(verifier.indexOf('const decode ='), verifier.indexOf('const pages =')) + '\n({parse,walk,matches})', { check: assert });
 const files = [...JSON.parse(read('docs/routes.json')).filter(r => r.built).map(r => r.output), '404.html', 'gracias.html'];
-assert.equal(files.length, 34);
+assert.equal(new Set(files).size, files.length, 'Duplicate manifest output');
 const nodes = files.flatMap(file => walk(parse(read(file)))).filter(n => n.tag && !n.tag.startsWith('#'));
 const js = readdirSync('assets/js').filter(f => f.endsWith('.js')).map(f => read('assets/js/' + f)).join('\n');
 const uncertain = new Set(), removed = [];
@@ -25,14 +25,16 @@ function split(source, delimiters) {
  result.push(source.slice(start)); return result;
 }
 function live(selector) {
+ // At-rules are not element selectors; keep animations and other declarations.
+ if (selector.startsWith('@')) { uncertain.add(selector); return true; }
  // This conditional footer control is emitted when analytics is configured.
  if (selector === '.text-button') { uncertain.add(selector); return true; }
  // JavaScript may create elements, classes or attributes, even absent from static HTML.
  const names = [...selector.matchAll(/\.([\w-]+)|\[([\w-]+)/g)].map(m => m[1] || m[2]);
  if (names.some(name => js.includes(name))) return true;
  // The verifier does not implement functional/structural pseudo-classes: retain them.
- if (/:(?!:?(?:before|after|marker|hover|focus-visible|focus)\b)/.test(selector)) { uncertain.add(selector); return true; }
- const plain = selector.replace(/::?(before|after|marker|hover|focus-visible|focus)\b/g, '').trim() || '*';
+ if (/:(?!:?(?:before|after|marker|hover|focus-visible|focus)(?![\w-]))/.test(selector)) { uncertain.add(selector); return true; }
+ const plain = selector.replace(/::?(before|after|marker|hover|focus-visible|focus)(?![\w-])/g, '').trim() || '*';
  // Extend simple matching with ancestor/child/sibling traversal, without modifying the helper.
  const parts = plain.replace(/\s*([>+~])\s*/g, '$1').match(/(?:\[[^\]]*\]|[^\s>+~])+|[>+~]|\s+/g) || [];
  function match(node, index) {

@@ -4,15 +4,15 @@
 import { createRequire } from 'node:module';
 import { spawn, execFileSync } from 'node:child_process';
 import net from 'node:net';
-import { readdirSync, readFileSync, rmSync, mkdirSync, writeFileSync, existsSync } from 'node:fs';
+import { readdirSync, readFileSync, mkdtempSync, mkdirSync, writeFileSync, existsSync } from 'node:fs';
 const require = createRequire(process.env.PW_BASE || 'C:/Users/anton/AppData/Roaming/npm/node_modules/');
 const { chromium } = require('playwright');
 const root = new URL('../../', import.meta.url).pathname.slice(1).replace(/%20/g, ' ');
 const zip = process.argv[2] || root + 'dist/' + readdirSync(root + 'dist').filter(f => f.endsWith('.zip')).sort().at(-1);
 const PHP = process.env.PHP_EXE || 'C:/dev/php/php.exe';
-const E = (process.env.TEMP || '/tmp').split('\\').join('/') + '/bs-flows';
-rmSync(E, { recursive: true, force: true }); mkdirSync(E + '/site/public', { recursive: true });
-execFileSync('powershell.exe', ['-NoProfile', '-Command', `Expand-Archive -Force '${zip.split('/').join('\\')}' '${(E + '/site/public').split('/').join('\\')}'`]);
+const E = mkdtempSync((process.env.TEMP || '/tmp').split('\\').join('/') + '/bs-flows-');
+mkdirSync(E + '/site/public', { recursive: true });
+execFileSync('powershell.exe', ['-NoProfile', '-Command', 'Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory($env:BS_TEST_ZIP, $env:BS_TEST_PUBLIC)'], { env: { ...process.env, BS_TEST_ZIP: zip, BS_TEST_PUBLIC: E + '/site/public' } });
 writeFileSync(E + '/site/vendercrm-config.babyshower.php', "<?php return ['lead_email' => 'antonmarklund.com@gmail.com', 'url' => '', 'api_key' => ''];");
 const mails = [];
 const smtp = net.createServer(sock => { let inData = false, data = '', raw = ''; sock.write('220 sink\r\n'); sock.on('data', d => { raw += d; let i; while ((i = raw.indexOf('\r\n')) >= 0) { const l = raw.slice(0, i); raw = raw.slice(i + 2); if (inData) { if (l === '.') { inData = false; mails.push(data); data = ''; sock.write('250 ok\r\n'); } else data += l + '\n'; continue; } const u = l.toUpperCase(); if (u.startsWith('DATA')) { inData = true; sock.write('354 go\r\n'); } else if (u.startsWith('QUIT')) { sock.write('221 bye\r\n'); sock.end(); } else sock.write('250 ok\r\n'); } }); }).listen(2526, '127.0.0.1');
@@ -90,12 +90,32 @@ try {
   await Promise.all([nj.waitForURL(/gracias/, { timeout: 15000 }), nj.locator('button[type=submit]').click()]);
   const l2 = logLines();
   t('no-JS submit works and gets a server BS id', l2.length === 2 && /^BS-\d{8}-[a-z0-9]{4}$/i.test(l2[1].lead.sid), l2[1] ? l2[1].lead.sid : 'no line');
+  // ---- host failure (PHP down): the visitor gets a prefilled WhatsApp fallback, not an error page ----
+  // No watch(): the simulated 503 logs a resource error by design.
+  const hf = await (await browser.newContext({ viewport: { width: 375, height: 812 } })).newPage();
+  await hf.route('**/lead-forward.php', route => route.fulfill({ status: 503, contentType: 'text/html', body: '<h1>503 Service Unavailable</h1>' }));
+  await hf.goto(base + '/contacto/', { waitUntil: 'load' });
+  await hf.fill('[name=nombre]', 'Ana Caida'); await hf.fill('[name=whatsapp]', '0981 234 567'); await hf.check('[name=fecha_desconocida]').catch(() => {}); await hf.fill('[name=invitados]', '25'); await hf.selectOption('[name=tipo]', 'baby-shower'); await hf.selectOption('[name=zona]', 'luque');
+  await hf.locator('button[type=submit]').click();
+  const fb = await hf.locator('[data-form-fallback]').getAttribute('href', { timeout: 10000 }).catch(() => '');
+  t('host 503 shows a prefilled WhatsApp fallback and stays on the page', /^https:\/\/wa\.me\/595\d+\?text=/.test(fb) && decodeURIComponent(fb).includes('Ana Caida') && decodeURIComponent(fb).includes('Luque') && /contacto/.test(hf.url()), fb.slice(0, 60));
+  t('fallback re-enables the submit button', await hf.locator('button[type=submit]').isEnabled());
+  // ---- server-side rejection (honeypot filled): the B5 error summary is shown in place ----
+  const sv = await (await browser.newContext({ viewport: { width: 1440, height: 900 } })).newPage();
+  await sv.goto(base + '/contacto/', { waitUntil: 'load' });
+  await sv.fill('[name=nombre]', 'Bot Prueba'); await sv.fill('[name=whatsapp]', '0981 234 567'); await sv.check('[name=fecha_desconocida]').catch(() => {}); await sv.fill('[name=invitados]', '25'); await sv.selectOption('[name=tipo]', 'baby-shower'); await sv.selectOption('[name=zona]', 'asuncion');
+  await sv.evaluate(() => { document.querySelector('[name=empresa]').value = 'spam'; });
+  await sv.locator('button[type=submit]').click();
+  await sv.waitForFunction(() => { const e = document.querySelector('[data-form-errors]'); return e && !e.hidden && e.querySelector('a[href^="https://wa.me/"]'); }, null, { timeout: 10000 }).catch(() => {});
+  const svText = await sv.evaluate(() => (document.querySelector('[data-form-errors]') || {}).textContent || '');
+  t('server rejection shows the B5 summary without storing a lead', /No pudimos/.test(svText) && logLines().length === 2 && /contacto/.test(sv.url()), svText.slice(0, 60));
   // ---- desktop contact page: no bar, form usable ----
   const d = await (await browser.newContext({ viewport: { width: 1440, height: 900 } })).newPage(); watch(d);
   await d.goto(base + '/contacto/', { waitUntil: 'load' });
   t('desktop contact page renders the form', await d.locator('[data-lead-form]').isVisible());
   t('no JavaScript or console errors during all flows', errors.length === 0, errors.slice(0, 3).join(' | '));
 } finally {
+  await browser.close();
   server.kill(); smtp.close();
 }
 console.log(`${res.filter(Boolean).length}/${res.length} passed`);

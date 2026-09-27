@@ -30,6 +30,9 @@ This file is therefore not public either.
 
 ## Check after the first deploy
 
+- Run `node deploy/smoke.mjs` (GET only, never submits a form). It must end with `All smoke checks passed`.
+  The key line is `PHP runs`: if `/lead-forward.php` does not redirect to `/contacto/`, PHP is not
+  executing and every form submission fails (this was the state of the old account on 2026-09-26).
 - `https://babyshower.com.py/` and `/contacto/` load; `http://` and `www.` redirect to `https://babyshower.com.py/`.
 - These must show the "Página no encontrada" page, not content:
   `/.git/config`, `/plan/00-README.md`, `/BRIEF.md`, `/docs/DEPLOY.md`, `/build-site.mjs`, `/leads.log`.
@@ -41,3 +44,13 @@ This file is therefore not public either.
 Edit, `node build-site.mjs`, `node verify.mjs --final`, commit the regenerated HTML, push to `master`.
 The webhook deploys it. If a new non-site folder is ever added at the repo root, add it to the
 deny rule in `.htaccess` (verify.mjs checks the current rule).
+
+## Moving to another Hostinger account
+
+1. Do steps 1-6 above on the new account (SSL, PHP 8.3, empty `public_html`, connect repo, webhook,
+   private config one level above `public_html`).
+2. GitHub > repo > Settings > Webhooks: delete the old account's webhook so pushes only deploy to the
+   new one. If the repo uses a deploy key, add the new account's key and remove the old one.
+3. Point the domain's DNS (or nameservers) at the new account and wait for SSL to issue.
+4. Run `node deploy/smoke.mjs`, then send one real form and confirm the email arrives.
+5. Only then remove the site from the old account (copy `leads.log` from above its `public_html` first).

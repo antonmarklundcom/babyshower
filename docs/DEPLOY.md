@@ -29,8 +29,8 @@ Aplicá la retención de 12 meses a log y recibos privados, con mantenimiento co
 - **Anton, Gate A:** enviar un formulario real en el addon domain; verificar email recibido y una sola línea durable en el log. Probar también error con fallback WhatsApp, SID repetido sin nueva línea/notificación y CRM si se configura. Sin destinatario ni CRM disponible el formulario debe fallar, aunque guarde el lead.
 - Completar QA de B6: rutas HTTP, 404/gracias, vista móvil, accesibilidad y Lighthouse.
 
-`php -l lead-forward.php` — **not available locally**; no se declara PASS. Validación PHP y prueba real alojada pendientes de Anton en Gate A.
+`C:/dev/php/php.exe -l lead-forward.php` pasa localmente (PHP 8.3). La prueba real alojada sigue pendiente de Anton en Gate A.
 
-En esta sesión Windows bloqueó el comando de empaquetado porque la política local deshabilita scripts PowerShell. No se cambió esa política; el ZIP queda pendiente de generar en un entorno autorizado para ejecutar el script.
+Después de cada deploy: `node deploy/smoke.mjs` (solo GET, nunca envía un formulario). Comprueba que PHP responde (GET a `/lead-forward.php` redirige a `/contacto/`), que las rutas privadas dan 403/404, headers, sitemap y las 53 rutas. El 26/09/2026 el hosting anterior devolvía 503 del propio Hostinger en `/lead-forward.php`: PHP no se ejecutaba y todo formulario fallaba. Con JavaScript, el formulario ahora ofrece un botón de WhatsApp con los datos cargados cuando el servidor falla.
 
 Preview local: `node preview-server.mjs`, http://127.0.0.1:4173 (PORT configurable). Adaptado de embarazo-com-py para index.html/404.html. Es solo estático: bloquea PHP, fuentes mjs y logs; no ejecuta ni valida el endpoint. Sitemap se genera solo con rutas built/indexable del manifiesto, HTTPS y slash final, excluye gracias/404; robots.txt ya lo referencia.
