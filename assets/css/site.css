@@ -180,7 +180,9 @@ body{padding-bottom:82px}
 .mobile-bar{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;position:fixed;bottom:0;left:0;right:0;padding:.6rem .75rem calc(.6rem + env(safe-area-inset-bottom));background:var(--base);z-index:40;border-top:1px solid var(--hairline)}
 .mobile-bar .btn{font-size:.85rem;padding:.7rem .5rem;min-height:48px}
 .mobile-bar .wa-icon{display:none}
-.wa-fab,.wa-panel,.consent{bottom:6.5rem}
+.wa-panel,.consent{bottom:6.5rem}
+/* The mobile bar already carries WhatsApp; a second floating button covered card text. */
+.wa-fab{display:none}
 }
 @media(max-width:639px){
 .hdr-row{gap:.65rem}
@@ -568,6 +570,7 @@ main:not(.home-page) section{padding-block:80px}
 .hero-controls :focus-visible{outline:2px solid var(--base);outline-offset:-4px;border-radius:999px}
 .inner-hero .hero-wide{aspect-ratio:16/9}
 .guide-figure{margin:1.5rem 0 2rem;max-width:720px}
+.idea-card-image{margin:0 0 1.25rem}
 @media (prefers-reduced-motion:reduce){.home-page .hero-slide{transition:none}}
 /* Batch 11: keep focused fields clear of the fixed mobile bar (bar is shown below 1024px) */
 @media(max-width:1023px){html{scroll-padding-bottom:6rem}}

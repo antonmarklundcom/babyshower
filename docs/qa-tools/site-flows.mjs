@@ -35,10 +35,13 @@ try {
   t('burger opens the menu (aria-expanded true, panel visible)', await m.evaluate(() => document.querySelector('.burger').getAttribute('aria-expanded') === 'true' && getComputedStyle(document.getElementById('hdr-panel')).display !== 'none'));
   await m.keyboard.press('Escape');
   t('Escape closes the menu', await m.evaluate(() => document.querySelector('.burger').getAttribute('aria-expanded') === 'false'));
+  t('mobile hides the floating button (the bottom bar carries WhatsApp)', await m.evaluate(() => getComputedStyle(document.querySelector('.wa-fab')).display === 'none' && getComputedStyle(document.querySelector('.mobile-bar')).display !== 'none'));
+  await m.setViewportSize({ width: 1280, height: 800 });
   await m.click('.wa-fab');
   const dlg = await m.evaluate(() => { const d = document.getElementById('wa-menu'); return d && getComputedStyle(d).display !== 'none' && !d.hidden; });
   t('floating WhatsApp button opens its menu', !!dlg);
   await m.keyboard.press('Escape');
+  await m.setViewportSize({ width: 375, height: 812 });
   await m.evaluate(() => window.scrollTo(0, 0));
   const faq = m.locator('[data-faq] summary').first();
   await faq.click();
