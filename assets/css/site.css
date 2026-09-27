@@ -525,7 +525,7 @@ main:not(.home-page) section{padding-block:64px}
 main:not(.home-page) .wrap>h2:not(:first-child){margin-top:48px}
 main:not(.home-page) h2{margin-bottom:24px}
 main:not(.home-page) .wrap>.btn,main:not(.home-page) .faq-list+.btn{margin-top:24px}
-.footer a,.footer button,.guide-breadcrumb a,a[data-ev-loc=migas]{display:inline-flex;align-items:center;min-height:44px;padding-block:8px}
+.footer a,.footer button,.guide-breadcrumb a,a[data-ev-loc=migas]{display:inline-flex;align-items:center;min-height:44px;padding-block:8px;min-width:44px}
 .field label,.checkbox,.calc-panel>div>label{display:flex;align-items:center;min-height:44px}
 input:not([type=hidden]),select,textarea{min-height:44px}
 .calc-choice input,.checkbox input{height:44px;min-height:44px;width:24px;flex-shrink:0}

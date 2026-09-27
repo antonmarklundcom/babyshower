@@ -298,6 +298,8 @@ test('Launch settings and server configuration', () => {
  assert(ht.includes('ErrorDocument 404 /404.html'));
  assert(ht.includes('RewriteRule (^|/)\\. - [F,L]') && ht.includes('RewriteRule ^(plan|docs|codex-input|deploy|dist|node_modules)(/|$) - [F,L,NC]') && ht.includes('RewriteRule \\.(md|mjs|ps1)$ - [F,L,NC]'), 'Git deploy: .git, plan, docs and sources must be denied');
  assert(!/tasacion|Redirect\s+301/.test(ht));
+ assert(ht.includes('X-Content-Type-Options "nosniff"') && ht.includes('RewriteRule ^assets/img/manifest\\.json$ - [F,L,NC]'), 'Security header and provenance denial');
+ assert(/immutable" "expr=[^"]*QUERY_STRING[^"]*v=/.test(ht), 'Only ?v= versioned assets may be immutable');
  assert(!read('assets/js/site.js').includes('vc-attribution'));
 });
 

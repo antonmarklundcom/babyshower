@@ -9,6 +9,8 @@ RewriteCond %{REQUEST_URI} !^/\.well-known/
 RewriteRule (^|/)\. - [F,L]
 RewriteRule ^(plan|docs|codex-input|deploy|dist|node_modules)(/|$) - [F,L,NC]
 RewriteRule \.(md|mjs|ps1)$ - [F,L,NC]
+# Build-time image provenance; the site never loads it.
+RewriteRule ^assets/img/manifest\.json$ - [F,L,NC]
 ErrorDocument 403 /404.html
 
 <FilesMatch "(?i)(^leads\.log$|\.mjs$|^vendercrm-config.*\.php$)">
@@ -28,8 +30,10 @@ AddDefaultCharset UTF-8
   Header always set X-Content-Type-Options "nosniff"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set X-Frame-Options "SAMEORIGIN"
-  # Asset URLs are versioned; HTML must re-fetch current prices.
-  Header set Cache-Control "public, max-age=31536000, immutable" "expr=%{REQUEST_URI} =~ m#^/assets/#"
+  # CSS/JS URLs carry ?v=<content hash> and can be immutable. Images and fonts keep stable
+  # names, so they revalidate weekly. HTML must re-fetch current prices.
+  Header set Cache-Control "public, max-age=31536000, immutable" "expr=%{REQUEST_URI} =~ m#^/assets/# && %{QUERY_STRING} =~ /(^|&)v=/"
+  Header set Cache-Control "public, max-age=604800" "expr=%{REQUEST_URI} =~ m#^/assets/# && !(%{QUERY_STRING} =~ /(^|&)v=/)"
   <FilesMatch "(?i)\.html$">
     Header set Cache-Control "no-store"
   </FilesMatch>

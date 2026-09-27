@@ -203,7 +203,45 @@
       var phone = fields.whatsapp.value.replace(/[ ().-]/g, '');
       if (!/^(?:0|\+?595)9[0-9]{8}$/.test(phone)) { e.preventDefault(); showError(fields.whatsapp); fields.whatsapp.focus(); return; }
       fields.whatsapp.value = phone.replace(/^0/, '595').replace(/^\+/, '');
-      // Normal POST: B5 owns validation, persistence, redirect, and error restoration.
+      // Without fetch this stays a normal POST: B5 owns validation, persistence, redirect, and error restoration.
+      // With fetch, the same POST runs in the background so a host-level failure (PHP down, network) still ends in WhatsApp.
+      if (typeof fetch !== 'function' || typeof FormData !== 'function' || typeof DOMParser !== 'function') return;
+      e.preventDefault();
+      if (form.hasAttribute('data-sending')) return;
+      form.setAttribute('data-sending', '');
+      var button = form.querySelector('button[type="submit"]'), label = button.textContent;
+      var summary = form.querySelector('[data-form-errors]');
+      button.disabled = true; button.textContent = cfg.errors.submitting;
+      function done() { form.removeAttribute('data-sending'); button.disabled = false; button.textContent = label; summary.hidden = false; summary.focus(); }
+      function whatsappFallback() {
+        var wa = document.querySelector('a[href^="https://wa.me/"]');
+        var number = wa ? (wa.getAttribute('href').match(/wa\.me\/(\d+)/) || [])[1] : '';
+        var option = function (select) { return select.value ? select.options[select.selectedIndex].text : ''; };
+        var text = ['Hola, quiero consultar (' + location.pathname + ').', 'Nombre: ' + fields.nombre.value.trim(),
+          fields.fecha.value ? 'Fecha: ' + fields.fecha.value : '', fields.invitados.value ? 'Invitados: ' + fields.invitados.value : '',
+          option(fields.tipo) ? 'Evento: ' + option(fields.tipo) : '', option(fields.zona) ? 'Zona: ' + option(fields.zona) : '',
+          fields.mensaje.value.trim()].filter(Boolean).join('\n');
+        var link = document.createElement('a');
+        link.href = 'https://wa.me/' + number + '?text=' + encodeURIComponent(text);
+        link.className = 'btn btn--primary';
+        link.setAttribute('data-form-fallback', '');
+        link.textContent = 'Enviar por WhatsApp';
+        summary.textContent = cfg.errors.failure + ' ';
+        summary.appendChild(link);
+        done();
+      }
+      fetch(form.action, { method: 'POST', body: new FormData(form), credentials: 'same-origin' }).then(function (res) {
+        if (res.ok && /\/gracias(\.html|\/)?$/.test(new URL(res.url).pathname)) { location.assign(res.url); return; }
+        return res.text().then(function (html) {
+          // B5 error pages restore the form with an escaped summary; anything else is a host failure.
+          var server = new DOMParser().parseFromString(html, 'text/html').querySelector('[data-lead-form][data-server-error]');
+          var serverSummary = server && server.querySelector('[data-form-errors]');
+          if (!serverSummary) return whatsappFallback();
+          server.querySelectorAll('[aria-invalid="true"][name]').forEach(function (el) { if (fields[el.name]) showError(fields[el.name]); });
+          summary.innerHTML = serverSummary.innerHTML;
+          done();
+        });
+      }).catch(whatsappFallback);
     });
   });
 

@@ -1,5 +1,15 @@
 # Senior review — 2026-09-26
 
+
+## Manager audit (Claude Opus 5.5, 2026-09-26)
+
+Codex (gpt-6-astra low) did not test the live site. Additions and corrections:
+
+- **P0, live form broken:** `GET https://babyshower.com.py/lead-forward.php` returned Hostinger's own 503 page instead of the script's 303 to `/contacto/`, so PHP was not executing and every form POST failed. Hosting fix: PHP 8.1+ on the domain, private config above `public_html`, then `node deploy/smoke.mjs`. Code fix: with JavaScript the form now submits in the background and, on a host failure, shows a WhatsApp button prefilled with the form data; B5 validation errors are shown in place; no-JS keeps the normal POST.
+- **Deploy path is Hostinger Git from `master`, not the ZIP.** Finding 1 (stale ZIPs) is P2: they cannot reach production unless uploaded by hand. Private repo paths on the live site were probed and return 403.
+- Implemented from P2: only `?v=` assets are immutable (images/fonts revalidate weekly); `assets/img/manifest.json` denied; Temáticas/Zonas hub level in BreadcrumbList; 44 px minimum tap width for footer/breadcrumb links; `deploy/smoke.mjs` post-deploy check; deploy docs updated for the account move.
+- Left for the owner: fulfilment wording (P1 4), illustrative photos (P1 5), price date (P2 10).
+
 ## Local vs Repo
 
 - Repository: `antonmarklundcom/babyshower`. Started on `master`, with only the two reported untracked design prompts. Read the plan/revision authority and the deployment, handoff, build-log, route, keyword and prior-review documentation before implementation. Later build-log decisions supersede older design instructions; in particular, removal of illustrative-photo disclosures was expressly approved in Batch 10.
