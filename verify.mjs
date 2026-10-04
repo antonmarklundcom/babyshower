@@ -45,11 +45,11 @@ test('Sharing JPEG', () => {
 });
 test('Server SID fallback', () => {
  const php = read('lead-forward.php').replace(/\r\n/g, '\n');
- const generation = "if ($lead['sid'] === '') {\n    $lead['sid'] = 'BS-' . date('Ymd') . '-' . bin2hex(random_bytes(2));\n}";
- const validation = "preg_match('/^BS-[0-9]{8}-[a-z0-9]{4}$/Di', $lead['sid'])";
+ const generation = "if ($lead['sid'] === '') {\n    $lead['sid'] = 'BS-' . date('Ymd') . '-' . bin2hex(random_bytes(16));\n}";
+ const validation = "preg_match('/^BS-[0-9]{8}-(?:[a-z0-9]{4}|[a-f0-9]{32})$/Di', $lead['sid'])";
  assert(php.includes(generation), 'Missing empty-only random SID generation');
  assert(php.indexOf(generation) < php.indexOf(validation), 'SID generation must precede validation');
- assert(read('assets/js/site.js').includes('BS-' + String.fromCharCode(92) + 'd{8}-[a-z0-9]{4}'), 'Cookie SID format');
+ assert(read('assets/js/site.js').includes('BS-' + String.fromCharCode(92) + 'd{8}-(?:[a-z0-9]{4}|[a-f0-9]{32})'), 'Cookie SID format');
 });
 check(!/Ley (?:6534\/2020|4868\/2013)/i.test(read('content.mjs')), 'Unreviewed source statute citation');
 for (const zone of ZONE_DETAILS.filter(z => ['mariano-roque-alonso', 'capiata'].includes(z.slug))) {
@@ -260,13 +260,15 @@ test('Home content and forms', () => {
  assert(one(home, '[id="calculadora"]'));
  assert.equal(all(home, '[data-package]').length, PACKAGES.length);
  assert.equal(all(home, '.theme-card').length, THEMES.length);
- assert(one(home, '.dark-band.grain'));
+ assert.equal(all(home, '.dark-band.grain').length, 0, 'No redundant promotional band');
  assert.equal(all(home, '.home-proposal, .comparison').length, 0, 'Home uses a photo hero and inclusion lists');
  assert.equal(all(pages.get('/combos-y-precios/').dom, '.comparison').length, 1, 'Comparison stays on the combos page');
- assert.deepEqual(all(one(home, '.home-inclusions'), 'li').map(text), UI.homeInclusions.flatMap(group => group.items));
+ assert.equal(all(home, '.home-inclusions').length, 0, 'No duplicate inclusion lists');
+ assert(text(one(home, '.launch-note')).includes('primeros eventos'));
+ for (const figure of all(home, '.ai-image')) assert(text(one(figure, 'figcaption')).includes('ilustrativa'));
  assert.equal(all(home, '[data-faq]').length, 7);
  assert.equal(text(one(all(home, '[data-faq]')[2], 'summary')), PAGES['/'].faq[2].q);
- for (const card of all(home, '[data-package]')) assert.equal(all(one(card, '.package-rows'), 'div').length, 6, 'Six home comparison rows');
+ for (const card of all(home, '[data-package]')) assert.equal(all(one(card, '.package-rows'), 'div').length, 3, 'Three concise home comparison rows');
  for (const route of ['/', '/contacto/']) {
   const form = one(pages.get(route).dom, 'form');
   assert.equal(form.attrs.action, '/lead-forward.php'); assert.equal(form.attrs.method, 'post');
@@ -417,11 +419,43 @@ function browser(html, route, options = {}) {
  if (options.cookie) document.cookie = options.cookie;
  document.getElementById('site-config').textContent = JSON.stringify({ analyticsId: options.id ?? 'G-TEST', consentKey: 'bs-consent', successCookie: 'bs_lead_success', errors: UI.errors, form: UI.form });
  const context = { document, location: new URL(SITE.url + route), localStorage: { getItem: key => storage.get(key) ?? null, setItem: (key,v) => storage.set(key,v) }, crypto: webcrypto, Intl, Uint8Array, URL, URLSearchParams, Map, Date: class extends Date { static now() { return clock; } }, console, scrollY: 0 };
+ Object.assign(context, options.globals || {});
  context.window = context;
  vm.runInNewContext(read('assets/js/site.js'), context, { timeout: 3000 });
  function fire(target, type, extra = {}) { const event = { target, prevented: false, preventDefault() { this.prevented = true; }, ...extra }; for (let n = target; n; n = n.parent) for (const fn of handlers.get(n)?.get(type) || []) fn(event); for (const fn of handlers.get(document)?.get(type) || []) fn(event); return event; }
  return { context, dom, storage, jar, document, q: document.querySelector, fire, tick: () => { clock += 1001; }, events: () => (context.dataLayer || []).filter(v => v[0] === 'event'), tags: () => document.head.children.filter(n => n.src?.includes('googletagmanager')) };
 }
+// Exercise asynchronous form failures without sending an enquiry to any external service.
+try {
+ let requests = 0, abortTimer, cleared = false;
+ const b = browser(analyticsHtml('/contacto/'), '/contacto/', { globals: {
+  FormData: class { constructor(form) { this.fields = form.elements; } }, DOMParser: class {}, AbortController,
+  setTimeout: fn => { abortTimer = fn; return 1; }, clearTimeout: () => { cleared = true; },
+  fetch: (_url, options) => { requests++; return new Promise((_resolve, reject) => options.signal.addEventListener('abort', () => reject(new Error('aborted')))); }
+ }});
+ const form = b.q('form'), f = form.elements;
+ f.nombre.value = 'Ana Prueba'; f.whatsapp.value = '0981234567'; f.tipo.value = 'baby-shower'; f.zona.value = 'luque'; f.invitados.value = '37';
+ for (const name of ['tipo', 'zona']) { f[name].options = all(f[name], 'option').map(n => ({ text: text(n) })); f[name].selectedIndex = all(f[name], 'option').findIndex(n => n.attrs.value === f[name].value); }
+ const sid = f.sid.value;
+ assert(/^BS-\d{8}-[a-f0-9]{32}$/.test(sid), '128-bit browser SID');
+ assert(b.fire(form, 'submit').prevented); b.fire(form, 'submit'); assert.equal(requests, 1, 'Duplicate clicks are ignored');
+ abortTimer(); await new Promise(resolve => setImmediate(resolve));
+ assert(cleared); assert(!form.hasAttribute('data-sending')); assert.equal(b.q('button[type="submit"]').disabled, false);
+ const fallback = b.q('[data-form-fallback]'); assert(fallback, 'Timeout offers WhatsApp');
+ const msg = new URL(fallback.href).searchParams.get('text'); assert(msg.includes('37') && msg.includes('Luque') && msg.includes('Ana Prueba'));
+ assert.equal(f.sid.value, sid, 'Unedited retry preserves SID');
+ f.mensaje.value = 'Cambio de alcance'; b.fire(f.mensaje, 'input'); assert.notEqual(f.sid.value, sid, 'Edited retry receives a new SID');
+ const delivered = browser(analyticsHtml('/contacto/'), '/contacto/', { globals: {
+  FormData: class {}, DOMParser: class {}, AbortController,
+  setTimeout: () => 1, clearTimeout: () => {},
+  fetch: async () => ({ ok: true, url: SITE.url + '/gracias.html' })
+ }});
+ let redirected = ''; delivered.context.location.assign = url => { redirected = url; };
+ delivered.q('form').elements.nombre.value = 'Ana Prueba'; delivered.q('form').elements.whatsapp.value = '0981234567';
+ delivered.fire(delivered.q('form'), 'submit'); await new Promise(resolve => setImmediate(resolve));
+ assert.equal(redirected, SITE.url + '/gracias.html');
+ notes.push('PASS: form timeout, duplicate clicks, preserved WhatsApp details, edited retry SID and success redirect (mock transport).');
+} catch (error) { check(false, 'Async form regressions: ' + error.message); }
 test('Consent and interaction behavior', () => {
  const html = analyticsHtml('/');
  const b = browser(html, '/');
@@ -440,7 +474,7 @@ test('Consent and interaction behavior', () => {
  assert.equal(b.fire(b.document,'keydown',{key:'Tab'}).prevented,true); assert.equal(b.document.activeElement,modalButtons[0]);
  b.fire(b.document,'keydown',{key:'Escape'}); assert.equal(b.q('[data-wa-menu]').hidden,true); assert.equal(b.document.activeElement,trigger);
  const burger = b.q('[data-hdr-burger]'); b.fire(burger,'click'); assert.equal(burger.attrs['aria-expanded'],'true'); b.fire(b.document,'keydown',{key:'Escape'}); assert.equal(burger.attrs['aria-expanded'],'false');
- const form = b.q('form'); assert(/^BS-\d{8}-[a-z0-9]{4}$/.test(form.elements.sid.value));
+ const form = b.q('form'); assert(/^BS-\d{8}-(?:[a-z0-9]{4}|[a-f0-9]{32})$/.test(form.elements.sid.value));
  form.elements.fecha.value = '2027-01-01'; const unknown = b.q('[data-date-unknown]'); unknown.checked = true; b.fire(unknown,'change'); assert.equal(form.elements.fecha.value,''); assert.equal(form.elements.fecha.disabled,true);
  form.elements.nombre.value = 'Ana'; form.elements.whatsapp.value = '0992279599'; b.fire(form,'submit'); assert.equal(form.elements.whatsapp.value,'595992279599'); assert(!b.events().some(e => e[1] === 'form_submit'));
  const before = b.events().length; b.document.cookie = '_ga=test'; b.fire(b.q('[data-consent-revoke]'),'click'); assert.equal(b.context['ga-disable-G-TEST'],true); assert(!b.jar.has('_ga')); b.tick(); b.fire(wa,'click'); assert.equal(b.events().length,before);
@@ -587,6 +621,9 @@ if (args.includes('--calc') || Number(phase[1]) >= 2) {
     assert.equal(root.hidden, false); assert(message().includes(priceCaption(PACKAGES[1].price)));
     range.value = '45'; b.fire(range, 'input'); assert(!/Gs\.\s*\d/.test(message()));
     choose('premium'); assert.equal(range.value, '45'); assert(message().includes('3.050.000'));
+    assert(message().includes('Souvenirs personalizados x40')); assert(!message().includes('Souvenirs personalizados x30'));
+    const exact = b.q('[data-exact-guests]'); exact.value = '37'; b.fire(exact, 'input'); assert.equal(exact.value, '37', 'Typing does not clamp mid-edit'); b.fire(exact, 'change'); assert.equal(range.value, '37'); assert(message().includes('37 invitados'));
+    range.value = '45'; b.fire(range, 'input');
     for (const id of ['torta','souvenirs']) { assert(b.q(`[data-addon][value="${id}"]`).disabled); assert.equal(b.q(`[data-addon-note="${id}"]`).textContent, 'incluido'); }
     choose('basico'); assert.equal(range.value, '45'); assert.equal(cta.textContent, 'Pedir cotización'); assert(!/Gs\.\s*\d/.test(b.q('[data-calc-output]').innerHTML));
     choose('estrella'); range.value = '40'; b.q('[data-addon][value="torta"]').checked = true; b.fire(root, 'change'); assert(message().includes('2.620.000'));

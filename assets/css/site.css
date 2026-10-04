@@ -654,3 +654,15 @@ main:not(.home-page) section{padding-block:80px}
 @media(max-width:639px){.footer-grid--cols{gap:1.5rem 1rem}.svc-hero__media::before{inset:-10px 10px 10px -10px}.service-cards{grid-template-columns:1fr}.svc-hero .actions .btn{width:100%}}
 @media(prefers-reduced-motion:reduce){.service-card,.nav-drop.is-open .nav-drop__menu{transition:none;animation:none}}
 .desktop-nav .mega-item[aria-current=page]{text-decoration:none!important;background:var(--base)}
+
+/* Public launch imagery is inspiration, never a completed-client portfolio. */
+.ai-image{position:relative}
+.ai-image figcaption{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:.4rem .6rem;background:rgba(24,38,30,.86);color:#fff;font-size:.65rem;line-height:1.35;text-align:left;pointer-events:none}
+.hero-art figcaption{left:auto;right:1rem;bottom:1rem;max-width:18rem;border-radius:.3rem}
+.launch-note{font-size:.85rem;line-height:1.5;max-width:48rem}
+.hero .launch-note{max-width:33rem}
+[data-exact-guests]{max-width:8rem;margin-top:.4rem}
+@media(max-width:959px){.hero-art figcaption{bottom:0;right:0;max-width:100%;font-size:.6rem}.theme-image figcaption{font-size:.55rem}}
+
+.theme-photo .theme-image figcaption{top:0;bottom:auto;font-size:.65rem}
+.home-page .hero-copy .launch-note{font-size:13px;line-height:1.45;max-width:52ch}

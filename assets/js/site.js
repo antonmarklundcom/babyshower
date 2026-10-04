@@ -64,7 +64,7 @@
     // durable log + notification success, then redirects to /gracias.html.
     // A query parameter, form click or direct visit is never proof of success.
     if (location.pathname !== '/gracias.html' || choice !== 'accepted' || !ID) return;
-    var match = document.cookie.match(/(?:^|;\s*)bs_lead_success=(BS-\d{8}-[a-z0-9]{4})(?:;|$)/i);
+    var match = document.cookie.match(/(?:^|;\s*)bs_lead_success=(BS-\d{8}-(?:[a-z0-9]{4}|[a-f0-9]{32}))(?:;|$)/i);
     if (!match) return;
     var key = 'bs-converted:' + match[1];
     if (stored(key) !== '1') {
@@ -75,7 +75,7 @@
   }
   if (banner) banner.hidden = choice === 'accepted' || choice === 'rejected';
   if (location.pathname === '/gracias.html') {
-    var success = document.cookie.match(/(?:^|;\s*)bs_lead_success=(BS-\d{8}-[a-z0-9]{4})(?:;|$)/i);
+    var success = document.cookie.match(/(?:^|;\s*)bs_lead_success=(BS-\d{8}-(?:[a-z0-9]{4}|[a-f0-9]{32}))(?:;|$)/i);
     if (success) document.querySelectorAll('a[href]').forEach(function (link) {
       if (!link.getAttribute('href').startsWith('https://wa.me/')) return;
       var url = new URL(link.getAttribute('href'));
@@ -175,8 +175,12 @@
     var parts = new Intl.DateTimeFormat('en', { timeZone: 'America/Asuncion', year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(new Date());
     today = ['year', 'month', 'day'].map(function (type) { return parts.find(function (p) { return p.type === type; }).value; }).join('-');
     fields.fecha.min = today;
-    var bytes = new Uint8Array(2); crypto.getRandomValues(bytes);
-    if (!fields.sid.value) fields.sid.value = 'BS-' + today.replaceAll('-', '') + '-' + Array.from(bytes, function (b) { return b.toString(16).padStart(2, '0'); }).join('');
+    function newSubmissionId() {
+      var bytes = new Uint8Array(16); crypto.getRandomValues(bytes);
+      return 'BS-' + today.replaceAll('-', '') + '-' + Array.from(bytes, function (b) { return b.toString(16).padStart(2, '0'); }).join('');
+    }
+    if (!fields.sid.value) fields.sid.value = newSubmissionId();
+    var submitted = form.hasAttribute('data-server-error');
     if (form.hasAttribute('data-server-error')) {
       var serverSummary = form.querySelector('[data-form-errors]');
       if (serverSummary) serverSummary.focus();
@@ -194,6 +198,7 @@
     form.addEventListener('invalid', function (e) { showError(e.target); }, true);
     form.addEventListener('input', function (e) {
       var field = e.target;
+      if (submitted && !form.hasAttribute('data-sending')) { fields.sid.value = newSubmissionId(); submitted = false; }
       field.removeAttribute('aria-invalid');
       var error = document.getElementById('error-' + field.name);
       if (error) error.hidden = true;
@@ -209,10 +214,13 @@
       e.preventDefault();
       if (form.hasAttribute('data-sending')) return;
       form.setAttribute('data-sending', '');
+      submitted = true;
       var button = form.querySelector('button[type="submit"]'), label = button.textContent;
       var summary = form.querySelector('[data-form-errors]');
       button.disabled = true; button.textContent = cfg.errors.submitting;
-      function done() { form.removeAttribute('data-sending'); button.disabled = false; button.textContent = label; summary.hidden = false; summary.focus(); }
+      var controller = typeof AbortController === 'function' ? new AbortController() : null;
+      var timeout = controller ? setTimeout(function () { controller.abort(); }, 15000) : null;
+      function done() { if (timeout) clearTimeout(timeout); form.removeAttribute('data-sending'); button.disabled = false; button.textContent = label; summary.hidden = false; summary.focus(); }
       function whatsappFallback() {
         var wa = document.querySelector('a[href^="https://wa.me/"]');
         var number = wa ? (wa.getAttribute('href').match(/wa\.me\/(\d+)/) || [])[1] : '';
@@ -225,13 +233,15 @@
         link.href = 'https://wa.me/' + number + '?text=' + encodeURIComponent(text);
         link.className = 'btn btn--primary';
         link.setAttribute('data-form-fallback', '');
+        link.setAttribute('data-ev', 'whatsapp_click');
+        link.setAttribute('data-ev-loc', 'formulario-fallback');
         link.textContent = 'Enviar por WhatsApp';
         summary.textContent = cfg.errors.failure + ' ';
         summary.appendChild(link);
         done();
       }
-      fetch(form.action, { method: 'POST', body: new FormData(form), credentials: 'same-origin' }).then(function (res) {
-        if (res.ok && /\/gracias(\.html|\/)?$/.test(new URL(res.url).pathname)) { location.assign(res.url); return; }
+      fetch(form.action, { method: 'POST', body: new FormData(form), credentials: 'same-origin', signal: controller ? controller.signal : undefined }).then(function (res) {
+        if (res.ok && /\/gracias(\.html|\/)?$/.test(new URL(res.url).pathname)) { if (timeout) clearTimeout(timeout); location.assign(res.url); return; }
         return res.text().then(function (html) {
           // B5 error pages restore the form with an escaped summary; anything else is a host failure.
           var server = new DOMParser().parseFromString(html, 'text/html').querySelector('[data-lead-form][data-server-error]');

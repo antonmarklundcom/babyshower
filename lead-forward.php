@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 // Generated public defaults only; private deployment configuration is never read by Node.
 // BEGIN SITE DEFAULTS
-const SITE_DEFAULTS = 'eyJsZWFkRW1haWwiOiIiLCJ6b25lcyI6WyJhc3VuY2lvbiIsImZlcm5hbmRvLWRlLWxhLW1vcmEiLCJsYW1iYXJlIiwic2FuLWxvcmVuem8iLCJsdXF1ZSIsIm1hcmlhbm8tcm9xdWUtYWxvbnNvIiwiY2FwaWF0YSIsIm90cmEiXSwicm91dGVzIjpbIi8iLCIvY29tby1mdW5jaW9uYS8iLCIvY29udGFjdG8vIiwiL3ByZWd1bnRhcy1mcmVjdWVudGVzLyIsIi9wcml2YWNpZGFkLyIsIi90ZXJtaW5vcy8iLCIvY29tYm9zLXktcHJlY2lvcy8iLCIvcmV2ZWxhY2lvbi1kZS1nZW5lcm8vIiwiL3ByaW1lci1hbml0by8iLCIvc2VydmljaW9zLyIsIi9kZWNvcmFjaW9uLWNvbi1nbG9ib3MvIiwiL2JhdXRpc21vLyIsIi9jdW1wbGVhbm9zLWluZmFudGlsLyIsIi9iaWVudmVuaWRhLWRlLWJlYmUvIiwiL3RlbWF0aWNhcy8iLCIvdGVtYXRpY2FzL2plZmUtZW4tcGFuYWxlcy8iLCIvdGVtYXRpY2FzL2Rpbm8tYmViZS8iLCIvdGVtYXRpY2FzL21vYW5hLWJlYmUvIiwiL3RlbWF0aWNhcy9taW5uaWUtYmViZS8iLCIvdGVtYXRpY2FzL21pY2tleS1iZWJlLyIsIi90ZW1hdGljYXMvYmxhbmNhLW5pZXZlcy1iZWJlLyIsIi90ZW1hdGljYXMvZnJ1dGlsbGl0YS1iZWJlLyIsIi90ZW1hdGljYXMvbWFyaXBvc2FzLyIsIi90ZW1hdGljYXMvc2FmYXJpLyIsIi90ZW1hdGljYXMvbnViZXMteS1vc2l0b3MvIiwiL3pvbmFzLyIsIi96b25hcy9hc3VuY2lvbi8iLCIvem9uYXMvbHVxdWUvIiwiL3pvbmFzL3Nhbi1sb3JlbnpvLyIsIi96b25hcy9mZXJuYW5kby1kZS1sYS1tb3JhLyIsIi96b25hcy9sYW1iYXJlLyIsIi96b25hcy9jYXBpYXRhLyIsIi96b25hcy9tYXJpYW5vLXJvcXVlLWFsb25zby8iLCIvaWRlYXMvIiwiL2lkZWFzL2lkZWFzLXBhcmEtYmFieS1zaG93ZXIvIiwiL2lkZWFzL2p1ZWdvcy1wYXJhLWJhYnktc2hvd2VyLyIsIi9pZGVhcy9iYWJ5LXNob3dlci1zZW5jaWxsby1lbi1jYXNhLyIsIi9pZGVhcy9yZXZlbGFjaW9uLWRlLWdlbmVyby1zZW5jaWxsYS8iLCIvaWRlYXMvcXVlLXNlLW5lY2VzaXRhLXBhcmEtdW4tYmFieS1zaG93ZXIvIiwiL2lkZWFzL2NlbnRyb3MtZGUtbWVzYS1wYXJhLWJhYnktc2hvd2VyLyIsIi9pZGVhcy9xdWUtcmVnYWxhci1lbi11bi1iYWJ5LXNob3dlci8iLCIvaWRlYXMvYmFieS1zaG93ZXItZGUtbmluYS8iLCIvaWRlYXMvZmllc3RhLWRlLXByaW1lci1hbml0by8iLCIvaWRlYXMvYmFieS1zaG93ZXItZGUtbmluby8iLCIvaWRlYXMvbWVzYS1kdWxjZS1wYXJhLWJhYnktc2hvd2VyLyIsIi9pZGVhcy9zb3V2ZW5pcnMtcGFyYS1iYWJ5LXNob3dlci8iLCIvaWRlYXMvdG9ydGEtcGFyYS1iYWJ5LXNob3dlci8iLCIvaWRlYXMvdG9ydGEtcGFyYS1yZXZlbGFjaW9uLWRlLWdlbmVyby8iLCIvaWRlYXMvanVlZ29zLXBhcmEtcmV2ZWxhY2lvbi1kZS1nZW5lcm8vIiwiL2lkZWFzL2FyY28tZGUtZ2xvYm9zLXBhcmEtYmFieS1zaG93ZXIvIiwiL2lkZWFzL3ByaW1lci1hbml0by12YXJvbi8iLCIvaWRlYXMvYWp1YXItcGFyYS1iZWJlLyIsIi9pZGVhcy9ub21icmVzLWRlLWJlYmUtcGFyYWd1YXkvIiwiL2lkZWFzL3RvcnRhLXBhcmEtYmF1dGlzbW8vIiwiL2lkZWFzL2RlY29yYWNpb24tcGFyYS1iYXV0aXNtby8iLCIvaWRlYXMvZGVjb3JhY2lvbi1jdW1wbGVhbm9zLWluZmFudGlsLyIsIi9pZGVhcy9hcnJlZ2xvcy1kZS1nbG9ib3MvIl0sImVycm9ycyI6eyJub21icmUiOiJFc2NyaWLDrSB0dSBub21icmUsIGVudHJlIDIgeSA2MCBjYXJhY3RlcmVzLiIsIndoYXRzYXBwIjoiRXNjcmliw60gdW4gbsO6bWVybyBkZSBjZWx1bGFyIHBhcmFndWF5byB2w6FsaWRvLiIsImZlY2hhIjoiRWxlZ8OtIHVuYSBmZWNoYSBkZSBob3kgZW4gYWRlbGFudGUgbyBtYXJjw6EgTm8gc8OpIHRvZGF2w61hLiIsImludml0YWRvcyI6IkVzY3JpYsOtIHVuYSBjYW50aWRhZCBlbnRlcmEgZW50cmUgNSB5IDIwMCBpbnZpdGFkb3MuIiwidGlwbyI6IkVsZWfDrSB1biB0aXBvIGRlIGV2ZW50byBkZSBsYSBsaXN0YS4iLCJ6b25hIjoiRWxlZ8OtIHVuYSB6b25hIGRlIGxhIGxpc3RhLiIsIm1lbnNhamUiOiJUdSBtZW5zYWplIHB1ZWRlIHRlbmVyIGhhc3RhIDUwMCBjYXJhY3RlcmVzLiIsImludmFsaWQiOiJObyBwdWRpbW9zIHZhbGlkYXIgdHUgY29uc3VsdGEuIFZvbHbDqSBhIGNhcmdhciBsYSBww6FnaW5hIGUgaW50ZW50w6EgZGUgbnVldm8uIiwicmF0ZSI6IlJlY2liaW1vcyB2YXJpb3MgaW50ZW50b3MuIEVzcGVyw6EgdW4gbWludXRvIHkgdm9sdsOpIGEgaW50ZW50YXIsIG8gZXNjcmliaW5vcyBwb3IgV2hhdHNBcHAuIiwiZmFpbHVyZSI6Ik5vIHB1ZGltb3MgZ3VhcmRhciB0dSBjb25zdWx0YS4gRXNjcmliaW5vcyBwb3IgV2hhdHNBcHA6ICs1OTUgOTkyIDI3OSA1OTkiLCJzdW1tYXJ5IjoiUmV2aXPDoSBsb3MgY2FtcG9zIG1hcmNhZG9zIHkgdm9sdsOpIGEgZW52aWFyIHR1IGNvbnN1bHRhLiIsInN1Ym1pdHRpbmciOiJFbnZpYW5kbyB0dSBjb25zdWx0YeKApiJ9LCJ3YSI6IjU5NTk5MjI3OTU5OSIsInVybCI6Imh0dHBzOi8vYmFieXNob3dlci5jb20ucHkifQ==';
+const SITE_DEFAULTS = 'eyJsZWFkRW1haWwiOiIiLCJ6b25lcyI6WyJhc3VuY2lvbiIsImZlcm5hbmRvLWRlLWxhLW1vcmEiLCJsYW1iYXJlIiwic2FuLWxvcmVuem8iLCJsdXF1ZSIsIm1hcmlhbm8tcm9xdWUtYWxvbnNvIiwiY2FwaWF0YSIsIm90cmEiXSwicm91dGVzIjpbIi8iLCIvY29tby1mdW5jaW9uYS8iLCIvY29udGFjdG8vIiwiL3ByZWd1bnRhcy1mcmVjdWVudGVzLyIsIi9wcml2YWNpZGFkLyIsIi90ZXJtaW5vcy8iLCIvY29tYm9zLXktcHJlY2lvcy8iLCIvcmV2ZWxhY2lvbi1kZS1nZW5lcm8vIiwiL3ByaW1lci1hbml0by8iLCIvc2VydmljaW9zLyIsIi9kZWNvcmFjaW9uLWNvbi1nbG9ib3MvIiwiL2JhdXRpc21vLyIsIi9jdW1wbGVhbm9zLWluZmFudGlsLyIsIi9iaWVudmVuaWRhLWRlLWJlYmUvIiwiL3RlbWF0aWNhcy8iLCIvdGVtYXRpY2FzL2plZmUtZW4tcGFuYWxlcy8iLCIvdGVtYXRpY2FzL2Rpbm8tYmViZS8iLCIvdGVtYXRpY2FzL21vYW5hLWJlYmUvIiwiL3RlbWF0aWNhcy9taW5uaWUtYmViZS8iLCIvdGVtYXRpY2FzL21pY2tleS1iZWJlLyIsIi90ZW1hdGljYXMvYmxhbmNhLW5pZXZlcy1iZWJlLyIsIi90ZW1hdGljYXMvZnJ1dGlsbGl0YS1iZWJlLyIsIi90ZW1hdGljYXMvbWFyaXBvc2FzLyIsIi90ZW1hdGljYXMvc2FmYXJpLyIsIi90ZW1hdGljYXMvbnViZXMteS1vc2l0b3MvIiwiL3pvbmFzLyIsIi96b25hcy9hc3VuY2lvbi8iLCIvem9uYXMvbHVxdWUvIiwiL3pvbmFzL3Nhbi1sb3JlbnpvLyIsIi96b25hcy9mZXJuYW5kby1kZS1sYS1tb3JhLyIsIi96b25hcy9sYW1iYXJlLyIsIi96b25hcy9jYXBpYXRhLyIsIi96b25hcy9tYXJpYW5vLXJvcXVlLWFsb25zby8iLCIvaWRlYXMvIiwiL2lkZWFzL2lkZWFzLXBhcmEtYmFieS1zaG93ZXIvIiwiL2lkZWFzL2p1ZWdvcy1wYXJhLWJhYnktc2hvd2VyLyIsIi9pZGVhcy9iYWJ5LXNob3dlci1zZW5jaWxsby1lbi1jYXNhLyIsIi9pZGVhcy9yZXZlbGFjaW9uLWRlLWdlbmVyby1zZW5jaWxsYS8iLCIvaWRlYXMvcXVlLXNlLW5lY2VzaXRhLXBhcmEtdW4tYmFieS1zaG93ZXIvIiwiL2lkZWFzL2NlbnRyb3MtZGUtbWVzYS1wYXJhLWJhYnktc2hvd2VyLyIsIi9pZGVhcy9xdWUtcmVnYWxhci1lbi11bi1iYWJ5LXNob3dlci8iLCIvaWRlYXMvYmFieS1zaG93ZXItZGUtbmluYS8iLCIvaWRlYXMvZmllc3RhLWRlLXByaW1lci1hbml0by8iLCIvaWRlYXMvYmFieS1zaG93ZXItZGUtbmluby8iLCIvaWRlYXMvbWVzYS1kdWxjZS1wYXJhLWJhYnktc2hvd2VyLyIsIi9pZGVhcy9zb3V2ZW5pcnMtcGFyYS1iYWJ5LXNob3dlci8iLCIvaWRlYXMvdG9ydGEtcGFyYS1iYWJ5LXNob3dlci8iLCIvaWRlYXMvdG9ydGEtcGFyYS1yZXZlbGFjaW9uLWRlLWdlbmVyby8iLCIvaWRlYXMvanVlZ29zLXBhcmEtcmV2ZWxhY2lvbi1kZS1nZW5lcm8vIiwiL2lkZWFzL2FyY28tZGUtZ2xvYm9zLXBhcmEtYmFieS1zaG93ZXIvIiwiL2lkZWFzL3ByaW1lci1hbml0by12YXJvbi8iLCIvaWRlYXMvYWp1YXItcGFyYS1iZWJlLyIsIi9pZGVhcy9ub21icmVzLWRlLWJlYmUtcGFyYWd1YXkvIiwiL2lkZWFzL3RvcnRhLXBhcmEtYmF1dGlzbW8vIiwiL2lkZWFzL2RlY29yYWNpb24tcGFyYS1iYXV0aXNtby8iLCIvaWRlYXMvZGVjb3JhY2lvbi1jdW1wbGVhbm9zLWluZmFudGlsLyIsIi9pZGVhcy9hcnJlZ2xvcy1kZS1nbG9ib3MvIl0sImVycm9ycyI6eyJub21icmUiOiJFc2NyaWLDrSB0dSBub21icmUsIGVudHJlIDIgeSA2MCBjYXJhY3RlcmVzLiIsIndoYXRzYXBwIjoiRXNjcmliw60gdW4gbsO6bWVybyBkZSBjZWx1bGFyIHBhcmFndWF5byB2w6FsaWRvLiIsImZlY2hhIjoiRWxlZ8OtIHVuYSBmZWNoYSBkZSBob3kgZW4gYWRlbGFudGUgbyBtYXJjw6EgTm8gc8OpIHRvZGF2w61hLiIsImludml0YWRvcyI6IkVzY3JpYsOtIHVuYSBjYW50aWRhZCBlbnRlcmEgZW50cmUgNSB5IDIwMCBpbnZpdGFkb3MuIiwidGlwbyI6IkVsZWfDrSB1biB0aXBvIGRlIGV2ZW50byBkZSBsYSBsaXN0YS4iLCJ6b25hIjoiRWxlZ8OtIHVuYSB6b25hIGRlIGxhIGxpc3RhLiIsIm1lbnNhamUiOiJUdSBtZW5zYWplIHB1ZWRlIHRlbmVyIGhhc3RhIDUwMCBjYXJhY3RlcmVzLiIsImludmFsaWQiOiJObyBwdWRpbW9zIHZhbGlkYXIgdHUgY29uc3VsdGEuIFZvbHbDqSBhIGNhcmdhciBsYSBww6FnaW5hIGUgaW50ZW50w6EgZGUgbnVldm8uIiwicmF0ZSI6IlJlY2liaW1vcyB2YXJpb3MgaW50ZW50b3MuIEVzcGVyw6EgdW4gbWludXRvIHkgdm9sdsOpIGEgaW50ZW50YXIsIG8gZXNjcmliaW5vcyBwb3IgV2hhdHNBcHAuIiwiZmFpbHVyZSI6Ik5vIHB1ZGltb3MgY29uZmlybWFyIGVsIGVudsOtbyBkZSB0dSBjb25zdWx0YS4gRXNjcmliaW5vcyBwb3IgV2hhdHNBcHA6ICs1OTUgOTkyIDI3OSA1OTkiLCJzdW1tYXJ5IjoiUmV2aXPDoSBsb3MgY2FtcG9zIG1hcmNhZG9zIHkgdm9sdsOpIGEgZW52aWFyIHR1IGNvbnN1bHRhLiIsInN1Ym1pdHRpbmciOiJFbnZpYW5kbyB0dSBjb25zdWx0YeKApiJ9LCJ3YSI6IjU5NTk5MjI3OTU5OSIsInVybCI6Imh0dHBzOi8vYmFieXNob3dlci5jb20ucHkifQ==';
 // END SITE DEFAULTS
 $site = json_decode(base64_decode(SITE_DEFAULTS), true) ?: [];
 const JSON_FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_INVALID_UTF8_SUBSTITUTE;
@@ -97,6 +97,8 @@ $ip = hash('sha256', $_SERVER['REMOTE_ADDR'] ?? 'unknown');
 if (count($rates[$ip] ?? []) >= 5) { header('Retry-After: 60'); fail_form(['rate'], 429); }
 $rates[$ip][] = $now;
 if (!save_state($ratePath, $rates)) fail_form(['failure'], 503);
+// Release the global limiter before slow mail/CRM requests. Serialize only matching SIDs.
+flock($lock, LOCK_UN); fclose($lock);
 if (field('empresa') !== '' || (isset($_POST['empresa']) && !is_string($_POST['empresa']))) fail_form(['invalid']);
 
 $lead = [];
@@ -106,7 +108,7 @@ foreach (['nombre','whatsapp','fecha','invitados','tipo','zona','mensaje','orige
     if (isset($_POST[$name]) && !is_string($_POST[$name])) $errors[] = 'invalid';
 }
 if ($lead['sid'] === '') {
-    $lead['sid'] = 'BS-' . date('Ymd') . '-' . bin2hex(random_bytes(2));
+    $lead['sid'] = 'BS-' . date('Ymd') . '-' . bin2hex(random_bytes(16));
 }
 $length = static function (string $s): int { return preg_match_all('/./us', $s, $matches) ?: 0; };
 if ($length($lead['nombre']) < 2 || $length($lead['nombre']) > 60) $errors[] = 'nombre';
@@ -122,9 +124,11 @@ if ($lead['invitados'] !== '' && (!preg_match('/^[0-9]+$/D', $lead['invitados'])
 if (!in_array($lead['tipo'], ['baby-shower','revelacion','primer-anito','bautismo','cumpleanos','globos','bienvenida','otro'], true)) $errors[] = 'tipo';
 if (!in_array($lead['zona'], $site['zones'], true)) $errors[] = 'zona';
 if (!preg_match('//u', $lead['mensaje']) || $length($lead['mensaje']) > 500) $errors[] = 'mensaje';
-if (!in_array($lead['origen'], $site['routes'], true) || !preg_match('/^BS-[0-9]{8}-[a-z0-9]{4}$/Di', $lead['sid'])) $errors[] = 'invalid';
+if (!in_array($lead['origen'], $site['routes'], true) || !preg_match('/^BS-[0-9]{8}-(?:[a-z0-9]{4}|[a-f0-9]{32})$/Di', $lead['sid'])) $errors[] = 'invalid';
 if ($errors) fail_form(array_unique($errors));
 $sid = $lead['sid'];
+$submissionLock = @fopen($stateDir . '/' . hash('sha256', $sid) . '.lock', 'c');
+if (!$submissionLock || !flock($submissionLock, LOCK_EX)) fail_form(['failure'], 503);
 $fingerprint = hash('sha256', json_encode($lead, JSON_FLAGS));
 $receiptPath = $stateDir . '/' . hash('sha256', $sid) . '.json';
 if (is_file($receiptPath)) {
@@ -162,17 +166,18 @@ foreach ($lead as $key => $value) $note .= $key . ': ' . $value . "\n";
 $payload = ['phone' => '+' . $lead['whatsapp'], 'name' => $lead['nombre'], 'message' => $note,
     'source' => 'site:babyshower', 'page_url' => $site['url'] . $lead['origen'],
     'idempotency_key' => hash('sha256', 'babyshower|' . $sid)];
-$emailed = false;
-if ($notificationEmail !== '' && filter_var($notificationEmail, FILTER_VALIDATE_EMAIL) && function_exists('mail')) {
+$emailed = !empty($receipt['emailed']);
+if (!$emailed && $notificationEmail !== '' && filter_var($notificationEmail, FILTER_VALIDATE_EMAIL) && function_exists('mail')) {
     // An on-domain From keeps shared-hosting mail out of spam; the host comes from the generated site defaults.
     $mailHost = (string) parse_url((string) ($site['url'] ?? ''), PHP_URL_HOST);
     $fromHeader = $mailHost !== '' ? 'From: Baby Shower <no-reply@' . $mailHost . ">\r\n" : '';
     $emailed = @mail($notificationEmail, 'Nueva consulta Baby Shower', $note, $fromHeader . "MIME-Version: 1.0\r\nContent-Type: text/plain; charset=UTF-8");
 }
-$forwarded = false;
+$forwarded = !empty($receipt['forwarded']);
+if (!save_state($receiptPath, ['fingerprint' => $fingerprint, 'emailed' => $emailed, 'forwarded' => $forwarded, 'notified' => false])) fail_form(['failure'], 503);
 $crmUrl = trim((string) ($config['url'] ?? ''));
 $crmKey = (string) ($config['api_key'] ?? '');
-if ($crmUrl !== '' && $crmKey !== '' && filter_var($crmUrl, FILTER_VALIDATE_URL) && parse_url($crmUrl, PHP_URL_SCHEME) === 'https' && function_exists('curl_init')) {
+if (!$forwarded && $crmUrl !== '' && $crmKey !== '' && filter_var($crmUrl, FILTER_VALIDATE_URL) && parse_url($crmUrl, PHP_URL_SCHEME) === 'https' && function_exists('curl_init')) {
     $ch = curl_init(rtrim($crmUrl, '/') . '/api/v1/leads');
     curl_setopt_array($ch, [CURLOPT_POST => true, CURLOPT_RETURNTRANSFER => true,
         CURLOPT_TIMEOUT => 10, CURLOPT_CONNECTTIMEOUT => 5,
@@ -184,6 +189,6 @@ if ($crmUrl !== '' && $crmKey !== '' && filter_var($crmUrl, FILTER_VALIDATE_URL)
     curl_close($ch);
     // Never log response bodies, headers, config, or credentials.
 }
+if (!save_state($receiptPath, ['fingerprint' => $fingerprint, 'emailed' => $emailed, 'forwarded' => $forwarded, 'notified' => $emailed || $forwarded])) fail_form(['failure'], 503);
 if (!$emailed && !$forwarded) fail_form(['failure'], 503);
-if (!save_state($receiptPath, ['fingerprint' => $fingerprint, 'notified' => true])) fail_form(['failure'], 503);
 success($sid);

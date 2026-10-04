@@ -7,7 +7,7 @@ import { existsSync } from 'node:fs';
 import { homedir } from 'node:os';
 
 const globalRoot = () => { try { return execSync('npm root -g', { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim(); } catch { return ''; } };
-const bases = [process.env.PW_BASE, import.meta.url, globalRoot(), homedir() + '/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules']
+const bases = [process.env.PW_BASE, process.env.CODEX_PRIMARY_RUNTIME_NODE_MODULES, import.meta.url, globalRoot(), homedir() + '/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules']
   .filter(Boolean).map(base => base.startsWith('file:') || /[\\/]$/.test(base) ? base : base + '/');
 
 function loadPlaywright() {
