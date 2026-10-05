@@ -666,3 +666,40 @@ main:not(.home-page) section{padding-block:80px}
 
 .theme-photo .theme-image figcaption{top:0;bottom:auto;font-size:.65rem}
 .home-page .hero-copy .launch-note{font-size:13px;line-height:1.45;max-width:52ch}
+
+/* Responsive conversion cleanup: shared across every generated page. */
+.home-page .hero{min-height:0;align-items:center}
+.home-page .hero>.wrap{padding-block:40px 64px}
+.home-page .hero-copy{gap:14px;max-width:720px}
+.home-page .hero h1{font-size:clamp(38px,5vw,64px);max-width:20ch}
+.home-page .hero-price .price-amount{font-size:clamp(42px,4.5vw,56px)}
+.home-page .hero-copy .launch-note{font-size:12px;line-height:1.45;max-width:52ch}
+.home-page .hero-copy .hero-confirmation{font-size:13px;line-height:1.45}
+.home-page .hero-art::after{background:linear-gradient(90deg,rgba(43,36,48,.88),rgba(43,36,48,.68) 48%,rgba(43,36,48,.12)),linear-gradient(0deg,rgba(43,36,48,.5),transparent 70%)}
+.home-page .hero-art figcaption{bottom:10px;right:12px}
+.home-page .theme-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.theme-photo .theme-image figcaption{left:8px;right:auto;top:8px;bottom:auto;border-radius:4px;padding:4px 6px}
+.svc-hero__copy .launch-note{font-size:13px;line-height:1.5;margin-top:1rem}
+.calc-panel>div{min-width:0}
+.calc-breakdown>div{flex-wrap:wrap}
+.mobile-bar{transition:opacity 180ms ease,transform 180ms ease}
+@media(min-width:960px){
+.home-page .hero>.wrap{padding-block:48px 72px}
+.home-page .theme-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.calc-panel>div:last-child{position:sticky;top:100px;align-self:start}
+}
+@media(max-width:639px){
+.home-page .hero>.wrap{padding-block:28px 48px}
+.home-page .hero-copy{gap:12px}
+.home-page .hero-copy p{font-size:15px}
+.home-page .hero .actions{gap:8px}
+.home-page .hero .btn{min-height:48px;padding-block:12px}
+.home-page .hero-copy .launch-note{max-width:30ch}
+.home-page .hero-art::after{background:linear-gradient(90deg,rgba(43,36,48,.85),rgba(43,36,48,.62)),linear-gradient(0deg,rgba(43,36,48,.65),transparent)}
+.home-page .hero-art figcaption{display:none}
+.svc-hero h1{font-size:clamp(34px,9vw,44px)}
+.svc-hero{padding-block:28px 40px}
+.package-heading{flex-wrap:wrap}
+.package-tag{white-space:normal}
+}
+@media(prefers-reduced-motion:reduce){.mobile-bar{transition:none}}

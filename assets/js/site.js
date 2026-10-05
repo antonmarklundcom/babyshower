@@ -115,6 +115,23 @@
     var onScroll = function () { hdr.classList.toggle('is-stuck', window.scrollY > 8); };
     onScroll(); document.addEventListener('scroll', onScroll, { passive: true });
   }
+  // Keep the first screen clear; primary actions remain in the page without JS.
+  var mobileBar = document.querySelector('[data-mobile-bar]');
+  if (mobileBar) {
+    function syncMobileBar() {
+      var editing = document.activeElement && /^(INPUT|SELECT|TEXTAREA)$/.test(document.activeElement.tagName);
+      var navOpen = nav && nav.classList.contains('is-open');
+      mobileBar.hidden = window.scrollY < 120 || editing || navOpen;
+    }
+    syncMobileBar();
+    document.addEventListener('scroll', syncMobileBar, { passive: true });
+    window.addEventListener('pageshow', syncMobileBar);
+    document.addEventListener('focusin', syncMobileBar);
+    document.addEventListener('focusout', function () { setTimeout(syncMobileBar, 0); });
+    if (burger) burger.addEventListener('click', function () { setTimeout(syncMobileBar, 0); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setTimeout(syncMobileBar, 0); });
+    document.addEventListener('click', function () { setTimeout(syncMobileBar, 0); });
+  }
   if (burger && nav) {
     function closeNav() { nav.classList.remove('is-open'); burger.setAttribute('aria-expanded', 'false'); }
     burger.addEventListener('click', function () { burger.setAttribute('aria-expanded', nav.classList.toggle('is-open') ? 'true' : 'false'); });
