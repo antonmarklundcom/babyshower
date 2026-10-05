@@ -6,28 +6,32 @@
  function calculate(input, data) {
   const pkg = data.PACKAGES.find(p => p.id === input.packageId);
   const zone = data.ZONES.find(z => z.slug === input.zone);
-  const guests = Number(input.guests);
+  const guests = Math.max(15, Math.min(60, Math.round(Number(input.guests) || 30)));
+  const addonName = a => pkg.bundledLabels?.[a.id] || a.name;
   const selected = data.ADDONS.filter(a => (input.addons || []).includes(a.id) && !pkg.bundled.includes(a.id));
   const custom = guests > pkg.max || zone.delivery === null;
   const extra = Math.max(0, guests - pkg.included) * pkg.extra;
   const total = custom ? null : pkg.price + extra + selected.reduce((n, a) => n + a.price, 0) + zone.delivery;
   const caption = custom ? '' : `${data.pricePrefix} ${money(total)}. ${data.confirmation}`;
   const included = data.ADDONS.filter(a => pkg.bundled.includes(a.id));
-  const list = [...selected.map(a => a.name), ...included.map(a => a.name + ' (incluido)')].join(', ') || 'ninguno';
+  const list = [...selected.map(a => a.name), ...included.map(a => addonName(a) + ' (incluido)')].join(', ') || 'ninguno';
   const whatsapp = `Hola, usé la calculadora de babyshower.com.py (${input.route || '/'}): ${pkg.name}, ${guests} invitados, adicionales: ${list}, zona ${zone.name}. ` + (custom ? `Te cotizamos por WhatsApp. (${data.PRICES.label}). Fecha tentativa: ____` : `Estimación ${money(total)} (${data.PRICES.label}). Fecha tentativa: ____ ${caption}`);
   return { guests, custom, total, montage: data.montage, includedGuests: guests <= pkg.included ? data.includedGuests?.replace('{N}', pkg.included) : '', disabledAddons: pkg.bundled.slice(), whatsapp, caption, label: data.PRICES.label, zeroPriceLabel: data.zeroPriceLabel, cta: custom ? 'Pedir cotización' : data.primaryCta,
-   breakdown: custom ? [] : [[pkg.name, pkg.price], ['Invitados extra', extra, pkg.extra === 0 ? data.zeroGuestCaptions?.[pkg.id] : null], ...selected.map(a => [a.name, a.price]), ...included.map(a => [a.name + ' (incluido)', 0]), ['Traslado (recargo estimado)', zone.delivery]], food: data.EXTRA_FOOD?.[pkg.id] || '' };
+   breakdown: custom ? [] : [[pkg.name, pkg.price], ['Invitados extra', extra, pkg.extra === 0 ? data.zeroGuestCaptions?.[pkg.id] : null], ...selected.map(a => [a.name, a.price]), ...included.map(a => [addonName(a) + ' (incluido)', 0]), ['Traslado (recargo estimado)', zone.delivery]], food: data.EXTRA_FOOD?.[pkg.id] || '' };
  }
  function render(state) {
-  if (state.custom) return `<p>Para ${state.guests} invitados te cotizamos por WhatsApp</p><p>${escape(state.label)}</p>`;
+  if (state.custom) return `<p>Esta combinación necesita una cotización por WhatsApp (${state.guests} invitados y zona seleccionada)</p><p>${escape(state.label)}</p>`;
   return `<dl class="calc-breakdown">${state.breakdown.map(([label, amount, note]) => `<div><dt>${escape(label)}</dt><dd>${note ? escape(note) : amount === 0 ? escape(state.zeroPriceLabel || '') : money(amount)}</dd></div>`).join('')}</dl><p class="calc-total">${money(state.total)}</p>${state.montage ? `<p data-calc-scope>${escape(state.montage)}</p>` : ''}${state.includedGuests ? `<p data-calc-included>${escape(state.includedGuests)}</p>` : ''}<p>${escape(state.caption)}</p><p>${escape(state.label)}</p>${state.food ? `<p>${escape(state.food)}</p>` : ''}`;
  }
  function mount(root, data) {
   const q = s => root.querySelector(s), qa = s => Array.from(root.querySelectorAll(s));
+  const exact = q('[data-exact-guests]');
   const range = q('[data-guests]'), count = q('[data-guest-count]'), output = q('[data-calc-output]'), cta = q('[data-calc-cta]');
   function update() {
    const state = calculate({ packageId: qa('[name="calc-package"]').find(el => el.checked).value, guests: range.value, addons: qa('[data-addon]').filter(el => el.checked).map(el => el.value), zone: q('[data-calc-zone]').value, route: data.route }, data);
+   range.value = String(state.guests);
    count.textContent = range.value;
+   if (exact) exact.value = range.value;
    qa('[data-addon]').forEach(el => { el.disabled = state.disabledAddons.includes(el.value); q('[data-addon-note="' + el.value + '"]').textContent = el.disabled ? 'incluido' : ''; });
    output.innerHTML = render(state);
    cta.href = 'https://wa.me/' + data.WA_NUMBER + '?text=' + encodeURIComponent(state.whatsapp);
@@ -36,7 +40,8 @@
    q('[data-guest-step="5"]').disabled = Number(range.value) >= 60;
    return state;
   }
-  root.addEventListener('input', update);
+  if (exact) exact.addEventListener('change', () => { range.value = String(Math.max(15, Math.min(60, Math.round(Number(exact.value) || 30)))); update(); });
+  root.addEventListener('input', event => { if (event.target !== exact) update(); });
   root.addEventListener('change', update);
   qa('[data-guest-step]').forEach(button => button.addEventListener('click', () => { range.value = String(Math.max(15, Math.min(60, Number(range.value) + Number(button.dataset.guestStep)))); update(); }));
   cta.addEventListener('click', () => { update(); document.dispatchEvent(new CustomEvent('bs:calc-submit')); });
