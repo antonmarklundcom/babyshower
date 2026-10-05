@@ -27,11 +27,11 @@
   const q = s => root.querySelector(s), qa = s => Array.from(root.querySelectorAll(s));
   const exact = q('[data-exact-guests]');
   const range = q('[data-guests]'), count = q('[data-guest-count]'), output = q('[data-calc-output]'), cta = q('[data-calc-cta]');
-  function update() {
+  function update(preserveExact = false) {
    const state = calculate({ packageId: qa('[name="calc-package"]').find(el => el.checked).value, guests: range.value, addons: qa('[data-addon]').filter(el => el.checked).map(el => el.value), zone: q('[data-calc-zone]').value, route: data.route }, data);
    range.value = String(state.guests);
    count.textContent = range.value;
-   if (exact) exact.value = range.value;
+   if (exact && preserveExact !== true) exact.value = range.value;
    qa('[data-addon]').forEach(el => { el.disabled = state.disabledAddons.includes(el.value); q('[data-addon-note="' + el.value + '"]').textContent = el.disabled ? 'incluido' : ''; });
    output.innerHTML = render(state);
    cta.href = 'https://wa.me/' + data.WA_NUMBER + '?text=' + encodeURIComponent(state.whatsapp);
@@ -41,7 +41,11 @@
    return state;
   }
   if (exact) exact.addEventListener('change', () => { range.value = String(Math.max(15, Math.min(60, Math.round(Number(exact.value) || 30)))); update(); });
-  root.addEventListener('input', event => { if (event.target !== exact) update(); });
+  root.addEventListener('input', event => {
+   if (event.target !== exact) { update(); return; }
+   const value = Number(exact.value);
+   if (exact.value !== '' && Number.isInteger(value) && value >= 15 && value <= 60) { range.value = String(value); update(true); }
+  });
   root.addEventListener('change', update);
   qa('[data-guest-step]').forEach(button => button.addEventListener('click', () => { range.value = String(Math.max(15, Math.min(60, Number(range.value) + Number(button.dataset.guestStep)))); update(); }));
   cta.addEventListener('click', () => { update(); document.dispatchEvent(new CustomEvent('bs:calc-submit')); });

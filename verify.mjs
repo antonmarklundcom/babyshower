@@ -259,7 +259,7 @@ test('Home content and forms', () => {
  for (const item of TRUST) assert(normalize(visible(home)).includes(item));
  assert(one(home, '[id="calculadora"]'));
  assert.equal(all(home, '[data-package]').length, PACKAGES.length);
- assert.equal(all(home, '.theme-card').length, THEMES.length);
+ assert.equal(all(home, '.theme-card').length, 4);
  assert.equal(all(home, '.dark-band.grain').length, 0, 'No redundant promotional band');
  assert.equal(all(home, '.home-proposal, .comparison').length, 0, 'Home uses a photo hero and inclusion lists');
  assert.equal(all(pages.get('/combos-y-precios/').dom, '.comparison').length, 1, 'Comparison stays on the combos page');
@@ -395,7 +395,7 @@ function browser(html, route, options = {}) {
  function attach(node) {
   if (!node.tag) return;
   node.dataset = Object.fromEntries(Object.entries(node.attrs).filter(([k]) => k.startsWith('data-')).map(([k,v]) => [k.slice(5).replace(/-([a-z])/g, (_,c) => c.toUpperCase()), v]));
-  node.style = {}; node.value = node.attrs.value || (node.tag === 'select' ? one(node, 'option')?.attrs.value : '') || ''; node.name = node.attrs.name || ''; node.hidden = 'hidden' in node.attrs; node.checked = 'checked' in node.attrs;
+  node.tagName = node.tag.toUpperCase(); node.style = {}; node.value = node.attrs.value || (node.tag === 'select' ? one(node, 'option')?.attrs.value : '') || ''; node.name = node.attrs.name || ''; node.hidden = 'hidden' in node.attrs; node.checked = 'checked' in node.attrs;
   node.classList = { contains: cls => (node.attrs.class || '').split(/\s+/).includes(cls), add: cls => { if (!node.classList.contains(cls)) node.attrs.class = ((node.attrs.class || '') + ' ' + cls).trim(); }, remove: cls => { node.attrs.class = (node.attrs.class || '').split(/\s+/).filter(c => c !== cls).join(' '); }, toggle: (cls, force) => { const next = force ?? !node.classList.contains(cls); node.classList[next ? 'add' : 'remove'](cls); return next; } };
   node.setAttribute = (key,value) => { node.attrs[key] = String(value); };
   node.getAttribute = key => node.attrs[key]; node.hasAttribute = key => key in node.attrs; node.removeAttribute = key => { delete node.attrs[key]; };
@@ -418,9 +418,10 @@ function browser(html, route, options = {}) {
  Object.defineProperty(document, 'cookie', { get: () => [...jar].map(([k,v]) => `${k}=${v}`).join('; '), set: s => { const [kv] = s.split(';'), [k,v] = kv.split('='); if (/Max-Age=0/.test(s)) jar.delete(k); else jar.set(k,v); } });
  if (options.cookie) document.cookie = options.cookie;
  document.getElementById('site-config').textContent = JSON.stringify({ analyticsId: options.id ?? 'G-TEST', consentKey: 'bs-consent', successCookie: 'bs_lead_success', errors: UI.errors, form: UI.form });
- const context = { document, location: new URL(SITE.url + route), localStorage: { getItem: key => storage.get(key) ?? null, setItem: (key,v) => storage.set(key,v) }, crypto: webcrypto, Intl, Uint8Array, URL, URLSearchParams, Map, Date: class extends Date { static now() { return clock; } }, console, scrollY: 0 };
+ const context = { document, location: new URL(SITE.url + route), localStorage: { getItem: key => storage.get(key) ?? null, setItem: (key,v) => storage.set(key,v) }, crypto: webcrypto, Intl, Uint8Array, URL, URLSearchParams, Map, Date: class extends Date { static now() { return clock; } }, console, scrollY: 0, setTimeout, clearTimeout };
  Object.assign(context, options.globals || {});
  context.window = context;
+ context.addEventListener = (name, fn) => { if (!handlers.has(context)) handlers.set(context, new Map()); const events = handlers.get(context); if (!events.has(name)) events.set(name, []); events.get(name).push(fn); };
  vm.runInNewContext(read('assets/js/site.js'), context, { timeout: 3000 });
  function fire(target, type, extra = {}) { const event = { target, prevented: false, preventDefault() { this.prevented = true; }, ...extra }; for (let n = target; n; n = n.parent) for (const fn of handlers.get(n)?.get(type) || []) fn(event); for (const fn of handlers.get(document)?.get(type) || []) fn(event); return event; }
  return { context, dom, storage, jar, document, q: document.querySelector, fire, tick: () => { clock += 1001; }, events: () => (context.dataLayer || []).filter(v => v[0] === 'event'), tags: () => document.head.children.filter(n => n.src?.includes('googletagmanager')) };
@@ -480,6 +481,18 @@ test('Consent and interaction behavior', () => {
  const before = b.events().length; b.document.cookie = '_ga=test'; b.fire(b.q('[data-consent-revoke]'),'click'); assert.equal(b.context['ga-disable-G-TEST'],true); assert(!b.jar.has('_ga')); b.tick(); b.fire(wa,'click'); assert.equal(b.events().length,before);
  const empty = browser(pages.get('/').html,'/',{ id: '', storage: new Map([['bs-consent','accepted']]) }); assert.equal(empty.tags().length,0);
  const rejected = browser(html,'/',{ storage: new Map([['bs-consent','rejected']]) }); assert.equal(rejected.tags().length,0); assert.equal(rejected.q('[data-consent-banner]').hidden,true);
+});
+test('Mobile bar waits for scrolling and stays clear of form input', () => {
+ for (const [route, page] of pages) {
+  const b = browser(page.html, route, {id:''}); const bar = b.q('[data-mobile-bar]');
+  assert(bar.hidden, route + ': hidden at initial load');
+  b.context.scrollY = 119; b.fire(b.document,'scroll'); assert(bar.hidden);
+  b.context.scrollY = 120; b.fire(b.document,'scroll'); assert(!bar.hidden);
+  const field = b.q('input:not([type="hidden"])') || b.q('textarea');
+  if (field) { field.focus(); b.fire(field,'focusin'); assert(bar.hidden); b.document.activeElement = null; b.fire(b.document,'scroll'); assert(!bar.hidden); }
+  const nav = b.q('[data-hdr-panel]'); if (nav) { nav.classList.add('is-open'); b.fire(b.document,'scroll'); assert(bar.hidden); nav.classList.remove('is-open'); b.fire(b.document,'scroll'); assert(!bar.hidden); }
+  b.context.scrollY = 0; b.fire(b.document,'scroll'); assert(bar.hidden);
+ }
 });
 test('Phone separators use actual client validation', () => {
  for (const value of ['0981234567','+595981234567','595981234567','0981 234-567','(0981) 234 567','+595 981 234 567','0981.234.567','0981abc567','0981 234']) {
@@ -622,7 +635,7 @@ if (args.includes('--calc') || Number(phase[1]) >= 2) {
     range.value = '45'; b.fire(range, 'input'); assert(!/Gs\.\s*\d/.test(message()));
     choose('premium'); assert.equal(range.value, '45'); assert(message().includes('3.050.000'));
     assert(message().includes('Souvenirs personalizados x40')); assert(!message().includes('Souvenirs personalizados x30'));
-    const exact = b.q('[data-exact-guests]'); exact.value = '37'; b.fire(exact, 'input'); assert.equal(exact.value, '37', 'Typing does not clamp mid-edit'); b.fire(exact, 'change'); assert.equal(range.value, '37'); assert(message().includes('37 invitados'));
+    const exact = b.q('[data-exact-guests]'); exact.value = '37'; b.fire(exact, 'input'); assert.equal(exact.value, '37', 'Typing does not clamp mid-edit'); assert.equal(range.value, '37', 'Valid typed count updates immediately'); b.fire(exact, 'change'); assert.equal(range.value, '37'); assert(message().includes('37 invitados'));
     range.value = '45'; b.fire(range, 'input');
     for (const id of ['torta','souvenirs']) { assert(b.q(`[data-addon][value="${id}"]`).disabled); assert.equal(b.q(`[data-addon-note="${id}"]`).textContent, 'incluido'); }
     choose('basico'); assert.equal(range.value, '45'); assert.equal(cta.textContent, 'Pedir cotización'); assert(!/Gs\.\s*\d/.test(b.q('[data-calc-output]').innerHTML));
