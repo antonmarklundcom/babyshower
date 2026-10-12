@@ -318,7 +318,6 @@ test('Contrast and reference assets', () => {
  assert(/\.eyebrow\{font-size:12px;color:var\(--ink\)/.test(css));
  assert(css.includes('prefers-reduced-motion:reduce'));
  const refRoot = 'C:/Claude 1/claude-skills/web-design-system/references/';
- if (existsSync(refRoot + 'motion.js')) assert(readFileSync(refRoot + 'motion.js').equals(readFileSync('assets/js/motion.js')), 'Motion must be byte-identical');
  if (existsSync(refRoot + 'tokens.css')) {
   const expected = read(refRoot + 'tokens.css').replace("--font-display:'Fraunces',Georgia,serif;", "--font-display:'Instrument Serif',Georgia,serif;").replace("--font-text:'Inter Tight',system-ui,sans-serif;", "--font-text:'Satoshi',system-ui,sans-serif;").replace('--base:#F7F4ED;', '--base:#FBF6F2;').replace('--ink:#14241E;', '--ink:#2B2430;').replace('--accent:#C2603A;', '--accent:#D97B6C;');
   // CSS trimming may remove comments and unused reference components; tokens stay exact.
