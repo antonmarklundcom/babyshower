@@ -13,7 +13,7 @@ Files to touch (all under plan\):
 - 09-DESIGN-PROMPTS.md and prompts\DESIGN-1.txt to DESIGN-5.txt (CTA wording Consultá por WhatsApp, price caption, trust ribbon array, remove Más elegido, contrast wording to WCAG ratios, green rule)
 - prompts\B1.txt to B5.txt, BUILD-ALL.txt, SONNET-BUILDER.txt, SONNET-BUILDER-WITH-DESIGN.txt, SONNET-DIRECTOR.txt (B1 and B2 scoping sentences, section 0 first, precedence line, counts from manifest, verify phase flags, PowerShell zip, php lint recorded as unavailable, B5 may edit site.js and contact renderer, favicon file allowed in B1, gracias.html)
 
-Do not touch: BRIEF.md, AGENTS.md, codex-input\ (except nothing), any file outside plan\. Do not create site code. Do not modify 10-REVISION-V2.md.
+Do not touch: BRIEF.md, AGENTS.md, docs\archive\codex-input\ (except nothing), any file outside plan\. Do not create site code. Do not modify 10-REVISION-V2.md.
 
 Rules:
 - No double quote characters inside any prompts\*.txt file (they are passed through cmd.exe). Use single quotes or rephrase.

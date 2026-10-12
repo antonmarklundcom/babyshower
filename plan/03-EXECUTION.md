@@ -16,17 +16,17 @@ Then runs the verification block of that phase himself (below). If it fails, res
 & "$env:USERPROFILE\.claude\skills\manager-worker-codex\scripts\codex-run.ps1" -Repo "C:\Claude 1\babyshower" -Resume "<session id>" -Tier normal -PromptFile "C:\Claude 1\babyshower\plan\prompts\fix.txt"
 ```
 
-Phase prompts live in `plan/prompts/B1.txt` … `B5.txt` (no double quotes inside, multi-line, fed over stdin by the script). Each prompt tells Codex to read `AGENTS.md`, `plan/02-BUILD-SPEC.md`, `plan/04-CONTENT-AND-COPY.md` and only the sections it needs.
+Phase prompts live in `docs/archive/prompts/B1.txt` … `B5.txt` (no double quotes inside, multi-line, fed over stdin by the script). Each prompt tells Codex to read `AGENTS.md`, `plan/02-BUILD-SPEC.md`, `plan/04-CONTENT-AND-COPY.md` and only the sections it needs.
 
-Alternative single-shot: `plan/prompts/BUILD-ALL.txt` runs B1–B5 in one session. Use only if Anton prefers fewer interactions; a failure mid-way is harder to resume cleanly.
+Alternative single-shot: `docs/archive/prompts/BUILD-ALL.txt` runs B1–B5 in one session. Use only if Anton prefers fewer interactions; a failure mid-way is harder to resume cleanly.
 
 ## Mode B — Sonnet directs Codex
 
-Open a Sonnet 5 session in this folder with the prompt in `plan/prompts/SONNET-DIRECTOR.txt`. Sonnet follows the manager-worker-codex skill: dispatches B1–B5 to Codex normal tier, runs each verification block, resumes on failure, and runs the browser QA gate (B6) itself because Codex has no browser here. Sonnet never writes site code itself beyond trivial fixes. Sonnet must not spawn Fable (fable-cost-guardrail).
+Open a Sonnet 5 session in this folder with the prompt in `docs/archive/prompts/SONNET-DIRECTOR.txt`. Sonnet follows the manager-worker-codex skill: dispatches B1–B5 to Codex normal tier, runs each verification block, resumes on failure, and runs the browser QA gate (B6) itself because Codex has no browser here. Sonnet never writes site code itself beyond trivial fixes. Sonnet must not spawn Fable (fable-cost-guardrail).
 
 ## Mode C — Sonnet builds directly (added 2026-09-19, while Codex quota is out)
 
-Allowed: the fable-cost-guardrail only forbids Fable as a builder. Open a Sonnet 5 session in this folder with `plan/prompts/SONNET-BUILDER.txt`. Sonnet loads the fable-directs-sonnet-builds skill pattern in reverse: it reads the BUILD-SPEC, implements phases B1 and B2 itself (optionally B3–B5), runs each verification block, and writes `docs/log/build.md`. When Codex quota returns, Codex reviews the plan with `plan/prompts/CODEX-REVIEW.txt`, and later phases can go back to Mode A. Sonnet still never spawns Fable.
+Allowed: the fable-cost-guardrail only forbids Fable as a builder. Open a Sonnet 5 session in this folder with `docs/archive/prompts/SONNET-BUILDER.txt`. Sonnet loads the fable-directs-sonnet-builds skill pattern in reverse: it reads the BUILD-SPEC, implements phases B1 and B2 itself (optionally B3–B5), runs each verification block, and writes `docs/log/build.md`. When Codex quota returns, Codex reviews the plan with `docs/archive/prompts/CODEX-REVIEW.txt`, and later phases can go back to Mode A. Sonnet still never spawns Fable.
 
 ## Git
 
@@ -40,7 +40,7 @@ Initialise a local git repo at the start of B1 and commit after every passing ph
 
 ## Phases
 
-Read BUILD-SPEC §0 first. Precedence: §0 > 04 copy > design export (composition) > BUILD-SPEC §6 section list. Selected docs/design-canvas-export.html governs / in modes A/B/C; inner pages reuse components, until selection B1 uses §6 patterns.
+Read BUILD-SPEC §0 first. Precedence: §0 > 04 copy > design export (composition) > BUILD-SPEC §6 section list. Selected docs/archive/design-canvas-export.html governs / in modes A/B/C; inner pages reuse components, until selection B1 uses §6 patterns.
 
 Every phase: You may regenerate every output HTML file the generator produces. Authored source edits are limited to the files listed. Each phase may append its own docs/log/build.md entry; manager or Anton adds session id/model/effort from dispatch output, never invented.
 

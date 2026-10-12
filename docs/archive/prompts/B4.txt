@@ -1,4 +1,4 @@
-Read plan/02-BUILD-SPEC.md section 0 first, then plan/10-REVISION-V2.md (revision authority), before the other listed reading. Precedence: section 0 > 04 copy > design export (composition) > BUILD-SPEC section 6 section list. Once chosen, docs/design-canvas-export.html governs home composition in modes A/B/C; inner pages reuse its components. Until chosen, B1 uses section 6 patterns.
+Read plan/02-BUILD-SPEC.md section 0 first, then plan/10-REVISION-V2.md (revision authority), before the other listed reading. Precedence: section 0 > 04 copy > design export (composition) > BUILD-SPEC section 6 section list. Once chosen, docs/archive/design-canvas-export.html governs home composition in modes A/B/C; inner pages reuse its components. Until chosen, B1 uses section 6 patterns.
 
 You may regenerate every output HTML file the generator produces. Authored source edits are limited to the files listed. Counts, sitemap and SHIP list derive from docs/routes.json: route, output, phase (B1..B4), indexable, built. Snapshot: 32 routes, 31 non-root route directories inside 11 top-level route directories, 34 HTML files including 404.html and gracias.html. Cumulative built routes B1/B2/B3/B4 = 6/9/26/32; never hardcode totals in implementations. verify.mjs --phase B1..B5 reads built flags; links to built:false are allowed only when the target exists in the manifest. --final rejects any built:false.
 
@@ -8,7 +8,7 @@ Task: Phase B4 of the babyshower.com.py static site. B1 to B3 are done. Read AGE
 
 Files to touch: docs/log/build.md (append this phase entry), ideas.mjs (new), build-site.mjs (article renderer and hub), assets/css/site.css (article layout, in-article CTA card), verify.mjs (add --words check), docs/routes.json (mark built true), generated index.html for /ideas/ and the 5 guide routes.
 
-Do not touch: plan/, codex-input/, BRIEF.md, AGENTS.md, authored source outside the list above; generated output may all regenerate.
+Do not touch: plan/, docs/archive/codex-input/, BRIEF.md, AGENTS.md, authored source outside the list above; generated output may all regenerate.
 
 Definition of done:
 - Each guide is 700 to 1000 words of useful Paraguayan Spanish following the H1 and H2 outline in plan/04 section 9, with an in-article CTA card after the second H2 and an end CTA, one image slot with the tinted placeholder panel, Article JSON-LD with datePublished and author Organization, BreadcrumbList.

@@ -1,4 +1,4 @@
-Task: Review only, do not build. The repo is C:\Claude 1\babyshower on this Windows machine. It contains a complete plan for babyshower.com.py, a Paraguayan baby shower and gender reveal lead-gen site, written by a Claude manager after your earlier critique. There is no site code yet, only planning documents. Your job is to audit the plan for contradictions, gaps, and anything a worker could not implement unambiguously, then write your findings to codex-input\CODEX-REVIEW-2.md in that repo.
+Task: Review only, do not build. The repo is C:\Claude 1\babyshower on this Windows machine. It contains a complete plan for babyshower.com.py, a Paraguayan baby shower and gender reveal lead-gen site, written by a Claude manager after your earlier critique. There is no site code yet, only planning documents. Your job is to audit the plan for contradictions, gaps, and anything a worker could not implement unambiguously, then write your findings to docs\archive\codex-input\CODEX-REVIEW-2.md in that repo.
 
 Read in this order, all fully:
 - AGENTS.md
@@ -13,10 +13,10 @@ Read in this order, all fully:
 - plan\08-OPEN-QUESTIONS.md
 - plan\09-DESIGN-PROMPTS.md
 - plan\prompts\B1.txt through B5.txt, BUILD-ALL.txt, SONNET-BUILDER-WITH-DESIGN.txt
-- codex-input\CODEX-CRITIQUE.md (your earlier critique)
+- docs\archive\codex-input\CODEX-CRITIQUE.md (your earlier critique)
 - For house conventions: C:\Claude 1\tasacion-com-py\build-site.mjs, content.mjs, lead-forward.php, deploy\make-zip.sh (reference implementation the plan tells the worker to copy)
 
-Write codex-input\CODEX-REVIEW-2.md with these sections, terse bullets, no filler:
+Write docs\archive\codex-input\CODEX-REVIEW-2.md with these sections, terse bullets, no filler:
 1. Adoption audit: for each point in section 1 and section 7 of your earlier critique, state adopted, adopted incorrectly, or ignored, with the file and line where the plan handles it.
 2. Contradictions between plan documents (prices, page counts, route lists, policy wording, trust ribbon text, calculator rules, zone lists, phase scopes). Quote both sides with file names.
 3. Ambiguities a worker executing B1 to B5 could not resolve without asking: missing values, undefined behaviours, checks in verify.mjs that are underspecified, anything in the copy file marked as to be written by the worker.
@@ -27,11 +27,11 @@ Write codex-input\CODEX-REVIEW-2.md with these sections, terse bullets, no fille
 8. Questions only Anton can answer that the plan does not already list in plan\08-OPEN-QUESTIONS.md.
 
 Definition of done:
-- codex-input\CODEX-REVIEW-2.md exists, in English, covers all 8 sections, and cites file names for every finding.
+- docs\archive\codex-input\CODEX-REVIEW-2.md exists, in English, covers all 8 sections, and cites file names for every finding.
 - No other file created or modified. No site code written.
 
 Commands to run before reporting: none, there is no code yet.
 
 Report format:
-  Files changed: codex-input\CODEX-REVIEW-2.md with a one-line summary
+  Files changed: docs\archive\codex-input\CODEX-REVIEW-2.md with a one-line summary
   Flagged or not done: anything you could not read or judge, or None

@@ -108,7 +108,7 @@ calc_submit follows consent/event rules. Render package prices as text for SEO/n
 
 Manifest snapshot: 32 routes, 31 non-root route directories inside 11 top-level route directories, 34 HTML files including 404.html and gracias.html. docs/routes.json fields: route, output, phase (B1..B4), indexable, built. Derive sitemap, SHIP list, prompt counts and verification totals from the manifest; never hardcode totals in implementations. Cumulative built routes B1/B2/B3/B4: 6/9/26/32. Special HTML outputs are non-indexable, outside the canonical route count.
 
-Once chosen, docs/design-canvas-export.html governs home composition in modes A/B/C; inner pages reuse its components. The home row lists content, not mandatory layout. Until then B1 uses these patterns. Horizontal scroll is allowed for calculator breakdown and mobile theme strip.
+Once chosen, docs/archive/design-canvas-export.html governs home composition in modes A/B/C; inner pages reuse its components. The home row lists content, not mandatory layout. Until then B1 uses these patterns. Horizontal scroll is allowed for calculator breakdown and mobile theme strip.
 
 Each row: route · primary keyword · H1 · sections (named patterns from layout-patterns.md) · CTA text.
 
@@ -184,7 +184,7 @@ Checks:
 
 ```
 babyshower/
-  AGENTS.md  BRIEF.md  plan/  codex-input/        (already exist, do not modify)
+  AGENTS.md  BRIEF.md  plan/  docs/archive/codex-input/        (already exist, do not modify)
   content.mjs  themes.mjs  zones.mjs  ideas.mjs
   build-site.mjs  verify.mjs
   lead-forward.php  .htaccess  robots.txt  sitemap.xml (generated)
@@ -193,7 +193,7 @@ babyshower/
   assets/fonts/*  assets/img/* (placeholders until imagery phase; see 07-IMAGERY.md)
   <route dirs>/index.html (generated)
   deploy/make-zip.ps1  deploy/make-zip.sh (optional)  deploy/vendercrm-config.example.php
-  docs/routes.json  docs/DEPLOY.md  docs/log/build.md  docs/design-canvas-export.html (when chosen)
+  docs/routes.json  docs/DEPLOY.md  docs/log/build.md  docs/archive/design-canvas-export.html (when chosen)
   .gitignore (dist/, leads.log, vendercrm-config*.php (except the example), node_modules/)
 ```
 

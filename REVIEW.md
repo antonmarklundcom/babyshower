@@ -24,7 +24,7 @@ Codex (gpt-6-astra low) did not test the live site. Additions and corrections:
 | `plan/prompts/DESIGN-FINAL-4.txt` | Not as the current complete design. Its proposal-sheet direction overlaps the earlier Batch 1 implementation, but Batch 5 explicitly removed `homeProposal` in favor of the approved mixed photographic design. The current carousel, service navigation and sections differ substantially. | Do not commit as an authoritative/current build instruction. It is a superseded alternative, suitable for deletion after the owner no longer needs design history. Preserved unchanged and untracked here. |
 | `plan/prompts/DESIGN-FINAL-5.txt` | Partially overlaps common components: tinted package headers, blush calculator and numbered steps. Its defining photo-free invitation hero and theme bento are not the current site. Shared tokens/copy do not prove that this prompt was applied. | Same: obsolete alternative, not missing production work. Recommend eventual deletion rather than committing it as current guidance; preserved unchanged and untracked. |
 
-Evidence: the prompts' `Direction` paragraphs; `docs/log/build.md` Batches 1, 5, 8–10; `docs/HANDOFF-2026-09-20-b.md`; `build-site.mjs` home renderer; `assets/css/site.css`. The older handoff explicitly says not to commit these prompts. Neither is a build dependency.
+Evidence: the prompts' `Direction` paragraphs; `docs/log/build.md` Batches 1, 5, 8–10; `docs/archive/HANDOFF-2026-09-20-b.md`; `build-site.mjs` home renderer; `assets/css/site.css`. The older handoff explicitly says not to commit these prompts. Neither is a build dependency.
 
 ### Remote Claude branch
 

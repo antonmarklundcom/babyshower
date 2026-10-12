@@ -23,5 +23,5 @@ The build does not block on these. Each has a default baked into content.mjs so 
 | Q17 | Is retention of 12 months from the last inquiry OK? | 12 meses desde la última consulta; deletion via WhatsApp or email. |
 | Q18 | GitHub repo name? | anton/babyshower-com-py, private. |
 | Q19 | Original KWP export available? | Not a blocker; start Ads small, use query reports to replace forecast. |
-| Q20 | Which design export is authoritative? | Once chosen: docs/design-canvas-export.html governs home composition in A/B/C; until then B1 uses BUILD-SPEC §6 patterns. |
+| Q20 | Which design export is authoritative? | Once chosen: docs/archive/design-canvas-export.html governs home composition in A/B/C; until then B1 uses BUILD-SPEC §6 patterns. |
 | Q21 | Is SITE.leadEmail = antonmarklund.com@gmail.com for lead notifications? | Proposed notification address awaiting confirmation; configure and test before Gate A, do not infer public SITE.email from it. |

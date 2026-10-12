@@ -1,8 +1,8 @@
 # 09 — Claude Design prompts (Opus 5, high effort) for the home page
 
-Why a design pass is justified: web-design-system allows Claude Design only for a new track. No existing track (Editorial, Industrial, Clinical, Warm Craft) fits a pastel event brand, so SOFT CRAFT is a new track. Run each prompt once, desktop plus mobile, pick one direction, and paste the winner's exported HTML/CSS into `docs/design-canvas-export.html` for the builder to copy values from. Do not run Claude Design per inner page.
+Why a design pass is justified: web-design-system allows Claude Design only for a new track. No existing track (Editorial, Industrial, Clinical, Warm Craft) fits a pastel event brand, so SOFT CRAFT is a new track. Run each prompt once, desktop plus mobile, pick one direction, and paste the winner's exported HTML/CSS into `docs/archive/design-canvas-export.html` for the builder to copy values from. Do not run Claude Design per inner page.
 
-Five standalone prompts, one code block each, in `prompts/DESIGN-1.txt` to `DESIGN-5.txt`. Copy one file whole into Claude Design (Opus 5, high). Nothing else needs pasting.
+Five standalone prompts, one code block each, in `../docs/archive/prompts/DESIGN-1.txt` to `DESIGN-5.txt`. Copy one file whole into Claude Design (Opus 5, high). Nothing else needs pasting.
 
 ## Prompt 1 — Direction 1: Editorial magazine
 
@@ -114,6 +114,6 @@ Direction: price-first conversion. The hero contains the calculator: left column
 
 ## What to do with the output
 
-1. Export the chosen direction as HTML/CSS into `docs/design-canvas-export.html` (same as tasacion did).
+1. Export the chosen direction as HTML/CSS into `docs/archive/design-canvas-export.html` (same as tasacion did).
 2. Write the resolved values (section patterns, spacings, card variants) into `02-BUILD-SPEC.md` §2–§3 as numbers. Adjectives do not survive the trip to the builder.
 3. Add the SOFT CRAFT track row to `claude-skills/web-design-system/SKILL.md` so the next event-vertical site copies it instead of running Claude Design again.

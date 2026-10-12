@@ -1,4 +1,4 @@
-Read plan/02-BUILD-SPEC.md section 0 first, then plan/10-REVISION-V2.md (revision authority), before the other listed reading. Precedence: section 0 > 04 copy > design export (composition) > BUILD-SPEC section 6 section list. Once chosen, docs/design-canvas-export.html governs home composition in modes A/B/C; inner pages reuse its components. Until chosen, B1 uses section 6 patterns.
+Read plan/02-BUILD-SPEC.md section 0 first, then plan/10-REVISION-V2.md (revision authority), before the other listed reading. Precedence: section 0 > 04 copy > design export (composition) > BUILD-SPEC section 6 section list. Once chosen, docs/archive/design-canvas-export.html governs home composition in modes A/B/C; inner pages reuse its components. Until chosen, B1 uses section 6 patterns.
 
 You may regenerate every output HTML file the generator produces. Authored source edits are limited to the files listed. Counts, sitemap and SHIP list derive from docs/routes.json: route, output, phase (B1..B4), indexable, built. Snapshot: 32 routes, 31 non-root route directories inside 11 top-level route directories, 34 HTML files including 404.html and gracias.html. Cumulative built routes B1/B2/B3/B4 = 6/9/26/32; never hardcode totals in implementations. verify.mjs --phase B1..B5 reads built flags; links to built:false are allowed only when the target exists in the manifest. --final rejects any built:false.
 
@@ -8,7 +8,7 @@ Task: Phase B2 of the babyshower.com.py static site. B1 is done: the generator, 
 
 Files to touch: docs/log/build.md (append this phase entry), content.mjs (add PACKAGES, ADDONS, ZONES, PRICES (mode, effectiveDate, label), reveal and anito data if missing), build-site.mjs (new page renderers), assets/js/calc.js (new), assets/css/site.css (calculator and comparison table styles), verify.mjs (add the --calc fixtures check), docs/routes.json (mark built true), generated index.html for /combos-y-precios/, /revelacion-de-genero/, /primer-anito/, and the updated / with the live calculator.
 
-Do not touch: plan/, codex-input/, BRIEF.md, AGENTS.md, authored source outside the list above; generated output may all regenerate.
+Do not touch: plan/, docs/archive/codex-input/, BRIEF.md, AGENTS.md, authored source outside the list above; generated output may all regenerate.
 
 Definition of done:
 - Calculator follows BUILD-SPEC section 5 exactly: frozen matrix, inputs, formula, retain guests above max with hidden total, zona otra custom quote, no clamping on package change, bundled torta/souvenirs disabled with incluido for Sueño, PRICES.label in output and in the WhatsApp message, no pregnancy or medical questions, works without JS by degrading to a link.

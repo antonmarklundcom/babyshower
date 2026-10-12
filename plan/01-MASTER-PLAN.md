@@ -1,6 +1,6 @@
 # babyshower.com.py — Master Plan (v2, 2026-09-19)
 
-Author: Fable 5.1 (manager), with critique input from Codex gpt-6-astra low (see `codex-input/CODEX-CRITIQUE.md`).
+Author: Fable 5.1 (manager), with critique input from Codex gpt-6-astra low (see `docs/archive/codex-input/CODEX-CRITIQUE.md`).
 Source brief: `../BRIEF.md` (Gemini). This document supersedes the brief where they disagree.
 
 Companion docs:
@@ -175,7 +175,7 @@ Cross-domain: embarazo.com.py (Anton's pregnancy site) links to /revelacion-de-g
 
 ## 5. Page anatomy (landing)
 
-Content checklist; selected docs/design-canvas-export.html governs home composition in modes A/B/C, inner pages reuse components. Until selected, B1 uses these patterns:
+Content checklist; selected docs/archive/design-canvas-export.html governs home composition in modes A/B/C, inner pages reuse components. Until selected, B1 uses these patterns:
 
 1. Sticky header: logo text, "Combos", "Revelación", "Primer añito", "Temáticas", WhatsApp button, phone as text.
 2. Hero, asymmetric split 7/5: H1 "Baby shower en Asunción con precio claro", subline with the three packages' from-price, primary CTA WhatsApp prefilled, secondary CTA "Calculá tu precio" (scrolls to calculator). Image slot hero-bleed.
