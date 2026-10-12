@@ -67,6 +67,52 @@ function save_state(string $path, array $data): bool {
     return $ok && @rename($path . '.tmp', $path);
 }
 
+// Cloudflare's published edge ranges (https://www.cloudflare.com/ips-v4 and /ips-v6). Used only when the
+// private config sets 'trusted_proxy' => 'cloudflare'; refresh from that page if Cloudflare announces changes.
+const CLOUDFLARE_RANGES = [
+    '173.245.48.0/20', '103.21.244.0/22', '103.22.200.0/22', '103.31.4.0/22', '141.101.64.0/18',
+    '108.162.192.0/18', '190.93.240.0/20', '188.114.96.0/20', '197.234.240.0/22', '198.41.128.0/17',
+    '162.158.0.0/15', '104.16.0.0/13', '104.24.0.0/14', '172.64.0.0/13', '131.0.72.0/22',
+    '2400:cb00::/32', '2606:4700::/32', '2803:f800::/32', '2405:b500::/32', '2405:8100::/32',
+    '2a06:98c0::/29', '2c0f:f248::/32',
+];
+function ip_in_range(string $ip, string $cidr): bool {
+    $parts = explode('/', trim($cidr), 2);
+    $address = @inet_pton($ip);
+    $network = @inet_pton($parts[0]);
+    if ($address === false || $network === false || strlen($address) !== strlen($network)) return false;
+    $max = strlen($address) * 8;
+    $bits = isset($parts[1]) && preg_match('/^[0-9]{1,3}$/D', $parts[1]) ? (int) $parts[1] : (isset($parts[1]) ? -1 : $max);
+    if ($bits < 0 || $bits > $max) return false;
+    $bytes = intdiv($bits, 8);
+    if (substr($address, 0, $bytes) !== substr($network, 0, $bytes)) return false;
+    if ($bits % 8 === 0) return true;
+    $mask = (0xff << (8 - $bits % 8)) & 0xff;
+    return (ord($address[$bytes]) & $mask) === (ord($network[$bytes]) & $mask);
+}
+// Proxy headers are trusted only when REMOTE_ADDR itself is a configured proxy; otherwise anyone could spoof them.
+function client_ip(array $server, $trustedProxy): string {
+    $remote = (string) ($server['REMOTE_ADDR'] ?? '');
+    $ranges = $trustedProxy === 'cloudflare' ? CLOUDFLARE_RANGES
+        : (is_array($trustedProxy) ? array_values(array_filter($trustedProxy, 'is_string')) : []);
+    $trusted = static function (string $ip) use ($ranges): bool {
+        foreach ($ranges as $range) if (ip_in_range($ip, $range)) return true;
+        return false;
+    };
+    if ($remote === '' || !$trusted($remote)) return $remote !== '' ? $remote : 'unknown';
+    if ($trustedProxy === 'cloudflare') {
+        $cf = trim((string) ($server['HTTP_CF_CONNECTING_IP'] ?? ''));
+        return filter_var($cf, FILTER_VALIDATE_IP) ? $cf : $remote;
+    }
+    // Right-most address that is not one of our proxies; stop at anything malformed.
+    foreach (array_reverse(explode(',', (string) ($server['HTTP_X_FORWARDED_FOR'] ?? ''))) as $hop) {
+        $hop = trim($hop);
+        if (!filter_var($hop, FILTER_VALIDATE_IP)) break;
+        if (!$trusted($hop)) return $hop;
+    }
+    return $remote;
+}
+
 if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
     header('Location: /contacto/', true, 303); exit;
 }
@@ -93,7 +139,7 @@ foreach ($rates as $key => $times) {
     $rates[$key] = array_values(array_filter($times, static fn($t) => $t > $now - 60));
     if (!$rates[$key]) unset($rates[$key]);
 }
-$ip = hash('sha256', $_SERVER['REMOTE_ADDR'] ?? 'unknown');
+$ip = hash('sha256', client_ip($_SERVER, $config['trusted_proxy'] ?? null));
 if (count($rates[$ip] ?? []) >= 5) { header('Retry-After: 60'); fail_form(['rate'], 429); }
 $rates[$ip][] = $now;
 if (!save_state($ratePath, $rates)) fail_form(['failure'], 503);

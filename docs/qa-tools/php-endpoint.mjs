@@ -1,5 +1,5 @@
-// Endpoint test for lead-forward.php: sandbox with a private config one level above the doc root, a fake SMTP sink, 14 checks.
-// Usage: node docs/qa-tools/php-endpoint.mjs   (PHP_EXE=path to php.exe; uses ports 8091 and 2525)
+// Endpoint test for lead-forward.php: sandbox with a private config one level above the doc root, a fake SMTP sink, 19 checks.
+// Usage: node docs/qa-tools/php-endpoint.mjs   (PHP_EXE=path to php.exe; uses ports 8091, 8092 and 2525)
 import { fileURLToPath } from 'node:url';
 import net from 'node:net';
 import { spawn } from 'node:child_process';
@@ -87,5 +87,24 @@ const codes = []; for (let i = 0; i < 7; i++) codes.push((await post({ sid: 'BS-
 out('12 rate limit: 6th request within a minute gets 429', codes.slice(0, 5).every(c => c === 303) && codes[5] === 429, codes.join(' '));
 const g = await fetch('http://127.0.0.1:8091/lead-forward.php', { redirect: 'manual' });
 out('13 GET redirects to /contacto/', g.status === 303 && g.headers.get('location') === '/contacto/', `${g.status}`);
-server.kill(); smtp.close();
+// Proxy-aware limits: a sandbox-only router lets the fixture choose REMOTE_ADDR. Empty posts count against the
+// limit and then fail validation (422), so a 429 marks the limiter.
+writeFileSync(ROOT + '/router.php', "<?php if (isset($_SERVER['HTTP_X_FIXTURE_REMOTE_ADDR'])) $_SERVER['REMOTE_ADDR'] = $_SERVER['HTTP_X_FIXTURE_REMOTE_ADDR']; if (parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) === '/lead-forward.php') { require $_SERVER['DOCUMENT_ROOT'] . '/lead-forward.php'; return true; } return false;");
+const proxied = spawn(PHP, [...mailFlags, '-S', '127.0.0.1:8092', '-t', pub, ROOT + '/router.php'], { stdio: 'ignore' });
+await wait(1200);
+const hit = async headers => (await fetch('http://127.0.0.1:8092/lead-forward.php', { method: 'POST', redirect: 'manual', headers: { 'content-type': 'application/x-www-form-urlencoded', ...headers }, body: 'nombre=' })).status;
+const proxyConfig = trusted => { reset(false); writeFileSync(ROOT + '/site/vendercrm-config.babyshower.php', `<?php return ['lead_email' => '', 'url' => '', 'api_key' => '', 'trusted_proxy' => ${trusted}];`); };
+proxyConfig("'cloudflare'");
+const edge = { 'x-fixture-remote-addr': '173.245.48.10' };
+const visitorA = []; for (let i = 0; i < 6; i++) visitorA.push(await hit({ ...edge, 'cf-connecting-ip': '203.0.113.10' }));
+const visitorB = await hit({ ...edge, 'cf-connecting-ip': '2001:db8::7' });
+out('14 trusted Cloudflare edge: limits follow CF-Connecting-IP per visitor', visitorA.slice(0, 5).every(c => c === 422) && visitorA[5] === 429 && visitorB === 422, visitorA.join(' ') + ' | other visitor ' + visitorB);
+proxyConfig("'cloudflare'");
+const spoofed = []; for (let i = 0; i < 6; i++) spoofed.push(await hit({ 'x-fixture-remote-addr': '198.51.100.7', 'cf-connecting-ip': '203.0.113.' + (20 + i) }));
+out('15 untrusted REMOTE_ADDR with spoofed CF-Connecting-IP is limited by REMOTE_ADDR', spoofed.slice(0, 5).every(c => c === 422) && spoofed[5] === 429, spoofed.join(' '));
+proxyConfig("['10.0.0.0/8']");
+const hops = []; for (let i = 0; i < 6; i++) hops.push(await hit({ 'x-fixture-remote-addr': '10.0.0.5', 'x-forwarded-for': `198.51.100.${i}, 203.0.113.30, 10.1.2.3` }));
+const otherHop = await hit({ 'x-fixture-remote-addr': '10.0.0.5', 'x-forwarded-for': '203.0.113.31, 10.1.2.3' });
+out('16 CIDR proxy list: limits follow the right-most untrusted X-Forwarded-For hop', hops.slice(0, 5).every(c => c === 422) && hops[5] === 429 && otherHop === 422, hops.join(' ') + ' | other client ' + otherHop);
+proxied.kill(); server.kill(); smtp.close();
 process.exit(failures ? 1 : 0);
