@@ -123,8 +123,8 @@ const one = (node, selector) => all(node, selector)[0];
 const text = node => node ? node.text ?? (node.children || []).map(text).join('') : '';
 const normalize = s => s.replace(/\s+/g, ' ').trim();
 function visible(node) { return !node || ['script','style'].includes(node.tag) || node.attrs?.['aria-hidden'] === 'true' ? '' : node.text ?? (node.children || []).map(visible).join(' '); }
-const imageryEntries = JSON.parse(read('docs/imagery-manifest.json')).images, imageVariants = JSON.parse(read('assets/img/manifest.json')).images;
 const pages = new Map();
+const imageryEntries = JSON.parse(read('docs/imagery-manifest.json')).images, imageVariants = JSON.parse(read('assets/img/manifest.json')).images;
 const titles = new Set(), descriptions = new Set();
 let maxWeight = 0;
 const assetBytes = ['assets/css/site.css','assets/js/site.js','assets/js/calc.js'].reduce((n, f) => n + (existsSync(f) ? statSync(f).size : 0), 0);
