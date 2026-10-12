@@ -5,6 +5,8 @@ import { readFileSync } from 'node:fs';
 const origin = (process.argv[2] || 'https://babyshower.com.py').replace(/\/$/, '');
 const routes = JSON.parse(readFileSync(new URL('../docs/routes.json', import.meta.url), 'utf8'));
 const manifest = routes.routes || routes;
+// Mirrors build-site.mjs: the sitemap lists built, indexable routes except the utility pages.
+const indexed = manifest.filter(r => r.built && r.indexable && !['/gracias.html', '/404.html'].includes(r.route));
 let failed = 0;
 const check = (ok, label, detail = '') => { if (!ok) failed++; console.log(`${ok ? 'PASS' : 'FAIL'}: ${label}${detail ? ' — ' + detail : ''}`); };
 const get = path => fetch(origin + path, { redirect: 'manual', headers: { 'user-agent': 'babyshower-smoke/1' } });
@@ -34,14 +36,14 @@ if (css) {
 
 const sitemap = await (await get('/sitemap.xml')).text();
 const locs = (sitemap.match(/<loc>/g) || []).length;
-check(locs === manifest.length, 'sitemap lists every manifest route', `${locs}/${manifest.length}`);
+check(locs === indexed.length, 'sitemap lists every built indexable route', `${locs}/${indexed.length}`);
 
 let bad = [];
-for (const row of manifest) {
+for (const row of indexed) {
   const res = await get(row.route);
   if (res.status !== 200) bad.push(`${row.route} ${res.status}`);
 }
-check(bad.length === 0, `all ${manifest.length} routes return 200`, bad.slice(0, 5).join(', '));
+check(bad.length === 0, `all ${indexed.length} indexable routes return 200`, bad.slice(0, 5).join(', '));
 
 console.log(failed ? `${failed} check(s) failed on ${origin}` : `All smoke checks passed on ${origin}`);
 process.exitCode = failed ? 1 : 0;
