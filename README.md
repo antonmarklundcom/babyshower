@@ -26,19 +26,24 @@ Always rebuild before committing and leave `git status` clean.
 
 Run from the repo root. Needs Node 22 and PHP 8.1+ (PHP only for the last two rows).
 
-| Task | Command |
-| --- | --- |
-| Build the site | `node build-site.mjs` |
-| Verify (phase B5) | `node verify.mjs --phase B5` |
-| Verify (final gate) | `node verify.mjs --final` |
-| Local preview (port 4173, set `PORT` to change) | `node preview-server.mjs` |
-| Smoke test the live site (GET only) | `node deploy/smoke.mjs` |
-| CSS audit | `node css-audit.mjs` |
-| PHP syntax check | `php -l lead-forward.php` |
-| PHP endpoint test | `node docs/qa-tools/php-endpoint.mjs` |
+| Task | Command | Runs |
+| --- | --- | --- |
+| Build the site | `npm run build` | `node build-site.mjs` |
+| Verify (phase B5) | `npm run verify` | `node verify.mjs --phase B5` |
+| Verify (final gate) | `npm run verify:final` | `node verify.mjs --final` |
+| Local preview (port 4173, set `PORT` to change) | `npm run preview` | `node preview-server.mjs` |
+| Smoke test the live site (GET only) | `npm run smoke` | `node deploy/smoke.mjs` |
+| CSS audit | `npm run css-audit` | `node css-audit.mjs` |
+| PHP syntax check | `npm run php:lint` | `php -l lead-forward.php` |
+| PHP endpoint test | `npm run php:test` | `node docs/qa-tools/php-endpoint.mjs` |
+| Build, final verify, PHP lint and PHP test in sequence | `npm run check` | the four steps above |
+
+`package.json` only holds these scripts. It has no dependencies, so there is nothing to
+`npm install` and no `node_modules`, and the server never uses it. To point the smoke test at
+another origin, call it directly: `node deploy/smoke.mjs http://127.0.0.1:4173`.
 
 The preview server is static only: it does not run PHP. The smoke test never submits a form.
-Before pushing, run the build, `verify.mjs --final`, the PHP lint and the PHP endpoint test.
+Before pushing, run `npm run check`.
 
 ## Repo map
 
