@@ -20,7 +20,7 @@ repo map and `docs/DEPLOY.md` / `docs/HOSTINGER-GIT.md` for deployment.
 
 - Generated files: never hand-edit `*/index.html`, `404.html`, `gracias.html`, `sitemap.xml`
   or `lead-defaults.php`. Change the source (`content.mjs`,
-  `themes.mjs`, `zones.mjs`, `ideas.mjs`, `build-site.mjs`, `assets/`) and run `npm run build`.
+  `themes.mjs`, `zones.mjs`, `ideas.mjs`, `build-site.mjs`, `build/`, `assets/`) and run `npm run build`.
 - Generated output is committed. Rebuild before commit and keep `git status` clean (no stray
   rebuild diffs left behind).
 - No secrets: no API keys, tokens, emails or real lead data in code, docs or fixtures. The real

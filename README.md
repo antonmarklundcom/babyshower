@@ -19,7 +19,7 @@ The built HTML is checked in because Hostinger does not build. Never hand-edit i
 - `lead-defaults.php` (public endpoint defaults read by `lead-forward.php`)
 
 Change the source (`content.mjs`, `themes.mjs`, `zones.mjs`, `ideas.mjs`, `build-site.mjs`,
-`assets/`), run `node build-site.mjs`, and commit the regenerated files together with the source.
+`build/`, `assets/`), run `node build-site.mjs`, and commit the regenerated files together with the source.
 Always rebuild before committing and leave `git status` clean.
 
 ## Commands
@@ -57,7 +57,9 @@ Source files (edit these):
 
 - `content.mjs`: copy, prices (`PRICES`), WhatsApp number, packages, navigation
 - `themes.mjs`, `zones.mjs`, `ideas.mjs`: theme, zone and guide data
-- `build-site.mjs`: the generator and templates
+- `build-site.mjs`: the generator entry point (page shell, write loop, sitemap, `lead-defaults.php`)
+- `build/`: generator modules (`html.mjs`, `chrome.mjs`, `imagery.mjs`, `schema.mjs`, `fonts.mjs`,
+  `site-data.mjs`, and one `pages/*.mjs` per page type)
 - `assets/`: CSS, JS, self-hosted fonts and images
 - `lead-forward.php`: the form endpoint (hand-written; it loads the generated `lead-defaults.php`)
 - `.htaccess`, `robots.txt`: server rules and crawler rules

@@ -1,7 +1,7 @@
 import * as content from './content.mjs';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, posix } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash, webcrypto } from 'node:crypto';
 import vm from 'node:vm';
@@ -358,7 +358,16 @@ test('Contrast and reference assets', () => {
 });
 
 // Evaluar contenido y generador en memoria para ambos estados, sin escribir archivos.
-const rendererSource = read('build-site.mjs').replace(/^import .*;\r?\n/gm, '').replace(/^process\.chdir.*;\r?\n/m, '').split('for (const row of manifest.filter(r => r.built))')[0];
+// The generator is split into build/*.mjs: inline those modules depth-first in import order (as ESM evaluates them),
+// drop import/export syntax and the chdir, and stop before build-site.mjs starts writing files.
+function generatorSource(file, seen = new Set()) {
+ if (seen.has(file)) return '';
+ seen.add(file);
+ const source = read(file);
+ const local = [...source.matchAll(/^import (?:[^;]*? from )?'(\.[^']+)';/gm)].map(m => posix.join(posix.dirname(file), m[1])).filter(dep => dep.startsWith('build/'));
+ return local.map(dep => generatorSource(dep, seen)).join('') + source.replace(/^import .*;\r?\n/gm, '').replace(/^process\.chdir.*;\r?\n/m, '').replace(/^export /gm, '') + '\n';
+}
+const rendererSource = generatorSource('build-site.mjs').split('for (const row of manifest.filter(r => r.built))')[0];
 function renderWithAnalytics(id) {
  const source = read('content.mjs').replace(/^export /gm, '').replace(/const ANALYTICS_ID = '[^']*';/, `const ANALYTICS_ID = ${JSON.stringify(id)};`);
  const configured = vm.runInNewContext(source + '\n;({ ' + Object.keys(content).join(', ') + ' });');
