@@ -1,4 +1,4 @@
-// Endpoint test for lead-forward.php: sandbox with a private config one level above the doc root, a fake SMTP sink, 19 checks.
+// Endpoint test for lead-forward.php: sandbox with a private config one level above the doc root, a fake SMTP sink, 22 checks.
 // Usage: node docs/qa-tools/php-endpoint.mjs   (PHP_EXE=path to php.exe; uses ports 8091, 8092 and 2525)
 import { fileURLToPath } from 'node:url';
 import net from 'node:net';
@@ -59,6 +59,10 @@ const m = mails[0] || '';
 out('4 email delivered to the configured address', /To: .*enquiries@example\.invalid/i.test(m), mails.length + ' mail(s)');
 out('5 email has on-domain From', /^From: .*no-reply@babyshower\.com\.py/im.test(m), (m.match(/^From:.*$/im) || ['no From'])[0]);
 out('6 email body carries name, guests and pipeline lines', /Ana Prueba/.test(m) && /invitados: 30/.test(m) && /Pipeline: Baby Shower/.test(m));
+const subjectOf = mail => { const line = (mail.match(/^Subject: (.*)$/m) || [, ''])[1]; return line.replace(/=\?UTF-8\?B\?([^?]*)\?=\s*/g, (all, b64) => Buffer.from(b64, 'base64').toString('utf8')); };
+const bodyOf = mail => mail.split(/\r?\n\r?\n/).slice(1).join('\n\n');
+out('6b subject names who, what, when and where', subjectOf(m) === 'Consulta: Ana Prueba · Baby shower · sin fecha · Asunción', subjectOf(m));
+out('6c body starts with a wa.me link, then the SID', new RegExp('^https://wa\\.me/595981234567\\r?\\nSID: BS-\\d{8}-[a-f0-9]{32}\\r?\\n').test(bodyOf(m)), bodyOf(m).split('\n').slice(0, 2).join(' | '));
 const sid = log()[0].lead.sid;
 r = await post({ sid });
 await wait(300);
@@ -66,6 +70,10 @@ out('7a same SID + same data (retry) succeeds, no 2nd log line, no 2nd email', r
 r = await post({ sid, mensaje: 'otro texto distinto' });
 await wait(200);
 out('7b same SID + different data is rejected, log unchanged', r.status === 422 && log().length === 1, String(r.status));
+reset(true); mails.length = 0;
+r = await post({ nombre: 'Ana\r\nBcc: intruso@example.invalid', fecha: '2099-12-31', tipo: 'primer-anito', zona: 'otra' });
+const injected = mails[0] || '';
+out('6d CR/LF in the name cannot add headers; subject stays one line', r.status === 303 && !/^Bcc:/im.test(injected.split(/\r?\n\r?\n/)[0]) && subjectOf(injected) === 'Consulta: Ana Bcc: intruso@example.invalid · Primer añito · 2099-12-31 · Otra zona', subjectOf(injected));
 reset(true); mails.length = 0;
 r = await post({ whatsapp: '12345' });
 out('8 invalid phone -> 422 and nothing stored', r.status === 422 && log().length === 0, `${r.status}, ${log().length} lines`);
