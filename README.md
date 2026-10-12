@@ -72,11 +72,12 @@ Generated output (do not edit): `index.html`, `404.html`, `gracias.html`, `sitem
 
 Other folders and files:
 
-- `docs/`: deploy notes, QA tools (`docs/qa-tools/`), route manifest, backlogs, session handoffs
+- `docs/`: deploy notes, QA tools (`docs/qa-tools/`), route manifest, backlogs, next-session prompts;
+  finished handoffs, design canvases, Codex inputs and phase prompts live in `docs/archive/`
 - `deploy/`: smoke test, ZIP script, and `vendercrm-config.example.php` (the real config lives
   above `public_html` and is never committed)
-- `plan/`: the original build plan, phase prompts and open questions (start at `plan/00-README.md`)
-- `codex-input/`, `BRIEF.md`, `REVIEW.md`: early inputs and review notes
+- `plan/`: the original build plan and open questions (start at `plan/00-README.md`)
+- `BRIEF.md`, `REVIEW.md`: early inputs and review notes
 - `AGENTS.md`: instructions for the Codex worker process
 
 `.htaccess` answers 403 for `plan/`, `docs/`, `deploy/`, `codex-input/`, dotfiles, `*.md`,
