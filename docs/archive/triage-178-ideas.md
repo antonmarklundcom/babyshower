@@ -1,9 +1,9 @@
-# Triage of docs/codex-review-ideas.md against the built site (Fable 5.1)
+# Triage of docs/archive/codex-review-ideas.md against the built site (Fable 5.1)
 
 Revision 2, 2026-09-20, after Batch 1 (home composition) and Batch 2 (labels, form, consent). Supersedes the 2026-09-19 revision. Verified against the preview at http://localhost:4173/ (home, combos, mickey-bebe, luque, revelación, añito, temáticas, cómo funciona, privacidad, zonas, juegos guide) at 375 px and desktop.
 
 Verdicts: DONE (built site already does it) · NOW (before the next commit) · GATE-A (before organic publication) · LATER · REJECT · PART-3 / PART-5 (argued in the manager review of 2026-09-20).
-"obsolete" = the idea targeted docs/opus-home-preview.html or a DESIGN-FINAL prompt and the generator never had the defect.
+"obsolete" = the idea targeted docs/archive/opus-home-preview.html or a DESIGN-FINAL prompt and the generator never had the defect.
 "Batch 1" / "Batch 2" = closed by that batch since revision 1.
 
 ## Part A (1–100)

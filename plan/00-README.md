@@ -14,9 +14,9 @@ Revision authority: `10-REVISION-V2.md`; read it first, then BUILD-SPEC §0. Man
 6. `06-OPS-PLAYBOOK.md` — launch gates, supplier agreement, order sheet, booking timeline, day-of checklist, reviews.
 7. `07-IMAGERY.md` — 30 Higgsfield image slots and prompts (phase B7, after the build).
 8. `08-OPEN-QUESTIONS.md` — 21 questions for Anton with the defaults the build assumes.
-9. `prompts/` — B1–B5, BUILD-ALL, SONNET-FINAL (the one to paste in a new Sonnet window, with the design export attached), SONNET-DIRECTOR, SONNET-BUILDER variants, CODEX-REVIEW, DESIGN-FINAL-1..3 (standalone Claude Design prompts), fix-template.
+9. `../docs/archive/prompts/` — B1–B5, BUILD-ALL, SONNET-FINAL (the one to paste in a new Sonnet window, with the design export attached), SONNET-DIRECTOR, SONNET-BUILDER variants, CODEX-REVIEW, DESIGN-FINAL-1..3 (standalone Claude Design prompts), fix-template.
 
-Inputs kept for reference: `../BRIEF.md` (Gemini), `../codex-input/CODEX-CRITIQUE.md` (Codex second brain, 5.9k words).
+Inputs kept for reference: `../BRIEF.md` (Gemini), `../docs/archive/codex-input/CODEX-CRITIQUE.md` (Codex second brain, 5.9k words).
 
 ## Quick start without Fable
 
@@ -26,11 +26,11 @@ Mode A, from PowerShell:
 & "$env:USERPROFILE\.claude\skills\manager-worker-codex\scripts\codex-run.ps1" -Repo "C:\Claude 1\babyshower" -Tier normal -PromptFile "C:\Claude 1\babyshower\plan\prompts\B1.txt"
 ```
 
-Then `node build-site.mjs; node verify.mjs --phase B1` in the repo. Repeat for B2…B5 with the matching --phase flag; B5 also runs --final and the PowerShell zip script. Then a short Sonnet session with `prompts/SONNET-DIRECTOR.txt` (or only its step 4) for the browser QA gate.
+Then `node build-site.mjs; node verify.mjs --phase B1` in the repo. Repeat for B2…B5 with the matching --phase flag; B5 also runs --final and the PowerShell zip script. Then a short Sonnet session with `../docs/archive/prompts/SONNET-DIRECTOR.txt` (or only its step 4) for the browser QA gate.
 
-Mode B: open a Sonnet 5 session in this folder and paste `prompts/SONNET-DIRECTOR.txt`.
+Mode B: open a Sonnet 5 session in this folder and paste `../docs/archive/prompts/SONNET-DIRECTOR.txt`.
 
-Mode C: use `prompts/SONNET-BUILDER.txt`, or `prompts/SONNET-BUILDER-WITH-DESIGN.txt` with the chosen export. Its home composition governs modes A/B/C.
+Mode C: use `../docs/archive/prompts/SONNET-BUILDER.txt`, or `../docs/archive/prompts/SONNET-BUILDER-WITH-DESIGN.txt` with the chosen export. Its home composition governs modes A/B/C.
 
 ## Non-negotiables carried from the house skills
 

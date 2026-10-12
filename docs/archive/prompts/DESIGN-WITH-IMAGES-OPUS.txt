@@ -1,8 +1,8 @@
 You are Opus 5 at high effort, working in C:\Claude 1\babyshower with the Higgsfield MCP connected. Do the work yourself in this window. Do not use Codex, Fable or any subagent.
 
-Goal: (1) generate the 15 home-page images for babyshower.com.py with the Higgsfield MCP, then (2) design the home page (desktop 1440 above mobile 390, same content) using those real images instead of tinted placeholder blocks, exported as one HTML file at docs/design-canvas-export.html.
+Goal: (1) generate the 15 home-page images for babyshower.com.py with the Higgsfield MCP, then (2) design the home page (desktop 1440 above mobile 390, same content) using those real images instead of tinted placeholder blocks, exported as one HTML file at docs/archive/design-canvas-export.html.
 
-STEP 0. Read plan/07-IMAGERY.md, docs/imagery-manifest.json and plan/prompts/DESIGN-FINAL-1.txt (this is the design brief; if I name a different DESIGN-FINAL file at the end of this message, use that one instead). Confirm the 15 entries below have status planned, job_id null and no file in assets/img. Never regenerate an entry that already has a job_id or url.
+STEP 0. Read plan/07-IMAGERY.md, docs/imagery-manifest.json and docs/archive/prompts/DESIGN-FINAL-1.txt (this is the design brief; if I name a different DESIGN-FINAL file at the end of this message, use that one instead). Confirm the 15 entries below have status planned, job_id null and no file in assets/img. Never regenerate an entry that already has a job_id or url.
 
 The 15 entries (by id in docs/imagery-manifest.json): hero-baby-shower-quincho, band-montaje, combo-nube, combo-estrella, combo-sueno, tema-jefe-en-panales, tema-dino-bebe, tema-moana-bebe, tema-minnie-bebe, tema-mickey-bebe, tema-blanca-nieves-bebe, tema-frutillita-bebe, tema-mariposas, tema-safari, tema-nubes-y-ositos.
 
@@ -25,7 +25,7 @@ Follow the design brief exactly: locked tokens, section order, all copy, all con
 - Every image is an img element with src set to the rawUrl, alt set to the manifest alt_es, width and height attributes, loading lazy (eager for the hero only), and a visible caption Imagen ilustrativa.
 - Hard rules: no faces, no children, no text inside images, no recognisable characters, nothing presented as a real event. Do not change any copy from the brief.
 - Hot-linked Higgsfield URLs are for this design export only. The built site uses local converted files later.
-- Write the result as one self-contained HTML/CSS file at docs/design-canvas-export.html, desktop 1440 on top and mobile 390 directly below it.
+- Write the result as one self-contained HTML/CSS file at docs/archive/design-canvas-export.html, desktop 1440 on top and mobile 390 directly below it.
 
 STEP 3. Verify.
 Open the exported file in the built-in browser. Take one desktop screenshot and one 390px mobile screenshot. Confirm every img has naturalWidth greater than 0, no text collides with an image, and no horizontal scroll at 390 except the calculator breakdown table and the mobile theme strip. Fix anything broken.

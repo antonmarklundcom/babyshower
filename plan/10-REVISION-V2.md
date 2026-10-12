@@ -1,6 +1,6 @@
 # 10 — Revision v2 decisions (Fable 5.1, 2026-09-19, after CODEX-REVIEW-2)
 
-This file is the authority for the v2 edit pass. Where it conflicts with 01–09 or prompts, this file wins and the others are updated to match. Source: `codex-input/CODEX-REVIEW-2.md`. Each item states ADOPT, PARTIAL or REJECT with the reason and the exact change.
+This file is the authority for the v2 edit pass. Where it conflicts with 01–09 or prompts, this file wins and the others are updated to match. Source: `docs/archive/codex-input/CODEX-REVIEW-2.md`. Each item states ADOPT, PARTIAL or REJECT with the reason and the exact change.
 
 ## A. Business and customer outcomes
 
@@ -98,7 +98,7 @@ No tag loads before consent; consent banner has Aceptar / Rechazar and a footer 
 No `og:image` tag until B7 supplies `assets/img/og.jpg`; favicon as an inline SVG data URI in B1 (allowed new file: `assets/img/favicon.svg`). Fonts fallback per BUILD-SPEC §1.
 
 ### B12. Design precedence (ADOPT review 8)
-Once Anton picks a design export, it is `docs/design-canvas-export.html` and its composition governs `/` in all modes A/B/C; BUILD-SPEC §6 row for `/` lists content, not layout. Inner pages reuse its components. Until then B1 uses the §6 patterns. Green: WhatsApp glyph and the FAB circle only; 02 and 09 aligned. Horizontal scroll allowed for the calculator breakdown and the mobile theme strip.
+Once Anton picks a design export, it is `docs/archive/design-canvas-export.html` and its composition governs `/` in all modes A/B/C; BUILD-SPEC §6 row for `/` lists content, not layout. Inner pages reuse its components. Until then B1 uses the §6 patterns. Green: WhatsApp glyph and the FAB circle only; 02 and 09 aligned. Horizontal scroll allowed for the calculator breakdown and the mobile theme strip.
 
 ### B13. Execution doc fixes (ADOPT)
 B6 is a checklist in 03, not a prompt file; 03 no longer references `B6.txt`. Build log: each phase appends its own entry; session id/model/effort added by the manager or Anton from the dispatch output, never invented. GitHub repo name: `anton/babyshower-com-py` private (Q18 if different). CODEX-REVIEW described as plan review.

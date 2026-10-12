@@ -1,7 +1,7 @@
 # Codex review — improvement ideas for babyshower.com.py
 
 Source: Codex CLI, model gpt-6-astra, reasoning effort low, 2026-09-19. Two read-only runs over
-plan/00,01,02,04,05,06,08,10, plan/prompts/DESIGN-FINAL-1.txt, docs/opus-home-preview.html and
+plan/00,01,02,04,05,06,08,10, docs/archive/prompts/DESIGN-FINAL-1.txt, docs/archive/opus-home-preview.html and
 docs/imagery-manifest.json. Codex wrote no files and did not build the site. Not yet triaged by Anton
 or the manager session: these are proposals, several of which reopen decisions the plan already froze.
 
@@ -20,7 +20,7 @@ Reviewed all ten requested files. **100 ideas follow, ranked by expected impact 
 
 **Flags:** **[FIX]** corrects a conflict already present in the preview or documents; **[PLAN CHANGE]** reopens a stated decision; **[LATER]** is unsuitable for the current inquiry-only launch. Unflagged ideas fit the existing launch model.
 
-File shorthand: **Copy** = `plan/04-CONTENT-AND-COPY.md`; **Spec** = `plan/02-BUILD-SPEC.md`; **SEO** = `plan/05-ADS-AND-SEO.md`; **Design prompt** = `plan/prompts/DESIGN-FINAL-1.txt`; **Preview** = `docs/opus-home-preview.html`; **Imagery** = `docs/imagery-manifest.json`. Visual observations below come from the preview’s HTML/CSS and manifest descriptions, not a fresh browser rendering.
+File shorthand: **Copy** = `plan/04-CONTENT-AND-COPY.md`; **Spec** = `plan/02-BUILD-SPEC.md`; **SEO** = `plan/05-ADS-AND-SEO.md`; **Design prompt** = `docs/archive/prompts/DESIGN-FINAL-1.txt`; **Preview** = `docs/archive/opus-home-preview.html`; **Imagery** = `docs/imagery-manifest.json`. Visual observations below come from the preview’s HTML/CSS and manifest descriptions, not a fresh browser rendering.
 
 ## 1. Conversion and home-page copy
 
