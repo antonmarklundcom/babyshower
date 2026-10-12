@@ -14,6 +14,7 @@
     "css-audit": "node css-audit.mjs",
     "php:lint": "php -l lead-forward.php",
     "php:test": "node docs/qa-tools/php-endpoint.mjs",
-    "check": "npm run build && npm run verify:final && npm run php:lint && npm run php:test"
+    "check:clean": "node scripts/check-clean.mjs",
+    "check": "npm run build && npm run verify:final && npm run php:lint && npm run php:test && npm run check:clean"
   }
 }
