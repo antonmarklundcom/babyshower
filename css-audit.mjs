@@ -3,7 +3,7 @@ import { brotliCompressSync } from 'node:zlib';
 import vm from 'node:vm';
 import assert from 'node:assert/strict';
 const read = path => readFileSync(path, 'utf8');
-const verifier = read('verify.mjs');
+const verifier = read('verify/suite.mjs');
 // Use the verifier's HTML parser and simple-selector matcher unchanged.
 const { parse, walk, matches } = vm.runInNewContext(verifier.slice(verifier.indexOf('const decode ='), verifier.indexOf('const pages =')) + '\n({parse,walk,matches})', { check: assert });
 const files = [...JSON.parse(read('docs/routes.json')).filter(r => r.built).map(r => r.output), '404.html', 'gracias.html'];

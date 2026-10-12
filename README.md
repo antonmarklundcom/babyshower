@@ -30,7 +30,7 @@ Run from the repo root. Needs Node 22 and PHP 8.1+ (PHP only for the last two ro
 | --- | --- | --- |
 | Build the site | `npm run build` | `node build-site.mjs` |
 | Verify (phase B5) | `npm run verify` | `node verify.mjs --phase B5` |
-| Verify (final gate) | `npm run verify:final` | `node verify.mjs --final` |
+| Verify (final gate, node:test) | `npm run verify:final` | `node --test verify/*.test.mjs` (same checks as `node verify.mjs --final`) |
 | Local preview (port 4173, set `PORT` to change) | `npm run preview` | `node preview-server.mjs` |
 | Smoke test the live site (GET only) | `npm run smoke` | `node deploy/smoke.mjs` |
 | CSS audit | `npm run css-audit` | `node css-audit.mjs` |
@@ -63,7 +63,8 @@ Source files (edit these):
 - `assets/`: CSS, JS, self-hosted fonts and images
 - `lead-forward.php`: the form endpoint (hand-written; it loads the generated `lead-defaults.php`)
 - `.htaccess`, `robots.txt`: server rules and crawler rules
-- `verify.mjs`, `css-audit.mjs`, `preview-server.mjs`: checks and local tools
+- `verify.mjs` (CLI wrapper), `verify/` (the checks and the node:test entry), `css-audit.mjs`,
+  `preview-server.mjs`: checks and local tools
 
 Generated output (do not edit): `index.html`, `404.html`, `gracias.html`, `sitemap.xml`, `lead-defaults.php`,
 `docs/routes.json`, and one folder per route group with an `index.html` inside:

@@ -8,7 +8,7 @@ repo map and `docs/DEPLOY.md` / `docs/HOSTINGER-GIT.md` for deployment.
 
 - `npm run build`: `node build-site.mjs`
 - `npm run verify`: `node verify.mjs --phase B5`
-- `npm run verify:final`: `node verify.mjs --final`
+- `npm run verify:final`: `node --test verify/*.test.mjs` (same checks as `node verify.mjs --final`)
 - `npm run preview`: local static preview on port 4173
 - `npm run smoke`: `node deploy/smoke.mjs` (GET only, against the live site)
 - `npm run css-audit`: `node css-audit.mjs`

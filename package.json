@@ -8,7 +8,7 @@
   "scripts": {
     "build": "node build-site.mjs",
     "verify": "node verify.mjs --phase B5",
-    "verify:final": "node verify.mjs --final",
+    "verify:final": "node --test verify/*.test.mjs",
     "preview": "node preview-server.mjs",
     "smoke": "node deploy/smoke.mjs",
     "css-audit": "node css-audit.mjs",
