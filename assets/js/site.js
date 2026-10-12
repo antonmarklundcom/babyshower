@@ -272,6 +272,29 @@
     });
   });
 
+  // Calculator hand-off: fill guests and zone while they are empty (or still hold our last value) and keep one
+  // summary line at the top of the message. Text the visitor typed is never changed.
+  var handoff = { invitados: '', zona: '', summary: '' };
+  document.addEventListener('bs:calc-update', function (event) {
+    var d = event.detail, form = document.querySelector('[data-lead-form]');
+    if (!d || !form) return;
+    var guests = form.querySelector('[name="invitados"]'), zone = form.querySelector('[name="zona"]'), message = form.querySelector('[name="mensaje"]');
+    var option = zone && zone.querySelector('option[value="' + d.zone + '"]');
+    function fill(field, key, value) {
+      if (!field || (field.value !== '' && field.value !== handoff[key])) return;
+      field.value = value; handoff[key] = value;
+    }
+    fill(guests, 'invitados', String(d.guests));
+    if (option) fill(zone, 'zona', d.zone);
+    if (!message) return;
+    var summary = [d.packageName, d.guests + ' invitados', option ? 'zona ' + option.textContent.trim() : '']
+      .concat(d.addons && d.addons.length ? ['adicionales: ' + d.addons.join(', ')] : []).filter(Boolean).join(', ');
+    var current = message.value, limit = Number(message.getAttribute('maxlength')) || 500, next = null;
+    if (current === '') next = summary;
+    else if (handoff.summary && current.indexOf(handoff.summary) === 0) next = summary + current.slice(handoff.summary.length);
+    if (next !== null && next.length <= limit) { message.value = next; handoff.summary = summary; }
+  });
+
   // Home hero carousel. Slide 1 renders without JavaScript; later slides stay hidden (and lazy) until about a second
   // before their turn, or until a dot is pressed. No autoplay, and so no extra downloads, under reduced motion.
   var deck = document.querySelector('[data-hero-slides]');

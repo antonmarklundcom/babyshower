@@ -25,6 +25,7 @@
  }
  function mount(root, data) {
   const q = s => root.querySelector(s), qa = s => Array.from(root.querySelectorAll(s));
+  let mounted = false;
   const exact = q('[data-exact-guests]');
   const range = q('[data-guests]'), count = q('[data-guest-count]'), output = q('[data-calc-output]'), cta = q('[data-calc-cta]');
   function update(preserveExact = false) {
@@ -38,6 +39,11 @@
    cta.textContent = state.cta;
    q('[data-guest-step="-5"]').disabled = Number(range.value) <= 15;
    q('[data-guest-step="5"]').disabled = Number(range.value) >= 60;
+   // Visitor changes (not the initial render) are offered to the enquiry form on the same page.
+   if (mounted) {
+    const packageId = qa('[name="calc-package"]').find(el => el.checked).value;
+    document.dispatchEvent(new CustomEvent('bs:calc-update', { detail: { packageName: data.PACKAGES.find(p => p.id === packageId).name, guests: state.guests, zone: q('[data-calc-zone]').value, addons: qa('[data-addon]').filter(el => el.checked && !el.disabled).map(el => data.ADDONS.find(a => a.id === el.value).name), total: state.total } }));
+   }
    return state;
   }
   if (exact) exact.addEventListener('change', () => { range.value = String(Math.max(15, Math.min(60, Math.round(Number(exact.value) || 30)))); update(); });
@@ -49,7 +55,7 @@
   root.addEventListener('change', update);
   qa('[data-guest-step]').forEach(button => button.addEventListener('click', () => { range.value = String(Math.max(15, Math.min(60, Number(range.value) + Number(button.dataset.guestStep)))); update(); }));
   cta.addEventListener('click', () => { update(); document.dispatchEvent(new CustomEvent('bs:calc-submit')); });
-  update(); root.hidden = false;
+  update(); mounted = true; root.hidden = false;
   return { update };
  }
  window.BS_CALCULATOR = { calculate, render, mount };

@@ -644,8 +644,8 @@ if (args.includes('--calc') || Number(phase[1]) >= 2) {
    assert(!/Gs\.\s*\d/.test(custom.whatsapp || ''), 'Custom WhatsApp omits old total');
    for (const route of ['/', '/combos-y-precios/']) {
     const b = browser(analyticsHtml(route), route);
-    b.context.CustomEvent = class { constructor(type) { this.type = type; } };
-    b.document.dispatchEvent = event => b.fire(b.document, event.type);
+    b.context.CustomEvent = class { constructor(type, init = {}) { this.type = type; this.detail = init.detail; } };
+    b.document.dispatchEvent = event => b.fire(b.document, event.type, { detail: event.detail });
     vm.runInNewContext(source, b.context);
     const root = b.q('[data-calculator]'), range = b.q('[data-guests]'), cta = b.q('[data-calc-cta]');
     const message = () => new URL(cta.href).searchParams.get('text');
@@ -677,7 +677,29 @@ if (args.includes('--calc') || Number(phase[1]) >= 2) {
     b.fire(b.q('[data-consent="accepted"]'), 'click'); b.fire(cta, 'click'); b.fire(cta, 'click'); assert.equal(b.events().filter(e => e[1] === 'calc_submit').length, 1);
     assert(all(pages.get(route).dom, 'a').some(a => a.attrs.href === '/combos-y-precios/'));
    }
-   notes.push('PASS: six calculator fixtures; rendered package switching, bundled add-ons, zona otra, retained guests, WhatsApp and consent/debounce.');
+   // Calculator to enquiry form hand-off on pages that render both.
+   for (const route of ['/', '/combos-y-precios/']) {
+    const b = browser(analyticsHtml(route), route);
+    b.context.CustomEvent = class { constructor(type, init = {}) { this.type = type; this.detail = init.detail; } };
+    b.document.dispatchEvent = event => b.fire(b.document, event.type, { detail: event.detail });
+    vm.runInNewContext(source, b.context);
+    const root = b.q('[data-calculator]'), range = b.q('[data-guests]'), field = name => b.q('[data-lead-form]').querySelector(`[name="${name}"]`);
+    assert(field('invitados') && field('zona') && field('mensaje'), 'Calculator page renders the quote form');
+    assert.deepEqual(['invitados', 'zona', 'mensaje'].map(n => field(n).value), ['', '', ''], 'No pre-fill before the calculator is used');
+    const pkg = PACKAGES.find(p => p.id === all(root, '[name="calc-package"]').find(n => n.checked).value).name;
+    range.value = '40'; b.fire(range, 'input');
+    b.q('[data-calc-zone]').value = 'luque'; b.fire(root, 'change');
+    assert.equal(field('invitados').value, '40'); assert.equal(field('zona').value, 'luque');
+    assert.equal(field('mensaje').value, `${pkg}, 40 invitados, zona Luque`);
+    field('mensaje').value += '\nPreferimos la tarde.';
+    b.q('[data-addon][value="torta"]').checked = true; b.fire(root, 'change');
+    assert.equal(field('mensaje').value, `${pkg}, 40 invitados, zona Luque, adicionales: ${ADDONS.find(a => a.id === 'torta').name}\nPreferimos la tarde.`, 'Summary line replaced, visitor text kept');
+    field('invitados').value = '25'; range.value = '45'; b.fire(range, 'input');
+    assert.equal(field('invitados').value, '25', 'Visitor-typed guests are never overwritten');
+    field('mensaje').value = 'Solo mi texto'; range.value = '50'; b.fire(range, 'input');
+    assert.equal(field('mensaje').value, 'Solo mi texto', 'Visitor-typed message is never overwritten');
+   }
+   notes.push('PASS: six calculator fixtures; rendered package switching, bundled add-ons, zona otra, retained guests, WhatsApp and consent/debounce; calculator to form hand-off.');
   } catch (error) { check(false, 'Calculator: ' + error.message); }
  }
 } else notes.push('DEFERRED B2: JS calculator fixtures; static package prices checked.');
