@@ -348,6 +348,7 @@ if (indexed.some(r => !r.route.endsWith('/')) || !SITE.url.startsWith('https://'
 const endpoint = readFileSync('lead-forward.php', 'utf8');
 const defaults = Buffer.from(JSON.stringify({ leadEmail: SITE.leadEmail, zones: ZONES.map(z => z.slug), routes: manifest.filter(r => r.built).map(r => r.route), errors: UI.errors, wa: WA_NUMBER, url: SITE.url })).toString('base64');
 writeFileSync('lead-forward.php', endpoint.replace(/\/\/ BEGIN SITE DEFAULTS[\s\S]*?\/\/ END SITE DEFAULTS/, "// BEGIN SITE DEFAULTS\nconst SITE_DEFAULTS = '" + defaults + "';\n// END SITE DEFAULTS"));
-writeFileSync('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${indexed.map(r => `  <url><loc>${SITE.url}${r.route}</loc></url>`).join('\n')}\n</urlset>\n`);
+// Only guides carry real dates (ideas.mjs dateModified || datePublished); other routes get no <lastmod>.
+writeFileSync('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${indexed.map(r => { const g = guides.find(guide => guide.route === r.route)?.detail; const lastmod = g ? g.dateModified || g.datePublished : ''; if (lastmod && !/^\d{4}-\d{2}-\d{2}$/.test(lastmod)) throw new Error('Invalid guide date ' + r.route); return `  <url><loc>${SITE.url}${r.route}</loc>${lastmod ? `<lastmod>${lastmod}</lastmod>` : ''}</url>`; }).join('\n')}\n</urlset>\n`);
 console.log(`PASS: ${manifest.filter(r => r.built).length}/${manifest.length} routes; ${Object.keys(EXTRAS).length} special HTML outputs; ${indexed.length} sitemap entries.`);
 if (!localFonts) console.log('FLAG: no complete local font set; Google Fonts Instrument Serif + DM Sans fallback.');

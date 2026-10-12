@@ -266,6 +266,14 @@ test('Sitemap', () => {
  const expected = manifest.filter(r => r.built && r.indexable).map(r => SITE.url + r.route);
  assert.deepEqual(actual.sort(), expected.sort());
  assert(read('robots.txt').includes('Sitemap: ' + SITE.url + '/sitemap.xml'));
+ const lastmods = new Map([...read('sitemap.xml').matchAll(/<url><loc>([^<]+)<\/loc>(?:<lastmod>([^<]*)<\/lastmod>)?<\/url>/g)].map(m => [decode(m[1]), m[2]]));
+ assert.equal(lastmods.size, actual.length, 'Sitemap url entries');
+ for (const idea of IDEAS) {
+  const lastmod = lastmods.get(SITE.url + `/ideas/${idea.slug}/`);
+  assert(/^\d{4}-\d{2}-\d{2}$/.test(lastmod || '') && !Number.isNaN(Date.parse(lastmod + 'T00:00:00Z')) && new Date(lastmod + 'T00:00:00Z').toISOString().startsWith(lastmod), `Guide lastmod ${idea.slug}`);
+  assert.equal(lastmod, idea.dateModified || idea.datePublished, `Guide lastmod source ${idea.slug}`);
+ }
+ for (const [loc, lastmod] of lastmods) if (!/\/ideas\/[a-z0-9-]+\/$/.test(loc)) assert.equal(lastmod, undefined, 'Only guides carry lastmod: ' + loc);
  assert(/User-agent: \*\s+Allow: \//.test(read('robots.txt')));
 });
 test('Home content and forms', () => {
