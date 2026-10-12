@@ -70,6 +70,8 @@ for (const r of manifest) {
  check(r.output === (r.route === '/' ? 'index.html' : r.route.slice(1) + 'index.html'), `Invalid output ${r.output}`);
  check(/^B[1-4]$/.test(r.phase) && typeof r.built === 'boolean' && typeof r.indexable === 'boolean', `Invalid flags ${r.route}`);
  check(!final || r.built, `--final rejects built:false ${r.route}`);
+ const kind = r.route === '/' ? 'home' : r.route === '/servicios/' ? 'services' : SERVICE_ROUTES.includes(r.route) ? 'service' : ({ '/ideas/': 'ideas', '/tematicas/': 'themes', '/zonas/': 'zones' })[r.route] || ({ ideas: 'guide', tematicas: 'theme', zonas: 'zone' })[r.route.split('/')[1]] || 'page';
+ check(r.type === kind, `Route type ${r.route}: expected ${kind}, got ${r.type}`);
  check(Number(r.phase[1]) > Number(phase[1]) || r.built, `Missing phase-required route ${r.route}`);
 }
 // Inventory membership comes from the specification, not a numeric total.
@@ -149,7 +151,7 @@ for (const row of outputs) {
   const ogUrl = one(dom, 'meta[property="og:image"]').attrs.content, ogWidth = one(dom, 'meta[property="og:image:width"]').attrs.content, ogHeight = one(dom, 'meta[property="og:image:height"]').attrs.content, ogAlt = one(dom, 'meta[property="og:image:alt"]').attrs.content;
   assert(ogUrl.startsWith(SITE.url + '/assets/img/'), 'og:image must be absolute and self-hosted');
   // Guides, themes and service pages share their own placed hero; everything else keeps og.jpg.
-  const ownImage = /^\/(?:ideas|tematicas)\/[a-z0-9-]+\/$/.test(row.route) || SERVICE_ROUTES.includes(row.route);
+  const ownImage = ['guide', 'theme', 'service', 'services'].includes(row.type);
   if (ownImage) assert.notEqual(ogUrl, SITE.url + '/assets/img/og.jpg', 'Page must share its own hero as og:image');
   if (ogUrl === SITE.url + '/assets/img/og.jpg') {
    assert.deepEqual([ogWidth, ogHeight], ['1200', '630']);

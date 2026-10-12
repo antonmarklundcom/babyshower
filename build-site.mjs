@@ -13,9 +13,10 @@ process.chdir(fileURLToPath(new URL('.', import.meta.url)));
 const manifest = JSON.parse(readFileSync('docs/routes.json', 'utf8'));
 // New guides only need an entry in ideas.mjs: register any missing guide route in the manifest.
 const missingIdeas = IDEAS.filter(idea => !manifest.some(r => r.route === `/ideas/${idea.slug}/`));
-for (const idea of missingIdeas) manifest.push({ route: `/ideas/${idea.slug}/`, output: `ideas/${idea.slug}/index.html`, phase: 'B4', indexable: true, built: true });
+for (const idea of missingIdeas) manifest.push({ route: `/ideas/${idea.slug}/`, type: 'guide', output: `ideas/${idea.slug}/index.html`, phase: 'B4', indexable: true, built: true });
 if (missingIdeas.length) writeFileSync('docs/routes.json', JSON.stringify(manifest, null, 2) + '\n');
-const guides = manifest.filter(r => r.phase === 'B4' && r.route !== '/ideas/').map(r => {
+// Route kind comes from the manifest's type field; phase is build history only.
+const guides = manifest.filter(r => r.type === 'guide').map(r => {
  const detail = IDEAS.find(idea => r.route === `/ideas/${idea.slug}/`);
  if (!detail) throw new Error(`Missing guide ${r.route}`);
  PAGES[r.route] = { ...detail, type: 'guide', detail };

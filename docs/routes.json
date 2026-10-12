@@ -1,6 +1,7 @@
 [
   {
     "route": "/",
+    "type": "home",
     "output": "index.html",
     "phase": "B1",
     "indexable": true,
@@ -8,6 +9,7 @@
   },
   {
     "route": "/como-funciona/",
+    "type": "page",
     "output": "como-funciona/index.html",
     "phase": "B1",
     "indexable": true,
@@ -15,6 +17,7 @@
   },
   {
     "route": "/contacto/",
+    "type": "page",
     "output": "contacto/index.html",
     "phase": "B1",
     "indexable": true,
@@ -22,6 +25,7 @@
   },
   {
     "route": "/preguntas-frecuentes/",
+    "type": "page",
     "output": "preguntas-frecuentes/index.html",
     "phase": "B1",
     "indexable": true,
@@ -29,6 +33,7 @@
   },
   {
     "route": "/privacidad/",
+    "type": "page",
     "output": "privacidad/index.html",
     "phase": "B1",
     "indexable": true,
@@ -36,6 +41,7 @@
   },
   {
     "route": "/terminos/",
+    "type": "page",
     "output": "terminos/index.html",
     "phase": "B1",
     "indexable": true,
@@ -43,6 +49,7 @@
   },
   {
     "route": "/combos-y-precios/",
+    "type": "page",
     "output": "combos-y-precios/index.html",
     "phase": "B2",
     "indexable": true,
@@ -50,6 +57,7 @@
   },
   {
     "route": "/revelacion-de-genero/",
+    "type": "page",
     "output": "revelacion-de-genero/index.html",
     "phase": "B2",
     "indexable": true,
@@ -57,6 +65,7 @@
   },
   {
     "route": "/primer-anito/",
+    "type": "page",
     "output": "primer-anito/index.html",
     "phase": "B2",
     "indexable": true,
@@ -64,6 +73,7 @@
   },
   {
     "route": "/servicios/",
+    "type": "services",
     "output": "servicios/index.html",
     "phase": "B1",
     "indexable": true,
@@ -71,6 +81,7 @@
   },
   {
     "route": "/decoracion-con-globos/",
+    "type": "service",
     "output": "decoracion-con-globos/index.html",
     "phase": "B1",
     "indexable": true,
@@ -78,6 +89,7 @@
   },
   {
     "route": "/bautismo/",
+    "type": "service",
     "output": "bautismo/index.html",
     "phase": "B1",
     "indexable": true,
@@ -85,6 +97,7 @@
   },
   {
     "route": "/cumpleanos-infantil/",
+    "type": "service",
     "output": "cumpleanos-infantil/index.html",
     "phase": "B1",
     "indexable": true,
@@ -92,6 +105,7 @@
   },
   {
     "route": "/bienvenida-de-bebe/",
+    "type": "service",
     "output": "bienvenida-de-bebe/index.html",
     "phase": "B1",
     "indexable": true,
@@ -99,6 +113,7 @@
   },
   {
     "route": "/tematicas/",
+    "type": "themes",
     "output": "tematicas/index.html",
     "phase": "B3",
     "indexable": true,
@@ -106,6 +121,7 @@
   },
   {
     "route": "/tematicas/jefe-en-panales/",
+    "type": "theme",
     "output": "tematicas/jefe-en-panales/index.html",
     "phase": "B3",
     "indexable": true,
@@ -113,6 +129,7 @@
   },
   {
     "route": "/tematicas/dino-bebe/",
+    "type": "theme",
     "output": "tematicas/dino-bebe/index.html",
     "phase": "B3",
     "indexable": true,
@@ -120,6 +137,7 @@
   },
   {
     "route": "/tematicas/moana-bebe/",
+    "type": "theme",
     "output": "tematicas/moana-bebe/index.html",
     "phase": "B3",
     "indexable": true,
@@ -127,6 +145,7 @@
   },
   {
     "route": "/tematicas/minnie-bebe/",
+    "type": "theme",
     "output": "tematicas/minnie-bebe/index.html",
     "phase": "B3",
     "indexable": true,
@@ -134,6 +153,7 @@
   },
   {
     "route": "/tematicas/mickey-bebe/",
+    "type": "theme",
     "output": "tematicas/mickey-bebe/index.html",
     "phase": "B3",
     "indexable": true,
@@ -141,6 +161,7 @@
   },
   {
     "route": "/tematicas/blanca-nieves-bebe/",
+    "type": "theme",
     "output": "tematicas/blanca-nieves-bebe/index.html",
     "phase": "B3",
     "indexable": true,
@@ -148,6 +169,7 @@
   },
   {
     "route": "/tematicas/frutillita-bebe/",
+    "type": "theme",
     "output": "tematicas/frutillita-bebe/index.html",
     "phase": "B3",
     "indexable": true,
@@ -155,6 +177,7 @@
   },
   {
     "route": "/tematicas/mariposas/",
+    "type": "theme",
     "output": "tematicas/mariposas/index.html",
     "phase": "B3",
     "indexable": true,
@@ -162,6 +185,7 @@
   },
   {
     "route": "/tematicas/safari/",
+    "type": "theme",
     "output": "tematicas/safari/index.html",
     "phase": "B3",
     "indexable": true,
@@ -169,6 +193,7 @@
   },
   {
     "route": "/tematicas/nubes-y-ositos/",
+    "type": "theme",
     "output": "tematicas/nubes-y-ositos/index.html",
     "phase": "B3",
     "indexable": true,
@@ -176,6 +201,7 @@
   },
   {
     "route": "/zonas/",
+    "type": "zones",
     "output": "zonas/index.html",
     "phase": "B3",
     "indexable": true,
@@ -183,6 +209,7 @@
   },
   {
     "route": "/zonas/asuncion/",
+    "type": "zone",
     "output": "zonas/asuncion/index.html",
     "phase": "B3",
     "indexable": true,
@@ -190,6 +217,7 @@
   },
   {
     "route": "/zonas/luque/",
+    "type": "zone",
     "output": "zonas/luque/index.html",
     "phase": "B3",
     "indexable": true,
@@ -197,6 +225,7 @@
   },
   {
     "route": "/zonas/san-lorenzo/",
+    "type": "zone",
     "output": "zonas/san-lorenzo/index.html",
     "phase": "B3",
     "indexable": true,
@@ -204,6 +233,7 @@
   },
   {
     "route": "/zonas/fernando-de-la-mora/",
+    "type": "zone",
     "output": "zonas/fernando-de-la-mora/index.html",
     "phase": "B3",
     "indexable": true,
@@ -211,6 +241,7 @@
   },
   {
     "route": "/zonas/lambare/",
+    "type": "zone",
     "output": "zonas/lambare/index.html",
     "phase": "B3",
     "indexable": true,
@@ -218,6 +249,7 @@
   },
   {
     "route": "/zonas/capiata/",
+    "type": "zone",
     "output": "zonas/capiata/index.html",
     "phase": "B3",
     "indexable": true,
@@ -225,6 +257,7 @@
   },
   {
     "route": "/zonas/mariano-roque-alonso/",
+    "type": "zone",
     "output": "zonas/mariano-roque-alonso/index.html",
     "phase": "B3",
     "indexable": true,
@@ -232,6 +265,7 @@
   },
   {
     "route": "/ideas/",
+    "type": "ideas",
     "output": "ideas/index.html",
     "phase": "B4",
     "indexable": true,
@@ -239,6 +273,7 @@
   },
   {
     "route": "/ideas/ideas-para-baby-shower/",
+    "type": "guide",
     "output": "ideas/ideas-para-baby-shower/index.html",
     "phase": "B4",
     "indexable": true,
@@ -246,6 +281,7 @@
   },
   {
     "route": "/ideas/juegos-para-baby-shower/",
+    "type": "guide",
     "output": "ideas/juegos-para-baby-shower/index.html",
     "phase": "B4",
     "indexable": true,
@@ -253,6 +289,7 @@
   },
   {
     "route": "/ideas/baby-shower-sencillo-en-casa/",
+    "type": "guide",
     "output": "ideas/baby-shower-sencillo-en-casa/index.html",
     "phase": "B4",
     "indexable": true,
@@ -260,6 +297,7 @@
   },
   {
     "route": "/ideas/revelacion-de-genero-sencilla/",
+    "type": "guide",
     "output": "ideas/revelacion-de-genero-sencilla/index.html",
     "phase": "B4",
     "indexable": true,
@@ -267,6 +305,7 @@
   },
   {
     "route": "/ideas/que-se-necesita-para-un-baby-shower/",
+    "type": "guide",
     "output": "ideas/que-se-necesita-para-un-baby-shower/index.html",
     "phase": "B4",
     "indexable": true,
@@ -274,6 +313,7 @@
   },
   {
     "route": "/ideas/centros-de-mesa-para-baby-shower/",
+    "type": "guide",
     "output": "ideas/centros-de-mesa-para-baby-shower/index.html",
     "phase": "B4",
     "indexable": true,
@@ -281,6 +321,7 @@
   },
   {
     "route": "/ideas/que-regalar-en-un-baby-shower/",
+    "type": "guide",
     "output": "ideas/que-regalar-en-un-baby-shower/index.html",
     "phase": "B4",
     "indexable": true,
@@ -288,6 +329,7 @@
   },
   {
     "route": "/ideas/baby-shower-de-nina/",
+    "type": "guide",
     "output": "ideas/baby-shower-de-nina/index.html",
     "phase": "B4",
     "indexable": true,
@@ -295,6 +337,7 @@
   },
   {
     "route": "/ideas/fiesta-de-primer-anito/",
+    "type": "guide",
     "output": "ideas/fiesta-de-primer-anito/index.html",
     "phase": "B4",
     "indexable": true,
@@ -302,6 +345,7 @@
   },
   {
     "route": "/ideas/baby-shower-de-nino/",
+    "type": "guide",
     "output": "ideas/baby-shower-de-nino/index.html",
     "phase": "B4",
     "indexable": true,
@@ -309,6 +353,7 @@
   },
   {
     "route": "/ideas/mesa-dulce-para-baby-shower/",
+    "type": "guide",
     "output": "ideas/mesa-dulce-para-baby-shower/index.html",
     "phase": "B4",
     "indexable": true,
@@ -316,6 +361,7 @@
   },
   {
     "route": "/ideas/souvenirs-para-baby-shower/",
+    "type": "guide",
     "output": "ideas/souvenirs-para-baby-shower/index.html",
     "phase": "B4",
     "indexable": true,
@@ -323,6 +369,7 @@
   },
   {
     "route": "/ideas/torta-para-baby-shower/",
+    "type": "guide",
     "output": "ideas/torta-para-baby-shower/index.html",
     "phase": "B4",
     "indexable": true,
@@ -330,6 +377,7 @@
   },
   {
     "route": "/ideas/torta-para-revelacion-de-genero/",
+    "type": "guide",
     "output": "ideas/torta-para-revelacion-de-genero/index.html",
     "phase": "B4",
     "indexable": true,
@@ -337,6 +385,7 @@
   },
   {
     "route": "/ideas/juegos-para-revelacion-de-genero/",
+    "type": "guide",
     "output": "ideas/juegos-para-revelacion-de-genero/index.html",
     "phase": "B4",
     "indexable": true,
@@ -344,6 +393,7 @@
   },
   {
     "route": "/ideas/arco-de-globos-para-baby-shower/",
+    "type": "guide",
     "output": "ideas/arco-de-globos-para-baby-shower/index.html",
     "phase": "B4",
     "indexable": true,
@@ -351,6 +401,7 @@
   },
   {
     "route": "/ideas/primer-anito-varon/",
+    "type": "guide",
     "output": "ideas/primer-anito-varon/index.html",
     "phase": "B4",
     "indexable": true,
@@ -358,6 +409,7 @@
   },
   {
     "route": "/ideas/ajuar-para-bebe/",
+    "type": "guide",
     "output": "ideas/ajuar-para-bebe/index.html",
     "phase": "B4",
     "indexable": true,
@@ -365,6 +417,7 @@
   },
   {
     "route": "/ideas/nombres-de-bebe-paraguay/",
+    "type": "guide",
     "output": "ideas/nombres-de-bebe-paraguay/index.html",
     "phase": "B4",
     "indexable": true,
@@ -372,6 +425,7 @@
   },
   {
     "route": "/ideas/torta-para-bautismo/",
+    "type": "guide",
     "output": "ideas/torta-para-bautismo/index.html",
     "phase": "B4",
     "indexable": true,
@@ -379,6 +433,7 @@
   },
   {
     "route": "/ideas/decoracion-para-bautismo/",
+    "type": "guide",
     "output": "ideas/decoracion-para-bautismo/index.html",
     "phase": "B4",
     "indexable": true,
@@ -386,6 +441,7 @@
   },
   {
     "route": "/ideas/decoracion-cumpleanos-infantil/",
+    "type": "guide",
     "output": "ideas/decoracion-cumpleanos-infantil/index.html",
     "phase": "B4",
     "indexable": true,
@@ -393,6 +449,7 @@
   },
   {
     "route": "/ideas/arreglos-de-globos/",
+    "type": "guide",
     "output": "ideas/arreglos-de-globos/index.html",
     "phase": "B4",
     "indexable": true,
