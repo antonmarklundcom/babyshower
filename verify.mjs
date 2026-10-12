@@ -123,6 +123,7 @@ const one = (node, selector) => all(node, selector)[0];
 const text = node => node ? node.text ?? (node.children || []).map(text).join('') : '';
 const normalize = s => s.replace(/\s+/g, ' ').trim();
 function visible(node) { return !node || ['script','style'].includes(node.tag) || node.attrs?.['aria-hidden'] === 'true' ? '' : node.text ?? (node.children || []).map(visible).join(' '); }
+const imageryEntries = JSON.parse(read('docs/imagery-manifest.json')).images, imageVariants = JSON.parse(read('assets/img/manifest.json')).images;
 const pages = new Map();
 const titles = new Set(), descriptions = new Set();
 let maxWeight = 0;
@@ -144,11 +145,22 @@ for (const row of outputs) {
   assert.equal(one(dom, 'meta[property="og:description"]').attrs.content, desc);
   assert(one(dom, 'meta[name="viewport"]'));
   assert(one(dom, 'link[rel="icon"]').attrs.href.startsWith('data:image/svg+xml,'));
-  assert.equal(one(dom, 'meta[property="og:image"]').attrs.content, SITE.url + '/assets/img/og.jpg');
-  assert(/^https:\/\//.test(one(dom, 'meta[property="og:image"]').attrs.content));
-  assert.equal(one(dom, 'meta[property="og:image:width"]').attrs.content, '1200');
-  assert.equal(one(dom, 'meta[property="og:image:height"]').attrs.content, '630');
-  assert.equal(one(dom, 'meta[property="og:image:alt"]').attrs.content, JSON.parse(read('docs/imagery-manifest.json')).images.find(image => image.id === 'hero-baby-shower-quincho').alt_es);
+  const ogUrl = one(dom, 'meta[property="og:image"]').attrs.content, ogWidth = one(dom, 'meta[property="og:image:width"]').attrs.content, ogHeight = one(dom, 'meta[property="og:image:height"]').attrs.content, ogAlt = one(dom, 'meta[property="og:image:alt"]').attrs.content;
+  assert(ogUrl.startsWith(SITE.url + '/assets/img/'), 'og:image must be absolute and self-hosted');
+  // Guides, themes and service pages share their own placed hero; everything else keeps og.jpg.
+  const ownImage = /^\/(?:ideas|tematicas)\/[a-z0-9-]+\/$/.test(row.route) || SERVICE_ROUTES.includes(row.route);
+  if (ownImage) assert.notEqual(ogUrl, SITE.url + '/assets/img/og.jpg', 'Page must share its own hero as og:image');
+  if (ogUrl === SITE.url + '/assets/img/og.jpg') {
+   assert.deepEqual([ogWidth, ogHeight], ['1200', '630']);
+   assert.equal(ogAlt, imageryEntries.find(image => image.id === 'hero-baby-shower-quincho').alt_es);
+  } else {
+   const file = ogUrl.slice((SITE.url + '/assets/img/').length);
+   const variant = imageVariants.flatMap(image => image.files.map(f => ({ ...f, base: image.filename_base }))).find(f => f.file === file);
+   assert(variant && variant.format === 'webp' && existsSync('assets/img/' + file), 'og:image must be a WebP variant from the image manifest');
+   assert.deepEqual([ogWidth, ogHeight], [String(variant.width), String(variant.height)], 'og:image dimensions');
+   assert.equal(variant.width, Math.max(...imageVariants.find(image => image.filename_base === variant.base).files.filter(f => f.format === 'webp').map(f => f.width)), 'og:image uses the largest WebP');
+   assert.equal(ogAlt, imageryEntries.find(image => image.id === variant.base).alt_es, 'og:image:alt matches the image');
+  }
   assert.equal(one(dom, 'meta[name="twitter:card"]').attrs.content, 'summary_large_image');
   assert(!/Ley (?:6534\/2020|4868\/2013)/i.test(html), 'Unreviewed statute citation');
   if (!row.indexable) assert(/noindex/.test(one(dom, 'meta[name="robots"]')?.attrs.content), 'Special output requires noindex');
