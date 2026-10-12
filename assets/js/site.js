@@ -272,11 +272,12 @@
     });
   });
 
-  // Home hero carousel. Slide 1 renders without JavaScript; slides 2 and 3 are unhidden after load. No autoplay under reduced motion.
+  // Home hero carousel. Slide 1 renders without JavaScript; later slides stay hidden (and lazy) until about a second
+  // before their turn, or until a dot is pressed. No autoplay, and so no extra downloads, under reduced motion.
   var deck = document.querySelector('[data-hero-slides]');
   var slides = deck ? [].slice.call(deck.querySelectorAll('.hero-slide')) : [];
   if (slides.length > 1 && cfg.slides) {
-    var current = 0, timer = null, userPaused = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var current = 0, timer = null, warm = null, userPaused = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var bar = document.createElement('div'), toggle = document.createElement('button'), dots = [];
     bar.className = 'hero-controls';
     toggle.type = 'button';
@@ -314,19 +315,24 @@
       paint();
       if (img && !img.complete) img.decode && img.decode().catch(function () {});
     }
-    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    function prepare(i) {
+      var img = slides[i].querySelector('img');
+      if (!slides[i].hidden) return;
+      slides[i].hidden = false;
+      if (img && img.decode) img.decode().catch(function () {});
+    }
+    function stop() { clearTimeout(timer); clearTimeout(warm); timer = warm = null; }
     function start() {
       stop();
       if (userPaused || document.hidden) return;
-      timer = setInterval(function () { go((current + 1) % slides.length); }, 6000);
+      var next = (current + 1) % slides.length;
+      warm = setTimeout(function () { prepare(next); }, 5000);
+      timer = setTimeout(function () { go(next); start(); }, 6000);
     }
     toggle.addEventListener('click', function () { userPaused = !userPaused; paint(); start(); });
     dots.forEach(function (dot) { dot.addEventListener('click', start); });
     document.addEventListener('visibilitychange', start);
-    function activate() {
-      slides.forEach(function (slide, i) { if (i) slide.hidden = false; });
-      start();
-    }
+    function activate() { start(); }
     paint();
     if (document.readyState === 'complete') activate(); else window.addEventListener('load', activate);
   }

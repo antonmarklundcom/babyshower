@@ -269,6 +269,13 @@ test('Sitemap', () => {
  assert(/User-agent: \*\s+Allow: \//.test(read('robots.txt')));
 });
 test('Home content and forms', () => {
+ {
+  // Only slide 1 may load eagerly; any later carousel slide must be hidden and lazy.
+  const slides = all(pages.get('/').dom, '.hero-slide');
+  assert(slides.length >= 1, 'Home hero slide');
+  assert.equal(one(slides[0], 'img').attrs.loading, 'eager'); assert.equal(one(slides[0], 'img').attrs.fetchpriority, 'high');
+  for (const slide of slides.slice(1)) assert('hidden' in slide.attrs && one(slide, 'img').attrs.loading === 'lazy' && !one(slide, 'img').attrs.fetchpriority, 'Later hero slides must be hidden and loading="lazy"');
+ }
  const home = pages.get('/').dom;
  for (const item of TRUST) assert(normalize(visible(home)).includes(item));
  assert(one(home, '[id="calculadora"]'));
