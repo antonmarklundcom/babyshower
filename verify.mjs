@@ -57,6 +57,7 @@ for (const zone of ZONE_DETAILS.filter(z => ['mariano-roque-alonso', 'capiata'].
  check(words >= 140 && words <= 160, zone.slug + ' access paragraph word count');
 }
 
+check(/Content-Security-Policy "default-src 'self';[^"]*style-src 'self';/.test(read('.htaccess')) && !read('.htaccess').includes("'unsafe-inline'") && /Strict-Transport-Security/.test(read('.htaccess')) && /Permissions-Policy/.test(read('.htaccess')), 'Security headers in .htaccess');
 const manifest = JSON.parse(read('docs/routes.json'));
 const built = manifest.filter(r => r.built);
 const routes = new Map(manifest.map(r => [r.route, r]));
@@ -162,6 +163,7 @@ for (const row of outputs) {
    assert.equal(ogAlt, imageryEntries.find(image => image.id === variant.base).alt_es, 'og:image:alt matches the image');
   }
   assert.equal(one(dom, 'meta[name="twitter:card"]').attrs.content, 'summary_large_image');
+  assert(!/<style\b|\sstyle=/i.test(html.replace(/<script\b[\s\S]*?<\/script>/gi, '')), 'Inline styles need CSP unsafe-inline');
   assert(!/Ley (?:6534\/2020|4868\/2013)/i.test(html), 'Unreviewed statute citation');
   if (!row.indexable) assert(/noindex/.test(one(dom, 'meta[name="robots"]')?.attrs.content), 'Special output requires noindex');
   const bodyText = normalize(visible(one(dom, 'body')));

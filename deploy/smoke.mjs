@@ -13,6 +13,10 @@ const home = await get('/');
 const html = await home.text();
 check(home.status === 200, 'home returns 200', String(home.status));
 check(home.headers.get('x-content-type-options') === 'nosniff', 'nosniff header on HTML', home.headers.get('x-content-type-options') || 'missing');
+check(/max-age=\d{7,}/.test(home.headers.get('strict-transport-security') || ''), 'HSTS header on HTML', home.headers.get('strict-transport-security') || 'missing');
+check(/camera=\(\)/.test(home.headers.get('permissions-policy') || ''), 'Permissions-Policy header on HTML', home.headers.get('permissions-policy') || 'missing');
+const csp = home.headers.get('content-security-policy') || '';
+check(/default-src 'self'/.test(csp) && /frame-ancestors 'self'/.test(csp) && !/'unsafe-inline'/.test(csp), 'Content-Security-Policy header on HTML (no unsafe-inline)', csp || 'missing');
 
 // A plain GET must reach PHP and redirect; a host error page here means every form submission fails.
 const lead = await get('/lead-forward.php');

@@ -136,7 +136,7 @@ function imageFigure(id, cls, sizes, eager = false) {
 function cards(route, items = PACKAGES, delivery = 0) {
  return '<div class="package-grid">' + items.map(item => offerCard({ ...item, basePrice: item.price, price: item.price + delivery }, route, 'h3')).join('') + '</div>';
 }
-const stepList = (items = STEPS) => '<ol class="steps" style="--step-count:' + items.length + '">' + items.map((item, i) => '<li><span class="step-number" aria-hidden="true">0' + (i + 1) + '</span>' + (Array.isArray(item) ? '<h3>' + esc(item[0]) + '</h3>' + p(item[1]) : p(item)) + '</li>').join('') + '</ol>';
+const stepList = (items = STEPS) => '<ol class="steps">' + items.map((item, i) => '<li><span class="step-number" aria-hidden="true">0' + (i + 1) + '</span>' + (Array.isArray(item) ? '<h3>' + esc(item[0]) + '</h3>' + p(item[1]) : p(item)) + '</li>').join('') + '</ol>';
 const steps = () => '<section class="steps-section"><div class="wrap"><h2>' + esc(UI.steps) + '</h2>' + stepList() + '</div></section>';
 function faq(items, grouped = false) {
  const details = rows => rows.map(f => `<details data-faq><summary>${esc(f.q)}</summary>${p(f.a).replace('/como-funciona/', link('/como-funciona/', '/como-funciona/', 'preguntas'))}</details>`).join('');
@@ -210,7 +210,8 @@ function offers(route, page) {
  return `<section><div class="wrap">${offerCard(ANITO, route)}<h2>Elegí tu temática</h2>${themeGrid(THEME_DETAILS.filter(t => ANITO.themes.includes(t.slug)))}</div></section>${editorial(ANITO_IDEAS, ['fiesta-de-primer-anito', 'primer-anito-varon', 'decoracion-cumpleanos-infantil'], 'anito-guias')}${questions}`;
 }
 function themePalette(t, cls = 'theme-image') {
- return `<div class="${cls} theme-palette" aria-hidden="true">${t.swatches.map(color => `<span style="background-color:${esc(color)}"></span>`).join('')}</div>`;
+ // SVG fill attributes keep the swatch colours out of inline styles (CSP style-src without 'unsafe-inline').
+ return `<div class="${cls} theme-palette" aria-hidden="true"><svg viewBox="0 0 ${t.swatches.length} 1" preserveAspectRatio="none" focusable="false">${t.swatches.map((color, i) => `<rect x="${i}" width="1" height="1" fill="${esc(color)}"/>`).join('')}</svg></div>`;
 }
 function programmatic(route, page) {
  const t = page.detail;
@@ -326,7 +327,9 @@ const serif = fontFiles.find(f => /instrument.*serif/i.test(f));
 const textFace = [['Satoshi', 'satoshi'], ['DM Sans', 'dm-?sans']].map(([family, pattern]) => ({ family, files: [400, 500, 700].map(w => fontFiles.find(f => new RegExp(`${pattern}.*(${w}|${{400:'regular',500:'medium',700:'bold'}[w]})`, 'i').test(f))) })).find(face => face.files.every(Boolean));
 const localFonts = serif && textFace;
 const fontUrl = f => '/assets/fonts/' + encodeURIComponent(f);
-const fonts = localFonts ? [serif, textFace.files[0]].map(f => `<link rel="preload" href="${fontUrl(f)}" as="font" type="font/woff2" crossorigin>`).join('') + `<style>${[[serif, 'Instrument Serif', 400], ...textFace.files.map((f, i) => [f, textFace.family, [400, 500, 700][i]])].map(([f, family, weight]) => `@font-face{font-family:'${family}';font-style:normal;font-weight:${weight};font-display:swap;src:url('${fontUrl(f)}') format('woff2')}`).join('')}</style>` : '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Instrument+Serif&amp;display=swap" rel="preload" as="style" onload="this.onload=null;this.rel=&quot;stylesheet&quot;"><noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Instrument+Serif&amp;display=swap" rel="stylesheet"></noscript>';
+// @font-face rules live at the top of site.css (no inline <style>, so the CSP needs no 'unsafe-inline'); fail if they drift from the shipped files.
+if (localFonts) { const css = readFileSync('assets/css/site.css', 'utf8'); for (const f of [serif, ...textFace.files]) if (!css.includes(`src:url('${fontUrl(f)}')`)) throw new Error('site.css lacks @font-face for ' + f); }
+const fonts = localFonts ? [serif, textFace.files[0]].map(f => `<link rel="preload" href="${fontUrl(f)}" as="font" type="font/woff2" crossorigin>`).join('')  : '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Instrument+Serif&amp;display=swap" rel="preload" as="style" onload="this.onload=null;this.rel=&quot;stylesheet&quot;"><noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Instrument+Serif&amp;display=swap" rel="stylesheet"></noscript>';
 const favicon = 'data:image/svg+xml,' + encodeURIComponent(readFileSync('assets/img/favicon.svg', 'utf8').trim());
 function render(route, page, indexable) {
  const og = ogImage(route, page);
