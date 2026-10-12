@@ -1,0 +1,19 @@
+{
+  "name": "babyshower",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node build-site.mjs",
+    "verify": "node verify.mjs --phase B5",
+    "verify:final": "node verify.mjs --final",
+    "preview": "node preview-server.mjs",
+    "smoke": "node deploy/smoke.mjs",
+    "css-audit": "node css-audit.mjs",
+    "php:lint": "php -l lead-forward.php",
+    "php:test": "node docs/qa-tools/php-endpoint.mjs",
+    "check": "npm run build && npm run verify:final && npm run php:lint && npm run php:test"
+  }
+}

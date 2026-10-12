@@ -3,9 +3,9 @@
   "configurations": [
     {
       "name": "babyshower-preview",
-      "runtimeExecutable": "node",
-      "runtimeArgs": ["preview-server.mjs", "8095"],
-      "port": 8095
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "preview"],
+      "port": 4173
     }
   ]
 }
