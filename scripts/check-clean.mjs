@@ -11,7 +11,6 @@ const GENERATED_EXACT = new Set([
   '404.html',
   'gracias.html',
   'sitemap.xml',
-  'lead-forward.php',
   'lead-defaults.php',
   'docs/routes.json',
 ]);

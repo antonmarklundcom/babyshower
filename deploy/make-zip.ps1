@@ -15,7 +15,7 @@ try {
     if ($routes.Count -lt 32) { throw "Expected at least 32 manifest routes; found $($routes.Count)" }
     if (@($routes | Where-Object { -not $_.built }).Count) { throw 'Manifest has unbuilt routes' }
     $ship = [System.Collections.Generic.HashSet[string]]::new([System.StringComparer]::Ordinal)
-    foreach ($fixed in @('index.html','404.html','gracias.html','lead-forward.php','.htaccess','robots.txt','sitemap.xml')) { [void]$ship.Add($fixed) }
+    foreach ($fixed in @('index.html','404.html','gracias.html','lead-forward.php','lead-defaults.php','.htaccess','robots.txt','sitemap.xml')) { [void]$ship.Add($fixed) }
     foreach ($route in $routes) { [void]$ship.Add([string]$route.output) }
     foreach ($asset in Get-ChildItem -LiteralPath 'assets' -File -Recurse -Force) {
         [void]$ship.Add($asset.FullName.Substring($siteRoot.Length + 1).Replace('\','/'))

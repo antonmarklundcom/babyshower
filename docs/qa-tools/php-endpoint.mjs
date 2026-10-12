@@ -13,6 +13,7 @@ const reset = (withConfig) => {
   rmSync(ROOT + '/mail-capture.jsonl', { force: true });
   for (const f of ['leads.log', '.babyshower-state', 'vendercrm-config.babyshower.php']) rmSync(ROOT + '/site/' + f, { recursive: true, force: true });
   copyFileSync(SRC + '/lead-forward.php', pub + '/lead-forward.php');
+  copyFileSync(SRC + '/lead-defaults.php', pub + '/lead-defaults.php');
   writeFileSync(pub + '/gracias.html', '<p>gracias</p>');
   if (withConfig) writeFileSync(ROOT + '/site/vendercrm-config.babyshower.php', "<?php return ['lead_email' => 'enquiries@example.invalid', 'url' => '', 'api_key' => ''];");
 };

@@ -19,7 +19,7 @@ repo map and `docs/DEPLOY.md` / `docs/HOSTINGER-GIT.md` for deployment.
 ## Rules
 
 - Generated files: never hand-edit `*/index.html`, `404.html`, `gracias.html`, `sitemap.xml`
-  or the `SITE DEFAULTS` block in `lead-forward.php`. Change the source (`content.mjs`,
+  or `lead-defaults.php`. Change the source (`content.mjs`,
   `themes.mjs`, `zones.mjs`, `ideas.mjs`, `build-site.mjs`, `assets/`) and run `npm run build`.
 - Generated output is committed. Rebuild before commit and keep `git status` clean (no stray
   rebuild diffs left behind).

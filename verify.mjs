@@ -681,7 +681,7 @@ if (args.includes('--calc') || Number(phase[1]) >= 2) {
   } catch (error) { check(false, 'Calculator: ' + error.message); }
  }
 } else notes.push('DEFERRED B2: JS calculator fixtures; static package prices checked.');
-if (Number(phase[1]) >= 5 || final) check(existsSync('lead-forward.php'),'B5 requires lead-forward.php');
+if (Number(phase[1]) >= 5 || final) check(existsSync('lead-forward.php') && existsSync('lead-defaults.php') && !read('lead-forward.php').includes('SITE DEFAULTS'),'B5 requires lead-forward.php and the generated lead-defaults.php');
 else notes.push('DEFERRED B5: lead-forward.php; forms have the full endpoint contract.');
 
 // B6 can opt into live HTTP and ZIP central-directory checks without dependencies.
@@ -697,7 +697,7 @@ if (args.includes('--zip')) test('Deployment ZIP', () => {
  const buf = readFileSync(args[args.indexOf('--zip') + 1]); const entries = new Set();
  for (let pos = 0; pos + 46 <= buf.length; pos++) if (buf.readUInt32LE(pos) === 0x02014b50) { const len = buf.readUInt16LE(pos + 28); entries.add(buf.subarray(pos + 46,pos + 46 + len).toString('utf8')); pos += 45 + len + buf.readUInt16LE(pos + 30) + buf.readUInt16LE(pos + 32); }
  const files = path => readdirSync(path,{withFileTypes:true}).flatMap(d => d.isDirectory() ? files(join(path,d.name)) : [join(path,d.name).replaceAll('\\','/')]);
- for (const name of new Set([...manifest.map(r => r.output),'index.html','404.html','gracias.html','lead-forward.php','.htaccess','robots.txt','sitemap.xml',...files('assets')])) assert(entries.has(name), `ZIP missing ${name}`);
+ for (const name of new Set([...manifest.map(r => r.output),'index.html','404.html','gracias.html','lead-forward.php','lead-defaults.php','.htaccess','robots.txt','sitemap.xml',...files('assets')])) assert(entries.has(name), `ZIP missing ${name}`);
  for (const name of entries) assert(!/^(?:plan|docs|deploy|codex-input)\/|\.mjs$|leads\.log|vendercrm-config/.test(name), `ZIP contains private file ${name}`);
 });
 else notes.push('DEFERRED B5/B6: deployment ZIP; use --zip <file>.');

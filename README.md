@@ -16,7 +16,7 @@ site copy is Spanish (es-PY, voseo). There is no database and no online booking.
 The built HTML is checked in because Hostinger does not build. Never hand-edit it:
 
 - `index.html`, `*/index.html`, `404.html`, `gracias.html`, `sitemap.xml`, `docs/routes.json`
-- the `SITE DEFAULTS` block in `lead-forward.php`
+- `lead-defaults.php` (public endpoint defaults read by `lead-forward.php`)
 
 Change the source (`content.mjs`, `themes.mjs`, `zones.mjs`, `ideas.mjs`, `build-site.mjs`,
 `assets/`), run `node build-site.mjs`, and commit the regenerated files together with the source.
@@ -59,11 +59,11 @@ Source files (edit these):
 - `themes.mjs`, `zones.mjs`, `ideas.mjs`: theme, zone and guide data
 - `build-site.mjs`: the generator and templates
 - `assets/`: CSS, JS, self-hosted fonts and images
-- `lead-forward.php`: the form endpoint (its `SITE DEFAULTS` block is generated)
+- `lead-forward.php`: the form endpoint (hand-written; it loads the generated `lead-defaults.php`)
 - `.htaccess`, `robots.txt`: server rules and crawler rules
 - `verify.mjs`, `css-audit.mjs`, `preview-server.mjs`: checks and local tools
 
-Generated output (do not edit): `index.html`, `404.html`, `gracias.html`, `sitemap.xml`,
+Generated output (do not edit): `index.html`, `404.html`, `gracias.html`, `sitemap.xml`, `lead-defaults.php`,
 `docs/routes.json`, and one folder per route group with an `index.html` inside:
 `bautismo/`, `bienvenida-de-bebe/`, `combos-y-precios/`, `como-funciona/`, `contacto/`,
 `cumpleanos-infantil/`, `decoracion-con-globos/`, `ideas/`, `preguntas-frecuentes/`,
