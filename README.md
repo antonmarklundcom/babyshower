@@ -36,14 +36,20 @@ Run from the repo root. Needs Node 22 and PHP 8.1+ (PHP only for the last two ro
 | CSS audit | `npm run css-audit` | `node css-audit.mjs` |
 | PHP syntax check | `npm run php:lint` | `php -l lead-forward.php` |
 | PHP endpoint test | `npm run php:test` | `node docs/qa-tools/php-endpoint.mjs` |
-| Build, final verify, PHP lint and PHP test in sequence | `npm run check` | the four steps above |
+| Stale-output guard: rebuild, fail if generated files differ from the commit | `npm run check:clean` | `node scripts/check-clean.mjs` |
+| Build, final verify, PHP lint, PHP test, then the clean check | `npm run check` | the four steps above, then `check:clean` |
 
 `package.json` only holds these scripts. It has no dependencies, so there is nothing to
 `npm install` and no `node_modules`, and the server never uses it. To point the smoke test at
 another origin, call it directly: `node deploy/smoke.mjs http://127.0.0.1:4173`.
 
 The preview server is static only: it does not run PHP. The smoke test never submits a form.
-Before pushing, run `npm run check`.
+Before pushing, run `npm run check`. The clean check runs last, so a normal local edit still gets
+full build and test feedback first; `npm run check` fails until the regenerated output is
+committed together with the source.
+
+Optional pre-push hook (runs `npm run check` before every push): enable it once per clone with
+`git config core.hooksPath .githooks`.
 
 ## Repo map
 
