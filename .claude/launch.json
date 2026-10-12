@@ -4,8 +4,8 @@
     {
       "name": "babyshower-preview",
       "runtimeExecutable": "node",
-      "runtimeArgs": ["preview-server.mjs", "8095"],
-      "port": 8095
+      "runtimeArgs": ["preview-server.mjs", "4173"],
+      "port": 4173
     }
   ]
 }
