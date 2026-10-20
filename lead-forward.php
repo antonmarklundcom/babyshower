@@ -161,11 +161,22 @@ if (!$found) {
 flock($log, LOCK_UN); fclose($log);
 
 // Payload follows tasacion's /api/v1/leads contract; unmapped fields stay in message.
-$note = "Pipeline: Baby Shower\nStage: Nuevo\n";
-foreach ($lead as $key => $value) $note .= $key . ': ' . $value . "\n";
-$payload = ['phone' => '+' . $lead['whatsapp'], 'name' => $lead['nombre'], 'message' => $note,
+// Pipeline/stage live on the site record in VenderCRM; the CRM payload never carries them.
+$details = '';
+foreach ($lead as $key => $value) $details .= $key . ': ' . $value . "\n";
+$note = "Pipeline: Baby Shower\nStage: Nuevo\n" . $details;
+// First-touch attribution cookie written by vc-attribution.js, when that script is present.
+$attr = isset($_COOKIE['vc_attr']) && is_string($_COOKIE['vc_attr']) ? json_decode($_COOKIE['vc_attr'], true) : null;
+if (!is_array($attr)) $attr = [];
+$payload = ['phone' => '+' . $lead['whatsapp'], 'name' => $lead['nombre'], 'message' => $details,
     'source' => 'site:babyshower', 'page_url' => $site['url'] . $lead['origen'],
     'idempotency_key' => hash('sha256', 'babyshower|' . $sid)];
+foreach (['referrer','utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','fbclid'] as $key) {
+    if (isset($attr[$key]) && is_string($attr[$key]) && trim($attr[$key]) !== '') $payload[$key] = mb_substr(trim($attr[$key]), 0, $key === 'referrer' ? 2000 : 200);
+}
+$fields = array_filter(['fecha' => $lead['fecha'], 'invitados' => $lead['invitados'], 'tipo' => $lead['tipo'],
+    'zona' => $lead['zona'], 'sid' => $sid], static fn($v) => $v !== '');
+if ($fields) $payload['fields'] = $fields;
 $emailed = !empty($receipt['emailed']);
 if (!$emailed && $notificationEmail !== '' && filter_var($notificationEmail, FILTER_VALIDATE_EMAIL) && function_exists('mail')) {
     // An on-domain From keeps shared-hosting mail out of spam; the host comes from the generated site defaults.
@@ -188,6 +199,9 @@ if (!$forwarded && $crmUrl !== '' && $crmKey !== '' && filter_var($crmUrl, FILTE
     $forwarded = $response !== false && in_array($status, [200, 201], true);
     curl_close($ch);
     // Never log response bodies, headers, config, or credentials.
+    if (!$forwarded) error_log('babyshower: VenderCRM lead not accepted, HTTP ' . $status . ' (' . substr($sid, 0, 11) . ')');
+} elseif (!$forwarded) {
+    error_log('babyshower: VenderCRM not configured (url/api_key in vendercrm-config.babyshower.php); lead only logged/emailed');
 }
 if (!save_state($receiptPath, ['fingerprint' => $fingerprint, 'emailed' => $emailed, 'forwarded' => $forwarded, 'notified' => $emailed || $forwarded])) fail_form(['failure'], 503);
 if (!$emailed && !$forwarded) fail_form(['failure'], 503);
