@@ -37,6 +37,10 @@ AddDefaultCharset UTF-8
   <FilesMatch "(?i)\.html$">
     Header set Cache-Control "no-store"
   </FilesMatch>
+  # sitemap.xml, robots.txt and version.txt change with each release: revalidate quickly.
+  <FilesMatch "(?i)\.(xml|txt)$">
+    Header set Cache-Control "public, max-age=300, must-revalidate"
+  </FilesMatch>
 </IfModule>
 
 <IfModule mod_deflate.c>
